@@ -1,0 +1,21 @@
+body{
+    margin: 0px;
+}
+
+.container {
+    width: 1120px;
+    max-width: none !important;
+  }
+
+.nav_logo{
+    height: 100px;
+}
+
+.nav_font{
+    color: black;
+}
+
+.navbar-collapse form{
+    margin: auto;
+    width: 300px;
+}

@@ -5,7 +5,7 @@
 }
 
 
-.mainpage .container-fluid{
+header .container-fluid{
     width: 79.2%;
 }
 
@@ -14,13 +14,17 @@
     margin: auto;
 }
 
-.mainpage .nav_font{
-    color: black;
+
+
+header .nav{
+    width: 79.2%;
+    margin: auto;
 }
 
-.mainpage .navbar-collapse form{
-    margin: auto;
+header .navbar-collapse form{
+    margin-right: 6px;
     width: 300px;
+    margin-left: auto;
 }
 
 .mainpage .btn-group{
@@ -35,4 +39,19 @@
 
 .mainpage .slide{
     margin-top: 20px;
+}
+
+
+
+
+
+
+
+.left_card .col-auto img{
+    width: 80px;
+    height: 116px;
+}
+
+.left_card .card-block{
+
 }

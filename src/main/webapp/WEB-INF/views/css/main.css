@@ -1,0 +1,38 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    margin: 0px;
+}
+
+
+.mainpage .container-fluid{
+    width: 79.2%;
+}
+
+.content{
+    width: 79.2%;
+    margin: auto;
+}
+
+.mainpage .nav_font{
+    color: black;
+}
+
+.mainpage .navbar-collapse form{
+    margin: auto;
+    width: 300px;
+}
+
+.mainpage .btn-group{
+    margin-top: 40px;
+}
+
+.mainpage .btn-group button.btn{
+    border-radius: 50px !important;
+    width: 80px;
+    margin-right: 10px;
+}
+
+.mainpage .slide{
+    margin-top: 20px;
+}

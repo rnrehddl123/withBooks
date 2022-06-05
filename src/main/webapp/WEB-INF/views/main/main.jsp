@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp"/>
-    <div class="content">
+    <div class="mainpage content">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-primary">Left</button>
         <button type="button" class="btn btn-outline-primary">Middle</button>
@@ -240,7 +240,7 @@
 
 
       
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExampleControls" class="carousel slide cardslide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">

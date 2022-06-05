@@ -9,6 +9,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P> <a href="main"> The time on the server is ${serverTime}. </a></P>
+<img src="/resources/img/nav_logo.png" alt="" width="110" height="50">
 </body>
 </html>

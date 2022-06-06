@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P> <a href="main"> The time on the server is ${serverTime}. </a></P>
+<P> <a href="main"> mainpage </a></P>
 </body>
 </html>

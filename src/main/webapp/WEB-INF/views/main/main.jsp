@@ -59,7 +59,7 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
+                          <h4 class="card-title"><a href="readBook">Title</a></h4>
                           <p class="card-text">Description</p>
                       </div>
                   </div>
@@ -74,7 +74,7 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
+                          <h4 class="card-title"><a href="readBook">Title</a></h4>
                           <p class="card-text">Description</p>
                       </div>
                   </div>

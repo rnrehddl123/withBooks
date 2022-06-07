@@ -3,9 +3,9 @@
 <jsp:include page="header.jsp"/>
     <div class="mainpage content">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary">Left</button>
-        <button type="button" class="btn btn-outline-primary">Middle</button>
-        <button type="button" class="btn btn-outline-primary">Right</button>
+        <button type="button" class="btn btn-outline-primary">글쓰기</button>
+        <button type="button" class="btn btn-outline-primary">?</button>
+        <button type="button" class="btn btn-outline-primary"><a href="list_board.do">게시판</a></button>
       </div>
 
 

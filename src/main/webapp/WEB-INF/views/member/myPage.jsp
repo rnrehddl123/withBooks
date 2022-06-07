@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- MyWrite -->
-<jsp:include page="header.jsp"/>
 <html>
 <head>
 	<title>contents</title>
@@ -45,4 +44,3 @@
 	</div>
 </body>
 </html>
-<jsp:include page="footer.jsp"/>

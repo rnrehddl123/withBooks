@@ -9,26 +9,26 @@ public class MemberController {
 	
 	@RequestMapping("/login.do")
 	public String message() {
-		return "WEB-INF/views/member/login.jsp";
+		return "member/login";
 	}
 	
 	@RequestMapping("/signUp.do")
 	public String signUp() {
-		return "WEB-INF/views/member/signUp.jsp";
+		return "member/signUp";
 	}
 	
 	@RequestMapping("/myPage.do")
 	public String myPage() {
-		return "WEB-INF/views/member/myPage.jsp";
+		return "member/myPage";
 	}
 	
 	@RequestMapping("/informUpdate.do")
 	public String informUpdate() {
-		return "WEB-INF/views/member/informUpdate.jsp";
+		return "member/informUpdate";
 	}
 	
 	@RequestMapping("/productView.do")
 	public String productView() {
-		return "WEB-INF/views/member/productView.jsp";
+		return "member/productView";
 	}
 }

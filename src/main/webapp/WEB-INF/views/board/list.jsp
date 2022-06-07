@@ -9,7 +9,7 @@
 <body>
 <%@ include file="../main/header.jsp"%>
 	<div align="center">
-		<b>글 목 록</b>
+		<b>게시판 목록</b>
 		<table border="1" width="800">
 			<tr bgcolor="yellow">
 				<td colspan="6" align="right"><a href="write_board.do">게시판 글 작성</a></td>			

@@ -33,8 +33,8 @@
 			<tr height="35%">
 				<td colspan="3" align="center">
 					<ul>
-						<li><h3>개인정보 수정</h3></li>
-						<li><h3>구매내역</h3></li>
+						<li><a href="informUpdate.do"><h3>개인정보 수정</h3></a></li>
+						<li><a href="productView.do"><h3>구매내역</h3></a></li>
 						<li><h3>회원탈퇴</h3></li>
 					</ul>		
 				</td>

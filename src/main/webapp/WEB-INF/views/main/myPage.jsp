@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- MyWrite -->
+<jsp:include page="header.jsp"/>
 <html>
 <head>
 	<title>contents</title>
 </head>
 <body>
 	<div>
-		<h3 align="center">jsp header 들어갈 곳</h3>
 		<table border="1" align="center" width="800" height="600">
 			<tr height="5%">
 				<td align="left" colspan="3"><h3>000, 님 환영합니다</h3></td>
@@ -45,3 +45,4 @@
 	</div>
 </body>
 </html>
+<jsp:include page="footer.jsp"/>

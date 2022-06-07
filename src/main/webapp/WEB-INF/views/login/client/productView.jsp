@@ -60,7 +60,7 @@
 
 	<tr>
 		<td colspan="3" align="right">
-			<a href="">뒤로가기</a> 		<!-- 페이지 설정 -->
+			<a href="myPage.do">뒤로가기</a> 		<!-- 페이지 설정 -->
 		</td>
 	</tr>
 </table>

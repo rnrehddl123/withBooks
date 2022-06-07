@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 @Controller
 public class BoardController {
-
 	
 	@RequestMapping("/list_board.do")
 	public String listBoard(HttpServletRequest req) {
@@ -53,8 +50,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="delete_board.do", method=RequestMethod.POST)
-	public String deleteProBoard(HttpServletRequest req, 
-								@RequestParam Map<String, String> params) {
+	public String deleteProBoard(HttpServletRequest req,@RequestParam Map<String, String> params) {
 		return "message.jsp";
 	}
 }

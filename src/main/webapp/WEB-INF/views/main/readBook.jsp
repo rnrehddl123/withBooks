@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- MyWrite -->
+<!-- readBook -->
+<jsp:include page="header.jsp"/>
 <html>
 <head>
-	<title>MyWrite</title>
+	<title>readBook</title>
 </head>
 <body>
 	<div>
@@ -34,7 +35,7 @@
 				</td>
 			</tr>
 		</table>
-		<h3 align="center">jsp footer 들어갈 곳</h3>
 	</div>
 </body>
 </html>
+<jsp:include page="footer.jsp"/>

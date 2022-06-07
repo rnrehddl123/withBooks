@@ -11,4 +11,9 @@ public class BookController {
 	public String ReadBook() {
 		return "/book/readBook";
 	}
+	
+	@RequestMapping("/novelList.do")
+	public String novelList() {
+		return "book/novelList";
+	}
 }

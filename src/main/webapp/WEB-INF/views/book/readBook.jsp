@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- readBook -->
-<jsp:include page="header.jsp"/>
 <html>
 <head>
 	<title>readBook</title>
@@ -38,4 +37,3 @@
 	</div>
 </body>
 </html>
-<jsp:include page="footer.jsp"/>

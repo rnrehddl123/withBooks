@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- myLibrary.jsp -->
+<!-- clientLibrary.jsp -->
 <html>
 <head>
 	<title>내가 구매한 소설 목록</title>
@@ -18,13 +18,11 @@
 		<th>구매 일자</th>
 		<th>삭제</th>
 	</tr>
-	
 	<c:if test="${empty #}">
 		<tr>
 			<td colspan = "5" align = "center">구매한 소설 목록이 없습니다.</td>
 		</tr>
 	</c:if>
-	
 	<td colspan = "1" align = "center">
 			<a href = "#">[새로운 소설 구매]</a>
 	</td>

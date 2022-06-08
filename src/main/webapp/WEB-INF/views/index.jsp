@@ -37,6 +37,22 @@
 		<li><h3><a href="writerManage.do">작가 회원 관리</a></h3>
 		<li><h3><a href="novelManage.do">소설 관리</a></h3>
 		<li><h3><a href="saleManage.do">매출 관리</a></h3>
+		
+		<!-- (이환)테스트 -->
+		<li><h3><a href="clientOrder">일반회원 주문하기</a></h3>
+		<li><h3><a href="clientNovelEpi">일반회원 에피소드보기</a></h3>
+		<li><h3><a href="clientNovelSubject">일반회원 소설보기</a></h3>
+		<li><h3><a href="clientCart">일반회원 장바구니</a></h3>
+		<li><h3><a href="clientLibrary">일반회원 내 서재</a></h3>
+		<li><h3><a href="clientOrderList">일반회원 구매내역</a></h3>
+		<li><h3><a href="clientPay">일반회원 충전하기</a></h3>
+		<li><h3><a href="clientRequest">일반회원 작가신청</a></h3>
+		<li><h3><a href="clientUpdate">일반회원 개인정보수정</a></h3>
+		<li><h3><a href="clientBoard">일반회원 자유게시판</a></h3>
+		<li><h3><a href="clientMypage">일반회원 마이페이지</a></h3>
+		<li><h3><a href="clientNotice">일반회원 공지사항</a></h3>
+		<li><h3><a href="clientNovelInfo">일반회원 소설요약</a></h3>
+		<!-- (이환)여기까지 테스트 -->
 </ul>
 
 </body>

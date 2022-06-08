@@ -22,14 +22,24 @@ public class AdminPageController {
 		return "homepage/admin/banerManage/suggest";
 	}
 	
-	@RequestMapping("/cateManage")
-	public String cateManage() {
-		return "homepage/admin/cateManage/cateManage";
+	@RequestMapping("/cateInsert")
+	public String cateInsert() {
+		return "homepage/admin/cateManage/cateInsert";
 	}
 	
-	@RequestMapping("/boardManageList")
+	@RequestMapping("/cateUpdate")
+	public String cateUpdate() {
+		return "homepage/admin/cateManage/cateUpdate";
+	}
+	
+	@RequestMapping("/cateList")
+	public String cateList() {
+		return "homepage/admin/cateManage/cateList";
+	}
+	
+	@RequestMapping("/boardList")
 	public String boardManageList() {
-		return "homepage/admin/boardManage/boardManageList";
+		return "homepage/admin/boardManage/boardList";
 	}
 	
 	@RequestMapping("/noticeList")
@@ -37,14 +47,19 @@ public class AdminPageController {
 		return "homepage/admin/noticeManage/noticeList";
 	}
 	
-	@RequestMapping("/noticeWriteform")
-	public String noticeWriteform() {
-		return "homepage/admin/noticeManage/noticeWriteform";
+	@RequestMapping("/noticeInsert")
+	public String noticeInsert() {
+		return "homepage/admin/noticeManage/noticeInsert";
 	}
 	
-	@RequestMapping("/clientManage")
+	@RequestMapping("/noticeUpdate")
+	public String noticeUpdate() {
+		return "homepage/admin/noticeManage/noticeUpdate";
+	}
+	
+	@RequestMapping("/clientList")
 	public String clientManage() {
-		return "homepage/admin/memberManage/clientManage";
+		return "homepage/admin/memberManage/clientList";
 	}
 	
 	@RequestMapping("/clientUpgrade")

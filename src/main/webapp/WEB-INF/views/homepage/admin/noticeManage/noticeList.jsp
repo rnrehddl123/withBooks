@@ -18,7 +18,7 @@
 			<a href="">[공지]엄청 긴 제목---------------------------------</a>
 			</td>
 			<td>
-			<input type="button" value="수정">
+			<input type="button" value="수정" onclick="window.location='noticeUpdate'">
 			</td>
 			<td>
 			<input type="button" value="삭제">
@@ -30,7 +30,7 @@
 			<a href="">[안내]제목제목2</a>
 			</td>
 			<td>
-			<input type="button" value="수정">
+			<input type="button" value="수정" onclick="window.location='noticeUpdate'">
 			</td>
 			<td>
 			<input type="button" value="삭제">
@@ -42,7 +42,7 @@
 			[공지/안내]공지사항 List
 			</td>
 			<td>
-			<input type="button" value="수정">
+			<input type="button" value="수정" onclick="window.location='noticeUpdate'">
 			</td>
 			<td>
 			<input type="button" value="삭제">
@@ -56,7 +56,7 @@
 	검색: <input type="text" name="search"> <input type="button" value="검색">
 	
 
-	<input type="button" value="글쓰기" align="right" onclick="window.location='noticeWriteform'">
+	<input type="button" value="글쓰기" align="right" onclick="window.location='noticeInsert'">
 	
 </div>
 

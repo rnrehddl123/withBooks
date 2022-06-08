@@ -59,28 +59,28 @@
 		</tr>
 		<tr>
 			<td>001</td>
-			<td>이제동</td>
+			<td><a href="writerNovelList">이제동</a></td>
 			<td>000-0000-0000</td>
 			<td>aaa</td>
 			<td><input type="button" value="계정삭제"></td>
 		</tr>
 		<tr>
 			<td>002</td>
-			<td>이수환</td>
+			<td><a href="writerNovelList">이수환</a></td>
 			<td>000-1111-1111</td>
 			<td>bbb</td>
 			<td><input type="button" value="계정삭제"></td>
 		</tr>
 		<tr>
 			<td>003</td>
-			<td>김민수</td>
+			<td><a href="writerNovelList">김민수</a></td>
 			<td>000-2222-2222</td>
 			<td>ccc</td>
 			<td><input type="button" value="계정삭제"></td>
 		</tr>
 		<tr>
 			<td>004</td>
-			<td>여수환</td>
+			<td><a href="writerNovelList">여수환</a></td>
 			<td>000-3333-3333</td>
 			<td>ddd</td>
 			<td><input type="button" value="계정삭제"></td>

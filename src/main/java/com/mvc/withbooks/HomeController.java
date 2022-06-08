@@ -28,4 +28,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/bookview")
+	public String bookView() {
+		return "detailBook/bookView";
+	}
+	
 }
+

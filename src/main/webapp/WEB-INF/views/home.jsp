@@ -9,6 +9,9 @@
 	Hello world!  
 </h1>
 
-<P> <a href="main"> mainpage </a></P>
+<P><a href="main"> mainpage </a></P>
+
+
+<P><a href="bookview"> mainpage </a></P>
 </body>
 </html>

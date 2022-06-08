@@ -31,12 +31,8 @@
       <li><h3><a href="login">로그인</a></h3>
       <li><h3><a href="signUp">회원가입</a></h3>
       
-      <li><h3><a href="cateManage">관리자 카테고리 관리</a></h3>
-      <li><h3><a href="notice">알림</a></h3>
-      <li><h3><a href="clientManage">일반 회원 관리</a></h3>
-      <li><h3><a href="writerManage">작가 회원 관리</a></h3>
-      <li><h3><a href="novelManage">소설 관리</a></h3>
-      <li><h3><a href="saleManage">매출 관리</a></h3>
+      <li><h3><a href="homepage">관리자 페이지</a></h3>
+      
       
       
 </ul>

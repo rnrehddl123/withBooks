@@ -5,13 +5,16 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<h1 align="center">홈페이지</h1>
 
-<P><a href="main"> mainpage </a></P>
+<ul>
+		<li><h3><a href="main">메인</a></h3></li>
+		<li><h3><a href="list_board.do">자유게시판</a></h3>
+		<li><h3><a href="list_cart.do">장바구니</a></h3>
+		<li><h3><a href="order_cart.do">주문</a></h3>
+		
+		
+</ul>
 
-
-<P><a href="bookview"> mainpage </a></P>
 </body>
 </html>

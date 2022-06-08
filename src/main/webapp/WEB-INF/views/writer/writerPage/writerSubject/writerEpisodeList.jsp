@@ -1,30 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- novelList.JSP -->
+<!-- writerNovelList.JSP -->
 <html>
 <head>
-	<title>내가쓴 소설 목록</title>
+	<title>ㅇㅇㅇ, 에피소드 목록</title>
 </head>
 <body>
 	<div align="center">
-		<b> 내가 쓴 소설 목록</b>
+		<b> (소 설 제 목) 에피소드 목록</b>
 		<table border="1" width="800">
-			<tr bgcolor="#">
-				<td colspan="7" align="right"><a href="#">새로운 소설 쓰기</a></td>
+			<tr>
+				<td colspan="5" align="right"><a href="#">새로운 에피소드 쓰기</a></td>
 			</tr>
-			<tr bgcolor="#">
+			<tr>
 				<th>번호</th>
-				<th>소설(시리즈) 제목</th>
-				<th>작성자</th>
+				<th>에피소드 제목</th>
 				<th>작성일</th>
 				<th>조회수</th>
-				<th>소설 쓰기</th>
-				<th>수정/삭제</th>
+				<th>수정(EpisodeUpdate)로/삭제</th>
 			</tr>
 			<c:if test="">
 			<tr>
-				<td colspan="7">등록된 소설이 없습니다.</td>
+				<td colspan="5">등록된 소설이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:forEach var="#" items="">

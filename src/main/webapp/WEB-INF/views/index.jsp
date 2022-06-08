@@ -37,6 +37,24 @@
 		<li><h3><a href="writerManage.do">작가 회원 관리</a></h3>
 		<li><h3><a href="novelManage.do">소설 관리</a></h3>
 		<li><h3><a href="saleManage.do">매출 관리</a></h3>
+		
+		<li><h3><a href="writerNovelEpisode">에피소드 뷰어</a></h3>
+		<li><h3><a href="writerNovelSubject">소설 뷰어</a></h3>
+		<li><h3><a href="writerEpisode">에피소드 작성</a></h3>
+		<li><h3><a href="writerEpisodeList">에피소드 리스트</a></h3>
+		<li><h3><a href="writerEpisodeUpdate">에피소드 수정</a></h3>
+		<li><h3><a href="writerNovel">소설 작성</a></h3>
+		<li><h3><a href="writerNovelList">소설 리스트</a></h3>
+		<li><h3><a href="writerNovelUpdate">소설 수정</a></h3>
+		<li><h3><a href="writerChart">Chart</a></h3>
+		<li><h3><a href="writerLibrary">작가 소설 구매 내역</a></h3>
+		<li><h3><a href="writerOrderList">주문 리스트</a></h3>
+		<li><h3><a href="writerPay">작가 Pay</a></h3>
+		<li><h3><a href="writerUpdate">작가 개인정보 수정</a></h3>
+		
+		
+		
+		
 </ul>
 
 </body>

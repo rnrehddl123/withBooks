@@ -39,6 +39,7 @@
 		<li><h3><a href="saleManage.do">¸ÅÃâ °ü¸®</a></h3>
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<li><h3><a href="homepage">°ü¸®ÀÚ ÆäÀÌÁö</a></h3>
 =======
 		<li><h3><a href="writerNovelEpisode">¿¡ÇÇ¼Òµå ºä¾î</a></h3>
@@ -59,6 +60,23 @@
 		
 		
 >>>>>>> ì´ì†¡ì£¼
+=======
+		<!-- (ÀÌÈ¯)Å×½ºÆ® -->
+		<li><h3><a href="clientOrder">ÀÏ¹ÝÈ¸¿ø ÁÖ¹®ÇÏ±â</a></h3>
+		<li><h3><a href="clientNovelEpi">ÀÏ¹ÝÈ¸¿ø ¿¡ÇÇ¼Òµåº¸±â</a></h3>
+		<li><h3><a href="clientNovelSubject">ÀÏ¹ÝÈ¸¿ø ¼Ò¼³º¸±â</a></h3>
+		<li><h3><a href="clientCart">ÀÏ¹ÝÈ¸¿ø Àå¹Ù±¸´Ï</a></h3>
+		<li><h3><a href="clientLibrary">ÀÏ¹ÝÈ¸¿ø ³» ¼­Àç</a></h3>
+		<li><h3><a href="clientOrderList">ÀÏ¹ÝÈ¸¿ø ±¸¸Å³»¿ª</a></h3>
+		<li><h3><a href="clientPay">ÀÏ¹ÝÈ¸¿ø ÃæÀüÇÏ±â</a></h3>
+		<li><h3><a href="clientRequest">ÀÏ¹ÝÈ¸¿ø ÀÛ°¡½ÅÃ»</a></h3>
+		<li><h3><a href="clientUpdate">ÀÏ¹ÝÈ¸¿ø °³ÀÎÁ¤º¸¼öÁ¤</a></h3>
+		<li><h3><a href="clientBoard">ÀÏ¹ÝÈ¸¿ø ÀÚÀ¯°Ô½ÃÆÇ</a></h3>
+		<li><h3><a href="clientMypage">ÀÏ¹ÝÈ¸¿ø ¸¶ÀÌÆäÀÌÁö</a></h3>
+		<li><h3><a href="clientNotice">ÀÏ¹ÝÈ¸¿ø °øÁö»çÇ×</a></h3>
+		<li><h3><a href="clientNovelInfo">ÀÏ¹ÝÈ¸¿ø ¼Ò¼³¿ä¾à</a></h3>
+		<!-- (ÀÌÈ¯)¿©±â±îÁö Å×½ºÆ® -->
+>>>>>>> ì´í™˜
 </ul>
 
 </body>

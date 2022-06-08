@@ -48,7 +48,7 @@ public class LoginController {
 	
 	@RequestMapping("/WriteNovel")
 	public String WriteNovel() {
-		return "/login/writer/Novel";
+		return "/login/writerNovel";
 	}
 	
 	@RequestMapping("/login")

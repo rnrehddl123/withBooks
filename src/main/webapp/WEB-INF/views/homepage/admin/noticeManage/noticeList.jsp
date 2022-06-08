@@ -56,7 +56,7 @@
 	검색: <input type="text" name="search"> <input type="button" value="검색">
 	
 
-	<input type="button" value="글쓰기" align="right">
+	<input type="button" value="글쓰기" align="right" onclick="window.location='noticeWriteform'">
 	
 </div>
 

@@ -11,7 +11,7 @@
 	<table border="1">
 		<tr>
 			<td>추천 작품 리스트</td>
-			<td>삭제</td>
+			<td>선택</td>
 		</tr>
 		<tr>
 			<td>추리소설 aaa</td>

@@ -1,19 +1,44 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <html>
 <head>
-	<title>Home</title>
+   <title>Home</title>
 </head>
 <body>
-<h1 align="center">í™ˆíŽ˜ì´ì§€</h1>
+<h1 align="center">È¨ÆäÀÌÁö</h1>
 
 <ul>
-		<li><h3><a href="main">ë©”ì¸</a></h3></li>
-		<li><h3><a href="list_board.do">ìžìœ ê²Œì‹œíŒ</a></h3>
-		<li><h3><a href="list_cart.do">ìž¥ë°”êµ¬ë‹ˆ</a></h3>
-		<li><h3><a href="order_cart.do">ì£¼ë¬¸</a></h3>
-		
-		
+      <li><h3><a href="main">¸ÞÀÎ</a></h3></li>
+      
+      <li><h3><a href="list_board.do">ÀÚÀ¯°Ô½ÃÆÇ</a></h3>
+      
+      <li><h3><a href="list_cart.do">Àå¹Ù±¸´Ï</a></h3>
+      
+      <li><h3><a href="order_cart.do">ÁÖ¹®</a></h3>
+      
+      <li><h3><a href="informUpdate">Á¤º¸¼öÁ¤</a></h3>
+      <li><h3><a href="myLibrary">³ªÀÇ ¼Ò¼³ ±¸¸Å³»¿ª</a></h3>
+      <li><h3><a href="ClientmyPage">ÀÏ¹ÝÈ¸¿ø ¸¶ÀÌÆäÀÌÁö</a></h3>
+      <li><h3><a href="productView">±¸¸Å³»¿ª</a></h3>
+      
+      <li><h3><a href="WritermyPage">ÀÛ°¡ ¸¶ÀÌÆäÀÌÁö</a></h3>
+      <li><h3><a href="WriteEpisode">¿¡ÇÇ¼Òµå ¾²±â</a></h3>
+      <li><h3><a href="WriteNovel">¼Ò¼³ ¾²±â</a></h3>
+      
+      <li><h3><a href="novelList">¼Ò¼³¸ñ·Ï</a></h3>
+      <li><h3><a href="novelView">¼Ò¼³º¸±â</a></h3>
+      
+      <li><h3><a href="login">·Î±×ÀÎ</a></h3>
+      <li><h3><a href="signUp">È¸¿ø°¡ÀÔ</a></h3>
+      
+      <li><h3><a href="cateManage">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
+      <li><h3><a href="notice">¾Ë¸²</a></h3>
+      <li><h3><a href="clientManage">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
+      <li><h3><a href="writerManage">ÀÛ°¡ È¸¿ø °ü¸®</a></h3>
+      <li><h3><a href="novelManage">¼Ò¼³ °ü¸®</a></h3>
+      <li><h3><a href="saleManage">¸ÅÃâ °ü¸®</a></h3>
+      
+      
 </ul>
 
 </body>

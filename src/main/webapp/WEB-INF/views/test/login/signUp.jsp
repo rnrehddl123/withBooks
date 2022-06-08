@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<jsp:include page="../main/header.jsp"/>
 	<font size="3">회 원 가 입</font><p>
 	<table width="600" align="center" class="outline">
 				<tr>
@@ -64,4 +63,3 @@
 				</tr>
 				
 			</table>
-<jsp:include page="../main/footer.jsp"/>

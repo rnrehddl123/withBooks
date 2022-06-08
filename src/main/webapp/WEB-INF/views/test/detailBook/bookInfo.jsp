@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<jsp:include page="../main/header.jsp"/>
 <div class="bookdetail">
 	<article class="">
 		<div>
@@ -45,4 +44,3 @@
 	  </li>
 	</ol>
 </div>
-<jsp:include page="../main/footer.jsp"/>

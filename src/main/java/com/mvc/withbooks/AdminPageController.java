@@ -1,41 +1,40 @@
 package com.mvc.withbooks;
 
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 public class AdminPageController {
 	
-	@RequestMapping("/cateManage.do")
+	@RequestMapping("/cateManage")
 	public String cateManage() {
 		return "admin/cateManage";
 	}
 	
-	@RequestMapping("/notice.do")
+	@RequestMapping("/notice")
 	public String notice() {
 		return "admin/notice";
 	}
 	
-	@RequestMapping("/list_board.do")
-	public String list_board() {
-		return "board/list";
-	}
-	
-	@RequestMapping("/clientManage.do")
+	@RequestMapping("/clientManage")
 	public String clientManage() {
 		return "admin/clientManage";
 	}
 	
-	@RequestMapping("/writerManage.do")
+	@RequestMapping("/writerManage")
 	public String writerManage() {
 		return "admin/writerManage";
 	}
 	
-	@RequestMapping("/novelManage.do")
+	@RequestMapping("/novelManage")
 	public String novelManage() {
 		return "admin/novelManage";
 	}
 	
-	@RequestMapping("/saleManage.do")
+	@RequestMapping("/saleManage")
 	public String saleManage() {
 		return "admin/saleManage";
 	}
+
 }

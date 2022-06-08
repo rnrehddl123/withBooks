@@ -12,4 +12,13 @@
 		<property name="password" value="bigdata01"/>
 	</bean>
 	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="typeAliasesPackage" value="com.ezen.mavenBoard.dto"/>
+		<property name="mapperLocations" value="classpath:com/ezen/mavenBoard/model/*.xml"/>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
 </beans>

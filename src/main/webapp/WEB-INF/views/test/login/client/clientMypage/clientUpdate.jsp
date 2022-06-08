@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- clientUpdate -->
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">

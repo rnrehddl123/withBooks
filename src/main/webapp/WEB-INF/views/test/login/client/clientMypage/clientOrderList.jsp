@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- clientOrderList -->
 <html>
 <head>
 <title>구매내역</title>

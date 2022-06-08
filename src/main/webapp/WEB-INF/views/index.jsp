@@ -38,7 +38,27 @@
 		<li><h3><a href="novelManage.do">¼Ò¼³ °ü¸®</a></h3>
 		<li><h3><a href="saleManage.do">¸ÅÃâ °ü¸®</a></h3>
 		
+<<<<<<< HEAD
 		<li><h3><a href="homepage">°ü¸®ÀÚ ÆäÀÌÁö</a></h3>
+=======
+		<li><h3><a href="writerNovelEpisode">¿¡ÇÇ¼Òµå ºä¾î</a></h3>
+		<li><h3><a href="writerNovelSubject">¼Ò¼³ ºä¾î</a></h3>
+		<li><h3><a href="writerEpisode">¿¡ÇÇ¼Òµå ÀÛ¼º</a></h3>
+		<li><h3><a href="writerEpisodeList">¿¡ÇÇ¼Òµå ¸®½ºÆ®</a></h3>
+		<li><h3><a href="writerEpisodeUpdate">¿¡ÇÇ¼Òµå ¼öÁ¤</a></h3>
+		<li><h3><a href="writerNovel">¼Ò¼³ ÀÛ¼º</a></h3>
+		<li><h3><a href="writerNovelList">¼Ò¼³ ¸®½ºÆ®</a></h3>
+		<li><h3><a href="writerNovelUpdate">¼Ò¼³ ¼öÁ¤</a></h3>
+		<li><h3><a href="writerChart">Chart</a></h3>
+		<li><h3><a href="writerLibrary">ÀÛ°¡ ¼Ò¼³ ±¸¸Å ³»¿ª</a></h3>
+		<li><h3><a href="writerOrderList">ÁÖ¹® ¸®½ºÆ®</a></h3>
+		<li><h3><a href="writerPay">ÀÛ°¡ Pay</a></h3>
+		<li><h3><a href="writerUpdate">ÀÛ°¡ °³ÀÎÁ¤º¸ ¼öÁ¤</a></h3>
+		
+		
+		
+		
+>>>>>>> ì´ì†¡ì£¼
 </ul>
 
 </body>

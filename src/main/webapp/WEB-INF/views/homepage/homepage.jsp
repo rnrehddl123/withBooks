@@ -14,7 +14,7 @@
 	</ul>
 	카테고리 관리<br>
 	<ul>
-		<li><a href="cateManage">카테고리 관리</a></li>
+		<li><a href="cateList">카테고리 관리</a></li>
 	</ul>
 	공지사항 관리<br>
 	<ul>
@@ -22,11 +22,11 @@
 	</ul>
 	게시판 관리<br>
 	<ul>
-		<li><a href="boardManageList">게시판</a></li>
+		<li><a href="boardList">게시판</a></li>
 	</ul>
 	회원 관리<br>
 	<ul>
-		<li><a href="clientManage">일반회원 관리</a></li>
+		<li><a href="clientList">회원 관리</a></li>
 		<li><a href="clientUpgrade">작가 관리</a></li>
 	</ul>
 	매출 관리<br>

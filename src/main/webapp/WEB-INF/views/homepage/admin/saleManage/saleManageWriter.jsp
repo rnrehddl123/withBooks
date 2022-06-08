@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div align="center">
-		<font align="center">매 출 관 리</font><br>
+		<font align="center">작 가 매 출 관 리</font><br>
 		<table border="1" width="800">
 			<td align="center"><font size="50">매출 관리 차트(후에 지울것)</font></td>
 		</table>

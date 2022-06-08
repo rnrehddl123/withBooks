@@ -17,17 +17,35 @@
 			<td>
 			<a href="">[공지]엄청 긴 제목---------------------------------</a>
 			</td>
+			<td>
+			<input type="button" value="수정">
+			</td>
+			<td>
+			<input type="button" value="삭제">
+			</td>
 		</tr>
 		
 		<tr>
 			<td>
 			<a href="">[안내]제목제목2</a>
 			</td>
+			<td>
+			<input type="button" value="수정">
+			</td>
+			<td>
+			<input type="button" value="삭제">
+			</td>
 		</tr>
 		
 		<tr>
 			<td>
 			[공지/안내]공지사항 List
+			</td>
+			<td>
+			<input type="button" value="수정">
+			</td>
+			<td>
+			<input type="button" value="삭제">
 			</td>
 		</tr>
 		

@@ -1,45 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- writeNovelUpdate.jsp -->
+<jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
 	<title>writeNovelUpdate</title>
 </head>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
 		<form name="f" action="" method="post" onsubmit="return check()">
-			<table border="1" width="800">
+			<table align="center" class="writer">
 				<tr>
-					<td colspan="2" align="center">¼Ò¼³ ¼öÁ¤</td>
+					<td colspan="2" align="center">ì†Œì„¤ ìˆ˜ì •</td>
 				</tr>
 				<tr>
-					<th width="20%">ÀÛ °¡ ÇÊ ¸í(¼öÁ¤)</th>
-					<td><input type="text" name="writerName" size="50"></td>
+					<th width="20%">ìž‘ ê°€ í•„ ëª…(ìˆ˜ì •)</th>
+					<td><input type="text" name="writerName" size="50" class="width80"></td>
 				</tr>
 				<tr>
-					<th width="20%">Ä« Å× °í ¸®(¼öÁ¤)</th>
-					<td><input type="text" name="category" size="50"></td>
+					<th width="20%">ì¹´ í…Œ ê³  ë¦¬(ìˆ˜ì •)</th>
+					<td><input type="text" name="category" size="50" class="width80"></td>
 				</tr>			
 				<tr>
-					<th width="20%">´ë Á¦ ¸ñ(¼öÁ¤°¡´É)</th>
-					<td><input type="text" name="subject" size="50"></td>
+					<th width="20%">ëŒ€ ì œ ëª©(ìˆ˜ì •ê°€ëŠ¥)</th>
+					<td><input type="text" name="subject" size="50" class="width80"></td>
 				</tr>
 				<tr>
-					<th width="20%">¼Ò ¼³ ÀÌ ¹Ì Áö(¼öÁ¤)</th>
-					<td><input type="file" name="image" size="50"></td>
+					<th width="20%">ì†Œ ì„¤ ì´ ë¯¸ ì§€(ìˆ˜ì •)</th>
+					<td><input type="file" name="image" size="50" class="width80"></td>
 				</tr>
 				<tr>
-					<th width="20%">ÁÙ °Å ¸®(¼öÁ¤)</th>
-					<td><textarea name="content" rows="10" cols="70"></textarea></td>
+					<th width="20%">ì¤„ ê±° ë¦¬(ìˆ˜ì •)</th>
+					<td><textarea name="content" rows="10" cols="70" class="width80"></textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="2">
-						<input type="submit" value="ÀÛ¼º ¿Ï·á">
-						<input type="reset" value="´Ù½Ã ÀÛ¼º">
+						<input type="submit" value="ìˆ˜ì • ì™„ë£Œ">
+						<input type="reset" value="ë‹¤ì‹œ ìž‘ì„±">
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-</body>
-</html>
+<jsp:include page="../../../main/footer.jsp"/>

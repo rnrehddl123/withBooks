@@ -1,26 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- order.jsp -->
+<jsp:include page="../../main/header.jsp"/>
+<html>
+<head>
+	<title>writeOrderList</title>
+</head>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
+<body>
+	<div align="center">
 <c:set var="total" value="0"/>
 
-<table class = "outline" width = "80%">
-   <tr bgcolor = "blue">
-      <th colspan = "3"><font color = "blue">°áÀç ³»¿ª¼­ º¸±â</font></th>
+<table align="center" class="writer">
+   <tr>
+      <th colspan = "3"><font color = "blue">ê²°ìž¬ ë‚´ì—­ì„œ ë³´ê¸°</font></th>
    </tr>
    
    <tr class = "m1">
-      <th>»óÇ°¸í</th>
-      <th>¼ö·®</th>
-      <th>±Ý¾×</th>
+      <th>ìƒí’ˆëª…</th>
+      <th>ìˆ˜ëŸ‰</th>
+      <th>ê¸ˆì•¡</th>
    </tr>
    <c:choose>
    <c:when test="${not empty order}">   
    <tr>
       <td align = "center"></td>
-      <td align = "right"> °³</td>
+      <td align = "right"> ê°œ</td>
       <td align = "right">
-      <fmt:formatNumber value="" pattern="###,###"/> ¿ø</td>
+      <fmt:formatNumber value="" pattern="###,###"/> ì›</td>
       <c:set var="total" value=""/>
    </tr>
 </c:when>   
@@ -28,9 +36,9 @@
    <c:forEach var="pdto" items="">
    <tr>
       <td align = "center"></td>
-      <td align = "right"> °³</td>
+      <td align = "right"> ê°œ</td>
       <td align = "right">
-      <fmt:formatNumber value="" pattern="###,###"/> ¿ø</td>
+      <fmt:formatNumber value="" pattern="###,###"/> ì›</td>
       <c:set var="total" value=""/>
    </tr>
    </c:forEach>
@@ -39,9 +47,11 @@
 
 <tr class = "m1">
       <td colspan = "3" align = "center">
-      °áÀçÇÏ½Ç ÃÑ¾×Àº:
+      ê²°ìž¬í•˜ì‹¤ ì´ì•¡ì€:
       <font color = "red">
-      <fmt:formatNumber value= pattern="###,###"/> ¿ø</font>
+      <fmt:formatNumber value= pattern="###,###"/> ì›</font>
       </td>
    </tr>
 </table>
+</div>
+<jsp:include page="../../main/footer.jsp"/>

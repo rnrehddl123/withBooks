@@ -1,33 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- writeEpisode.jsp -->
+<jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
 	<title>writeEpisode</title>
 </head>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
 		<form name="f" action="" method="post" onsubmit="return check()">
-			<table border="1" width="800">
+			<table align="center" class="writer">
 				<tr>
-					<td colspan="2" align="center">¼Ò¼³ ³»¿ë ¾²±â</td>
+					<td colspan="2" align="center">ì†Œì„¤ ë‚´ìš© ì“°ê¸°</td>
 				</tr>			
 				<tr>
-					<th width="20%">¼Ò Á¦ ¸ñ(¿¹½Ã 1È­,2È­)</th>
-					<td><input type="text" name="subject" size="50"></td>
+					<th width="20%">ì†Œ ì œ ëª©</th>
+					<td><input type="text" name="subject" size="65" class="width80"></td>
 				</tr>
 				<tr>
-					<th width="20%">³» ¿ë</th>
-					<td><textarea name="content" rows="30" cols="70"></textarea></td>
+					<th width="20%">ë‚´ ìš©</th>
+					<td><textarea name="content" rows="30" cols="70" class="width80"></textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="2">
-						<input type="submit" value="ÀÛ¼º ¿Ï·á">
-						<input type="reset" value="´Ù½Ã ÀÛ¼º">
+						<input type="submit" value="ìž‘ì„± ì™„ë£Œ">
+						<input type="reset" value="ë‹¤ì‹œ ìž‘ì„±">
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-</body>
-</html>
+<jsp:include page="../../../main/footer.jsp"/>

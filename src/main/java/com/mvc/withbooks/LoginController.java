@@ -15,12 +15,7 @@ public class LoginController {
 	public String MyLibrary() {
 		return "/login/client/myLibrary";
 	}
-	
-	@RequestMapping("/ClientmyPage")
-	public String ClientmyPage() {
-		return "/login/client/myPage";
-	}
-	
+
 	@RequestMapping("/productView")
 	public String ProductView() {
 		return "/login/client/productView";

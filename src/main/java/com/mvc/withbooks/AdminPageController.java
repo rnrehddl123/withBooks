@@ -1,16 +1,13 @@
 package com.mvc.withbooks;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> WJ
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AdminPageController {
 	
-<<<<<<< HEAD
+
 	@RequestMapping("/homepage")
 	public String homepage() {
 		return "homepage/homepage";
@@ -62,7 +59,10 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/clientList")
-=======
+	public String clientList() {
+		return "admin/clientList";
+	}
+	
 	@RequestMapping("/cateManage")
 	public String cateManage() {
 		return "admin/cateManage";
@@ -79,12 +79,12 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/clientManage")
->>>>>>> WJ
+
 	public String clientManage() {
 		return "homepage/admin/memberManage/clientList";
 	}
 	
-<<<<<<< HEAD
+
 	@RequestMapping("/clientUpgrade")
 	public String clientUpgrade() {
 		return "homepage/admin/memberManage/clientUpgrade";
@@ -98,7 +98,8 @@ public class AdminPageController {
 	@RequestMapping("/saleManageWriter")
 	public String saleManageWriter() {
 		return "homepage/admin/saleManage/saleManageWriter";
-=======
+	}
+
 	@RequestMapping("/writerManage")
 	public String writerManage() {
 		return "admin/writerManage";
@@ -112,7 +113,7 @@ public class AdminPageController {
 	@RequestMapping("/saleManage")
 	public String saleManage() {
 		return "admin/saleManage";
->>>>>>> WJ
+
 	}
 	
 	@RequestMapping("/saleTotal")

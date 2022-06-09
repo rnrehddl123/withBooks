@@ -10,9 +10,9 @@
 <%@include file="../../adminHeader.jsp"%>
 <div class="clientList">
 	<b><h3>회원 관리</h3></b>
-	<table border="1">
+	<table border="1" width="1000" height="500">
 		<caption>회원 정보 보기</caption>
-		<tr>
+		<tr height="50">
 			<th>회원 번호</th>
 			<th>회원 이름</th>
 			<th>전화번호</th>
@@ -49,9 +49,9 @@
 		</tr>
 	</table>
 	<b><h3>작가 관리</h3></b>
-	<table border="1">
+	<table border="1" width="1000" height="500">
 		<caption>작가 정보 보기</caption>
-		<tr>
+		<tr height="50"> 
 			<th>작가 번호</th>
 			<th>작가 이름</th>
 			<th>전화번호</th>

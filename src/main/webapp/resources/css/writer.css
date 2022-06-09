@@ -1,0 +1,38 @@
+.writer {
+	margin : auto;
+	width : 800px;
+	border : 1px solid;
+	margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.writerNovelSubject{
+	
+	margin : auto;
+	width : 600px;
+	height : 600px;
+	border : 1px solid;
+	
+}
+
+.writerNovelSubject td{
+	border : 1px solid;
+}
+
+.width80 {
+	width : 80%;
+}
+
+.writerUpdate {
+	margin : auto;
+	width : 600px;
+	height : 600px;
+	border : 1px solid;
+	text-align: center;
+}
+
+.writerUpdate td{
+	border : 1px solid;
+}
+

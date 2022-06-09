@@ -1,40 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- writerNovelSubject.jsp -->
+<jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
    <title>writerNovelSubject</title>
 </head>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
    <div>
-      <h3 align="center">jsp header µé¾î°¥ °÷</h3>
-      <table border="1" align="center" width="600" height="600">
+      <table align="center" class="writerNovelSubject">
          <tr>
-            <td align="center" rowspan="2">ÀÏ·¯½ºÆ®</td>
-            <td align="center" colspan="3">Á¦¸ñ : </td>
+            <td align="center" rowspan="2">ì¼ëŸ¬ìŠ¤íŠ¸</td>
+            <td align="center" colspan="3">ì œëª© : </td>
          </tr>
          <tr>
-            <td align="center" colspan="3">º°Á¡ : </td>
+            <td align="center" colspan="3">ë³„ì  : </td>
          </tr>
          <tr>
-            <td height="10%" align="center" colspan="4">¼Ò¼³ ¿ä¾à</td>
+            <td height="10%" align="center" colspan="4">ì†Œì„¤ ìš”ì•½</td>
          </tr>
          <tr   height="5%">
-            <td colspan="2">Á¦¸ñ</td>
-            <td>³¯Â¥</td>
-            <td>Á¶È¸¼ö</td>
+            <td colspan="2">ì œëª©</td>
+            <td>ë‚ ì§œ</td>
+            <td>ì¡°íšŒìˆ˜</td>
          </tr>
          <tr height="40%">
             <td colspan="4" align="left">
                <ul>
-                  <li><h3>¼Ò¼³ ¸ñ·Ï</h3></li>
+                  <li><h3>ì†Œì„¤ ëª©ë¡</h3></li>
                   <li><h3>1</h3></li>
-                  <li><h3>for¹® È°¿ë 1°³¾¿ ´Ã¾î³ª°¡´Â ¸ñ·Ï</h3></li>
+                  <li><h3>forë¬¸ í™œìš© 1ê°œì”© ëŠ˜ì–´ë‚˜ê°€ëŠ” ëª©ë¡</h3></li>
                </ul>      
             </td>
          </tr>
       </table>
-      <h3 align="center">jsp footer µé¾î°¥ °÷</h3>
    </div>
-</body>
-</html>
+<jsp:include page="../../../main/footer.jsp"/>

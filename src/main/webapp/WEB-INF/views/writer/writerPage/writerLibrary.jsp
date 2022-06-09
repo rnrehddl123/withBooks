@@ -1,32 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- myLibrary.jsp -->
+<jsp:include page="../../main/header.jsp"/>
 <html>
 <head>
-	<title>³»°¡ ±¸¸ÅÇÑ ¼Ò¼³ ¸ñ·Ï</title>
+	<title>ë‚´ê°€ êµ¬ë§¤í•œ ì†Œì„¤ ëª©ë¡</title>
 </head>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
-	<table border = "1" width = "95%" align = "center">
-		<tr height = "50"><th colspan = "5">³»°¡ ±¸¸ÅÇÑ ¼Ò¼³ ¸ñ·Ï</th></tr>
+	<table align="center" class="writer">
+		<tr height = "50"><th colspan = "5">ë‚´ê°€ êµ¬ë§¤í•œ ì†Œì„¤ ëª©ë¡</th></tr>
 		
 		<tr height = "30">
-		<th>ÀÌ¹ÌÁö</th>	
-		<th>¼Ò¼³(½Ã¸®Áî) Á¦¸ñ</th>
-		<th>Ã¥ ÀÐ±â</th>
-		<th>±¸¸Å ÀÏÀÚ</th>
-		<th>»èÁ¦</th>
+		<th>ì´ë¯¸ì§€</th>	
+		<th>ì†Œì„¤(ì‹œë¦¬ì¦ˆ) ì œëª©</th>
+		<th>ì±… ì½ê¸°</th>
+		<th>êµ¬ë§¤ ì¼ìž</th>
+		<th>ì‚­ì œ</th>
 	</tr>
 	
 	<c:if test="">
 		<tr>
-			<td colspan = "5" align = "center">±¸¸ÅÇÑ ¼Ò¼³ ¸ñ·ÏÀÌ ¾ø½À´Ï´Ù.</td>
+			<td colspan = "5" align = "center">êµ¬ë§¤í•œ ì†Œì„¤ ëª©ë¡ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 		</tr>
 	</c:if>
 	
-	<td colspan = "1" align = "center">
-			<a href = "#">[»õ·Î¿î ¼Ò¼³ ±¸¸Å]</a>
+	<td colspan = "5" align = "center">
+			<a href = "#">[ìƒˆë¡œìš´ ì†Œì„¤ êµ¬ë§¤]</a>
 	</td>
 	</table>
-</body>
-</html>
+<jsp:include page="../../main/footer.jsp"/>
 	

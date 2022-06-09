@@ -1,28 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- writerNovelList.JSP -->
+<jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
-	<title>³»°¡¾´ ¼Ò¼³ ¸ñ·Ï</title>
+	<title>ë‚´ê°€ì“´ ì†Œì„¤ ëª©ë¡</title>
 </head>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<b> ³»°¡ ¾´ ¼Ò¼³ ¸ñ·Ï</b>
-		<table border="1" width="800">
+		<b> ë‚´ê°€ ì“´ ì†Œì„¤ ëª©ë¡</b>
+		<table align="center" class="writer">
 			<tr>
-				<td colspan="6" align="right"><a href="#">»õ·Î¿î ¼Ò¼³ ¾²±â</a></td>
+				<td colspan="6" align="right"><a href="#">ìƒˆë¡œìš´ ì†Œì„¤ ì“°ê¸°</a></td>
 			</tr>
 			<tr>
-				<th>¹øÈ£</th>
-				<th>¼Ò¼³(½Ã¸®Áî)Á¦¸ñ(writerEpisodeList·Î)</th>
-				<th>ÀÛ¼ºÀÚ</th>
-				<th>ÀÛ¼ºÀÏ</th>
-				<th>Á¶È¸¼ö</th>
-				<th>¼öÁ¤(NovelUpdate)/»èÁ¦</th>
+				<th>ë²ˆí˜¸</th>
+				<th>ì†Œì„¤(ì‹œë¦¬ì¦ˆ)ì œëª©(writerEpisodeListë¡œ)</th>
+				<th>ìž‘ì„±ìž</th>
+				<th>ìž‘ì„±ì¼</th>
+				<th>ì¡°íšŒìˆ˜</th>
+				<th>ìˆ˜ì •(NovelUpdate)/ì‚­ì œ</th>
 			</tr>
 			<c:if test="">
 			<tr>
-				<td colspan="7">µî·ÏµÈ ¼Ò¼³ÀÌ ¾ø½À´Ï´Ù.</td>
+				<td colspan="6">ë“±ë¡ëœ ì†Œì„¤ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 			</tr>
 		</c:if>
 		<c:forEach var="#" items="">
@@ -44,5 +46,4 @@
 			</c:forEach>
 		</table>
 	</div>
-</body>
-</html>
+<jsp:include page="../../../main/footer.jsp"/>

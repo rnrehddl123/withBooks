@@ -60,27 +60,6 @@ public class AdminPageController {
 	
 	@RequestMapping("/clientList")
 	public String clientList() {
-		return "admin/clientList";
-	}
-	
-	@RequestMapping("/cateManage")
-	public String cateManage() {
-		return "admin/cateManage";
-	}
-	
-	@RequestMapping("/notice")
-	public String notice() {
-		return "admin/notice";
-	}
-	
-	@RequestMapping("/list_board")
-	public String list_board() {
-		return "board/list";
-	}
-	
-	@RequestMapping("/clientManage")
-
-	public String clientManage() {
 		return "homepage/admin/memberManage/clientList";
 	}
 	
@@ -98,22 +77,6 @@ public class AdminPageController {
 	@RequestMapping("/saleManageWriter")
 	public String saleManageWriter() {
 		return "homepage/admin/saleManage/saleManageWriter";
-	}
-
-	@RequestMapping("/writerManage")
-	public String writerManage() {
-		return "admin/writerManage";
-	}
-	
-	@RequestMapping("/novelManage")
-	public String novelManage() {
-		return "admin/novelManage";
-	}
-	
-	@RequestMapping("/saleManage")
-	public String saleManage() {
-		return "admin/saleManage";
-
 	}
 	
 	@RequestMapping("/saleTotal")

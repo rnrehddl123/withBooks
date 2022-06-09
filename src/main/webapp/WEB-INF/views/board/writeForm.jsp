@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- writeForm.jsp -->
-<html>
-<head>
+<jsp:include page="boardSidebar.jsp"/>
+<html><head>
+<div align="center" style="
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+">
 	<title>글쓰기</title>
 	<script type="text/javascript">
 		function check(){
@@ -34,40 +40,39 @@
 
 	<div align="center">
 		<form name="f" action="write_board" method="post" onsubmit="return check()">
-			<table border="1" width="500">
-				<tr bgcolor="yellow">
-					<td colspan="2" align="center">게시판글 쓰 기</td>
-				</tr>
-				<tr>
-					<th bgcolor="yellow" width="20%">이 름</th>
-					<td><input type="text" name="writer"></td>
-				</tr>
-				<tr>
-					<th bgcolor="yellow" width="20%">제 목</th>
-					<td><input type="text" name="subject" size="50"></td>
-				</tr>
-				<tr>
-					<th bgcolor="yellow" width="20%">Email</th>
-					<td><input type="text" name="email" size="50"></td>
-				</tr> 
-				<tr>
-					<th bgcolor="yellow" width="20%">내 용</th>
-					<td><textarea name="content" rows="11" cols="50"></textarea></td>
-				</tr>
-				<tr>
-					<th bgcolor="yellow" width="20%">비밀번호</th>
-					<td><input type="password" name="passwd"></td>
-				</tr>
-				<tr bgcolor="yellow">
-					<td align="center" colspan="2">
-						<input type="submit" value="글쓰기">
-						<input type="reset" value="다시작성">
-						<input type="button" value="목록보기" onclick="window.location='list_board.do'">
-					</td>
-				</tr>
-			</table>
+			<div>
+						<h1>게시판 작성</h1>
+			</div>
+				<div class="mb-3" align="left">	
+				  <label for="exampleFormControlInput1" class="form-label">이름</label>
+				  <input type="Bname" class="form-control" id="exampleFormControlInput1" placeholder="name">
+				</div>
+				<div class="mb-3" align="left">
+				  <label for="exampleFormControlInput2" class="form-label">제목</label>
+				  <input type="Bsubject" class="form-control" id="exampleFormControlInput2" placeholder="제목">
+				</div>
+				<div class="mb-3" align="left">
+				  <label for="exampleFormControlInput3" class="form-label">Email</label>
+				  <input type="Bemail" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com">
+				</div>
+				<div class="mb-3" align="left">
+				  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+				  <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+				</div>
+				<div class="mb-3" align="left">
+					 <label for="exampleFormControlInput4" class="form-label">비밀번호</label>
+					<input type="password" class="form-control" id="exampleFormControlInput3" name="passwd" placeholder="*****"></td>
+				</div>
+				
+				<div align="center">
+					<input type="submit" value="등록">
+					<input type="reset" value="다시작성">
+					<input type="button" value="목록보기" onclick="window.location='listBoard'">
+				</div>
+				
+			</tbody>
 		</form>
 	</div>
 	
-</body>
-</html>
+
+</body></html>

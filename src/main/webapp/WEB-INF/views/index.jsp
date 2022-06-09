@@ -5,15 +5,13 @@
 	<title>Home</title>
 </head>
 <body>
-<h1 align="center">»çÀÌÆ®</h1>
+<h1 align="center">È¨ÆäÀÌÁö</h1>
 
 <ul>
 		<li><h3><a href="main">¸ÞÀÎ</a></h3></li>
 		
 		<li><h3><a href="list_board.do">ÀÚÀ¯°Ô½ÃÆÇ</a></h3>
-		
 		<li><h3><a href="list_cart.do">Àå¹Ù±¸´Ï</a></h3>
-		
 		<li><h3><a href="order_cart.do">ÁÖ¹®</a></h3>
 		
 		<li><h3><a href="informUpdate">Á¤º¸¼öÁ¤</a></h3>
@@ -31,6 +29,7 @@
 		<li><h3><a href="login">·Î±×ÀÎ</a></h3>
 		<li><h3><a href="signUp">È¸¿ø°¡ÀÔ</a></h3>
 		
+<<<<<<< HEAD
 		<li><h3><a href="cateManage.do">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
 		<li><h3><a href="notice.do">¾Ë¸²</a></h3>
 		<li><h3><a href="clientManage.do">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
@@ -83,6 +82,16 @@
 >>>>>>> ì´í™˜
 =======
 >>>>>>> ì´ë™êµ­
+=======
+		<li><h3><a href="cateManage">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
+		<li><h3><a href="notice">¾Ë¸²</a></h3>
+		<li><h3><a href="clientManage">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
+		<li><h3><a href="writerManage">ÀÛ°¡ È¸¿ø °ü¸®</a></h3>
+		<li><h3><a href="novelManage">¼Ò¼³ °ü¸®</a></h3>
+		<li><h3><a href="saleManage">¸ÅÃâ °ü¸®</a></h3>
+		
+		
+>>>>>>> WJ
 </ul>
 
 </body>

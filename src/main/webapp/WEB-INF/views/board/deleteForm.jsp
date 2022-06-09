@@ -1,28 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- deleteForm.jsp -->
 <html>
 <head>
-	<title>±Û»èÁ¦</title>
+	<title>ê¸€ì‚­ì œ</title>
 </head>
 <body>
 	<div align="center">
-		<b>±Û»èÁ¦</b><p>
+		<b>ê¸€ì‚­ì œ</b><p>
 		<form name="f" action="delete_board.do" method="post">
 			<input type="hidden" name="num" value="${param.num}"/>
 			<table border="1" width="300">
 				<tr bgcolor="yellow">
-					<th>ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä</th>
+					<th>ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”</th>
 				</tr>
 				<tr>
 					<td align="center">
-						ºñ¹Ð¹øÈ£ : <input type="password" name="passwd">
+						ë¹„ë°€ë²ˆí˜¸ : <input type="password" name="passwd">
 					</td>
 				</tr>
 				<tr bgcolor="yellow">
 					<td align="center">
-						<input type="submit" value="±Û»èÁ¦">
-						<input type="button" value="±Û¸ñ·Ï" onclick="window.location='list_board.do'">
+						<input type="submit" value="ê¸€ì‚­ì œ">
+						<input type="button" value="ê¸€ëª©ë¡" onclick="window.location='list_board.do'">
 					</td>
 				</tr>	
 			</table>

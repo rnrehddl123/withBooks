@@ -1,28 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- updateForm.jsp -->
 <html>
 <head>
-	<title>±Û¼öÁ¤</title>
+	<title>ê¸€ìˆ˜ì •</title>
 	<script type="text/javascript">
 		function check(){
 			if (f.writer.value==""){
-				alert("ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.writer.focus()
 				return false
 			}
 			if (f.subject.value==""){
-				alert("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.subject.focus()
 				return false
 			}
 			if (f.content.value==""){
-				alert("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.content.focus()
 				return false
 			}
 			if (f.passwd.value==""){
-				alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.passwd.focus()
 				return false
 			}
@@ -34,14 +34,14 @@
 	<div align="center">
 		<form name="f" action="update_board.do" method="post" onsubmit="return check()">
 			<input type="hidden" name="num" value="${getBoard.num}"/>
-			<font size="3">±Û ¼ö Á¤</font><p>
+			<font size="3">ê¸€ ìˆ˜ ì •</font><p>
 			<table border="1" width="500">
 				<tr>
-					<th bgcolor="yellow" width="20%">ÀÌ ¸§</th>
+					<th bgcolor="yellow" width="20%">ì´ ë¦„</th>
 					<td><input type="text" name="writer" value="${getBoard.writer}"></td>
 				</tr>
 				<tr>
-					<th bgcolor="yellow" width="20%">Á¦ ¸ñ</th>
+					<th bgcolor="yellow" width="20%">ì œ ëª©</th>
 					<td><input type="text" name="subject" size="50" value="${getBoard.subject}"></td>
 				</tr>
 				<tr>
@@ -49,18 +49,18 @@
 					<td><input type="text" name="email" size="50"  value="${getBoard.email}"></td>
 				</tr>
 				<tr>
-					<th bgcolor="yellow" width="20%">³» ¿ë</th>
+					<th bgcolor="yellow" width="20%">ë‚´ ìš©</th>
 					<td><textarea name="content" rows="11" cols="50">${getBoard.content}</textarea></td>
 				</tr>
 				<tr>
-					<th bgcolor="yellow" width="20%">ºñ¹Ğ¹øÈ£</th>
+					<th bgcolor="yellow" width="20%">ë¹„ë°€ë²ˆí˜¸</th>
 					<td><input type="password" name="passwd"></td>
 				</tr>
 				<tr bgcolor="yellow">
 					<td align="center" colspan="2">
-						<input type="submit" value="±Û¼öÁ¤">
-						<input type="reset" value="´Ù½ÃÀÛ¼º">
-						<input type="button" value="¸ñ·Ïº¸±â" onclick="window.location='list_board.do'">
+						<input type="submit" value="ê¸€ìˆ˜ì •">
+						<input type="reset" value="ë‹¤ì‹œì‘ì„±">
+						<input type="button" value="ëª©ë¡ë³´ê¸°" onclick="window.location='list_board.do'">
 					</td>
 				</tr>
 			</table>

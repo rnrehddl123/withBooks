@@ -72,12 +72,14 @@
 		<li><h3><a href="clientNovelInfo">일반회원 소설요약</a></h3>
 		<!-- (이환)여기까지 테스트 -->
 
-		<li><h3><a href="cateManage">관리자 카테고리 관리</a></h3>
-		<li><h3><a href="notice">알림</a></h3>
-		<li><h3><a href="clientManage">일반 회원 관리</a></h3>
-		<li><h3><a href="writerManage">작가 회원 관리</a></h3>
-		<li><h3><a href="novelManage">소설 관리</a></h3>
-		<li><h3><a href="saleManage">매출 관리</a></h3>
+		<li><h3><a href="cateList">관리자 카테고리 관리</a></h3>
+		<li><h3><a href="noticeList">공지사항</a></h3>
+		<li><h3><a href="clientList">일반 회원 관리</a></h3>
+		<li><h3><a href="clientUpgrade">작가 신청 관리</a></h3>
+		<li><h3><a href="boardList">게시판 관리</a></h3>
+		<li><h3><a href="saleManageClient">회원 매출 관리</a></h3>
+		<li><h3><a href="saleManageWriter">작가 매출 관리</a></h3>
+		<li><h3><a href="saleTotal">총 매출 관리</a></h3>
 		
 </ul>
 

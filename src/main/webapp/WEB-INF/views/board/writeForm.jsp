@@ -49,7 +49,7 @@
 				<tr>
 					<th bgcolor="yellow" width="20%">Email</th>
 					<td><input type="text" name="email" size="50"></td>
-				</tr>
+				</tr> 
 				<tr>
 					<th bgcolor="yellow" width="20%">내 용</th>
 					<td><textarea name="content" rows="11" cols="50"></textarea></td>

@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
+<%@include file="../../adminHeader.jsp"%>
+<div class="clientList">
 	<b><h3>회원 관리</h3></b>
 	<table border="1">
 		<caption>회원 정보 보기</caption>
@@ -89,3 +90,4 @@
 </div>
 </body>
 </html>
+<%@include file="../../adminFooter.jsp"%>

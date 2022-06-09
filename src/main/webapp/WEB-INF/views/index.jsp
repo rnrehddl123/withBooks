@@ -73,6 +73,7 @@
 		<!-- (이환)여기까지 테스트 -->
 
 		<!-- 최상우 어드민 jsp 수정중 -->
+		<li><h3><a href="homepage">관리자 페이지 이동</a></h3>
 		<li><h3><a href="cateList">관리자 카테고리 관리</a></h3>
 		<li><h3><a href="noticeList">공지사항</a></h3>
 		<li><h3><a href="clientList">일반 회원 관리</a></h3>

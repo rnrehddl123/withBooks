@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
-	<b><h3>카테고리 관리</h3></b>
+<%@include file="../../adminHeader.jsp"%>
+<div class="cateList">
+	<b><h3>카테고리 목록</h3></b>
 	<table border="1">
 		<tr>
 			<th>카테고리 번호</th>
@@ -45,3 +46,4 @@
 </div>
 </body>
 </html>
+<%@include file="../../adminFooter.jsp"%>

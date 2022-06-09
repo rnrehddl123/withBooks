@@ -6,9 +6,9 @@
 <head>
 <title>공지사항 글쓰기</title>
 </head>
-
+<%@include file="../../adminHeader.jsp"%>
 <body>
-<div align="center">
+<div class="noticeInsert">
 	<form name="f" action="#" method="post">
 		<table border="1" width="500">
 				<tr>
@@ -46,3 +46,4 @@
 </body>
 
 </html>
+<%@include file="../../adminFooter.jsp"%>

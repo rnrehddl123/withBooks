@@ -1,0 +1,20 @@
+.adminSideBar.col-md-3{
+	display: flex;
+}
+
+.adminmain{
+	height:100vh;
+	margin: auto;
+}
+
+.col-md-3.adminSideBar{
+	width: 100%
+}
+
+table td{
+	border: 1px solid;
+}
+
+table th{
+	border: 1px solid;
+}

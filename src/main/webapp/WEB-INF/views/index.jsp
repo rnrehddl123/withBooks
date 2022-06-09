@@ -5,15 +5,13 @@
 	<title>Home</title>
 </head>
 <body>
-<h1 align="center">사이트</h1>
+<h1 align="center">홈페이지</h1>
 
 <ul>
 		<li><h3><a href="main">메인</a></h3></li>
 		
 		<li><h3><a href="list_board.do">자유게시판</a></h3>
-		
 		<li><h3><a href="list_cart.do">장바구니</a></h3>
-		
 		<li><h3><a href="order_cart.do">주문</a></h3>
 		
 		<li><h3><a href="informUpdate">정보수정</a></h3>
@@ -31,12 +29,14 @@
 		<li><h3><a href="login">로그인</a></h3>
 		<li><h3><a href="signUp">회원가입</a></h3>
 		
-		<li><h3><a href="cateManage.do">관리자 카테고리 관리</a></h3>
-		<li><h3><a href="notice.do">알림</a></h3>
-		<li><h3><a href="clientManage.do">일반 회원 관리</a></h3>
-		<li><h3><a href="writerManage.do">작가 회원 관리</a></h3>
-		<li><h3><a href="novelManage.do">소설 관리</a></h3>
-		<li><h3><a href="saleManage.do">매출 관리</a></h3>
+		<li><h3><a href="cateManage">관리자 카테고리 관리</a></h3>
+		<li><h3><a href="notice">알림</a></h3>
+		<li><h3><a href="clientManage">일반 회원 관리</a></h3>
+		<li><h3><a href="writerManage">작가 회원 관리</a></h3>
+		<li><h3><a href="novelManage">소설 관리</a></h3>
+		<li><h3><a href="saleManage">매출 관리</a></h3>
+		
+		
 </ul>
 
 </body>

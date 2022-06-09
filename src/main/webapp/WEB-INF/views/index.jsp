@@ -40,6 +40,7 @@
 
 		<li><h3><a href="homepage">관리자 페이지</a></h3>
 
+		<!-- 이송주 -->
 		<li><h3><a href="writerNovelEpisode">에피소드 뷰어</a></h3>
 		<li><h3><a href="writerNovelSubject">소설 뷰어</a></h3>
 		<li><h3><a href="writerEpisode">에피소드 작성</a></h3>
@@ -53,6 +54,7 @@
 		<li><h3><a href="writerOrderList">주문 리스트</a></h3>
 		<li><h3><a href="writerPay">작가 Pay</a></h3>
 		<li><h3><a href="writerUpdate">작가 개인정보 수정</a></h3>
+		<!-- writer 작업 -->
 		
 		<!-- (이환)테스트 -->
 		<li><h3><a href="clientOrder">일반회원 주문하기</a></h3>

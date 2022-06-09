@@ -8,8 +8,7 @@
 <body>
 	<div align="center">
 		<b>글삭제</b><p>
-		<form name="f" action="delete_board.do" method="post">
-			<input type="hidden" name="num" value="${param.num}"/>
+		<form name="f" action="delete_board" method="post">
 			<table border="1" width="300">
 				<tr bgcolor="yellow">
 					<th>비밀번호를 입력해 주세요</th>
@@ -24,7 +23,7 @@
 						<input type="submit" value="글삭제">
 						<input type="button" value="글목록" onclick="window.location='list_board.do'">
 					</td>
-				</tr>	
+				</tr>
 			</table>
 		</form>
 	</div>

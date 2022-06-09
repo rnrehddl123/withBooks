@@ -33,10 +33,10 @@
 <body>
 
 	<div align="center">
-		<form name="f" action="write_board.do" method="post" onsubmit="return check()">
+		<form name="f" action="write_board" method="post" onsubmit="return check()">
 			<table border="1" width="500">
 				<tr bgcolor="yellow">
-					<td colspan="2" align="center">글 쓰 기</td>
+					<td colspan="2" align="center">게시판글 쓰 기</td>
 				</tr>
 				<tr>
 					<th bgcolor="yellow" width="20%">이 름</th>

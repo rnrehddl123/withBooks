@@ -10,7 +10,7 @@
 <body>
 <div class="noticeInsert">
 	<form name="f" action="#" method="post">
-		<table border="1" width="500">
+		<table border="1" width="500" width="1000" height="500">
 				<tr>
 					<td colspan="2" align="center">공지사항 작성</td>
 				</tr>

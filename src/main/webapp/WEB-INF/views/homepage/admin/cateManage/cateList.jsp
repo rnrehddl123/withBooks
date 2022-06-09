@@ -10,7 +10,7 @@
 <%@include file="../../adminHeader.jsp"%>
 <div class="cateList">
 	<b><h3>카테고리 목록</h3></b>
-	<table border="1">
+	<table border="1" width="1000" height="500">
 		<tr>
 			<th>카테고리 번호</th>
 			<th>카테고리 이름</th>

@@ -10,7 +10,7 @@
 <%@include file="../../adminHeader.jsp"%>
 <div class="cateInsert">
 		<b><h1>카테고리 추가</h1></b><p>
-		<table border="1" width="400">
+		<table border="1" width="1000" height="500">
 			<tr>
 				<th width="30%">카테고리 이름</th>
 				<td width="70%"><input type="text" name="cname" class="box"></td>

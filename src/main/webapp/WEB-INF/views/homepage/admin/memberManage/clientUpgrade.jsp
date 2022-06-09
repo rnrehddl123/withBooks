@@ -10,8 +10,8 @@
 <body>
 <div class="clientUpgrade">
 	<div>작가 신청 관리</div><br>
-	<table border="1">
-		<tr>
+	<table border="1" width="1000" height="500">
+		<tr height="50">
 			<th>회원 번호</th>
 			<th>회원 이름</th>
 			<th>전화번호</th>

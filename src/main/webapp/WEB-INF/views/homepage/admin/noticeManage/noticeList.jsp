@@ -11,7 +11,7 @@
 
 	<h3>공지사항</h3>
 
-	<table border="1" width="600" align="center">
+	<table border="1" width="1000" height="500" align="center">
 			<!-- 공지/안내 select-option -->
 		<tr>
 			<td>

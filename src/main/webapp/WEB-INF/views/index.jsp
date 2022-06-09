@@ -1,86 +1,87 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 	<title>Home</title>
 </head>
 <body>
-<h1 align="center">È¨ÆäÀÌÁö</h1>
+<h1 align="center">í™ˆíŽ˜ì´ì§€</h1>
 
 <ul>
-		<li><h3><a href="main">¸ÞÀÎ</a></h3></li>
+		<li><h3><a href="main">ë©”ì¸</a></h3></li>
 		
-		<li><h3><a href="list_board">ÀÚÀ¯°Ô½ÃÆÇ</a></h3>
-		<li><h3><a href="list_cart">Àå¹Ù±¸´Ï</a></h3>
-		<li><h3><a href="order_cart">ÁÖ¹®</a></h3>
+		<li><h3><a href="listBoard">ìžìœ ê²Œì‹œíŒ</a></h3>
 		
-		<li><h3><a href="informUpdate">Á¤º¸¼öÁ¤</a></h3>
-		<li><h3><a href="myLibrary">³ªÀÇ ¼Ò¼³ ±¸¸Å³»¿ª</a></h3>
-		<li><h3><a href="ClientmyPage">ÀÏ¹ÝÈ¸¿ø ¸¶ÀÌÆäÀÌÁö</a></h3>
-		<li><h3><a href="productView">±¸¸Å³»¿ª</a></h3>
+		<li><h3><a href="list_cart">ìž¥ë°”êµ¬ë‹ˆ</a></h3>
+		<li><h3><a href="order_cart">ì£¼ë¬¸</a></h3>
 		
-		<li><h3><a href="WritermyPage">ÀÛ°¡ ¸¶ÀÌÆäÀÌÁö</a></h3>
-		<li><h3><a href="WriteEpisode">¿¡ÇÇ¼Òµå ¾²±â</a></h3>
-		<li><h3><a href="WriteNovel">¼Ò¼³ ¾²±â</a></h3>
+		<li><h3><a href="informUpdate">ì •ë³´ìˆ˜ì •</a></h3>
+		<li><h3><a href="myLibrary">ë‚˜ì˜ ì†Œì„¤ êµ¬ë§¤ë‚´ì—­</a></h3>
+		<li><h3><a href="ClientmyPage">ì¼ë°˜íšŒì› ë§ˆì´íŽ˜ì´ì§€</a></h3>
+		<li><h3><a href="productView">êµ¬ë§¤ë‚´ì—­</a></h3>
 		
-		<li><h3><a href="novelList">¼Ò¼³¸ñ·Ï</a></h3>
-		<li><h3><a href="novelView">¼Ò¼³º¸±â</a></h3>
+		<li><h3><a href="WritermyPage">ìž‘ê°€ ë§ˆì´íŽ˜ì´ì§€</a></h3>
+		<li><h3><a href="WriteEpisode">ì—í”¼ì†Œë“œ ì“°ê¸°</a></h3>
+		<li><h3><a href="WriteNovel">ì†Œì„¤ ì“°ê¸°</a></h3>
 		
-		<li><h3><a href="login">·Î±×ÀÎ</a></h3>
-		<li><h3><a href="signUp">È¸¿ø°¡ÀÔ</a></h3>
+		<li><h3><a href="novelList">ì†Œì„¤ëª©ë¡</a></h3>
+		<li><h3><a href="novelView">ì†Œì„¤ë³´ê¸°</a></h3>
 		
-
-		<li><h3><a href="cateManage">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
-		<li><h3><a href="notice">¾Ë¸²</a></h3>
-		<li><h3><a href="clientManage">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
-		<li><h3><a href="writerManage">ÀÛ°¡ È¸¿ø °ü¸®</a></h3>
-		<li><h3><a href="novelManage">¼Ò¼³ °ü¸®</a></h3>
-		<li><h3><a href="saleManage">¸ÅÃâ °ü¸®</a></h3>
+		<li><h3><a href="login">ë¡œê·¸ì¸</a></h3>
+		<li><h3><a href="signUp">íšŒì›ê°€ìž…</a></h3>
 		
 
-		<li><h3><a href="homepage">°ü¸®ÀÚ ÆäÀÌÁö</a></h3>
+		<li><h3><a href="cateManage">ê´€ë¦¬ìž ì¹´í…Œê³ ë¦¬ ê´€ë¦¬</a></h3>
+		<li><h3><a href="notice">ì•Œë¦¼</a></h3>
+		<li><h3><a href="clientManage">ì¼ë°˜ íšŒì› ê´€ë¦¬</a></h3>
+		<li><h3><a href="writerManage">ìž‘ê°€ íšŒì› ê´€ë¦¬</a></h3>
+		<li><h3><a href="novelManage">ì†Œì„¤ ê´€ë¦¬</a></h3>
+		<li><h3><a href="saleManage">ë§¤ì¶œ ê´€ë¦¬</a></h3>
+		
 
-		<!-- ÀÌ¼ÛÁÖ -->
-		<li><h3><a href="writerNovelEpisode">¿¡ÇÇ¼Òµå ºä¾î</a></h3>
-		<li><h3><a href="writerNovelSubject">¼Ò¼³ ºä¾î</a></h3>
-		<li><h3><a href="writerEpisode">¿¡ÇÇ¼Òµå ÀÛ¼º</a></h3>
-		<li><h3><a href="writerEpisodeList">¿¡ÇÇ¼Òµå ¸®½ºÆ®</a></h3>
-		<li><h3><a href="writerEpisodeUpdate">¿¡ÇÇ¼Òµå ¼öÁ¤</a></h3>
-		<li><h3><a href="writerNovel">¼Ò¼³ ÀÛ¼º</a></h3>
-		<li><h3><a href="writerNovelList">¼Ò¼³ ¸®½ºÆ®</a></h3>
-		<li><h3><a href="writerNovelUpdate">¼Ò¼³ ¼öÁ¤</a></h3>
+		<li><h3><a href="homepage">ê´€ë¦¬ìž íŽ˜ì´ì§€</a></h3>
+
+		<!-- ì´ì†¡ì£¼ -->
+		<li><h3><a href="writerNovelEpisode">ì—í”¼ì†Œë“œ ë·°ì–´</a></h3>
+		<li><h3><a href="writerNovelSubject">ì†Œì„¤ ë·°ì–´</a></h3>
+		<li><h3><a href="writerEpisode">ì—í”¼ì†Œë“œ ìž‘ì„±</a></h3>
+		<li><h3><a href="writerEpisodeList">ì—í”¼ì†Œë“œ ë¦¬ìŠ¤íŠ¸</a></h3>
+		<li><h3><a href="writerEpisodeUpdate">ì—í”¼ì†Œë“œ ìˆ˜ì •</a></h3>
+		<li><h3><a href="writerNovel">ì†Œì„¤ ìž‘ì„±</a></h3>
+		<li><h3><a href="writerNovelList">ì†Œì„¤ ë¦¬ìŠ¤íŠ¸</a></h3>
+		<li><h3><a href="writerNovelUpdate">ì†Œì„¤ ìˆ˜ì •</a></h3>
 		<li><h3><a href="writerChart">Chart</a></h3>
-		<li><h3><a href="writerLibrary">ÀÛ°¡ ¼Ò¼³ ±¸¸Å ³»¿ª</a></h3>
-		<li><h3><a href="writerOrderList">ÁÖ¹® ¸®½ºÆ®</a></h3>
-		<li><h3><a href="writerPay">ÀÛ°¡ Pay</a></h3>
-		<li><h3><a href="writerUpdate">ÀÛ°¡ °³ÀÎÁ¤º¸ ¼öÁ¤</a></h3>
-		<!-- writer ÀÛ¾÷ -->
+		<li><h3><a href="writerLibrary">ìž‘ê°€ ì†Œì„¤ êµ¬ë§¤ ë‚´ì—­</a></h3>
+		<li><h3><a href="writerOrderList">ì£¼ë¬¸ ë¦¬ìŠ¤íŠ¸</a></h3>
+		<li><h3><a href="writerPay">ìž‘ê°€ Pay</a></h3>
+		<li><h3><a href="writerUpdate">ìž‘ê°€ ê°œì¸ì •ë³´ ìˆ˜ì •</a></h3>
+		<!-- writer ìž‘ì—… -->
 		
-		<!-- (ÀÌÈ¯)Å×½ºÆ® -->
-		<li><h3><a href="clientOrder">ÀÏ¹ÝÈ¸¿ø ÁÖ¹®ÇÏ±â</a></h3>
-		<li><h3><a href="clientNovelEpi">ÀÏ¹ÝÈ¸¿ø ¿¡ÇÇ¼Òµåº¸±â</a></h3>
-		<li><h3><a href="clientNovelSubject">ÀÏ¹ÝÈ¸¿ø ¼Ò¼³º¸±â</a></h3>
-		<li><h3><a href="clientCart">ÀÏ¹ÝÈ¸¿ø Àå¹Ù±¸´Ï</a></h3>
-		<li><h3><a href="clientLibrary">ÀÏ¹ÝÈ¸¿ø ³» ¼­Àç</a></h3>
-		<li><h3><a href="clientOrderList">ÀÏ¹ÝÈ¸¿ø ±¸¸Å³»¿ª</a></h3>
-		<li><h3><a href="clientPay">ÀÏ¹ÝÈ¸¿ø ÃæÀüÇÏ±â</a></h3>
-		<li><h3><a href="clientRequest">ÀÏ¹ÝÈ¸¿ø ÀÛ°¡½ÅÃ»</a></h3>
-		<li><h3><a href="clientUpdate">ÀÏ¹ÝÈ¸¿ø °³ÀÎÁ¤º¸¼öÁ¤</a></h3>
-		<li><h3><a href="clientBoard">ÀÏ¹ÝÈ¸¿ø ÀÚÀ¯°Ô½ÃÆÇ</a></h3>
-		<li><h3><a href="clientMypage">ÀÏ¹ÝÈ¸¿ø ¸¶ÀÌÆäÀÌÁö</a></h3>
-		<li><h3><a href="clientNotice">ÀÏ¹ÝÈ¸¿ø °øÁö»çÇ×</a></h3>
-		<li><h3><a href="clientNovelInfo">ÀÏ¹ÝÈ¸¿ø ¼Ò¼³¿ä¾à</a></h3>
-		<!-- (ÀÌÈ¯)¿©±â±îÁö Å×½ºÆ® -->
+		<!-- (ì´í™˜)í…ŒìŠ¤íŠ¸ -->
+		<li><h3><a href="clientOrder">ì¼ë°˜íšŒì› ì£¼ë¬¸í•˜ê¸°</a></h3>
+		<li><h3><a href="clientNovelEpi">ì¼ë°˜íšŒì› ì—í”¼ì†Œë“œë³´ê¸°</a></h3>
+		<li><h3><a href="clientNovelSubject">ì¼ë°˜íšŒì› ì†Œì„¤ë³´ê¸°</a></h3>
+		<li><h3><a href="clientCart">ì¼ë°˜íšŒì› ìž¥ë°”êµ¬ë‹ˆ</a></h3>
+		<li><h3><a href="clientLibrary">ì¼ë°˜íšŒì› ë‚´ ì„œìž¬</a></h3>
+		<li><h3><a href="clientOrderList">ì¼ë°˜íšŒì› êµ¬ë§¤ë‚´ì—­</a></h3>
+		<li><h3><a href="clientPay">ì¼ë°˜íšŒì› ì¶©ì „í•˜ê¸°</a></h3>
+		<li><h3><a href="clientRequest">ì¼ë°˜íšŒì› ìž‘ê°€ì‹ ì²­</a></h3>
+		<li><h3><a href="clientUpdate">ì¼ë°˜íšŒì› ê°œì¸ì •ë³´ìˆ˜ì •</a></h3>
+		<li><h3><a href="clientBoard">ì¼ë°˜íšŒì› ìžìœ ê²Œì‹œíŒ</a></h3>
+		<li><h3><a href="clientMypage">ì¼ë°˜íšŒì› ë§ˆì´íŽ˜ì´ì§€</a></h3>
+		<li><h3><a href="clientNotice">ì¼ë°˜íšŒì› ê³µì§€ì‚¬í•­</a></h3>
+		<li><h3><a href="clientNovelInfo">ì¼ë°˜íšŒì› ì†Œì„¤ìš”ì•½</a></h3>
+		<!-- (ì´í™˜)ì—¬ê¸°ê¹Œì§€ í…ŒìŠ¤íŠ¸ -->
 
-		<!-- ÃÖ»ó¿ì ¾îµå¹Î jsp ¼öÁ¤Áß -->
-		<li><h3><a href="cateList">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
-		<li><h3><a href="noticeList">°øÁö»çÇ×</a></h3>
-		<li><h3><a href="clientList">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
-		<li><h3><a href="clientUpgrade">ÀÛ°¡ ½ÅÃ» °ü¸®</a></h3>
-		<li><h3><a href="boardList">°Ô½ÃÆÇ °ü¸®</a></h3>
-		<li><h3><a href="saleManageClient">È¸¿ø ¸ÅÃâ °ü¸®</a></h3>
-		<li><h3><a href="saleManageWriter">ÀÛ°¡ ¸ÅÃâ °ü¸®</a></h3>
-		<li><h3><a href="saleTotal">ÃÑ ¸ÅÃâ °ü¸®</a></h3>
+		<!-- ìµœìƒìš° ì–´ë“œë¯¼ jsp ìˆ˜ì •ì¤‘ -->
+		<li><h3><a href="cateList">ê´€ë¦¬ìž ì¹´í…Œê³ ë¦¬ ê´€ë¦¬</a></h3>
+		<li><h3><a href="noticeList">ê³µì§€ì‚¬í•­</a></h3>
+		<li><h3><a href="clientList">ì¼ë°˜ íšŒì› ê´€ë¦¬</a></h3>
+		<li><h3><a href="clientUpgrade">ìž‘ê°€ ì‹ ì²­ ê´€ë¦¬</a></h3>
+		<li><h3><a href="boardList">ê²Œì‹œíŒ ê´€ë¦¬</a></h3>
+		<li><h3><a href="saleManageClient">íšŒì› ë§¤ì¶œ ê´€ë¦¬</a></h3>
+		<li><h3><a href="saleManageWriter">ìž‘ê°€ ë§¤ì¶œ ê´€ë¦¬</a></h3>
+		<li><h3><a href="saleTotal">ì´ ë§¤ì¶œ ê´€ë¦¬</a></h3>
 		
 </ul>
 

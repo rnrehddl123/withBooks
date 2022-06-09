@@ -1,37 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
    <title>Home</title>
 </head>
 <body>
-<h1 align="center">È¨ÆäÀÌÁö</h1>
+<h1 align="center">í™ˆíŽ˜ì´ì§€</h1>
 
 <ul>
-      <li><h3><a href="main">¸ÞÀÎ</a></h3></li>
+      <li><h3><a href="main">ë©”ì¸</a></h3></li>
       
-      <li><h3><a href="list_board.do">ÀÚÀ¯°Ô½ÃÆÇ</a></h3>
+      <li><h3><a href="list_board.do">ìžìœ ê²Œì‹œíŒ</a></h3>
       
-      <li><h3><a href="list_cart.do">Àå¹Ù±¸´Ï</a></h3>
+      <li><h3><a href="list_cart.do">ìž¥ë°”êµ¬ë‹ˆ</a></h3>
       
-      <li><h3><a href="order_cart.do">ÁÖ¹®</a></h3>
+      <li><h3><a href="order_cart.do">ì£¼ë¬¸</a></h3>
       
-      <li><h3><a href="informUpdate">Á¤º¸¼öÁ¤</a></h3>
-      <li><h3><a href="myLibrary">³ªÀÇ ¼Ò¼³ ±¸¸Å³»¿ª</a></h3>
-      <li><h3><a href="ClientmyPage">ÀÏ¹ÝÈ¸¿ø ¸¶ÀÌÆäÀÌÁö</a></h3>
-      <li><h3><a href="productView">±¸¸Å³»¿ª</a></h3>
+      <li><h3><a href="informUpdate">ì •ë³´ìˆ˜ì •</a></h3>
+      <li><h3><a href="myLibrary">ë‚˜ì˜ ì†Œì„¤ êµ¬ë§¤ë‚´ì—­</a></h3>
+      <li><h3><a href="ClientmyPage">ì¼ë°˜íšŒì› ë§ˆì´íŽ˜ì´ì§€</a></h3>
+      <li><h3><a href="productView">êµ¬ë§¤ë‚´ì—­</a></h3>
       
-      <li><h3><a href="WritermyPage">ÀÛ°¡ ¸¶ÀÌÆäÀÌÁö</a></h3>
-      <li><h3><a href="WriteEpisode">¿¡ÇÇ¼Òµå ¾²±â</a></h3>
-      <li><h3><a href="WriteNovel">¼Ò¼³ ¾²±â</a></h3>
+      <li><h3><a href="WritermyPage">ìž‘ê°€ ë§ˆì´íŽ˜ì´ì§€</a></h3>
+      <li><h3><a href="WriteEpisode">ì—í”¼ì†Œë“œ ì“°ê¸°</a></h3>
+      <li><h3><a href="WriteNovel">ì†Œì„¤ ì“°ê¸°</a></h3>
       
-      <li><h3><a href="novelList">¼Ò¼³¸ñ·Ï</a></h3>
-      <li><h3><a href="novelView">¼Ò¼³º¸±â</a></h3>
+      <li><h3><a href="novelList">ì†Œì„¤ëª©ë¡</a></h3>
+      <li><h3><a href="novelView">ì†Œì„¤ë³´ê¸°</a></h3>
       
-      <li><h3><a href="login">·Î±×ÀÎ</a></h3>
-      <li><h3><a href="signUp">È¸¿ø°¡ÀÔ</a></h3>
+      <li><h3><a href="login">ë¡œê·¸ì¸</a></h3>
+      <li><h3><a href="signUp">íšŒì›ê°€ìž…</a></h3>
       
-      <li><h3><a href="homepage">°ü¸®ÀÚ ÆäÀÌÁö</a></h3>
+      <li><h3><a href="homepage">ê´€ë¦¬ìž íŽ˜ì´ì§€</a></h3>
       
       
       

@@ -19,37 +19,37 @@ public class BoardController {
 		return "board/list";
 	}
 	
-	@RequestMapping(value="/write_board", method=RequestMethod.GET)
+	@RequestMapping(value="/writeBoard", method=RequestMethod.GET)
 	public String writeFormBoard() {
 		return "board/writeForm";
 	}
 	
-	@RequestMapping(value="/write_board", method=RequestMethod.POST)
+	@RequestMapping(value="/writeBoard", method=RequestMethod.POST)
 	public String writeProBoard(HttpServletRequest req) {
 		return "message.jsp";
 	}
 	
-	@RequestMapping("/content_board")
+	@RequestMapping("/contentBoard")
 	public String contentBoard(HttpServletRequest req, @RequestParam int num) {
 		return "board/content";
 	}
 	
-	@RequestMapping(value="/update_board", method=RequestMethod.GET)
+	@RequestMapping(value="/updateBoard", method=RequestMethod.GET)
 	public String updateFormBoard(HttpServletRequest req, @RequestParam int num) {
 		return "board/updateForm";
 	}
 	
-	@RequestMapping(value="/update_board", method=RequestMethod.POST)
+	@RequestMapping(value="/updateBoard", method=RequestMethod.POST)
 	public String updateProBoard(HttpServletRequest req) {
 		return "message.jsp";
 	}
 	
-	@RequestMapping(value="/delete_board", method=RequestMethod.GET)
+	@RequestMapping(value="/deleteBoard", method=RequestMethod.GET)
 	public String deleteFormBoard() {
 		return "board/deleteForm";
 	}
 	
-	@RequestMapping(value="/delete_board", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteBoard", method=RequestMethod.POST)
 	public String deleteProBoard(HttpServletRequest req,@RequestParam Map<String, String> params) {
 		return "message.jsp";
 	}

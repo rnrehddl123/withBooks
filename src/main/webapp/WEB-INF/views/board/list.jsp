@@ -6,6 +6,7 @@
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
+    width: 70%;
 ">
 
 <table class="table">

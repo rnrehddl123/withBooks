@@ -29,7 +29,7 @@
 		<li><h3><a href="login">·Î±×ÀÎ</a></h3>
 		<li><h3><a href="signUp">È¸¿ø°¡ÀÔ</a></h3>
 		
-<<<<<<< HEAD
+
 		<li><h3><a href="cateManage.do">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
 		<li><h3><a href="notice.do">¾Ë¸²</a></h3>
 		<li><h3><a href="clientManage.do">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
@@ -37,13 +37,9 @@
 		<li><h3><a href="novelManage.do">¼Ò¼³ °ü¸®</a></h3>
 		<li><h3><a href="saleManage.do">¸ÅÃâ °ü¸®</a></h3>
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ì´ë™êµ­
-<<<<<<< HEAD
+
 		<li><h3><a href="homepage">°ü¸®ÀÚ ÆäÀÌÁö</a></h3>
-=======
+
 		<li><h3><a href="writerNovelEpisode">¿¡ÇÇ¼Òµå ºä¾î</a></h3>
 		<li><h3><a href="writerNovelSubject">¼Ò¼³ ºä¾î</a></h3>
 		<li><h3><a href="writerEpisode">¿¡ÇÇ¼Òµå ÀÛ¼º</a></h3>
@@ -58,12 +54,6 @@
 		<li><h3><a href="writerPay">ÀÛ°¡ Pay</a></h3>
 		<li><h3><a href="writerUpdate">ÀÛ°¡ °³ÀÎÁ¤º¸ ¼öÁ¤</a></h3>
 		
-		
-		
-		
->>>>>>> ì´ì†¡ì£¼
-<<<<<<< HEAD
-=======
 		<!-- (ÀÌÈ¯)Å×½ºÆ® -->
 		<li><h3><a href="clientOrder">ÀÏ¹ÝÈ¸¿ø ÁÖ¹®ÇÏ±â</a></h3>
 		<li><h3><a href="clientNovelEpi">ÀÏ¹ÝÈ¸¿ø ¿¡ÇÇ¼Òµåº¸±â</a></h3>
@@ -79,10 +69,7 @@
 		<li><h3><a href="clientNotice">ÀÏ¹ÝÈ¸¿ø °øÁö»çÇ×</a></h3>
 		<li><h3><a href="clientNovelInfo">ÀÏ¹ÝÈ¸¿ø ¼Ò¼³¿ä¾à</a></h3>
 		<!-- (ÀÌÈ¯)¿©±â±îÁö Å×½ºÆ® -->
->>>>>>> ì´í™˜
-=======
->>>>>>> ì´ë™êµ­
-=======
+
 		<li><h3><a href="cateManage">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
 		<li><h3><a href="notice">¾Ë¸²</a></h3>
 		<li><h3><a href="clientManage">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
@@ -90,8 +77,6 @@
 		<li><h3><a href="novelManage">¼Ò¼³ °ü¸®</a></h3>
 		<li><h3><a href="saleManage">¸ÅÃâ °ü¸®</a></h3>
 		
-		
->>>>>>> WJ
 </ul>
 
 </body>

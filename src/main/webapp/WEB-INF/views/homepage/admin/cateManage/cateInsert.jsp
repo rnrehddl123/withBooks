@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
+<%@include file="../../adminHeader.jsp"%>
+<div class="cateInsert">
+		<b><h1>카테고리 추가</h1></b><p>
 		<table border="1" width="400">
-			<caption><font size="4"><b>카테고리 등록</b></font></caption>
 			<tr>
 				<th width="30%">카테고리 이름</th>
 				<td width="70%"><input type="text" name="cname" class="box"></td>
@@ -24,3 +25,4 @@
 </div>
 </body>
 </html>
+<%@include file="../../adminFooter.jsp"%>

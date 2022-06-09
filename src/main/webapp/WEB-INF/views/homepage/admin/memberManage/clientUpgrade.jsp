@@ -6,11 +6,11 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
+<%@include file="../../adminHeader.jsp"%>
 <body>
-<div align="center">
-	
+<div class="clientUpgrade">
+	<div>작가 신청 관리</div><br>
 	<table border="1">
-		<caption>작가 신청 리스트</caption>
 		<tr>
 			<th>회원 번호</th>
 			<th>회원 이름</th>
@@ -52,3 +52,4 @@
 </div>
 </body>
 </html>
+<%@include file="../../adminFooter.jsp"%>

@@ -4,10 +4,10 @@
 <head>
 <title>관리자-공지사항</title>
 </head>
-
+<%@include file="../../adminHeader.jsp"%>
 <body>
 
-<div align="center">
+<div class="noticeList">
 
 	<h3>공지사항</h3>
 
@@ -63,3 +63,4 @@
 </body>
 
 </html>
+<%@include file="../../adminFooter.jsp"%>

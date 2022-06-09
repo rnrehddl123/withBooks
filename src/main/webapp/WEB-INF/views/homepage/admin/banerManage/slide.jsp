@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ include file="../../adminHeader.jsp"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,14 @@
 </head>
 <body>
 <div align="center">
-	<table border="1">
+	<table border="1" width="1000" height="500">
 		<tr>
-			<td>슬라이드 이미지</td>
-			<td><input type="button" value="불러오기"></td>
+			<td align="center">슬라이드 이미지</td>
 		</tr>
 	</table>
+	<input type="button" value="불러오기">
 	<input type="button" value="등록하기">
 </div>
 </body>
 </html>
+<%@ include file="../../adminFooter.jsp"%>    

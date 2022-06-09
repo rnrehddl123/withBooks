@@ -73,6 +73,7 @@
 		<li><h3><a href="clientNovelInfo">ì¼ë°˜íšŒì› ì†Œì„¤ìš”ì•½</a></h3>
 		<!-- (ì´í™˜)ì—¬ê¸°ê¹Œì§€ í…ŒìŠ¤íŠ¸ -->
 
+<<<<<<< HEAD
 		<!-- ìµœìƒìš° ì–´ë“œë¯¼ jsp ìˆ˜ì •ì¤‘ -->
 		<li><h3><a href="cateList">ê´€ë¦¬ìž ì¹´í…Œê³ ë¦¬ ê´€ë¦¬</a></h3>
 		<li><h3><a href="noticeList">ê³µì§€ì‚¬í•­</a></h3>
@@ -82,6 +83,18 @@
 		<li><h3><a href="saleManageClient">íšŒì› ë§¤ì¶œ ê´€ë¦¬</a></h3>
 		<li><h3><a href="saleManageWriter">ìž‘ê°€ ë§¤ì¶œ ê´€ë¦¬</a></h3>
 		<li><h3><a href="saleTotal">ì´ ë§¤ì¶œ ê´€ë¦¬</a></h3>
+=======
+		<!-- ÃÖ»ó¿ì ¾îµå¹Î jsp ¼öÁ¤Áß -->
+		<li><h3><a href="homepage">°ü¸®ÀÚ ÆäÀÌÁö ÀÌµ¿</a></h3>
+		<li><h3><a href="cateList">°ü¸®ÀÚ Ä«Å×°í¸® °ü¸®</a></h3>
+		<li><h3><a href="noticeList">°øÁö»çÇ×</a></h3>
+		<li><h3><a href="clientList">ÀÏ¹Ý È¸¿ø °ü¸®</a></h3>
+		<li><h3><a href="clientUpgrade">ÀÛ°¡ ½ÅÃ» °ü¸®</a></h3>
+		<li><h3><a href="boardList">°Ô½ÃÆÇ °ü¸®</a></h3>
+		<li><h3><a href="saleManageClient">È¸¿ø ¸ÅÃâ °ü¸®</a></h3>
+		<li><h3><a href="saleManageWriter">ÀÛ°¡ ¸ÅÃâ °ü¸®</a></h3>
+		<li><h3><a href="saleTotal">ÃÑ ¸ÅÃâ °ü¸®</a></h3>
+>>>>>>> ìµœìƒìš°
 		
 </ul>
 

@@ -25,9 +25,9 @@
   <tbody>
     <tr>
       <th scope="row" align="center">1</th>
-      <td align="center">가</td>
-      <td align="center">나</td>
-      <td align="center">다</td>
+      <td align="center"><a href="contentBoard">글 내용</a></td>
+      <td align="center"><a href="updateBoard">글 수정</a></td>
+      <td align="center"><a href="deleteBoard">글 삭제</a></td>
       <td align="center">라</td>
       
     </tr>

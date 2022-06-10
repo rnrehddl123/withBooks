@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ClientController {
 	
-	@RequestMapping("/clientMyPage")//마이페이지
+	@RequestMapping("/clientMypage")//마이페이지
 	public String ClientmyPage() {
 		return "client/clientMypage";
 	}

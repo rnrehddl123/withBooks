@@ -22,7 +22,7 @@
 		<tr>
 			<td colspan="2">구매날짜</td> <!-- date -->
 		</tr>
-</table>
+	</table>
 </div>
 </body>
 </html>

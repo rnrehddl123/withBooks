@@ -11,23 +11,16 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 	<div align="center">
 		<form class="editorWrapper" name="f" action="" method="post" onsubmit="return check()">
-			<ul class="flex titleWrapper">
-				<li>제목</li>
-				<li><input type="text"></li>
-			</ul>
-			<div class="box">
-				<div id="editor">
-				</div>
-				<input type="hidden" name="quill" id='hidden-input'>
-			<button type="submit" class="btn btn-primary">등록</button>
 			<div class="mb-3">
-			  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+			  <div><label for="exampleFormControlInput1" class="form-label">제목</label></div>
 			  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 			</div>
-			<div class="mb-3">
-			  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-			  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			<div class="mb-3 box">
+				<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+				<div id="editor">
+				<input type="hidden" name="quill" id='hidden-input'>
 			</div>
+			<button type="submit" class="btn btn-primary">등록</button>
 		</form>
 	</div>
 <script>

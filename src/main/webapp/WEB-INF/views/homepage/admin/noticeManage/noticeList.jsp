@@ -31,7 +31,7 @@
 			<td>
 			<a href="">[救郴]力格力格2</a>
 			<p>
-			2022.01.01
+			2022.03.01
 			</td>
 			<td>
 			<input type="button" value="荐沥" onclick="window.location='noticeUpdate'">

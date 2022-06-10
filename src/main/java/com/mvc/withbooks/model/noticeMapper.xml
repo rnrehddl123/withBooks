@@ -13,7 +13,7 @@
  	</select>
  	
  	<select id="insertNotice" parameterType="int">
- 		insert into Notice values(notice_seq.nextval, #{Notice_title}, #{Notice_content}, sysdate)
+ 		insert into Notice(Nonum,Notice_title,Notice_content,Notice_reg_date) values(notice_seq.nextval, #{Notice_title}, #{Notice_content}, sysdate)
  	</select>
  	
  	<select id="deleteNotice" parameterType="int">

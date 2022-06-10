@@ -12,12 +12,12 @@
 	<div align="center">
 		<form class="editorWrapper" name="f" action="" method="post" onsubmit="return check()">
 			<div class="mb-3">
-			  <div><label for="exampleFormControlInput1" class="form-label">제목</label></div>
-			  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+			  <div class="flex"><label for="exampleFormControlInput1" class="form-label">제목</label></div>
+			  <input type="email" class="form-control" id="exampleFormControlInput1">
 			</div>
 			<div class="mb-3 box">
-				<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-				<div id="editor">
+				<div class="flex"><label for="exampleFormControlTextarea1" class="form-label">내용</label></div>
+				<div id="editor"></div>
 				<input type="hidden" name="quill" id='hidden-input'>
 			</div>
 			<button type="submit" class="btn btn-primary">등록</button>
@@ -31,9 +31,10 @@
   var myEditor = document.querySelector('#editor')
   var html = myEditor.children[0].innerHTML;
   
-  let inputElement = document.getElementById('hidden-input')
+  let inputElement = document.querySelector('#hidden-input')
   quill.on('text-change', function() {
-    inputElement.value = myEditor.children[0].innerHTML;
+    inputElement.value = html;
+    console.log(html);
   });
 </script>
 <jsp:include page="../../../main/footer.jsp"/>

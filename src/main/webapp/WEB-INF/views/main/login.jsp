@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -21,25 +21,25 @@
 		<div class="form">
 			<form>
 			  <div>
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="���̵�">
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
 			  </div>
 			  <div>
-			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="��й�ȣ">
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
 			  </div>
 			  <div>
 			  	<div class="mb-3 form-check">
 				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-				    <label class="form-check-label" for="exampleCheck1">���̵� ����</label>
+				    <label class="form-check-label" for="exampleCheck1">아이디 저장</label>
 				    <div class="find">
-				    	<a>���̵� ã��</a>
-				    	<a>��й�ȣ ã��</a>
+				    	<a>아이디 찾기</a>
+				    	<a>비밀번호 찾기</a>
 				    </div>
 			  	</div>
 			  </div>
-			  
-			  <button type="submit" class="btn btn-primary">�α���</button>
-			  <button class="btn btn-light">ȸ������</button>
-			  </div>
+			  <button type="submit" class="btn btn-primary">로그인</button>
+			  <button class="btn btn-light">회원가입</button>
+			 </form>
+		</div>
 	</div>
 </body>
 </html>

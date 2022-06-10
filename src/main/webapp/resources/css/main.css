@@ -5,6 +5,11 @@
 }
 
 
+
+.marginauto{
+	margin: auto;
+}
+
 header .container-fluid{
     width: 79.2%;
     max-width: 1170px;
@@ -105,4 +110,33 @@ header .navbar-collapse form{
 .login .find{
 	margin-left: auto;
 }
+
+
+.flex{
+	display: flex;
+}
+
+.login .birth{
+	width: 60%
+}
+
+.login .btn-group{
+	margin-left: auto;
+}
+
+.sighup .checkWrapper{
+	flex-wrap: wrap;
+}
+
+.sighup .inputWrapper{
+	margin-top: 5px;
+}
+.sighup .form-check{
+	width: 33%;
+}
+
+.sighup .form-check-input{
+	margin-right: 5px;
+}
+
 

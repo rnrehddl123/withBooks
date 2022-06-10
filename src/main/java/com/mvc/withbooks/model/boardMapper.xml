@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 	
+ <mapper namespace="com.mvc.withBooks.model.boardMapper">
+ 	<select id="listBoard" resultType="BoardDTO">
+ 		select * from Board order by Bnum desc
+ 	</select>
+
+	 <select id="getBoard" parameterType="int" resultType="BoardDTO">
+ 		select * from Board where Bnum = #{Bnum}
+ 	</select>
+ 	
+ 	<select id="insertBoard" parameterType="BoardDTO">
+ 		insert into Board values(board_seq.nextval, #{board_writer}, #{board_email}, #{board_subject}, #{board_passwd}, sysdate, 0, #{board_content} )
+ 	</select>
+ 	
+ 	<select id="deleteBoard" parameterType="int">
+ 		delete from Board where Bnum = #{Bnum}
+ 	</select>
+ 	
+ 	<select id="updateBoard" parameterType="int">
+ 		update Board set Board_writer=#{board_writer}, Board_email=#{board_email}, Board_subject=#{board_subject}, Board_content=#{board_content} where Bnum=#{Bnum}
+ 	</select>
+ 	
+	<select id="plusReadcount" parameterType="int">
+		update Board set Board_readcount = Board_readcount + 1 where Bnum = #{Bnum}
+	</select>
+ </mapper>

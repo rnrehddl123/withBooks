@@ -9,9 +9,9 @@
 <body>
 <%@include file="../../adminHeader.jsp"%>
 <div class="clientList">
-	<b><h3>회원 관리</h3></b>
+	<p>
+	<b><h3 align="center">회원 관리</h3></b>
 	<table border="1" width="1000" height="500">
-		<caption>회원 정보 보기</caption>
 		<tr height="50">
 			<th>회원 번호</th>
 			<th>회원 이름</th>
@@ -48,9 +48,11 @@
 			<td><input type="button" value="계정삭제"></td>
 		</tr>
 	</table>
-	<b><h3>작가 관리</h3></b>
+	
+	<p>
+	
+	<b><h3 align="center">작가 관리</h3></b>
 	<table border="1" width="1000" height="500">
-		<caption>작가 정보 보기</caption>
 		<tr height="50"> 
 			<th>작가 번호</th>
 			<th>작가 이름</th>

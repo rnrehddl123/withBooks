@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mvc.withbooks.model.memberMapper"> 
+	<select id="ListMember" resultType="memberDTO">
+		select * from member
+	</select>
+	
+	<select id="findMember" parameterType="java.util.Map" resultType="memberDTO">
+		select * from member where ${search} = #{searchString}
+	</select>
+
+	<insert id="insertMember" parameterType="memberDTO">
+		insert into member(Mnum, Member_name, Member_id, Member_passwd, Member_Tel, Member_address, Member_email, Member_birth, Member_sex, Member_preferred1, Member_preferred2, Member_preferred3, Member_authority)
+		 values(seq_member.nextval, #{Member_name}, #{Member_id}, #{Member_passwd}, #{Member_Tel}, #{Member_address},
+				#{Member_email}, #{Member_birth}, #{Member_sex}, #{Member_preferred1}, #{Member_preferred2}, #{Member_preferred3}, #{Member_authority})
+	</insert>
+
+	<delete id="deleteMember" parameterType="int">
+		delete from member where Mnum = #{mnum}
+	</delete>
+	
+	<update id="updateMember" parameterType="memberDTO">
+		update member set Member_passwd=#{Member_passwd}, Member_Tel=#{Member_Tel}, Member_address=#{Member_address},
+										Member_email=#{Member_email}, Member_preferred1=#{Member_preferred1}, Member_preferred2=#{Member_preferred2},
+										 Member_preferred3=#{Member_preferred3}, Member_authority=#{Member_authority} where Mnum = #{mnum} 
+	</update>
+	
+	<select id="getMember" parameterType="int" resultType="memberDTO">
+		select * from member where Mnum = #{mnum}
+	</select>
+	
+	<select id="checkMember" parameterType="java.util.Map" resultType="memberDTO">
+		select * from member where Member_id=#{Member_id} and Member_Tel=#{Member_Tel}
+	</select>
+	
+	<select id="searchMember" parameterType="java.util.Map" resultType="memberDTO">
+		${sql}
+	</select>
+	
+	<select id="getMemberId" parameterType="String" resultType="memberDTO">
+		select * from member where Member_id = #{Member_id}
+	</select>
+</mapper>

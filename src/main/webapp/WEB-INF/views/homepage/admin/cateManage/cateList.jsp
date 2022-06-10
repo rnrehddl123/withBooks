@@ -14,34 +14,26 @@
 		<tr>
 			<th>카테고리 번호</th>
 			<th>카테고리 이름</th>
-			<th>삭제</th>
-			<th>수정</th>
 		</tr>
 		<tr>
 			<td>001</td>
 			<td>호러</td>
-			<td><input type="button" value="삭제"></td>
-			<td><input type="button" value="수정" onclick="window.location='cateUpdate'"></td>
 		</tr>
 		<tr>
 			<td>002</td>
 			<td>로맨스</td>
-			<td><input type="button" value="삭제"></td>
-			<td><input type="button" value="수정" onclick="window.location='cateUpdate'"></td>
-		</tr>
 		<tr>
 			<td>003</td>
 			<td>판타지</td>
-			<td><input type="button" value="삭제"></td>
-			<td><input type="button" value="수정" onclick="window.location='cateUpdate'"></td>
 		</tr>
 		<tr>
 			<td>004</td>
 			<td>추리</td>
-			<td><input type="button" value="삭제"></td>
-			<td><input type="button" value="수정" onclick="window.location='cateUpdate'"></td>
 		</tr>
 	</table>
+	
+	<p>
+	
 		<input type="button" value="카테고리 추가" onclick="window.location='cateInsert'">
 </div>
 </body>

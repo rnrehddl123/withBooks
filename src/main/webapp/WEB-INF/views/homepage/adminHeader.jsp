@@ -40,12 +40,6 @@
         </a>
       </li>
       <li>
-        <a href="cateUpdate" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-          	카테고리 수정
-        </a>
-      </li>
-      <li>
         <a href="cateList" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	카테고리 목록

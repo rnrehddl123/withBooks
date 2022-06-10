@@ -10,10 +10,10 @@ public class MemberDTO {
 	private String Member_email;
 	private String Member_birth;
 	private String Member_sex;
-	private String Member_preferred;
+	private String Member_preferred1;
+	private String Member_preferred2;
+	private String Member_preferred3;
 	private String Member_authority;
-	
-	
 	public int getMnum() {
 		return Mnum;
 	}
@@ -68,11 +68,23 @@ public class MemberDTO {
 	public void setMember_sex(String member_sex) {
 		Member_sex = member_sex;
 	}
-	public String getMember_preferred() {
-		return Member_preferred;
+	public String getMember_preferred1() {
+		return Member_preferred1;
 	}
-	public void setMember_preferred(String member_preferred) {
-		Member_preferred = member_preferred;
+	public void setMember_preferred1(String member_preferred1) {
+		Member_preferred1 = member_preferred1;
+	}
+	public String getMember_preferred2() {
+		return Member_preferred2;
+	}
+	public void setMember_preferred2(String member_preferred2) {
+		Member_preferred2 = member_preferred2;
+	}
+	public String getMember_preferred3() {
+		return Member_preferred3;
+	}
+	public void setMember_preferred3(String member_preferred3) {
+		Member_preferred3 = member_preferred3;
 	}
 	public String getMember_authority() {
 		return Member_authority;
@@ -80,5 +92,6 @@ public class MemberDTO {
 	public void setMember_authority(String member_authority) {
 		Member_authority = member_authority;
 	}
+	
 	
 }

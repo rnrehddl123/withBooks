@@ -8,29 +8,23 @@
 	<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div>
-		<table border="1" align="center" width="800" height="600">
+	<div align="center">
+		<table width="600" height="600">
 			<tr height="5%">
-				<td align="left" colspan="3"><h3>000, 님 환영합니다</h3></td>
+				<td align="left" colspan="3"><h3>(id)님 환영합니다</h3></td>
 			</tr>
 			<tr height="5%">
 				<td align="right" colspan="3"><h3>(작가로 회원가입을 한 경우)글쓰기</h3></td>
 			</tr>
 			<tr height="30%">
-				<th>캐시(리디 북스에)</th>
-				
-				<th>포인트(있던)</th>
-				
-				<th>쿠폰(내용입니다)</th>
-				
+				<td width="200" align="center">보유 포인트</td>
+				<td width="200" align="center">쿠폰</td>
+				<td width="200" align="center">내 서재</td>
 			</tr>
 			<tr height="30%">
-				<th>내 서재(내가 구매한 책들)</th>
-				
-				<th>카트(구매할 책을 담아 놓음)</th>
-				
-				<th>선호작품(예시-판타지, 로맨스)</th>
-				
+				<td width="200" align="center">장바구니</td>
+				<td width="200" align="center">선호 장르</td>
+				<td width="200"></td>
 			</tr>
 			<tr height="35%">
 				<td colspan="3" align="center">

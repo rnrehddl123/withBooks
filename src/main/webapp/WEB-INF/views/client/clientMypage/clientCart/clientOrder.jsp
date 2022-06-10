@@ -15,9 +15,12 @@
 				<font class="orderList">주문 목록</font><font class="orderQty"> (여기에 상품 갯수 표시)</font>
 				</th>
 			</tr>
-			<hr class="hrLine">
-			<!-- 여기에 상품 나열 -->
-			
+			<tr>
+				<td><hr class="hrLine"></td>
+			</tr>
+			<tr>
+				<td>(상품)</td>
+			</tr>
 		</table>
 		<hr class="hrLine">
 	</div>

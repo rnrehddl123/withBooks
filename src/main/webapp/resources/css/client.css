@@ -1,0 +1,22 @@
+.hrLine{
+	border:0;
+	width:600px;
+	height:3px;
+	background-color:blue;
+}
+
+
+.orderList{
+	color:black;
+	font-size:24px;
+}
+
+.orderQty{
+	color:gray;
+	font-size:24px;
+}
+
+.clientTable{
+	width:90%;
+	margin:auto;
+}

@@ -70,3 +70,39 @@ header .navbar-collapse form{
     position: absolute;
     right: 110px;
 }
+
+.login{
+	background-color: #EBF6FF;
+	min-width: 100vh;
+    min-height: 100vh;
+}
+
+.login .head{
+	position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.login .form{
+	margin:auto;
+	padding-top:150px;
+	height: 300px;
+	width: 360px;
+}
+
+.login button{
+	margin: auto;
+	width: 100%;
+	height : 40px;
+	margin-top: 10px;
+}
+
+.login .form-check{
+	display: flex;
+	margin-top: 10px
+}
+
+.login .find{
+	margin-left: auto;
+}
+

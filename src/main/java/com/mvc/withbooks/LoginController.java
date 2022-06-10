@@ -45,14 +45,4 @@ public class LoginController {
 	public String WriteNovel() {
 		return "/login/writer/writeNovel";
 	}
-	
-	@RequestMapping("/login")
-	public String Login() {
-		return "/login/login";
-	}
-	
-	@RequestMapping("/signUp")
-	public String SignUp() {
-		return "/login/signUp";
-	}
 }

@@ -18,7 +18,7 @@
     <header>
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="login.do">로그인</a>
+          <a class="nav-link" href="login">로그인</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="signUp.do">회원가입</a>

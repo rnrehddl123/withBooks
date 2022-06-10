@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- clientBoard -->
+<jsp:include page="../main/header.jsp"/>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>clientBoard</title>
+<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 </body>
 </html>
+<jsp:include page="../main/footer.jsp"/>

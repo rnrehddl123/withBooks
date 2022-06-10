@@ -1,46 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- clientMypage -->
+<jsp:include page="../main/header.jsp"/>
 <html>
 <head>
-	<title>contents</title>
+	<title>clientMypage</title>
+	<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div>
 		<table border="1" align="center" width="800" height="600">
 			<tr height="5%">
-				<td align="left" colspan="3"><h3>000, ´Ô È¯¿µÇÕ´Ï´Ù</h3></td>
+				<td align="left" colspan="3"><h3>000, ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤</h3></td>
 			</tr>
 			<tr height="5%">
-				<td align="right" colspan="3"><h3>(ÀÛ°¡·Î È¸¿ø°¡ÀÔÀ» ÇÑ °æ¿ì)±Û¾²±â</h3></td>
+				<td align="right" colspan="3"><h3>(ìž‘ê°€ë¡œ íšŒì›ê°€ìž…ì„ í•œ ê²½ìš°)ê¸€ì“°ê¸°</h3></td>
 			</tr>
 			<tr height="30%">
-				<th>Ä³½Ã(¸®µð ºÏ½º¿¡)</th>
+				<th>ìºì‹œ(ë¦¬ë”” ë¶ìŠ¤ì—)</th>
 				
-				<th>Æ÷ÀÎÆ®(ÀÖ´ø)</th>
+				<th>í¬ì¸íŠ¸(ìžˆë˜)</th>
 				
-				<th>ÄíÆù(³»¿ëÀÔ´Ï´Ù)</th>
+				<th>ì¿ í°(ë‚´ìš©ìž…ë‹ˆë‹¤)</th>
 				
 			</tr>
 			<tr height="30%">
-				<th>³» ¼­Àç(³»°¡ ±¸¸ÅÇÑ Ã¥µé)</th>
+				<th>ë‚´ ì„œìž¬(ë‚´ê°€ êµ¬ë§¤í•œ ì±…ë“¤)</th>
 				
-				<th>Ä«Æ®(±¸¸ÅÇÒ Ã¥À» ´ã¾Æ ³õÀ½)</th>
+				<th>ì¹´íŠ¸(êµ¬ë§¤í•  ì±…ì„ ë‹´ì•„ ë†“ìŒ)</th>
 				
-				<th>¼±È£ÀÛÇ°(¿¹½Ã-ÆÇÅ¸Áö, ·Î¸Ç½º)</th>
+				<th>ì„ í˜¸ìž‘í’ˆ(ì˜ˆì‹œ-íŒíƒ€ì§€, ë¡œë§¨ìŠ¤)</th>
 				
 			</tr>
 			<tr height="35%">
 				<td colspan="3" align="center">
 					<ul>
-						<li><a href="informUpdate.do"><h3>°³ÀÎÁ¤º¸ ¼öÁ¤</h3></a></li>
-						<li><a href="productView.do"><h3>±¸¸Å³»¿ª</h3></a></li>
-						<li><h3>È¸¿øÅ»Åð</h3></li>
+						<li><a href="clientUpdate"><h3>ê°œì¸ì •ë³´ìˆ˜ì •</h3></a></li>
+						<li><a href="clientOrderList"><h3>êµ¬ë§¤ë‚´ì—­</h3></a></li>
+						<li><h3>íšŒì›íƒˆí‡´</h3></li>
 					</ul>		
 				</td>
 			</tr>
 		</table>
-		<h3 align="center">jsp footer µé¾î°¥ °÷</h3>
 	</div>
 </body>
 </html>

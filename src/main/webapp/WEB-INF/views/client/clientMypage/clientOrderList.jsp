@@ -1,72 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- clientOrderList -->
+<jsp:include page="../../main/header.jsp"/>
 <html>
 <head>
-<title>±¸¸Å³»¿ª</title>
+<title>êµ¬ë§¤ë‚´ì—­</title>
 </head>
-
 <body>
 <div align="center">
-
-	<h4> id´ÔÀÇ º¸°üÇÔ</h4> 
-
-<table border="1" width="500">
-
-<!-- ÀÛÇ°1 -->
-
-	<tr>
-		<td rowspan="3" width="30%">image</td>
-		<th align="left" colspan="2">¼Ò¼³Á¦¸ñ</th>
-	</tr>
-	<tr>
-		<td>Àå¸£</td>
-		<td>ÀÛ°¡¸í</td>
-	</tr>
-	<tr>
-		<td colspan="2">±¸¸Å³¯Â¥</td> <!-- date -->
-	</tr>
-	
-	
-<!-- ÀÛÇ°2 -->
-
-	<tr>
-		<td rowspan="3">image1</td>
-		<th align="left" colspan="2">ÈÆ¹ÎÁ¤À½ Ã¹°ÉÀ½</th>
-	</tr>
-	<tr>
-		<td>È£·¯</td>
-		<td>ÀÛ°¡1</td>
-	</tr>
-	<tr>
-		<td colspan="2">2022.06.07 ±¸¸Å</td> <!-- date -->
-	</tr>
-	
-	
-<!-- ÀÛÇ°2 -->
-
-	<tr>
-		<td rowspan="3">image2</td>
-		<th align="left" colspan="2">ÈÆ¹ÎÁ¤À½ ³Î¶Ù±â</th>
-	</tr>
-	<tr>
-		<td>·Î¸Ç½ºÆÇÅ¸Áö</td>
-		<td>±è±Ý±¤,¹Ú¼öÃ¶,µµ·¹¹Ì</td>
-	</tr>
-	<tr>
-		<td colspan="2">2022.06.08 ±¸¸Å</td> <!-- date -->
-	</tr>
-
-
-
-	<tr>
-		<td colspan="3" align="right">
-			<a href="myPage.do">µÚ·Î°¡±â</a> 		<!-- ÆäÀÌÁö ¼³Á¤ -->
-		</td>
-	</tr>
+	<h4>(id)ë‹˜ì˜ êµ¬ë§¤ë‚´ì—­</h4> 
+	<table class="outline">
+<!-- ìž‘í’ˆ1 -->
+		<tr>
+			<td rowspan="3" width="200">image</td>
+			<th align="left" colspan="2">ì†Œì„¤ì œëª©</th>
+		</tr>
+		<tr>
+			<td>ìž¥ë¥´</td>
+			<td>ìž‘ê°€ëª…</td>
+		</tr>
+		<tr>
+			<td colspan="2">êµ¬ë§¤ë‚ ì§œ</td> <!-- date -->
+		</tr>
 </table>
-
 </div>
-
 </body>
 </html>
+<jsp:include page="../../main/footer.jsp"/>

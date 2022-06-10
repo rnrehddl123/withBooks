@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- clientCart -->
+<jsp:include page="../../main/header.jsp"/>
 <html>
 <head>
 <title>clientCart</title>
+<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div align="center">
@@ -11,41 +13,41 @@
 	<table width="1000" border="1">
 		<tr>
 			<td colspan="7" align="center">
-				<h4>Àå¹Ù±¸´Ï</h4>
+				<h4>ìž¥ë°”êµ¬ë‹ˆ</h4>
 			</td>
 		</tr>		
 		<tr>
-			<th width="5%">¹øÈ£</th>
-			<th width="30%">Á¦¸ñ</th>
-			<th width="10%">ÀÛ°¡¸í</th>
-			<th width="30%">»çÁø</th>
-			<th width="10%">ÃÑ ±Ý¾×</th>
-			<th width="5%">¼ö·®</th>
-			<th width="10%">»èÁ¦</th>
+			<th width="5%">ë²ˆí˜¸</th>
+			<th width="30%">ì œëª©</th>
+			<th width="10%">ìž‘ê°€ëª…</th>
+			<th width="30%">ì‚¬ì§„</th>
+			<th width="10%">ì´ ê¸ˆì•¡</th>
+			<th width="5%">ìˆ˜ëŸ‰</th>
+			<th width="10%">ì‚­ì œ</th>
 		</tr>
 		<!-- if -->
 			<tr>	
-				<td colspan="7">Àå¹Ù±¸´Ï¿¡ µî·ÏµÈ »óÇ°ÀÌ ¾ø½À´Ï´Ù.</td>
+				<td colspan="7">ìž¥ë°”êµ¬ë‹ˆì— ë“±ë¡ëœ ìƒí’ˆì´ ì—†ìŠµë‹ˆë‹¤.</td>
 			</tr>
-		<!-- if´Ý±â -->
+		<!-- ifë‹«ê¸° -->
 		<!-- for -->
 		<tr>
-			<td><!-- ¹øÈ£ --></td>
-			<td><!-- Á¦¸ñ --></td>
-			<td><!-- ÀÛ°¡¸í --></td>
-			<td><!-- »çÁø --><img src=""></td>
-			<td><!-- ÃÑ±Ý¾× -->¿ø</td>
-			<td><!-- ¼ö·® --></td>
-			<td><!-- »èÁ¦ --><a href="cartDel?nnum=">»èÁ¦</a></td>
+			<td><!-- ë²ˆí˜¸ --></td>
+			<td><!-- ì œëª© --></td>
+			<td><!-- ìž‘ê°€ëª… --></td>
+			<td><!-- ì‚¬ì§„ --><img src=""></td>
+			<td><!-- ì´ê¸ˆì•¡ -->ì›</td>
+			<td><!-- ìˆ˜ëŸ‰ --></td>
+			<td><!-- ì‚­ì œ --><a href="cartDel?nnum=">ì‚­ì œ</a></td>
 		</tr>	
-		<!-- for´Ý±â -->
+		<!-- forë‹«ê¸° -->
 		<tr>
 			<td colspan="4">
-				<b>Àå¹Ù±¸´ÏÃÑ¾× : ¿ø</b><br>
+				<b>ìž¥ë°”êµ¬ë‹ˆì´ì•¡ : ì›</b><br>
 			</td>
 			<td colspan="3" align="center">
-				<input type="submit" value="ÁÖ¹®ÇÏ±â">
-				<input type="button" value="°è¼Ó¼îÇÎ" onclick="javascript:history.go(-2)">
+				<input type="submit" value="ì£¼ë¬¸í•˜ê¸°">
+				<input type="button" value="ê³„ì†ì‡¼í•‘" onclick="javascript:history.go(-2)">
 			</td>
 		</tr>		
 	</table>
@@ -53,3 +55,4 @@
 </div>
 </body>
 </html>
+<jsp:include page="../../main/footer.jsp"/>

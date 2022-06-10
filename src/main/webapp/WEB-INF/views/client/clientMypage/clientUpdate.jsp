@@ -1,44 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- clientUpdate -->
+<jsp:include page="../../main/header.jsp"/>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>clientUpdate</title>
+<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div align="center">
-			<font size="3">°³ ÀÎ Á¤ º¸ ¼ö Á¤</font><p>
+			<font size="3">ê°œ ì¸ ì • ë³´ ìˆ˜ ì •</font><p>
 			<table width="600" align="center" class="outline">
   				<tr>
-					<td colspan="2" align=center class="m2">È¸¿ø¼öÁ¤</td>
+					<td colspan="2" align=center class="m2">íšŒì›ìˆ˜ì •</td>
  				</tr>
 				<tr>
-					<td width="150" class="m3">ÀÌ¸§</td>
+					<td width="150" class="m3">ì´ë¦„</td>
 					<td class="m3">
 						<input type="text" name="name" class="box" readOnly>
 					</td>
 				</tr>
 				<tr>
-					<td width="150" class="m3">¾ÆÀÌµð</td>
+					<td width="150" class="m3">ì•„ì´ë””</td>
 					<td class="m3">
 						<input type="text" name="id" class="box" readOnly>
 					</td>
   				</tr>
   				<tr>
-					<td width="150" class="m3">ºñ¹Ð¹øÈ£</td>
+					<td width="150" class="m3">ë¹„ë°€ë²ˆí˜¸</td>
 					<td class="m3">
 						<input type="password" name="passwd" class="box">
 					</td>
   				</tr>
   				<tr>
-					<td width="150" class="m3">ÀÌ¸ÞÀÏ</td>
+					<td width="150" class="m3">ì´ë©”ì¼</td>
 					<td class="m3">
 						<input type="text" name="email" class="box">
 					</td>
   				</tr>
   				<tr>
-					<td width="150" class="m3">ÀüÈ­¹øÈ£</td>
+					<td width="150" class="m3">ì „í™”ë²ˆí˜¸</td>
 					<td class="m3">
 						<input type="text" name="hp1" class="box" size="3" maxlength="3"> -
 						<input type="text" name="hp2" class="box" size="4" maxlength="4"> -
@@ -46,27 +47,27 @@
 					</td>
   				</tr>
   				<tr>
-  					<td width="150" class="m3">ÁÖ¼Ò</td>
+  					<td width="150" class="m3">ì£¼ì†Œ</td>
 					<td class="m3">
 						<input type="text" name="address" class="box">
 					</td>
   				</tr>
   				<tr>
-  					<td width="150" class="m3">Ãâ»ý³âµµ</td>
+  					<td width="150" class="m3">ì¶œìƒë…„ë„</td>
 					<td class="m3">
 						<input type="text" name="year" class="box">
 					</td>
   				</tr>
   				<tr>
-  					<td><input type="checkbox" name="man">³²</td>
-  					<td><input type="checkbox" name="woman">¿©</td>
+  					<td><input type="checkbox" name="man">ë‚¨</td>
+  					<td><input type="checkbox" name="woman">ì—¬</td>
   				</tr>
   				<tr>
-  					<td>ÃëÇâ</td>
-  					<td><input type="checkbox" name="preffered">ÆÇÅ¸Áö</td>
+  					<td>ì·¨í–¥</td>
+  					<td><input type="checkbox" name="preffered">íŒíƒ€ì§€</td>
   				<tr>
 					<td colspan="2" align="center">
-						[¼öÁ¤][Ãë¼Ò]
+						[ìˆ˜ì •][ì·¨ì†Œ]
 					</td>
   				</tr>
   				
@@ -74,3 +75,4 @@
 	</div>
 </body>
 </html>
+<jsp:include page="../../main/footer.jsp"/>

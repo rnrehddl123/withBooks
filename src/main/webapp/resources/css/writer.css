@@ -36,3 +36,14 @@
 	border : 1px solid;
 }
 
+.titleWrapper{
+	padding-left: 0px;
+}
+.editorWrapper{
+	width: 800px;
+	height: 1000px
+}
+
+.editorWrapper .box{
+	height: 600px
+}

@@ -15,7 +15,9 @@
 		</tr>
 	</table>
 	<input type="button" value="불러오기">
+	 					<!-- AdminSlideMapper.xml : get -->
 	<input type="button" value="등록하기">
+						<!-- AdminSlideMapper.xml : insert -->
 </div>
 </body>
 </html>

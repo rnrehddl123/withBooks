@@ -11,9 +11,8 @@
 <div class="suggest">
 	<b><h1>추천작 관리</h1></b><p>
 	<table border="1" width="1000" height="300">
-		<tr height="50">
-			<td>추천 작품 리스트</td>	
-			<td>선택</td> 
+		<tr height="50" align="center">
+			<th colspan="2" >추천 작품 리스트</th>	
 		</tr>
 		<tr>
 			<td>추리소설 aaa</td> <!-- AdminSuggestMapper.xml : listNovel -->
@@ -24,9 +23,8 @@
 	 <!-- AdminSuggestMapper.xml : searchAdminSuggest -->
 	 
 	<table border="1" width="1000" height="300">
-		<tr>
-			<td>선택 리스트</td>
-			<td>삭제</td> 
+		<tr align="center">
+			<th colspan="2">선택 리스트</th>
 		</tr>
 		<tr>
 			<td>추리소설 aaa</td> <!-- AdminSuggestMapper.xml : listAdminSuggest -->

@@ -41,6 +41,9 @@
 			    <input type="text" id="address_kakao" class="form-control" aria-describedby="emailHelp" placeholder="주소" readonly>
 			  </div>
 			  <div class="inputWrapper">
+			    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="상세주소">
+			  </div>
+			  <div class="inputWrapper">
 			    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="이메일">
 			  </div>
 			  <div class="flex inputWrapper">

@@ -10,7 +10,7 @@
 <body>
 <div align="center">
 <form name="f" action="clientOrder" method="post">
-	<table width="1000" border="1">
+	<table width="1000">
 		<tr>
 			<td colspan="7" align="center">
 				<h4>장바구니</h4>

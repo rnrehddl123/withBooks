@@ -12,23 +12,25 @@
 	<b><h1>추천작 관리</h1></b><p>
 	<table border="1" width="1000" height="300">
 		<tr height="50">
-			<td>추천 작품 리스트</td>
-			<td>선택</td>
+			<td>추천 작품 리스트</td>	
+			<td>선택</td> 
 		</tr>
 		<tr>
-			<td>추리소설 aaa</td>
-			<td><input type="button" value="선택"></td>
+			<td>추리소설 aaa</td> <!-- AdminSuggestMapper.xml : listNovel -->
+			<td><input type="button" value="선택"></td> <!-- AdminSuggestMapper.xml : insert -->
 		</tr>	
 	</table>
 	검색 : <input type="text"><input type="button" value="검색"><p>
+	 <!-- AdminSuggestMapper.xml : searchAdminSuggest -->
+	 
 	<table border="1" width="1000" height="300">
 		<tr>
 			<td>선택 리스트</td>
-			<td>삭제</td>
+			<td>삭제</td> 
 		</tr>
 		<tr>
-			<td>추리소설 aaa</td>
-			<td><input type="button" value="삭제"></td>
+			<td>추리소설 aaa</td> <!-- AdminSuggestMapper.xml : listAdminSuggest -->
+			<td><input type="button" value="삭제"></td> <!-- AdminSuggestMapper.xml : delete -->
 		</tr>	
 	</table>
 	<input type="button" value="등록">

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ 
+ <mapper namespace="com.mvc.withbooks.CategoryMapper"> 
+ 
+ 	<insert id="insertCategory" parameterType="CategoryDTO">
+ 		insert into category(Cnum,Cate_name) values(seq_category.nextval,#{cate_name})
+ 	</insert>
+ 	
+ </mapper>

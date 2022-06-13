@@ -38,7 +38,7 @@
 					</a>
 				</td>
 				<td align="center">${Boarddto.Board_writer}</td>
-				<td align="center">${Boarddto.Board_reg_date}</td>
+				<td align="center">${Boarddto.Board_date}</td>
 				<td align="center">${Boarddto.Board_readcount}</td>
 			</tr>		
 			</c:forEach>	

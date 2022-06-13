@@ -6,7 +6,7 @@ public class BoardDTO {
 	private String Board_email;
 	private String Board_subject;
 	private String Board_passwd;
-	private String Board_reg_date;
+	private String Board_date;
 	private int Board_readcount;
 	private String Board_content;
 	
@@ -40,11 +40,11 @@ public class BoardDTO {
 	public void setBoard_passwd(String board_passwd) {
 		Board_passwd = board_passwd;
 	}
-	public String getBoard_reg_date() {
-		return Board_reg_date;
+	public String getBoard_date() {
+		return Board_date;
 	}
-	public void setBoard_reg_date(String board_reg_date) {
-		Board_reg_date = board_reg_date;
+	public void setBoard_date(String board_date) {
+		Board_date = board_date;
 	}
 	public int getBoard_readcount() {
 		return Board_readcount;

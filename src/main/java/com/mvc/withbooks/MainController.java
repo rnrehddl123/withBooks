@@ -17,4 +17,18 @@ public class MainController {
 		return "/main/login";
 	}
 	
+	@RequestMapping("/signUp")
+	public String SignUp() {
+		return "/main/signUp";
+	}
+	
+	@RequestMapping("/findId")
+	public String findId() {
+		return "/main/findId";
+	}
+	
+	@RequestMapping("/findPassword")
+	public String findPassword() {
+		return "/main/findPassword";
+	}
 }

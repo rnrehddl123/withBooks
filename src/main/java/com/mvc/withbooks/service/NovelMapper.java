@@ -1,6 +1,6 @@
 package com.mvc.withbooks.service;
 
-import java.util.List;
+import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,14 @@ public class NovelMapper {
 	public NovelDTO getNovel(int nnum) {
 		NovelDTO dto = sqlSession.selectOne("getNovel", nnum);
 		return dto;
+	}
+	
+	public List<NovelDTO> findNovel(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<NovelDTO> find = sqlSession.selectList("findNovel", map);
+		return find;
 	}
 	
 }

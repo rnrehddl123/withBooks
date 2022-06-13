@@ -13,7 +13,7 @@
 		<form class="editorWrapper" name="f" action="" method="post" onsubmit="return check()">
 			<ul class="flex titleWrapper">
 				<li>제목</li>
-				<li><input type="text"></li>
+				<li><input type="text" name="Epi_subject"></li>
 			</ul>
 			<div class="box">
 				<div id="editor">
@@ -26,7 +26,7 @@
 			</div>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-			  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			  <textarea name="Epi_content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 			</div>
 		</form>
 	</div>

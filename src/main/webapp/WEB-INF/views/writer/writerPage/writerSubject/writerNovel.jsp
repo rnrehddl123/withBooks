@@ -16,23 +16,23 @@
 				</tr>
 				<tr>
 					<th width="20%">작 가 필 명</th>
-					<td><input type="text" name="writerName" size="50" class="width80"></td>
+					<td><input type="text" name="Novel_memberName" size="50" class="width80"></td>
 				</tr>
 				<tr>
 					<th width="20%">카 테 고 리</th>
-					<td><input type="text" name="category" size="50" class="width80"></td>
+					<td><input type="text" name="Novel_cate" size="50" class="width80"></td>
 				</tr>			
 				<tr>
 					<th width="20%">대 제 목(소설의 제목)</th>
-					<td><input type="text" name="subject" size="50" class="width80"></td>
+					<td><input type="text" name="Novel_subject" size="50" class="width80"></td>
 				</tr>
 				<tr>
 					<th width="20%">소 설 이 미 지</th>
-					<td><input type="file" name="image" size="50" class="width80"></td>
+					<td><input type="file" name="Novel_image" size="50" class="width80"></td>
 				</tr>
 				<tr>
 					<th width="20%">줄 거 리</th>
-					<td><textarea name="content" rows="10" cols="70" class="width80"></textarea></td>
+					<td><textarea name="Novel_summary" rows="10" cols="70" class="width80"></textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="2">

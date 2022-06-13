@@ -19,11 +19,9 @@
 			<td colspan="2">등록된 작품이 없습니다.</td>	
 		</tr>
 		</c:if>
-		<c:forEach items="${listNovel}" var="ndto">
+		<c:forEach items="${listNovel}" var="dto">
 		<tr>
-			<td><input type="checkbox" name="item" value="${ndto.Novel_subhect}">
-			${ndto.Novel_subhect}
-			</td>
+			<td>${dto.Novel_subject}</td>
 			<td><input type="button" value="선택"></td>
 		</tr>
 		</c:forEach>	

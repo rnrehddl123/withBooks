@@ -19,25 +19,19 @@
 		</div>
 		
 		<div class="form">
+			<div class="text">아이디 찾기</div>
 			<form>
-			  <div class="inputWrapper">
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+			  <div>
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이름">
 			  </div>
-			  <div class="inputWrapper">
-			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
+			  <div class="flex inputWrapper">
+			    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호">
+			    <div class="marginauto">-</div>
+			    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호">
+			    <div class="marginauto">-</div>
+			    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호">
 			  </div>
-			  <div class="inputWrapper">
-			  	<div class="mb-3 form-check">
-				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-				    <label class="form-check-label" for="exampleCheck1">아이디 저장</label>
-				    <div class="find">
-				    	<a href="findId">아이디 찾기</a>
-				    	<a href="findPassword">비밀번호 찾기</a>
-				    </div>
-			  	</div>
-			  </div>
-			  <button type="submit" class="btn btn-primary">로그인</button>
-			  <button class="btn btn-light">회원가입</button>
+			  <button type="submit" class="btn btn-primary">찾기</button>
 			 </form>
 		</div>
 	</div>

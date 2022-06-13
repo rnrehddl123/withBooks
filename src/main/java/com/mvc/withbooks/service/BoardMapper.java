@@ -21,7 +21,7 @@ public class BoardMapper {
 	
 	public BoardDTO getBoard(int Bnum,String mode){
 		if(mode.equals("content")) {
-			sqlSession.update("plusReadcount",Bnum);
+			sqlSession.update("plusCount",Bnum);
 		}
 		BoardDTO dto = sqlSession.selectOne("getBoard",Bnum);
 		return dto;

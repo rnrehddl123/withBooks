@@ -13,7 +13,7 @@
  	</select>
  	
  	<select id="insertBoard" parameterType="BoardDTO">
- 		insert into Board(Bnum,board_writer,board_email,board_subject,board_passwd,board_reg_date,board_readconunt,board_content) values(board_seq.nextval, #{board_writer}, #{board_email}, #{board_subject}, #{board_passwd}, sysdate, 0, #{board_content})
+ 		insert into Board(Bnum,board_writer,board_email,board_subject,board_passwd,board_date,board_readcount,board_content) values(seq_board.nextval, #{board_writer}, #{board_email}, #{board_subject}, #{board_passwd}, sysdate, 0, #{board_content})
  	</select>
  	
  	<select id="deleteBoard" parameterType="int">

@@ -45,7 +45,7 @@ public class BoardController {
 			req.setAttribute("msg", "게시글 등록 실패! 게시글 등록페이지로 이동합니다.");
 			req.setAttribute("url", "writeBoard");
 		}
-		return "message.jsp";
+		return "message";
 	}
 	
 	// 게시판 목록 누르면 해당 작성쪽으로 이동
@@ -77,7 +77,7 @@ public class BoardController {
 			req.setAttribute("msg", "게시글 수정 실패!! 게시글 보기페이지로 이동합니다.");
 			req.setAttribute("url", "contentBoard?Bnum=" + dto.getBnum());
 		}
-		return "message.jsp";
+		return "message";
 	}
 	
 	//게시판 삭제

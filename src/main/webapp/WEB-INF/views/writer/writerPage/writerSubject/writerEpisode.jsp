@@ -17,12 +17,25 @@
 			</div>
 			<div class="mb-3 box">
 				<div class="flex"><label for="exampleFormControlTextarea1" class="form-label">내용</label></div>
+			<ul class="flex titleWrapper">
+				<li>제목</li>
+				<li><input type="text" name="Epi_subject"></li>
+			</ul>
+			<div class="box">
 				<div id="editor">
 				  <p><br></p>
 				</div>
 				<input type="hidden" name="quill" id='hidden-input'>
 			</div>
 			<button type="submit" class="btn btn-primary">등록</button>
+			<div class="mb-3">
+			  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+			  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+			</div>
+			<div class="mb-3">
+			  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+			  <textarea name="Epi_content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			</div>
 		</form>
 	</div>
 <script>

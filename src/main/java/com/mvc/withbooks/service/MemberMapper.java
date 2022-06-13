@@ -52,6 +52,14 @@ public class MemberMapper {
 			return res;
 	}
 	
+	public List<MemberDTO> findMember(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<MemberDTO> find = sqlSession.selectList("findMember", map);
+		return find;
+	}
+	
 	public String searchMember(Map<String, String> params) {
 		String sql = null;
 		
@@ -64,7 +72,7 @@ public class MemberMapper {
 				return "아이디는 " + dto.getMember_id() +" 입니다.";
 			}else {
 				sql = "select * from member where Member_name='"+params.get("Member_name") 
-						+ "' and Member_tel='"+params.get("Member_tel") + "' and Member_address='"+params.get("Member_address")+"' and Member_id='"+params.get("Member_id")+"'";
+						+ "' and Member_Tel='"+params.get("Member_Tel") + "' and Member_address='"+params.get("Member_address")+"' and Member_id='"+params.get("Member_id")+"'";
 				params.put("sql", sql);
 				MemberDTO dto = sqlSession.selectOne("searchMember", params);
 				if (dto == null) return "입력된값과 일치하는 데이터가 없습니다.";

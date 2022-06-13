@@ -14,7 +14,6 @@ public class EpisodeMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	
 	public int insertEpisode(EpisodeDTO dto) {
 		int res = sqlSession.insert("insertEpisode", dto);
 		return res;
@@ -35,7 +34,10 @@ public class EpisodeMapper {
 		return res;
 	}
 	
-	public EpisodeDTO getEpisode(int Epnum) {
+	public EpisodeDTO getEpisode(int Epnum, String mode) {
+		if (mode.equals("writerNovelEpisode")) {	//에피소드 뷰어로 넘어가게 되면 조회수가 오르게 하기 위함
+			sqlSession.update("plusReadcount", Epnum);
+		}
 		EpisodeDTO dto = sqlSession.selectOne("getEpisode", Epnum);
 		return dto;
 	}

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.NoticeDTO;
 
-
 @Service
 public class NoticeMapper {
 
@@ -33,7 +32,7 @@ public class NoticeMapper {
 		return res;
 	}
 	
-	public int deleteNotice(int Nonum,String passwd) {
+	public int deleteNotice(int Nonum) {
 		int res = sqlSession.delete("deleteNotice",Nonum);
 		return res;
 	}

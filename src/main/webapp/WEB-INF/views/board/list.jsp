@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="boardSidebar.jsp"/>
 		<div align="center" style="
     margin-top: auto;
@@ -22,30 +23,28 @@
       <th scope="col">조회수</th>
     </tr>
   </thead>
+  	<c:if test="${empty listBoard}">
+			<tr>
+				<td colspan="5" align="center">등록된 게시글이 없습니다.</td>
+			</tr>
+	</c:if>
   <tbody>
-    <tr>
-      <th scope="row" align="center">1</th>
-      <td align="center"><a href="contentBoard">글 내용</a></td>
-      <td align="center"><a href="updateBoard">글 수정</a></td>
-      <td align="center"><a href="deleteBoard">글 삭제</a></td>
-      <td align="center">라</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>가</td>
-      <td>나</td>
-      <td>다</td>
-      <td>라</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>가</td>
-      <td>나</td>
-      <td>다</td>
-      <td>라</td>
-    </tr>
+    <c:forEach var="dto" items="${listBoard}">
+			<tr>
+				<td align="right">${dto.Bnum}</td>
+				<td>
+					<a href="contentBoard?Bnum=${dto.Bnum}">
+						${dto.Board_subject}
+					</a>
+				</td>
+				<td align="center">${dto.Board_writer}</td>
+				<td align="center">${dto.Board_reg_date}</td>
+				<td align="center">${dto.Board_readcount}</td>
+			</tr>		
+			</c:forEach>	
+			<div align="right">
+					<input type="submit" value="게시판 글등록" onclick="window.location='writeBoard'">
+				</div>
   </tbody>
 </table>
 

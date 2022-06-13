@@ -5,7 +5,14 @@ public class NoticeDTO {
 	private String Notice_title;
 	private String Notice_content;
 	private String Notice_reg_date;
-	
+	private int Notice_readPluscount;
+
+	public int getNotice_readPluscount() {
+		return Notice_readPluscount;
+	}
+	public void setNotice_readPluscount(int notice_readPluscount) {
+		Notice_readPluscount = notice_readPluscount;
+	}
 	public int getNonum() {
 		return Nonum;
 	}

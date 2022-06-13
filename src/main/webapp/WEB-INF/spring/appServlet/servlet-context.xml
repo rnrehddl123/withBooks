@@ -29,7 +29,7 @@
    </beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-    	<beans:constructor-arg value="C:\study3\mavenBoard\src\main\webapp\resources\upload\file" />
+    	<beans:constructor-arg value="C:\study3\withBooks\src\main\webapp\resources\upload\file" />
   	</beans:bean>
 	
 </beans:beans>

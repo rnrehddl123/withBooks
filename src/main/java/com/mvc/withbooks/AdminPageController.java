@@ -21,9 +21,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.mvc.withbooks.dto.AdminSlideDTO;
 import com.mvc.withbooks.dto.AdminSuggestDTO;
 import com.mvc.withbooks.dto.CategoryDTO;
+import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.CategoryMapper;
+import com.mvc.withbooks.service.NovelMapper;
 
 @Controller
 public class AdminPageController {
@@ -34,6 +36,8 @@ public class AdminPageController {
 	private AdminSuggestMapper adminSuggestMapper;
 	@Autowired
 	private AdminSlideMapper adminSlideMapper;
+	@Autowired
+	private NovelMapper novelMapper;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -81,7 +85,9 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping(value="/suggest", method=RequestMethod.GET)//추천작 페이지 이동
-	public String suggest() {
+	public String suggest(HttpServletRequest req) {
+		List<NovelDTO> list = novelMapper.listNovel();
+		req.setAttribute("listNovel", list);
 		return "homepage/admin/banerManage/suggest";
 	}
 	

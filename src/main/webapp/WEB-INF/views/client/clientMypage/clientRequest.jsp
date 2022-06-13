@@ -29,7 +29,6 @@
 			<td align="center"><input type="submit" value="제출"></td>
 		</tr>
 	</table>
-	
 </div>
 </body>
 </html>

@@ -24,7 +24,7 @@
  		update Board set Board_writer=#{board_writer}, Board_email=#{board_email}, Board_subject=#{board_subject}, Board_content=#{board_content} where Bnum=#{Bnum}
  	</select>
  	
-	<select id="plusReadcount" parameterType="int">
+	<select id="plusCount" parameterType="int">
 		update Board set Board_readcount = Board_readcount + 1 where Bnum = #{Bnum}
 	</select>
  </mapper>

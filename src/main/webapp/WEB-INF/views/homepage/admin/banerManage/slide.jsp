@@ -1,22 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../../adminHeader.jsp"%>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <div align="center">
 	<table border="1" width="1000" height="500">
 		<tr>
-			<td align="center">½½¶óÀÌµå ÀÌ¹ÌÁö</td>
+			<td align="center">ìŠ¬ë¼ì´ë“œ ì´ë¯¸ì§€</td>
 		</tr>
 	</table>
-	<input type="button" value="ºÒ·¯¿À±â">
+	<input type="button" value="ë¶ˆëŸ¬ì˜¤ê¸°">
 	 					<!-- AdminSlideMapper.xml : get -->
-	<input type="button" value="µî·ÏÇÏ±â">
+	<input type="button" value="ë“±ë¡í•˜ê¸°">
 						<!-- AdminSlideMapper.xml : insert -->
 </div>
 </body>

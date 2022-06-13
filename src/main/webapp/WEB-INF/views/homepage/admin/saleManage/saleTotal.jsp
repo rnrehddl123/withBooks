@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- saleManage.jsp -->
 <html>
 <head>  
@@ -8,21 +8,21 @@
 <%@include file="../../adminHeader.jsp"%>
 <body>
 	<div class="saleTotal">
-		<font align="center">�� �� �� �� ��</font><br>
+		<font align="center">총 매 출 관 리</font><br>
 		<table border="1" width="1000" height="500">
 			<tr bgcolor="green" height="50">
-				<th>��ȣ</th>
-				<th>���̵�</th>
-				<th>ī�װ���</th>
-				<th>��ǰ�̸�</th>
-				<th>����</th>
-				<th>����</th>
-				<th>�Ѿ�</th>
-				<th>���ų�¥</th>
+				<th>번호</th>
+				<th>아이디</th>
+				<th>카테고리</th>
+				<th>상품이름</th>
+				<th>수량</th>
+				<th>가격</th>
+				<th>총액</th>
+				<th>구매날짜</th>
 			</tr>
 		<c:if test="${empty listSale}">
 			<tr>
-				<td colspan="8">�Ǹŵ� ��ǰ�� �����ϴ�.</td>
+				<td colspan="8">판매된 상품이 없습니다.</td>
 			</tr>
 		</c:if>			
 		<c:forEach var="dto" items="${listSale}">

@@ -1,65 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>
 <div class="clientUpgrade">
-	<div><b><h3 align="center">ÀÛ°¡ ½ÅÃ» °ü¸®</h3></b></div><br>
+	<div><b><h3 align="center">ìž‘ê°€ ì‹ ì²­ ê´€ë¦¬</h3></b></div><br>
 	<table border="1" width="1000" height="500">
 		<tr height="50">
-			<th>È¸¿ø ¹øÈ£</th>
-			<th>È¸¿ø ÀÌ¸§</th>
-			<th>ÀüÈ­¹øÈ£</th>
-			<th>ÀÛÇ°</th>
-			<th>¼ö¶ô|°ÅÀý</th>
+			<th>íšŒì› ë²ˆí˜¸</th>
+			<th>íšŒì› ì´ë¦„</th>
+			<th>ì „í™”ë²ˆí˜¸</th>
+			<th>ìž‘í’ˆ</th>
+			<th>ìˆ˜ë½|ê±°ì ˆ</th>
 		</tr>
 		<tr>
 			<td>001</td>
-			<td>ÀÌÁ¦µ¿</td>
+			<td>ì´ì œë™</td>
 			<td>000-0000-0000</td>
-			<td>aaa</td>			<!-- È¸¿ø¹øÈ£,ÀÌ¸§,ÀüÈ­¹øÈ£,ÀÛÇ° ´Ù ¸µÅ© °É¾î¼­ ÇØ´ç È¸¿øÆäÀÌÁö·Î ÀÌµ¿ÇÏ°Ô ÇÏ±â -->
+			<td>aaa</td>			<!-- íšŒì›ë²ˆí˜¸,ì´ë¦„,ì „í™”ë²ˆí˜¸,ìž‘í’ˆ ë‹¤ ë§í¬ ê±¸ì–´ì„œ í•´ë‹¹ íšŒì›íŽ˜ì´ì§€ë¡œ ì´ë™í•˜ê²Œ í•˜ê¸° -->
 			<td>
-				<a href="">¼ö¶ô</a>| <!-- È¸¿ø°ü¸® ÆäÀÌÁö·Î ³Ñ¾î°¡°Ô ÇÏ±â -->
-				<a href="">°ÅÀý</a>
+				<a href="">ìˆ˜ë½</a>| <!-- íšŒì›ê´€ë¦¬ íŽ˜ì´ì§€ë¡œ ë„˜ì–´ê°€ê²Œ í•˜ê¸° -->
+				<a href="">ê±°ì ˆ</a>
 			</td>
 		</tr>
 		<tr>
 			<td>002</td>
-			<td>ÀÌ¼öÈ¯</td>
+			<td>ì´ìˆ˜í™˜</td>
 			<td>000-1111-1111</td>
 			<td>bbb</td>
 			<td>
-				<a href="">¼ö¶ô</a>|
-				<a href="">°ÅÀý</a>
+				<a href="">ìˆ˜ë½</a>|
+				<a href="">ê±°ì ˆ</a>
 			</td>
 		</tr>
 		<tr>
 			<td>003</td>
-			<td>±è¹Î¼ö</td>
+			<td>ê¹€ë¯¼ìˆ˜</td>
 			<td>000-2222-2222</td>
 			<td>ccc</td>
 			<td>
-				<a href="">¼ö¶ô</a>|
-				<a href="">°ÅÀý</a>
+				<a href="">ìˆ˜ë½</a>|
+				<a href="">ê±°ì ˆ</a>
 			</td>
 		</tr>
 		<tr>
 			<td>004</td>
-			<td>¿©¼öÈ¯</td>
+			<td>ì—¬ìˆ˜í™˜</td>
 			<td>000-3333-3333</td>
 			<td>ddd</td>
 			<td>
-				<a href="">¼ö¶ô</a>| 
-				<a href="">°ÅÀý</a>
+				<a href="">ìˆ˜ë½</a>| 
+				<a href="">ê±°ì ˆ</a>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="5">ÃÑ ½ÅÃ» ÀÎ¿ø : 4</td>
+			<td colspan="5">ì´ ì‹ ì²­ ì¸ì› : 4</td>
 	</table>
 </div>
 </body>

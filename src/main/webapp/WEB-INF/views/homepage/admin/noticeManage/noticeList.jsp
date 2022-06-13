@@ -1,71 +1,71 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>°ü¸®ÀÚ-°øÁö»çÇ×</title>
+<title>ê´€ë¦¬ìž-ê³µì§€ì‚¬í•­</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>
 
 <div class="noticeList">
 
-	<h3>°øÁö»çÇ×</h3>
+	<h3>ê³µì§€ì‚¬í•­</h3>
 
 	<table border="1" width="1000" height="500" align="center">
-			<!-- °øÁö/¾È³» select-option -->
+			<!-- ê³µì§€/ì•ˆë‚´ select-option -->
 		<tr>
 			<td>
-				<a href="">[°øÁö]¾öÃ» ±ä Á¦¸ñ---------------------------------</a>
+				<a href="">[ê³µì§€]ì—„ì²­ ê¸´ ì œëª©---------------------------------</a>
 						<!-- AdminSlideMapper.xml : list -->
 				<p>
 				sysdate
 			</td>
 			<td>
-				<input type="button" value="¼öÁ¤" onclick="window.location='noticeUpdate'">
+				<input type="button" value="ìˆ˜ì •" onclick="window.location='noticeUpdate'">
 						<!-- AdminNoticeMapper.xml : update -->
 			</td>
 			<td>
-				<input type="button" value="»èÁ¦">
+				<input type="button" value="ì‚­ì œ">
 						<!-- AdminSlideMapper.xml : delete -->
 			</td>
 		</tr>
 		
 		<tr>
 			<td>
-			<a href="">[¾È³»]Á¦¸ñÁ¦¸ñ2</a>
+			<a href="">[ì•ˆë‚´]ì œëª©ì œëª©2</a>
 			<p>
 			2022.03.01
 			</td>
 			<td>
-			<input type="button" value="¼öÁ¤" onclick="window.location='noticeUpdate'">
+			<input type="button" value="ìˆ˜ì •" onclick="window.location='noticeUpdate'">
 			</td>
 			<td>
-			<input type="button" value="»èÁ¦">
+			<input type="button" value="ì‚­ì œ">
 			</td>
 		</tr>
 		
 		<tr>
 			<td>
-			[°øÁö/¾È³»]°øÁö»çÇ× List
+			[ê³µì§€/ì•ˆë‚´]ê³µì§€ì‚¬í•­ List
 			<p>
 			2022.02.01
 			</td>
 			<td>
-			<input type="button" value="¼öÁ¤" onclick="window.location='noticeUpdate'">
+			<input type="button" value="ìˆ˜ì •" onclick="window.location='noticeUpdate'">
 			</td>
 			<td>
-			<input type="button" value="»èÁ¦">
+			<input type="button" value="ì‚­ì œ">
 			</td>
 		</tr>
 		
 	</table>
 	
 	
-	°Ë»ö: <input type="text" name="search"> <input type="button" value="°Ë»ö">
+	ê²€ìƒ‰: <input type="text" name="search"> <input type="button" value="ê²€ìƒ‰">
 				<!-- AdminSlideMapper.xml : search -->
 	
 
-	<input type="button" value="±Û¾²±â" align="right" onclick="window.location='noticeInsert'">
+	<input type="button" value="ê¸€ì“°ê¸°" align="right" onclick="window.location='noticeInsert'">
 				<!-- AdminSlideMapper.xml : insert -->
 	
 </div>

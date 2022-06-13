@@ -1,92 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
 <div class="clientList">
 	<p>
-	<b><h3 align="center">È¸¿ø °ü¸®</h3></b>
+	<b><h3 align="center">íšŒì› ê´€ë¦¬</h3></b>
 	<table border="1" width="1000" height="500">
 		<tr height="50">
-			<th>È¸¿ø ¹øÈ£</th>
-			<th>È¸¿ø ÀÌ¸§</th>
-			<th>ÀüÈ­¹øÈ£</th>
-			<th>±ÇÇÑ</th>
-			<th>°èÁ¤»èÁ¦</th>
+			<th>íšŒì› ë²ˆí˜¸</th>
+			<th>íšŒì› ì´ë¦„</th>
+			<th>ì „í™”ë²ˆí˜¸</th>
+			<th>ê¶Œí•œ</th>
+			<th>ê³„ì •ì‚­ì œ</th>
 		</tr>
 		<tr>
 			<td>001</td>
-			<td>ÀÌÁ¦µ¿</td>
+			<td>ì´ì œë™</td>
 			<td>000-0000-0000</td>
-			<td>ÀÏ¹ÝÈ¸¿ø</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td>ì¼ë°˜íšŒì›</td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 		<tr>
 			<td>002</td>
-			<td>ÀÌ¼öÈ¯</td>
+			<td>ì´ìˆ˜í™˜</td>
 			<td>000-1111-1111</td>
-			<td>ÀÏ¹ÝÈ¸¿ø</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td>ì¼ë°˜íšŒì›</td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 		<tr>
 			<td>003</td>
-			<td>±è¹Î¼ö</td>
+			<td>ê¹€ë¯¼ìˆ˜</td>
 			<td>000-2222-2222</td>
-			<td>ÀÏ¹ÝÈ¸¿ø</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td>ì¼ë°˜íšŒì›</td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 		<tr>
 			<td>004</td>
-			<td>¿©¼öÈ¯</td>
+			<td>ì—¬ìˆ˜í™˜</td>
 			<td>000-3333-3333</td>
-			<td>ÀÏ¹ÝÈ¸¿ø</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td>ì¼ë°˜íšŒì›</td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 	</table>
 	
 	<p>
 	
-	<b><h3 align="center">ÀÛ°¡ °ü¸®</h3></b>
+	<b><h3 align="center">ìž‘ê°€ ê´€ë¦¬</h3></b>
 	<table border="1" width="1000" height="500">
 		<tr height="50"> 
-			<th>ÀÛ°¡ ¹øÈ£</th>
-			<th>ÀÛ°¡ ÀÌ¸§</th>
-			<th>ÀüÈ­¹øÈ£</th>
-			<th>ÀÛÇ°</th>
-			<th>°èÁ¤»èÁ¦</th>
+			<th>ìž‘ê°€ ë²ˆí˜¸</th>
+			<th>ìž‘ê°€ ì´ë¦„</th>
+			<th>ì „í™”ë²ˆí˜¸</th>
+			<th>ìž‘í’ˆ</th>
+			<th>ê³„ì •ì‚­ì œ</th>
 		</tr>
 		<tr>
 			<td>001</td>
-			<td><a href="writerNovelList">ÀÌÁ¦µ¿</a></td>
+			<td><a href="writerNovelList">ì´ì œë™</a></td>
 			<td>000-0000-0000</td>
 			<td>aaa</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 		<tr>
 			<td>002</td>
-			<td><a href="writerNovelList">ÀÌ¼öÈ¯</a></td>
+			<td><a href="writerNovelList">ì´ìˆ˜í™˜</a></td>
 			<td>000-1111-1111</td>
 			<td>bbb</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 		<tr>
 			<td>003</td>
-			<td><a href="writerNovelList">±è¹Î¼ö</a></td>
+			<td><a href="writerNovelList">ê¹€ë¯¼ìˆ˜</a></td>
 			<td>000-2222-2222</td>
 			<td>ccc</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 		<tr>
 			<td>004</td>
-			<td><a href="writerNovelList">¿©¼öÈ¯</a></td>
+			<td><a href="writerNovelList">ì—¬ìˆ˜í™˜</a></td>
 			<td>000-3333-3333</td>
 			<td>ddd</td>
-			<td><input type="button" value="°èÁ¤»èÁ¦"></td>
+			<td><input type="button" value="ê³„ì •ì‚­ì œ"></td>
 		</tr>
 	</table>
 </div>

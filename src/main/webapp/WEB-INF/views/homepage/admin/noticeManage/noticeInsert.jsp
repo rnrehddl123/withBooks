@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
-    <!-- notice.jspÀÇ ±Û¾²±â¿Í ¿¬°áµÇ´Â jspÆÄÀÏ -->
+    <!-- notice.jspì˜ ê¸€ì“°ê¸°ì™€ ì—°ê²°ë˜ëŠ” jspíŒŒì¼ -->
 <html>
 <head>
-<title>°øÁö»çÇ× ±Û¾²±â</title>
+<title>ê³µì§€ì‚¬í•­ ê¸€ì“°ê¸°</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>
@@ -12,32 +12,32 @@
 	<form name="f" action="#" method="post">
 		<table border="1" width="500" width="1000" height="500">
 				<tr>
-					<td colspan="2" align="center">°øÁö»çÇ× ÀÛ¼º</td>
+					<td colspan="2" align="center">ê³µì§€ì‚¬í•­ ìž‘ì„±</td>
 				</tr>
 				<tr>
-					<th>Á¦ ¸ñ</th>
+					<th>ì œ ëª©</th>
 					<td>
 						<select name="notice">
-							<option value="gongji">°øÁö
-							<option value="annae">¾È³»
+							<option value="gongji">ê³µì§€
+							<option value="annae">ì•ˆë‚´
 						</select>
 						
 						<input type="text" name="subject" size="40">
 					</td>
 				</tr>
 				<tr>
-					<th>³» ¿ë</th>
+					<th>ë‚´ ìš©</th>
 					<td><textarea name="content" rows="11" cols="50"></textarea></td>
 				</tr>
 				<tr>
-					<th>°ü¸®ÀÚ ¾ÏÈ£</th>
+					<th>ê´€ë¦¬ìž ì•”í˜¸</th>
 					<td><input type="password" name="passwd"></td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-						<input type="submit" value="±Û¾²±â">
-						<input type="reset" value="´Ù½ÃÀÛ¼º">
-						<input type="button" value="¸ñ·Ïº¸±â">
+						<input type="submit" value="ê¸€ì“°ê¸°">
+						<input type="reset" value="ë‹¤ì‹œìž‘ì„±">
+						<input type="button" value="ëª©ë¡ë³´ê¸°">
 					</td>
 				</tr>
 		</table>

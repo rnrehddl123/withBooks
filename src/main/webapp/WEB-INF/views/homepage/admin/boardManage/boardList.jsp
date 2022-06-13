@@ -1,25 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../../adminHeader.jsp"%>
 		<div class="adminboard">
-			<b><h1>°Ô½ÃÆÇ °ü¸®</h1></b><p>
+			<b><h1>ê²Œì‹œíŒ ê´€ë¦¬</h1></b><p>
 			<table border="1" width="1000" height="500">
 				<tr bgcolor="green" height="50">
-					<th>¹øÈ£</th>
-					<th width="30%">Á¦¸ñ</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th>ÀÛ¼ºÀÏ</th>
-					<th>Á¶È¸</th>
-					<th>»èÁ¦</th>
+					<th>ë²ˆí˜¸</th>
+					<th width="30%">ì œëª©</th>
+					<th>ìž‘ì„±ìž</th>
+					<th>ìž‘ì„±ì¼</th>
+					<th>ì¡°íšŒ</th>
+					<th>ì‚­ì œ</th>
 				</tr>
 				<tr>
 					<td>1</td>
 					<td width="30%">aa</td>
-					<td>È«±æµ¿</td>
+					<td>í™ê¸¸ë™</td>
 					<td>2022.06.08</td>
 					<td>11</td>
-					<td><input type="button" value="»èÁ¦"></td>
+					<td><input type="button" value="ì‚­ì œ"></td>
 				</tr>
 			</table>
 		</div>	

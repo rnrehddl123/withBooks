@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mvc.withbooks.dto.AdminSuggestDTO;
 import com.mvc.withbooks.dto.CategoryDTO;
+import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.CategoryMapper;
 
 @Controller
@@ -20,6 +22,8 @@ public class AdminPageController {
 	
 	@Autowired
 	private CategoryMapper categoryMapper;
+	@Autowired
+	private AdminSuggestMapper adminSuggestMapper;
 
 	@RequestMapping("/homepage")
 	public String homepage() {
@@ -36,9 +40,25 @@ public class AdminPageController {
 		return "homepage/admin/banerManage/slide";
 	}
 	
-	@RequestMapping("/suggest")
+	@RequestMapping(value="/suggest", method=RequestMethod.GET)
 	public String suggest() {
 		return "homepage/admin/banerManage/suggest";
+	}
+	
+	@RequestMapping(value="/suggest", method=RequestMethod.POST)
+	public String suggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto) {
+		int res = adminSuggestMapper.insertAdminSuggest(dto);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "추천작 입력 성공";
+			url = "homepage";
+		}else {
+			msg = "추천작 입력 실패";
+			url = "homepage";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
 	}
 	
 	@RequestMapping(value="/cateInsert", method=RequestMethod.GET)

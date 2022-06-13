@@ -2,7 +2,7 @@ package com.mvc.withbooks.dto;
 
 public class NovelDTO {
 	private int Nnum;
-	private String Novel_subhect;
+	private String Novel_subject;
 	private String Novel_memberName;
 	private String Novel_image;
 	private String Novel_cate;
@@ -16,11 +16,11 @@ public class NovelDTO {
 	public void setNnum(int nnum) {
 		Nnum = nnum;
 	}
-	public String getNovel_subhect() {
-		return Novel_subhect;
+	public String getNovel_subject() {
+		return Novel_subject;
 	}
-	public void setNovel_subhect(String novel_subhect) {
-		Novel_subhect = novel_subhect;
+	public void setNovel_subject(String novel_subject) {
+		Novel_subject = novel_subject;
 	}
 	public String getNovel_memberName() {
 		return Novel_memberName;

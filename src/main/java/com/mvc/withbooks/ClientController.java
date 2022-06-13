@@ -6,67 +6,73 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ClientController {
 	
-	@RequestMapping("/clientMypage")//¸¶ÀÌÆäÀÌÁö
+	@RequestMapping("/clientMypage")//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String ClientmyPage() {
 		return "client/clientMypage";
 	}
 	
-	@RequestMapping("/clientUpdate")//°³ÀÎÁ¤º¸¼öÁ¤
+	@RequestMapping("/clientUpdate")//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String ClientUpdate() {
 		return "client/clientMypage/clientUpdate";
 	}
 	
-	@RequestMapping("/clientLibrary")//³» ¼­Àç
+	@RequestMapping("/clientLibrary")//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String ClientLibrary() {
 		return "client/clientMypage/clientLibrary";
 	}
 	
-	@RequestMapping("/clientCart")//Àå¹Ù±¸´Ï
+	@RequestMapping("/clientCart")//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½
 	public String ClientCart() {
 		return "client/clientMypage/clientCart";
 	}
 	
-	@RequestMapping("/clientOrder")//ÁÖ¹®ÇÏ±â
+	@RequestMapping("/clientOrder")//ï¿½Ö¹ï¿½ï¿½Ï±ï¿½
 	public String ClientOrder() {
 		return "client/clientMypage/clientCart/clientOrder";
 	}
 	
-	@RequestMapping("/clientOrderList")//±¸¸Å³»¿ª
+	@RequestMapping("/clientOrderList")//ï¿½ï¿½ï¿½Å³ï¿½ï¿½ï¿½
 	public String ClientOrderList() {
 		return "client/clientMypage/clientOrderList";
 	}
 	
-	@RequestMapping("/clientNovelSubject")//¼Ò¼³º¸±â
+	@RequestMapping("/clientNovelSubject")//ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String ClientNovelSubject() {
 		return "client/clientMypage/clientOrderList/clientNovelSubject";
 	}
 	
-	@RequestMapping("/clientNovelEpi")//¿¡ÇÇ¼Òµåº¸±â
+	@RequestMapping("/clientNovelEpi")//ï¿½ï¿½ï¿½Ç¼Òµåº¸ï¿½ï¿½
 	public String ClientNovelEpi() {
 		return "client/clientMypage/clientOrderList/clientNovelEpi";
 	}
 	
-	@RequestMapping("/clientRequest")//ÀÛ°¡ ½ÅÃ»
+	@RequestMapping("/clientViewer")//ï¿½ï¿½ï¿½Ç¼Òµåº¸ï¿½ï¿½
+	public String ClientViewer() {
+		return "client/clientViewer";
+	}
+	
+	
+	@RequestMapping("/clientRequest")//ï¿½Û°ï¿½ ï¿½ï¿½Ã»
 	public String ClientNovelRequest() {
 		return "client/clientMypage/clientRequest";
 	}
 	
-	@RequestMapping("/clientPay")//ÃæÀüÇÏ±â
+	@RequestMapping("/clientPay")//ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	public String ClientPay() {
 		return "client/clientMypage/clientPay";
 	}
 	
-	@RequestMapping("/clientNovelInfo")//¼Ò¼³ ¿ä¾à
+	@RequestMapping("/clientNovelInfo")//ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½
 	public String ClientNovelInfo() {
 		return "client/clientNovelInfo";
 	}
 	
-	@RequestMapping("/clientNotice")//°øÁö»çÇ×
+	@RequestMapping("/clientNotice")//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String ClientNotice() {
 		return "client/clientNotice";
 	}
 	
-	@RequestMapping("/clientBoard")//ÀÚÀ¯°Ô½ÃÆÇ
+	@RequestMapping("/clientBoard")//ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 	public String ClientBoard() {
 		return "client/clientBoard";
 	}

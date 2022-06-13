@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- writerNovelList.JSP -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
@@ -20,28 +21,25 @@
 				<th>작성일</th>
 				<th>조회수</th>
 				<th>추천수</th>
-				<th>수정(EpisodeUpdate)로/삭제</th>
+				<th>수정 | 삭제</th>
 			</tr>
-			<c:if test="">
+			<c:if test="${empty listEpisode}">
 			<tr>
 				<td colspan="6">등록된 에피소드가 없습니다.</td>
 			</tr>
-		</c:if>
-		<c:forEach var="#" items="">
+			</c:if>
+		<c:forEach var="dto" items="${listEpisode}">
 			<tr>
-				<td align="right"></td>
+				<td align="right">${dto.Epnum}</td>
 				<td>
-					<a href="#?#=">
-						
+					<a href="writerNovelEpisode?Epnum=${dto.Epnum}">
+						${dto.Epi_subject}
 					</a>
 				</td>
-				<td align="center"></td>
-				<td align="center"></td>
-				<td align="center"></td>
-				<td align="center"></td>
-				<td align="center"></td>
-				<td align="center"></td>
-				<td align="center"></td>
+				<td align="center">${dto.Epi_date}</td>
+				<td align="center">${dto.Epi_readcount}</td>
+				<td align="center">${dto.Epi_recommand}</td>
+				<td align="center">수정 | 삭제</td>
 			</tr>		
 			</c:forEach>
 		</table>

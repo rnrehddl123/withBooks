@@ -17,6 +17,7 @@
 			</div>
 			<div class="mb-3 box">
 				<div class="flex"><label for="exampleFormControlTextarea1" class="form-label">내용</label></div>
+			<div class="box">
 				<div id="editor">
 				  <p><br></p>
 				</div>

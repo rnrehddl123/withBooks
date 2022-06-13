@@ -23,5 +23,8 @@
 	<select id="getEpisode" parameterType="int" resultType="EpisodeDTO">
 		select * from episode where Epnum = #{Epnum}
 	</select>
-
+	
+	<select id="plusReadcount" parameterType="int">
+		update episode set readcount=readcount+1 where Epnum=#{Epnum}
+	</select>
 </mapper>

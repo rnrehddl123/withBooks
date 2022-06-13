@@ -28,8 +28,4 @@
 		select * from novel where ${search} = #{searchString}
 	</select>
 	
-	<select id="searchNovel" parameterType="java.util.Map" resultType="NovelDTO">
-		${sql}
-	</select>
-
 </mapper>

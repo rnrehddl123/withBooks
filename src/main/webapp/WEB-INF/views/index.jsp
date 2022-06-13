@@ -31,6 +31,7 @@
 			<li><h3><a href="clientMypage">일반회원 마이페이지</a></h3>
 			<li><h3><a href="clientNotice">일반회원 공지사항</a></h3>
 			<li><h3><a href="clientNovelInfo">일반회원 소설요약</a></h3>
+			<li><h3><a href="clientViewer">일반회원 뷰어</a></h3>
 			<h1>-------------------------------------------------------------------------</h1>	
 		</div>
 		

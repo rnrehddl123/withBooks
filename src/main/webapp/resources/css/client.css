@@ -20,3 +20,49 @@
 	width:90%;
 	margin:auto;
 }
+
+
+.view .top{
+	height: 50px;
+	background-color: #f2f4f5;
+	position: fixed;
+	width: 100%;
+	transform: translateY(0%);
+	transition:all 0.5s ease;
+}
+
+.view .content{
+	width: 720px;
+	margin-top: auto;
+	margin-bottom: auto;
+	line-height: 50px
+}
+
+.view .icon{
+	margin-left: auto;
+}
+.view .top svg{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.view .icon svg{
+	margin-right: 10px;
+}
+
+.view .bot{
+	position: fixed;
+    bottom: 0px;
+    width: 100%;
+    transform: translateY(0%);
+    background-color: #f2f4f5;
+    transition:all 0.5s ease;
+}
+
+.hide{
+	transform: translateY(-100%)!important;
+}
+
+.hide.bot{
+	transform: translateY(100%)!important;
+}

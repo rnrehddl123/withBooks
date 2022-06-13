@@ -4,6 +4,6 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mvc.withBooks.model.purchaseHistoryMapper"> 
 	<select id="purchaseHistoryList" resultType="PurchaseHistoryDTO" parameterType="int">
-		select Novel.Novel_image, Novel.Novel_subject, Novel.Novel_cate, PurchaseHistory.Purchase_date from Novel, PurchaseHistory where Novel.Mnum = PurchaseHistory.Mnum and Novel.Mnum = ${memberDTO.getMnum}
+		select Novel.Novel_image, Novel.Novel_subject, Novel.Novel_cate, PurchaseHistory.Purchase_date from Novel, PurchaseHistory where Novel.Mnum = PurchaseHistory.Mnum and Novel.Mnum = #{memberDTO.getMnum}
 	</select>
 </mapper>

@@ -10,8 +10,8 @@
  	insert into adminSlide(Snum,Slidet_image) values(seq_adminSlide.nextval, #{Slidet_image})
  </insert>
  
- <select id="getAdminSlide">
- 
+ <select id="getAdminSlide" parameterType="int" resultType="AdminSlideDTO">
+ 	select * from adminSlide where Snum = #{Snum}
  </select>
  
  </mapper>

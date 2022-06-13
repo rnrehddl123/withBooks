@@ -4,7 +4,7 @@
     <!-- notice.jsp의 글쓰기와 연결되는 jsp파일 -->
 <html>
 <head>
-<title>공지사항 글쓰기</title>
+<title>[WithBooks] 공지사항 글쓰기</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>

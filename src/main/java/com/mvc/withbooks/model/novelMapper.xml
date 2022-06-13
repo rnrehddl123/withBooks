@@ -5,36 +5,31 @@
   
 <mapper namespace="com.mvc.withbooks.model.novelMapper"> 
 	<select id="ListNovel" resultType="NovelDTO">
-		select * from Novel
+		select * from novel
 	</select>
 	
 	<insert id="insertNovel" parameterType="NovelDTO">
-		insert into novel(Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary, ) values(seq_novel.nextval, #{Novel_subject}, #{Novel_memberName}, #{Novel_image}, #{Novel_cate}, #{Novel_summary}, #{MemberDTO})
+		insert into novel(Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary, member.Mnum) values(seq_novel.nextval, #{Novel_subject}, #{Novel_memberName}, #{Novel_image}, #{Novel_cate}, #{Novel_summary}, #{MemberDTO.getMnum})
 	</insert>
 
-	<delete id="deleteMember" parameterType="int">
-		delete from member where Mnum = #{mnum}
+	<delete id="deleteNovel" parameterType="int">
+		delete from novel where Nnum = #{nnum}
 	</delete>
 	
-	<update id="updateMember" parameterType="memberDTO">
-		update member set Member_passwd=#{Member_passwd}, Member_Tel=#{Member_Tel}, Member_address=#{Member_address},
-										Member_email=#{Member_email}, Member_preferred1=#{Member_preferred1}, Member_preferred2=#{Member_preferred2},
-										 Member_preferred3=#{Member_preferred3}, Member_authority=#{Member_authority} where Mnum = #{mnum} 
+	<update id="updateNovel" parameterType="NovelDTO">
+		update novel set Novel_subject=#{Novel_subject}, Novel_memberName=#{Novel_memberName}, Novel_image=#{Novel_image}, Novel_cate=#{Novel_cate}, Novel_summary=#{Novel_summary} where Nnum = #{nnum} 
 	</update>
 	
-	<select id="getMember" parameterType="int" resultType="memberDTO">
-		select * from member where Mnum = #{mnum}
+	<select id="getNovel" parameterType="int" resultType="NovelDTO">
+		select * from novel where Nnum = #{nnum}
 	</select>
 	
-	<select id="checkMember" parameterType="java.util.Map" resultType="memberDTO">
-		select * from member where Member_id=#{Member_id} and Member_Tel=#{Member_Tel}
+	<select id="findNovel" parameterType="java.util.Map" resultType="NovelDTO">
+		select * from novel where ${search} = #{searchString}
 	</select>
 	
-	<select id="searchMember" parameterType="java.util.Map" resultType="memberDTO">
+	<select id="searchNovel" parameterType="java.util.Map" resultType="NovelDTO">
 		${sql}
 	</select>
-	
-	<select id="getMemberId" parameterType="String" resultType="memberDTO">
-		select * from member where Member_id = #{Member_id}
-	</select>
+
 </mapper>

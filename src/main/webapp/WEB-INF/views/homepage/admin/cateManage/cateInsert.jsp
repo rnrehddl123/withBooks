@@ -1,27 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
 <div class="cateInsert">
-		<b><h1>ī�װ��� �߰�</h1></b><p>
+		<b><h1>카테고리 추가</h1></b><p>
+		<form name="f" action="cateInsert" method="post">
 		<table border="1" width="1000" height="500">
 			<tr>
-				<th width="30%">ī�װ��� �̸�</th>
-				<td width="70%"><input type="text" name="cname" class="box"></td>
+				<th width="30%">카테고리 이름</th>
+				<td width="70%"><input type="text" name="cate_name" class="box"></td>
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-					<input type="submit" value="���">
-					<input type="reset" value="���">
+					<input type="submit" value="등록">
+					<input type="reset" value="취소">
 				</td>
 			</tr>
 		</table>
+		</form>
 </div>
 </body>
 </html>

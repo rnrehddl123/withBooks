@@ -1,40 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
 <div class="cateList">
-	<b><h3>ī�װ��� ���</h3></b>
+	<b><h3>카테고리 목록</h3></b>
 	<table border="1" width="1000" height="500">
-		<tr>
-			<th>ī�װ��� ��ȣ</th>
-			<th>ī�װ��� �̸�</th>
+		<tr width="10%">
+			<th width="30%">번호</th>
+			<th width="70%">카테고리명</th>
 		</tr>
+	<c:if test="${empty listCategory}">
 		<tr>
-			<td>001</td>
-			<td>ȣ��</td>
+			<td colspan="2">등록된 카테고리가 없습니다.</td>	
 		</tr>
+	</c:if>
+	<c:forEach items="${listCategory}" var="cdto">
 		<tr>
-			<td>002</td>
-			<td>�θǽ�</td>
-		<tr>
-			<td>003</td>
-			<td>��Ÿ��</td>
+			<td>${cdto.cnum}</td>
+			<td>${cdto.cate_name}</td>
 		</tr>
-		<tr>
-			<td>004</td>
-			<td>�߸�</td>
-		</tr>
+	</c:forEach>
 	</table>
 	
 	<p>
 	
-		<input type="button" value="ī�װ��� �߰�" onclick="window.location='cateInsert'">
+		<input type="button" value="카테고리 추가" onclick="window.location='cateInsert'">
 </div>
 </body>
 </html>

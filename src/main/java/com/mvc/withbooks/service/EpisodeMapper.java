@@ -14,7 +14,6 @@ public class EpisodeMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	
 	public int insertEpisode(EpisodeDTO dto) {
 		int res = sqlSession.insert("insertEpisode", dto);
 		return res;

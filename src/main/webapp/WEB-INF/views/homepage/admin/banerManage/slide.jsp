@@ -6,18 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function readURL(input) {
+  		if (input.files && input.files[0]) {
+    		var reader = new FileReader();
+    		reader.onload = function(e) {
+      		document.getElementById('preview').src = e.target.result;
+   	 	};
+    	reader.readAsDataURL(input.files[0]);
+  		} else {
+    		document.getElementById('preview').src = "";
+ 		}
+	}
+</script>
 </head>
 <body>
 <div align="center">
+	<form name="f" action="slide" 
+							method="post" enctype="multipart/form-data">
 	<table border="1" width="1000" height="500">
 		<tr>
-			<td align="center">슬라이드 이미지</td>
+			<td>
+			<input type="file" name="slidet_image" onchange="readURL(this);">
+			<img id="preview" />
+			</td>
+			<td><input type="submit" value="등록하기"></td>
 		</tr>
 	</table>
-	<input type="button" value="불러오기">
-	 					<!-- AdminSlideMapper.xml : get -->
-	<input type="button" value="등록하기">
-						<!-- AdminSlideMapper.xml : insert -->
+	</form>
 </div>
 </body>
 </html>

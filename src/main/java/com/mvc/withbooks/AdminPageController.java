@@ -1,19 +1,27 @@
 package com.mvc.withbooks;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mvc.withbooks.dto.AdminSlideDTO;
 import com.mvc.withbooks.dto.AdminSuggestDTO;
 import com.mvc.withbooks.dto.CategoryDTO;
+import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.CategoryMapper;
 
@@ -24,28 +32,60 @@ public class AdminPageController {
 	private CategoryMapper categoryMapper;
 	@Autowired
 	private AdminSuggestMapper adminSuggestMapper;
+	@Autowired
+	private AdminSlideMapper adminSlideMapper;
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 
-	@RequestMapping("/homepage")
+	@RequestMapping("/homepage")//어드민 페이지 이동
 	public String homepage() {
 		return "homepage/homepage";
 	}
 	
-	@RequestMapping("/message")
+	@RequestMapping("/message")//메세지 페이지 이동
 	public String message() {
 		return "homepage/message";
 	}
 	
-	@RequestMapping("/slide")
+	@RequestMapping(value="/slide", method=RequestMethod.GET)//슬라이드 페이지 이동
 	public String slide() {
 		return "homepage/admin/banerManage/slide";
 	}
 	
-	@RequestMapping(value="/suggest", method=RequestMethod.GET)
+	@RequestMapping(value="/slide", method=RequestMethod.POST)//슬라이드 등록
+	public String slide(HttpServletRequest req, @ModelAttribute AdminSlideDTO dto, 
+			BindingResult result) {
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+		MultipartFile mf = mr.getFile("slidet_image");
+		String filename = mf.getOriginalFilename();
+		dto.setSlidet_image(filename);
+		if (filename != null && !(filename.trim().equals(""))) {
+			File file = new File(uploadPath, filename);
+			try {
+				mf.transferTo(file);
+			}catch(IOException e) {}
+		}
+		int res = adminSlideMapper.insertAdminSlide(dto);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "슬라이드 등록 성공";
+			url = "homepage";
+		}else {
+			msg = "슬라이드 등록 실패";
+			url = "slide";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
+	
+	@RequestMapping(value="/suggest", method=RequestMethod.GET)//추천작 페이지 이동
 	public String suggest() {
 		return "homepage/admin/banerManage/suggest";
 	}
 	
-	@RequestMapping(value="/suggest", method=RequestMethod.POST)
+	@RequestMapping(value="/suggest", method=RequestMethod.POST)//추천작 등록
 	public String suggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto) {
 		int res = adminSuggestMapper.insertAdminSuggest(dto);
 		String msg = null, url = null;
@@ -61,12 +101,12 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
-	@RequestMapping(value="/cateInsert", method=RequestMethod.GET)
+	@RequestMapping(value="/cateInsert", method=RequestMethod.GET)//카테고리 페이지 이동
 	public String cateInsert() {
 		return "homepage/admin/cateManage/cateInsert";
 	}
 	
-	@RequestMapping(value="/cateInsert", method=RequestMethod.POST)
+	@RequestMapping(value="/cateInsert", method=RequestMethod.POST)//카테고리 등록
 	public String cateInsert(HttpServletRequest req, @ModelAttribute CategoryDTO dto) {
 		int res = categoryMapper.insertCategory(dto);
 		String msg = null, url = null;
@@ -82,7 +122,7 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
-	@RequestMapping("/cateList")
+	@RequestMapping("/cateList")//카테고리 리스트 페이지 이동
 	public String cateList(HttpServletRequest req) {
 		List<CategoryDTO> list = categoryMapper.listCategory();
 		req.setAttribute("listCategory", list);

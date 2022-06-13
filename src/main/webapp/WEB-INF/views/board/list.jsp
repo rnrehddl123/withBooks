@@ -31,15 +31,15 @@
   <tbody>
     <c:forEach var="Boarddto" items="${listBoard}">
 			<tr>
-				<td align="right">${Boarddto.Bnum}</td>
+				<td align="right">${Boarddto.bnum}</td>
 				<td>
-					<a href="contentBoard?Bnum=${Boarddto.Bnum}">
-						${Boarddto.Board_subject}
+					<a href="contentBoard?Bnum=${Boarddto.bnum}">
+						${Boarddto.board_subject}
 					</a>
 				</td>
-				<td align="center">${Boarddto.Board_writer}</td>
-				<td align="center">${Boarddto.Board_date}</td>
-				<td align="center">${Boarddto.Board_readcount}</td>
+				<td align="center">${Boarddto.board_writer}</td>
+				<td align="center">${Boarddto.board_date}</td>
+				<td align="center">${Boarddto.board_readcount}</td>
 			</tr>		
 			</c:forEach>	
 			<div align="right">

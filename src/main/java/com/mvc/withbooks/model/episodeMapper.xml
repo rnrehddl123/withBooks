@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mvc.withbooks.model.episodeMapper"> 
+	<select id="listEpisode" resultType="EpisodeDTO">
+		select * from episode
+	</select>
+	
+	<insert id="insertEpisode" parameterType="EpisodeDTO">
+		insert into episode(Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount, Novel.Nnum) values(seq_episode.nextval, #{Epi_subject}, #{Epi_content}, sysdate, #{Epi_recommand}, 0, #{NovelDTO.getNnum})
+	</insert>
+
+	<delete id="deleteEpisode" parameterType="int">
+		delete from episode where Epnum = #{Epnum}
+	</delete>
+	
+	<update id="updateEpisode" parameterType="EpisodeDTO">
+		update episode set Epi_subject=#{Epi_subject}, Epi_content=#{Epi_content}, Epi_recommand=#{Epi_recommand} where Epnum = #{Epnum} 
+	</update>
+	
+	<select id="getEpisode" parameterType="int" resultType="EpisodeDTO">
+		select * from episode where Epnum = #{Epnum}
+	</select>
+
+</mapper>

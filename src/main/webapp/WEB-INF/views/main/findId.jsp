@@ -21,7 +21,7 @@
 		<div class="form">
 			<div class="text">아이디 찾기</div>
 			<form>
-			  <div>
+			  <div class="inputWrapper">
 			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이름">
 			  </div>
 			  <div class="flex inputWrapper">

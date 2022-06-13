@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>[WithBooks] 슬라이드 관리 페이지</title>
+
 <script type="text/javascript">
 	function readURL(input) {
   		if (input.files && input.files[0]) {
@@ -19,6 +19,7 @@
  		}
 	}
 </script>
+
 </head>
 <body>
 <div align="center">

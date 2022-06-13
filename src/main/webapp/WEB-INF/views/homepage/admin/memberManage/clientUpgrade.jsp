@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>[WithBooks] 작가신청</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>

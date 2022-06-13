@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<title>[WithBooks] 게시판 관리</title>
+</head>
+
 <%@ include file="../../adminHeader.jsp"%>
 		<div class="adminboard">
 			<b><h1>게시판 관리</h1></b><p>

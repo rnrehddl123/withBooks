@@ -12,7 +12,7 @@ public class PurchaseHistoryMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<PurchaseHistoryDTO> listMember(){
+	public List<PurchaseHistoryDTO> listPurchaseHistory(){
 		List<PurchaseHistoryDTO> list = sqlSession.selectList("listPurchaseHistory");
 		return list;
 	}

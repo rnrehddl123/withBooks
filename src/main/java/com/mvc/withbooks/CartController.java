@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CartController {
-	@RequestMapping("/list_cart.do")
+	@RequestMapping("/listCart")
 	public String listCart() {
 		return "cart/cartList";
 	}
 	
-	@RequestMapping("/order_cart.do")
+	@RequestMapping("/orderCart")
 	public String order() {
 		return "cart/order";
 	}

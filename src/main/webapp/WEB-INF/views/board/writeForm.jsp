@@ -61,7 +61,7 @@
 				</div>
 				<div class="mb-3" align="left">
 					 <label for="exampleFormControlInput4" class="form-label">비밀번호</label>
-					<input name="Board_passwd" type="password" class="form-control" id="exampleFormControlInput3" name="passwd" placeholder="*****"></td>
+					<input name="Board_passwd" type="password" class="form-control" id="exampleFormControlInput3" name="passwd" placeholder="****"></td>
 				</div>
 				
 				<div align="center">

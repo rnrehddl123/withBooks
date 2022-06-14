@@ -85,6 +85,24 @@ public class ClientController {
 		return "client/clientMypage/clientPay";
 	}
 	
+	@RequestMapping(value="/updateCash", method=RequestMethod.GET)
+	public String updateCash() {
+		return "main/main";
+	}
+	
+	@RequestMapping(value="updateCash", method=RequestMethod.POST)
+	public String updateCash(HttpServletRequest req, @RequestParam Map<String, Integer> params) {
+		int res = memberMapper.updateCash(params);
+		if(res>0) {
+			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
+			req.setAttribute("url", "clientMypage");
+		}else {
+			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
+			req.setAttribute("url", "clientMypage");
+		}
+		return "message";
+	}
+	
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
 	public String ClientNovelInfo() {
 		return "client/clientNovelInfo";

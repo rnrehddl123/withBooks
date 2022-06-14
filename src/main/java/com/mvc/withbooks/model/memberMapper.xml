@@ -13,9 +13,9 @@
 	</select>
 
 	<insert id="insertMember" parameterType="memberDTO">
-		insert into member(Mnum, Member_name, Member_id, Member_passwd, Member_Tel, Member_address, Member_email, Member_birth, Member_sex, Member_preferred1, Member_preferred2, Member_preferred3,Member_authority)
+		insert into member(Mnum, Member_name, Member_id, Member_passwd, Member_Tel, Member_address, Member_email, Member_birth, Member_sex, Member_preferred1, Member_preferred2, Member_preferred3,Member_authority, cash)
 		 values(seq_member.nextval, #{Member_name}, #{Member_id}, #{Member_passwd}, #{Member_Tel}, #{Member_address},
-				#{Member_email}, #{Member_birth}, #{Member_sex}, #{Member_preferred1,jdbcType=VARCHAR}, #{Member_preferred2,jdbcType=VARCHAR}, #{Member_preferred3,jdbcType=VARCHAR}, #{Member_authority,jdbcType=VARCHAR})
+				#{Member_email}, #{Member_birth}, #{Member_sex}, #{Member_preferred1,jdbcType=VARCHAR}, #{Member_preferred2,jdbcType=VARCHAR}, #{Member_preferred3,jdbcType=VARCHAR}, #{Member_authority,jdbcType=VARCHAR}, 0)
 	</insert>
 
 	<delete id="deleteMember" parameterType="int">
@@ -43,4 +43,7 @@
 	<select id="getMemberId" parameterType="String" resultType="memberDTO">
 		select * from member where Member_id = #{Member_id}
 	</select>
+	<update id="updateCash" parameterType="java.util.Map">
+		update member set cash=cash+#{cash} where Mnum=#{mnum}
+	</update>
 </mapper>

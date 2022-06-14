@@ -29,7 +29,7 @@
 	</update>
 	
 	<select id="getMember" parameterType="int" resultType="memberDTO">
-		select * from member where Mnum = #{mnum}
+		select * from member where mnum = #{mnum}
 	</select>
 	
 	<select id="checkMember" parameterType="java.util.Map" resultType="memberDTO">

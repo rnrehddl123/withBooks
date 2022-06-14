@@ -13,7 +13,7 @@
 		<b> 내가 쓴 소설 목록</b>
 		<table align="center" class="writer">
 			<tr>
-				<td colspan="5" align="right"><a href="#">새로운 소설 쓰기</a></td>
+				<td colspan="5" align="right"><a href="writerNovel">새로운 소설 쓰기</a></td>
 			</tr>
 			<tr>
 				<th>번호</th>

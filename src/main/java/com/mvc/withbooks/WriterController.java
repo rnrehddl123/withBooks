@@ -120,12 +120,6 @@ public class WriterController {
 		return "main/main";
 	}
 	
-	//에피소드 목록
-	@RequestMapping("/writerEpisodeList")
-	public String WriterEpisodeList() {
-		return "writer/writerPage/writerSubject/writerEpisodeList";
-	}
-	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
 	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto) {
 		int res = episodeMapper.updateEpisode(dto);

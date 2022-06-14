@@ -1,70 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- clientUpdate -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../main/header.jsp"/>
 <html>
 <head>
 <title>clientUpdate</title>
-<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div align="center">
 			<font size="3">개 인 정 보 수 정</font><p>
-			<table width="600" align="center" class="outline">
+			<form name="f" action="clientUpdate" method="post" onsubmit="return check()">					
+			<input type="hidden" name="mnum" value="${getMember.mnum}"/>
+			
+			<table border="1" align="center" class="writerUpdate">
   				<tr>
-					<td colspan="2" align=center>회원수정</td>
+					<td colspan="2" align=center class="m2">회원수정</td>
  				</tr>
 				<tr>
-					<td width="150">이름</td>
-					<td>
-						<input type="text" name="name" class="box" readOnly>
+					<td width="150" class="m3">이름</td>
+					<td class="m3">
+						<input type="text" name="Member_name" class="box" value="${getMember.member_name}" readOnly>
 					</td>
 				</tr>
 				<tr>
-					<td width="150">아이디</td>
-					<td>
-						<input type="text" name="id" class="box" readOnly>
+					<td width="150" class="m3">아이디</td>
+					<td class="m3">
+						<input type="text" name="Member_id" class="box" value="${getMember.member_id}" readOnly>
 					</td>
   				</tr>
   				<tr>
-					<td width="150">비밀번호</td>
-					<td>
-						<input type="password" name="passwd" class="box">
+					<td width="150" class="m3">비밀번호</td>
+					<td class="m3">
+						<input type="password" name="Member_passwd" class="box" value="${getMember.member_passwd}">
 					</td>
   				</tr>
   				<tr>
-					<td width="150">이메일</td>
-					<td>
-						<input type="text" name="email" class="box">
+					<td width="150" class="m3">이메일</td>
+					<td class="m3">
+						<input type="text" name="Member_email" class="box" value="${getMember.member_email}">
 					</td>
   				</tr>
   				<tr>
-					<td width="150">전화번호</td>
-					<td>
-						<input type="text" name="hp1" class="box" size="3" maxlength="3"> -
-						<input type="text" name="hp2" class="box" size="4" maxlength="4"> -
-						<input type="text" name="hp3" class="box" size="4" maxlength="4">
+					<td width="150" class="m3">전화번호</td>
+					<td class="m3">
+						<input type="text" name="member_tel1" class="box" size="3" maxlength="3" value="${getMember.member_tel1}"> -
+						<input type="text" name="member_tel2" class="box" size="4" maxlength="4" value="${getMember.member_tel2}"> -
+						<input type="text" name="member_tel3" class="box" size="4" maxlength="4" value="${getMember.member_tel3}">
 					</td>
   				</tr>
   				<tr>
-  					<td width="150">주소</td>
-					<td>
-						<input type="text" name="address" class="box">
+  					<td width="150" class="m3">주소</td>
+					<td class="m3">
+						<input type="text" name="Member_address" class="box" value="${getMember.member_address}">
 					</td>
   				</tr>
   				<tr>
-  					<td width="150">출생년도</td>
-					<td>
-						<input type="text" name="year" class="box">
+  					<td width="150" class="m3">출생년도</td>
+					<td class="m3">
+						<input type="text" name="Member_birth" class="box" value="${getMember.member_birth}">
 					</td>
   				</tr>
   				<tr>
-  					<td><input type="checkbox" name="man">남</td>
-  					<td><input type="checkbox" name="woman">여</td>
+  					<td colspan="2"><input type="checkbox" name="Member_sex" value="${getMember.member_sex}">남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<input type="checkbox" name="Member_sex" value="${getMember.member_sex}">여</td>
   				</tr>
   				<tr>
   					<td>취향</td>
-  					<td><input type="checkbox" name="preffered">판타지</td>
+  					<td><input type="checkbox" name="preffered1" value="${getMember.member_preffered1}">판타지</td>
   				<tr>
 					<td colspan="2" align="center">
 						[수정][취소]
@@ -72,7 +76,6 @@
   				</tr>
   				
   			</table>
+  			</form>
 	</div>
-</body>
-</html>
 <jsp:include page="../../main/footer.jsp"/>

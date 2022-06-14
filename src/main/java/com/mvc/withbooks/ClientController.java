@@ -128,7 +128,7 @@ public class ClientController {
 	//�쉶�썝媛��엯
 	@RequestMapping(value="/insertMember", method=RequestMethod.GET)
 	public String insertMember() {
-		return "main/main";
+		return "main/signUp";
 	}
 	
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
@@ -175,7 +175,7 @@ public class ClientController {
 		}else {
 			if (params.get("Member_passwd").equals(dto.getMember_passwd())){
 				msg = dto.getMember_name()+"님, 환영합니다!!";
-				url = "login";
+				url = "main";
 				HttpSession session = req.getSession();
 				session.setAttribute("mbdto", dto);
 				Cookie ck = new Cookie("saveId", dto.getMember_id());
@@ -195,12 +195,36 @@ public class ClientController {
 		return "message";
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping("logout")
 	public String Logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		req.setAttribute("msg", "로그아웃 되었습니다.");
 		req.setAttribute("url", "login");
+		return "message";
+	}
+	
+	
+	@RequestMapping(value="clientUpdate", method=RequestMethod.GET)
+	public String ClientUpdateForm(HttpServletRequest req, @RequestParam int mnum) {
+		MemberDTO dto = memberMapper.getMember(mnum);
+		req.setAttribute("getMember", dto);
+		return "client/clientMypage/clientUpdate";
+	}
+	
+	@RequestMapping(value="clientUpdate", method=RequestMethod.POST)
+	public String ClientUpdate(HttpServletRequest req, @ModelAttribute MemberDTO dto) {
+		int res = memberMapper.updateMember(dto);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "회원 정보가 수정되었습니다.";
+			url = "main";
+		}else {
+			msg = "회원 정보 수정 실패하였습니다.";
+			url = "clientUpdate";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
 		return "message";
 	}
 }

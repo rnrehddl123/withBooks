@@ -16,7 +16,9 @@ public class AdminSuggestMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public int insertAdminSuggest(AdminSuggestDTO dto) {
+	public int insertAdminSuggest(AdminSuggestDTO dto,int nnum) {
+		NovelDTO ndto= sqlSession.selectOne("getNovel", nnum);
+		dto.setNovelDTO(ndto);
 		int res = sqlSession.insert("insertAdminSuggest", dto);
 		return res;
 	}

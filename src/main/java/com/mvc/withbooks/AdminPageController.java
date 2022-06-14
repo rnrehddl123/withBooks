@@ -92,15 +92,15 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping(value="/suggest", method=RequestMethod.POST)//추천작 등록
-	public String suggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto) {
-		int res = adminSuggestMapper.insertAdminSuggest(dto);
+	public String suggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto, int nnum) {
+		int res = adminSuggestMapper.insertAdminSuggest(dto, nnum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "추천작 입력 성공";
-			url = "homepage";
+			url = "suggest";
 		}else {
 			msg = "추천작 입력 실패";
-			url = "homepage";
+			url = "suggest";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);

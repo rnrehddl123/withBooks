@@ -19,12 +19,12 @@
 		</div>
 		
 		<div class="form">
-			<form>
+			<form name="f" action="login" method="post" onsubmit="return check()">
 			  <div class="inputWrapper">
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+			    <input type="text" name="Member_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
 			  </div>
 			  <div class="inputWrapper">
-			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
+			    <input type="password" name="Member_passwd" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
 			  </div>
 			  <div class="inputWrapper">
 			  	<div class="mb-3 form-check">

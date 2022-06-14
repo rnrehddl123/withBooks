@@ -3,7 +3,7 @@
     
 <html>
 <head>
-<title>공지사항 수정</title>
+<title>[WithBooks] 공지사항 수정</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>

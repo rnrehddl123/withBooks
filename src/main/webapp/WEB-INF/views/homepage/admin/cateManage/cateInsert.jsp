@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>[WithBooks] 카테고리 입력</title>
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>

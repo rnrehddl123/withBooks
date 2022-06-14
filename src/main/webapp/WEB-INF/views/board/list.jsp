@@ -16,11 +16,11 @@
   	<h1>자유게시판</h1>
   </div>
     <tr>
-      <th scope="col">번호</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성자</th>
-      <th scope="col">작성일</th>
-      <th scope="col">조회수</th>
+      <th scope="col" align="center">번호</th>
+      <th scope="col" align="center">제목</th>
+      <th scope="col" align="center">작성자</th>
+      <th scope="col" align="center">작성일</th>
+      <th scope="col" align="center">조회수</th>
     </tr>
   </thead>
   	<c:if test="${empty listBoard}">
@@ -31,15 +31,15 @@
   <tbody>
     <c:forEach var="Boarddto" items="${listBoard}">
 			<tr>
-				<td align="right">${Boarddto.Bnum}</td>
-				<td>
-					<a href="contentBoard?Bnum=${Boarddto.Bnum}">
-						${Boarddto.Board_subject}
+				<td align="left">${Boarddto.bnum}</td>
+				<td align="left">
+					<a href="contentBoard?Bnum=${Boarddto.bnum}">
+						${Boarddto.board_subject}
 					</a>
 				</td>
-				<td align="center">${Boarddto.Board_writer}</td>
-				<td align="center">${Boarddto.Board_reg_date}</td>
-				<td align="center">${Boarddto.Board_readcount}</td>
+				<td align="left">${Boarddto.board_writer}</td>
+				<td align="left">${Boarddto.board_date}</td>
+				<td align="left">${Boarddto.board_readcount}</td>
 			</tr>		
 			</c:forEach>	
 			<div align="right">

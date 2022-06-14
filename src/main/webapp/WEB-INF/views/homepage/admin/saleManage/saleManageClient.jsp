@@ -3,7 +3,7 @@
 <!-- saleManage.jsp -->
 <html>
 <head>  
-	<title>saleManage.jsp</title>
+	<title>[WithBooks] 일반회원 매출</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>

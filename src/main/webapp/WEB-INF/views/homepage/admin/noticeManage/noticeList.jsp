@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>관리자-공지사항</title>
+<title>[WithBooks] 공지사항</title>
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>

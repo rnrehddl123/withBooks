@@ -9,7 +9,6 @@
 <body>
 <div class="suggest">
 	<b><h1>추천작 관리</h1></b><p>
-	<form action="suggest" method="post">
 	<table border="1" width="1000" height="300">
 		<tr height="50" align="center">
 			<th colspan="2" >작품 리스트</th>	
@@ -21,15 +20,16 @@
 		</c:if>
 		<c:forEach items="${listNovel}" var="dto">
 		<tr>
+			<form action="suggest" method="post">
 			<input type="hidden" name="nnum" value="${dto.nnum}"/>
 			<input type="hidden" name="suggestNovel" value="${dto.novel_subject}"/>
 			<td width="70%">${dto.novel_subject}</td>
-			<td width="15%"><input type="submit" value="등록"></td>	
+			<td width="15%"><input type="submit" value="등록"></td>
+			</form>	
 		</tr>
 		</c:forEach>
 	</table>
 	
-	</form>
 	검색 : <input type="text"><input type="button" value="검색"><p>
 	 <!-- AdminSuggestMapper.xml : searchAdminSuggest -->
 	 

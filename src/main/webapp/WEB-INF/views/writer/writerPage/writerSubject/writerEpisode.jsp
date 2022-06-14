@@ -11,10 +11,10 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 	<div align="center">
 		<form class="editorWrapper" name="f" action="insertEpisode" method="post" onsubmit="return check()">
-			<input type="hidden" name="Nnum" value="">
+			<input type="hidden" name="Nnum" value="1">
 			<div class="mb-3">
 			  <div class="flex"><label for="exampleFormControlInput1" class="form-label">제목</label></div>
-			  <input type="text" class="form-control" id="exampleFormControlInput1">
+			  <input type="text" name="Epi_subject" class="form-control" id="exampleFormControlInput1">
 			</div>
 			<div class="mb-3 box">
 				<div class="flex"><label for="exampleFormControlTextarea1" class="form-label">내용</label></div>
@@ -22,7 +22,7 @@
 				<div id="editor">
 				  <p><br></p>
 				</div>
-				<input type="hidden" name="quill" id='hidden-input'>
+				<input type="hidden" name="Epi_content" id='hidden-input'>
 			</div>
 			<button type="submit" class="btn btn-primary">등록</button>
 		</form>

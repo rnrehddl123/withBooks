@@ -2,7 +2,7 @@ package com.mvc.withbooks.dto;
 
 public class EpisodeDTO {
 	private int Epnum;
-	private String Epi_subect;
+	private String Epi_subject;
 	private String Epi_content;
 	private String Epi_date;
 	private int Epi_recommand;
@@ -15,11 +15,11 @@ public class EpisodeDTO {
 	public void setEpnum(int epnum) {
 		Epnum = epnum;
 	}
-	public String getEpi_subect() {
-		return Epi_subect;
+	public String getEpi_subject() {
+		return Epi_subject;
 	}
-	public void setEpi_subect(String epi_subect) {
-		Epi_subect = epi_subect;
+	public void setEpi_subject(String epi_subject) {
+		Epi_subject = epi_subject;
 	}
 	public String getEpi_content() {
 		return Epi_content;

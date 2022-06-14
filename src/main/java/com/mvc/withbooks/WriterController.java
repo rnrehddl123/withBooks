@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.mvc.withbooks.dto.EpisodeDTO;
 import com.mvc.withbooks.service.EpisodeMapper;
@@ -33,7 +34,7 @@ public class WriterController {
 		return "writer/writerPage/writerOrderList/writerNovelSubject";
 	}
 	
-	//에피소드 작성페이지
+	//에피소드 작성 페이지
 	@RequestMapping("/writerEpisode")
 	public String WriterEpisode() {
 		return "writer/writerPage/writerSubject/writerEpisode";
@@ -46,9 +47,9 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
-	public ModelAndView insertEpisode(@ModelAttribute EpisodeDTO dto, int nnum) {
-		dto.getNovelDTO().setNnum(nnum);
-		int res = episodeMapper.insertEpisode(dto);
+	public ModelAndView insertEpisode(@ModelAttribute EpisodeDTO dto, int Nnum) {
+		System.out.println(dto.getEpi_subject()+"asdasdasdas");
+		int res = episodeMapper.insertEpisode(dto, Nnum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 등록 성공, 에피소드 페이지로 이동합니다.";
@@ -63,14 +64,39 @@ public class WriterController {
 		return mav;
 	}
 	
-	@RequestMapping("/writerEpisodeList")
-	public String WriterEpisodeLIst() {
-		return "writer/writerPage/writerSubject/writerEpisodeList";
+	//에피소드 삭제
+	@RequestMapping(value="/deleteEpisode", method=RequestMethod.GET)
+	public String deleteEpisode() {
+		return "main/main";
 	}
 	
-	@RequestMapping("/writerEpisodeUpdate")
+	@RequestMapping(value="/deleteEpisode", method=RequestMethod.POST)
+	public ModelAndView deleteEpisode(@RequestParam int epnum) {
+		int res = episodeMapper.deleteEpisode(epnum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "에피소드 삭제 성공, 에피소드 페이지로 이동합니다.";
+			url = "writer/writerPage/writerSubject/writerEpisode";
+		}else {
+			msg = "에피소드 삭제 실패!!, 에피소드 페이지로 이동합니다.";
+			url = "writer/writerPage/writerSubject/writerEpisode";
+		}
+		ModelAndView mav = new ModelAndView("forward:message.jsp");
+		mav.addObject("msg", msg);
+		mav.addObject("url", url);
+		return mav;
+	}
+	
+	//에피소드 수정
+	@RequestMapping(value="/updateEpisode", method=RequestMethod.GET)
 	public String WriterEpisodeUpdate() {
-		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
+		return "main/main";
+	}
+	
+	//에피소드 목록
+	@RequestMapping("/writerEpisodeList")
+	public String WriterEpisodeList() {
+		return "writer/writerPage/writerSubject/writerEpisodeList";
 	}
 	
 	@RequestMapping("/writerNovel")

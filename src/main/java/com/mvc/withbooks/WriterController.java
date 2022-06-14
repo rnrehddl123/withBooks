@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mvc.withbooks.dto.*;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
+import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NovelMapper;
 import org.springframework.web.servlet.ModelAndView;
 import com.mvc.withbooks.dto.EpisodeDTO;
@@ -28,6 +29,10 @@ public class WriterController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	
+	@Autowired
+	private NoticeEpisodeMapper noticeEpisodeMapper;
+	
 	
 	@RequestMapping("/writerOrderList")
 	public String WriterOrderList() {

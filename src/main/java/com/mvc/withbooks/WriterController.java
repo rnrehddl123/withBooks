@@ -108,7 +108,7 @@ public class WriterController {
 			msg = "에피소드 삭제 실패!!, 에피소드 페이지로 이동합니다.";
 			url = "writer/writerPage/writerSubject/writerEpisode";
 		}
-		ModelAndView mav = new ModelAndView("forward:message.jsp");
+		ModelAndView mav = new ModelAndView("forward:message");
 		mav.addObject("msg", msg);
 		mav.addObject("url", url);
 		return mav;

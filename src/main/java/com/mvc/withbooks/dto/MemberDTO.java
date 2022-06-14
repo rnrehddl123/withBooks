@@ -14,6 +14,8 @@ public class MemberDTO {
 	private String Member_preferred2;
 	private String Member_preferred3;
 	private String Member_authority;
+	private int cash;
+	
 	public int getMnum() {
 		return Mnum;
 	}
@@ -91,6 +93,12 @@ public class MemberDTO {
 	}
 	public void setMember_authority(String member_authority) {
 		Member_authority = member_authority;
+	}
+	public int getCash() {
+		return cash;
+	}
+	public void setCash(int cash) {
+		this.cash = cash;
 	}
 	
 	

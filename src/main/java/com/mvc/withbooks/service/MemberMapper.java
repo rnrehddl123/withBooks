@@ -79,4 +79,9 @@ public class MemberMapper {
 				return "비밀번호는 " + dto.getMember_passwd() + " 입니다.";
 			}
 	}
+	
+	public int updateCash(Map<String, Integer> params) {
+		int res = sqlSession.update("updateCash", params);
+		return res;
+	}
 }

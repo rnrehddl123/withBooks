@@ -65,33 +65,32 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
-	public ModelAndView insertEpisode(@ModelAttribute EpisodeDTO dto, int Nnum) {
+	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum) {
 		System.out.println(dto.getEpi_content());
 		int res = episodeMapper.insertEpisode(dto, Nnum);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "에피소드 등록 성공, 에피소드 페이지로 이동합니다.";
-			url = "writer/writerPage/writerSubject/writerEpisode";
+			msg = "에피소드 등록 성공, 에피소드 목록 페이지로 이동합니다.";
+			url = "writerEpisodeList";
 		}else {
-			msg = "에피소드 등록 실패!!, 에피소드 페이지로 이동합니다.";
-			url = "writer/writerPage/writerSubject/writerEpisode";
+			msg = "에피소드 등록 실패!!, 에피소드 목록 페이지로 이동합니다.";
+			url = "writerEpisodeList";
 		}
-		ModelAndView mav = new ModelAndView("forward:message.jsp");
-		mav.addObject("msg", msg);
-		mav.addObject("url", url);
-		return mav;
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "message";
 	}
 	
 	//에피소드 삭제
 	@RequestMapping("/deleteEpisode")
-	public String deleteEpisode(HttpServletRequest req,@RequestParam int epnum) {
+	public String deleteEpisode(HttpServletRequest req, @RequestParam int epnum) {
 		int res = episodeMapper.deleteEpisode(epnum);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "에피소드 삭제 성공, 에피소드 페이지로 이동합니다.";
+			msg = "에피소드 삭제 성공, 에피소드 목록 페이지로 이동합니다.";
 			url = "writerEpisodeList";
 		}else {
-			msg = "에피소드 삭제 실패!!, 에피소드 페이지로 이동합니다.";
+			msg = "에피소드 삭제 실패!!, 에피소드 목록 페이지로 이동합니다.";
 			url = "writerEpisodeList";
 		}
 		req.setAttribute("msg", msg);

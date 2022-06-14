@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.EpisodeDTO;
+import com.mvc.withbooks.dto.NovelDTO;
 
 @Service
 public class EpisodeMapper {
@@ -14,7 +15,9 @@ public class EpisodeMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public int insertEpisode(EpisodeDTO dto) {
+	public int insertEpisode(EpisodeDTO dto,int nnum) {
+		NovelDTO novelDTO=sqlSession.selectOne("getNovel", nnum);
+		dto.setNovelDTO(novelDTO);
 		int res = sqlSession.insert("insertEpisode", dto);
 		return res;
 	}

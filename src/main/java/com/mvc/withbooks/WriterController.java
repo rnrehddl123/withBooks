@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.mvc.withbooks.dto.*;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NovelMapper;
-
-
+import org.springframework.web.servlet.ModelAndView;
+import com.mvc.withbooks.dto.EpisodeDTO;
 
 @Controller
 public class WriterController {
@@ -29,7 +28,6 @@ public class WriterController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
-	
 	
 	@RequestMapping("/writerOrderList")
 	public String WriterOrderList() {
@@ -47,26 +45,6 @@ public class WriterController {
 		return "writer/writerPage/writerOrderList/writerNovelSubject";
 	}
 	
-	@RequestMapping(value="writerEpisode", method=RequestMethod.GET)
-	public String WriterEpisodeForm() {
-		return "writer/writerPage/writerSubject/writerEpisode";
-	}
-	
-	@RequestMapping(value="writerEpisode", method=RequestMethod.POST)
-	public String WriterEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto) {
-		int res = episodeMapper.insertEpisode(dto);
-		String msg = null, url = null;
-		if(res>0) {
-			msg = "¿¡ÇÇ¼Òµå µî·Ï ¼º°ø!! ¿¡ÇÇ¼Òµå ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
-			url = "writerEpisodeList";
-		}else {
-			msg = "¿¡ÇÇ¼Òµå µî·Ï ½ÇÆÐ !! ¿¡ÇÇ¼Òµå ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
-			url = "writerEpisodeList";
-		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
-	}
 	
 	@RequestMapping("/writerEpisodeList")
 	public String WriterEpisodeLIst(HttpServletRequest req) {
@@ -82,15 +60,80 @@ public class WriterController {
 		req.setAttribute("getEpisode", dto);
 		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
 	}
+		
+	//ì—í”¼ì†Œë“œ ìž‘ì„± íŽ˜ì´ì§€
+	@RequestMapping("/writerEpisode")
+	public String WriterEpisode() {
+		return "writer/writerPage/writerSubject/writerEpisode";
+	}
+	
+	//ì—í”¼ì†Œë“œ ì¶”ê°€
+	@RequestMapping(value="/insertEpisode", method=RequestMethod.GET)
+	public String insertEpisode() {
+		return "main/main";
+	}
+	
+	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
+	public ModelAndView insertEpisode(@ModelAttribute EpisodeDTO dto, int Nnum) {
+		System.out.println(dto.getEpi_subject()+"asdasdasdas");
+		int res = episodeMapper.insertEpisode(dto, Nnum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "ì—í”¼ì†Œë“œ ë“±ë¡ ì„±ê³µ, ì—í”¼ì†Œë“œ íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.";
+			url = "writer/writerPage/writerSubject/writerEpisode";
+		}else {
+			msg = "ì—í”¼ì†Œë“œ ë“±ë¡ ì‹¤íŒ¨!!, ì—í”¼ì†Œë“œ íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.";
+			url = "writer/writerPage/writerSubject/writerEpisode";
+		}
+		ModelAndView mav = new ModelAndView("forward:message.jsp");
+		mav.addObject("msg", msg);
+		mav.addObject("url", url);
+		return mav;
+	}
+	
+	//ì—í”¼ì†Œë“œ ì‚­ì œ
+	@RequestMapping(value="/deleteEpisode", method=RequestMethod.GET)
+	public String deleteEpisode() {
+		return "main/main";
+	}
+	
+	@RequestMapping(value="/deleteEpisode", method=RequestMethod.POST)
+	public ModelAndView deleteEpisode(@RequestParam int epnum) {
+		int res = episodeMapper.deleteEpisode(epnum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "ì—í”¼ì†Œë“œ ì‚­ì œ ì„±ê³µ, ì—í”¼ì†Œë“œ íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.";
+			url = "writer/writerPage/writerSubject/writerEpisode";
+		}else {
+			msg = "ì—í”¼ì†Œë“œ ì‚­ì œ ì‹¤íŒ¨!!, ì—í”¼ì†Œë“œ íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.";
+			url = "writer/writerPage/writerSubject/writerEpisode";
+		}
+		ModelAndView mav = new ModelAndView("forward:message.jsp");
+		mav.addObject("msg", msg);
+		mav.addObject("url", url);
+		return mav;
+	}
+	
+	//ì—í”¼ì†Œë“œ ìˆ˜ì •
+	@RequestMapping(value="/updateEpisode", method=RequestMethod.GET)
+	public String WriterEpisodeUpdate() {
+		return "main/main";
+	}
+	
+	//ì—í”¼ì†Œë“œ ëª©ë¡
+	@RequestMapping("/writerEpisodeList")
+	public String WriterEpisodeList() {
+		return "writer/writerPage/writerSubject/writerEpisodeList";
+	}
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
 	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto) {
 		int res = episodeMapper.updateEpisode(dto);
 		if(res>0) {
-			req.setAttribute("msg", "¿¡ÇÇ¼Òµå ¼öÁ¤ ¼º°ø!! ¿¡ÇÇ¼Òµå ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "writerEpisodeList");
 		}else {
-			req.setAttribute("msg", "¿¡ÇÇ¼Òµå ¼öÁ¤ ½ÇÆÐ!! ¿¡ÇÇ¼Òµå ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "writerEpisodeList");
 		}
 		return "message";
@@ -106,10 +149,10 @@ public class WriterController {
 		int res = novelMapper.insertNovel(dto,mnum);
 		String msg = null, url = null;
 		if(res>0) {
-			msg = "¼Ò¼³ µî·Ï ¼º°ø!! ¼Ò¼³ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
+			msg = "ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.";
 			url = "writerNovelList";
 		}else {
-			msg = "¼Ò¼³ µî·Ï ½ÇÆÐ !! ¼Ò¼³ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
+			msg = "ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ !! ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.";
 			url = "writerNovelList";
 		}
 		req.setAttribute("msg", msg);
@@ -136,10 +179,10 @@ public class WriterController {
 		int res = novelMapper.updateNovel(dto);
 		String msg = null, url = null;
 		if(res>0) {
-			msg = "¼Ò¼³ ¼öÁ¤ ¼º°ø!! ¼Ò¼³ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
+			msg = "ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.";
 			url = "writerNovelList";
 		}else {
-			msg = "¼Ò¼³ ¼öÁ¤ ½ÇÆÐ !! ¼Ò¼³ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
+			msg = "ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ !! ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.";
 			url = "writerNovelList";
 		}
 		req.setAttribute("msg", msg);
@@ -152,10 +195,10 @@ public class WriterController {
 		int res = novelMapper.deleteNovel(nnum);
 		String msg = null, url = null;
 		if(res>0) {
-			msg = "¼Ò¼³ »èÁ¦ ¼º°ø!! ¼Ò¼³ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
+			msg = "ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.";
 			url = "writerNovelList";
 		}else {
-			msg = "¼Ò¼³ »èÁ¦ ½ÇÆÐ !! ¼Ò¼³ ¸ñ·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.";
+			msg = "ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ !! ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.";
 			url = "writerNovelList";
 		}
 		req.setAttribute("msg", msg);

@@ -88,6 +88,8 @@ public class AdminPageController {
 	public String suggest(HttpServletRequest req) {
 		List<NovelDTO> list = novelMapper.listNovel();
 		req.setAttribute("listNovel", list);
+		List<AdminSuggestDTO> slist = adminSuggestMapper.listAdminSuggest();
+		req.setAttribute("listAdminSuggest", slist);
 		return "homepage/admin/banerManage/suggest";
 	}
 	
@@ -100,6 +102,22 @@ public class AdminPageController {
 			url = "suggest";
 		}else {
 			msg = "추천작 입력 실패";
+			url = "suggest";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
+	
+	@RequestMapping("/suggestDelete")
+	public String suggestDelete(HttpServletRequest req, int sunum) {
+		int res = adminSuggestMapper.deleteAdminSuggest(sunum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "추천작 삭제 성공";
+			url = "suggest";
+		}else {
+			msg = "추천작 삭제 실패";
 			url = "suggest";
 		}
 		req.setAttribute("msg", msg);

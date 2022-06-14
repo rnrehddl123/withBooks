@@ -33,6 +33,24 @@
 	검색 : <input type="text"><input type="button" value="검색"><p>
 	 <!-- AdminSuggestMapper.xml : searchAdminSuggest -->
 	 
+	<table border="1" width="1000" height="500">
+		<tr width="10%" height="50" align="center">
+			<th width="70%">추천작</th>
+			<th width="30%">삭제</th>
+		</tr>
+	<c:if test="${empty listAdminSuggest}">
+		<tr>
+			<td colspan="2">등록된 추천작이 없습니다.</td>	
+		</tr>
+	</c:if>
+	<c:forEach items="${listAdminSuggest}" var="sdto">
+		<tr>
+			<td width="70%">${sdto.suggestNovel}</td>
+			<td width="30%"><a href="suggestDelete?sunum=${sdto.sunum}">삭제</a></td>
+		</tr>
+	</c:forEach>
+	</table>
+	 
 </div>
 </body>
 </html>

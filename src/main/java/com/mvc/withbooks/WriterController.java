@@ -169,8 +169,8 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.POST)
-	public String WriterNovelUpdate(HttpServletRequest req, NovelDTO dto) {
-		int res = novelMapper.updateNovel(dto);
+	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum) {
+		int res = novelMapper.updateNovel(dto,mnum);
 		String msg = null, url = null;
 		if(res>0) {
 			msg = "�Ҽ� ���� ����!! �Ҽ� ��� �������� �̵��մϴ�.";

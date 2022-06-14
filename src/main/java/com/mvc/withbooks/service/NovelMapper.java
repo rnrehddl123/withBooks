@@ -34,7 +34,9 @@ public class NovelMapper {
 		return res;
 	}
 	
-	public int updateNovel(NovelDTO dto) {
+	public int updateNovel(NovelDTO dto,int mnum) {
+		MemberDTO mdto = sqlSession.selectOne("getMember", mnum);
+		dto.setMemberDTO(mdto);
 		int res = sqlSession.update("updateNovel", dto);
 		return res;
 	}

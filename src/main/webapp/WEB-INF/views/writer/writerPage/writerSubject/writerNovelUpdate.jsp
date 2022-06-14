@@ -9,8 +9,9 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<form name="f" action="update_Novel" method="post" onsubmit="return check()">
-		<input type="hidden" name="num" value="${getNovel.nnum}"/>
+		<form name="f" action="writerNovelUpdate" method="post" onsubmit="return check()">
+		<input type="hidden" value="1" name="mnum">
+		<input type="hidden" name="nnum" value="${getNovel.nnum}"/>
 			<table align="center" class="writer">
 				<tr>
 					<td colspan="2" align="center">소설 쓰기(처음 시작할 때)</td>

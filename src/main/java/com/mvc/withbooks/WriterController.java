@@ -75,7 +75,7 @@ public class WriterController {
 	
 	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
 	public ModelAndView insertEpisode(@ModelAttribute EpisodeDTO dto, int Nnum) {
-		System.out.println(dto.getEpi_subject()+"asdasdasdas");
+		System.out.println(dto.getEpi_content());
 		int res = episodeMapper.insertEpisode(dto, Nnum);
 		String msg = null, url = null;
 		if (res>0) {

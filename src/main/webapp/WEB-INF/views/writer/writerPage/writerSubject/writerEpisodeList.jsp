@@ -30,16 +30,16 @@
 			</c:if>
 		<c:forEach var="dto" items="${listEpisode}">
 			<tr>
-				<td align="right">${dto.Epnum}</td>
+				<td align="right">${dto.epnum}</td>
 				<td>
-					<a href="writerNovelEpisode?Epnum=${dto.Epnum}">
+					<a href="writerNovelEpisode?Epnum=${dto.epnum}">
 						${dto.Epi_subject}
 					</a>
 				</td>
-				<td align="center">${dto.Epi_date}</td>
-				<td align="center">${dto.Epi_readcount}</td>
-				<td align="center">${dto.Epi_recommand}</td>
-				<td align="center">수정 | 삭제</td>
+				<td align="center">${dto.epi_date}</td>
+				<td align="center">${dto.epi_readcount}</td>
+				<td align="center">${dto.epi_recommand}</td>
+				<td align="center"><a href="update_Episode?Epnum=${dto.epnum}">수정</a> | <a href="delete_Episode?Epnum=${dto.epnum}">삭제</a></td>
 			</tr>		
 			</c:forEach>
 		</table>

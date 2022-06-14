@@ -10,7 +10,8 @@
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 	<div align="center">
-		<form class="editorWrapper" name="f" action="" method="post" onsubmit="return check()">
+		<form class="editorWrapper" name="f" action="writerEpisode" method="post" onsubmit="return check()">
+			<input type="hidden" value="1" name="mnum">
 			<ul class="flex titleWrapper">
 				<li>제목</li>
 				<li><input type="text" name="Epi_subject"></li>

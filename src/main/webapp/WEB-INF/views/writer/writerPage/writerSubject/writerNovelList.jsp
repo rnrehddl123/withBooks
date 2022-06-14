@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- writerNovelList.JSP -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
@@ -21,22 +22,22 @@
 				<th>추천수</th>
 				<th>수정 | 삭제</th>
 			</tr>
-			<c:if test="${empty listNovel}">
+			<c:if test="${empty writerListNovel}">
 			<tr>
 				<td colspan="5">등록된 소설이 없습니다.</td>
 			</tr>
 			</c:if>
-			<c:forEach var="dto" items="${listNovel}">
+			<c:forEach var="dto" items="${writerListNovel}">
 			<tr>
 				<td align="right">${dto.nnum}</td>
 				<td>
 					<a href="writerNovelEpisodeList?Epnum=${dto.nnum}">
-						${dto.Novel_subject}
+						${dto.novel_subject}
 					</a>
 				</td>
-				<td align="center">${dto.Novel_memberName}</td>
-				<td align="center">${dto.Novel_recommand}</td>
-				<td align="center"><a href="update_Novel?nnum=${dto.nnum}">수정</a> | <a href="delete_Novel?nnum=${dto.nnum}">삭제</a></td>
+				<td align="center">${dto.novel_memberName}</td>
+				<td align="center">${dto.novel_recommand}</td>
+				<td align="center"><a href="writerNovelUpdate?nnum=${dto.nnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.nnum}">삭제</a></td>
 			</tr>		
 			</c:forEach>
 		</table>

@@ -9,7 +9,7 @@
 	</select>
 	
 	<insert id="insertEpisode" parameterType="EpisodeDTO">
-		insert into episode(Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount, Novel.Nnum) values(seq_episode.nextval, #{Epi_subject}, #{Epi_content}, sysdate, #{Epi_recommand}, 0, #{NovelDTO.getNnum})
+		insert into episode(Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount, Nnum) values(seq_episode.nextval, #{Epi_subject}, #{Epi_content}, sysdate, #{Epi_recommand}, 0, #{NovelDTO.nnum})
 	</insert>
 
 	<delete id="deleteEpisode" parameterType="int">

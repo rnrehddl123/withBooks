@@ -18,25 +18,25 @@
 				<tr>
 					<td width="150" class="m3">이름</td>
 					<td class="m3">
-						<input type="text" name="name" class="box" readOnly>
+						<input type="text" name="Member_name" class="box" readOnly>
 					</td>
 				</tr>
 				<tr>
 					<td width="150" class="m3">아이디</td>
 					<td class="m3">
-						<input type="text" name="id" class="box" readOnly>
+						<input type="text" name="Member_id" class="box" readOnly>
 					</td>
   				</tr>
   				<tr>
 					<td width="150" class="m3">비밀번호</td>
 					<td class="m3">
-						<input type="password" name="passwd" class="box">
+						<input type="password" name="Member_passwd" class="box">
 					</td>
   				</tr>
   				<tr>
 					<td width="150" class="m3">이메일</td>
 					<td class="m3">
-						<input type="text" name="email" class="box">
+						<input type="text" name="Member_email" class="box">
 					</td>
   				</tr>
   				<tr>
@@ -50,22 +50,22 @@
   				<tr>
   					<td width="150" class="m3">주소</td>
 					<td class="m3">
-						<input type="text" name="address" class="box">
+						<input type="text" name="Member_address" class="box">
 					</td>
   				</tr>
   				<tr>
   					<td width="150" class="m3">출생년도</td>
 					<td class="m3">
-						<input type="text" name="year" class="box">
+						<input type="text" name="Member_birth" class="box">
 					</td>
   				</tr>
   				<tr>
-  					<td colspan="2"><input type="checkbox" name="man">남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  					<input type="checkbox" name="woman">여</td>
+  					<td colspan="2"><input type="checkbox" name="Member_sex">남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  					<input type="checkbox" name="Member_sex">여</td>
   				</tr>
   				<tr>
   					<td>취향</td>
-  					<td><input type="checkbox" name="preffered">판타지</td>
+  					<td><input type="checkbox" name="preffered1">판타지</td>
   				<tr>
 					<td colspan="2" align="center">
 						[수정][취소]

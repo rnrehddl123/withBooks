@@ -22,6 +22,7 @@ public class EpisodeMapper {
 		return res;
 	}
 	
+	
 	public List<EpisodeDTO> listEpisode() {
 		List<EpisodeDTO> list = sqlSession.selectList("listEpisode");
 		return list;
@@ -38,7 +39,7 @@ public class EpisodeMapper {
 	}
 	
 	public EpisodeDTO getEpisode(int Epnum, String mode) {
-		if (mode.equals("writerNovelEpisode")) {	//¿¡ÇÇ¼Òµå ºä¾î·Î ³Ñ¾î°¡°Ô µÇ¸é Á¶È¸¼ö°¡ ¿À¸£°Ô ÇÏ±â À§ÇÔ
+		if (mode.equals("writerNovelEpisode")) {	//ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 			sqlSession.update("plusReadcount", Epnum);
 		}
 		EpisodeDTO dto = sqlSession.selectOne("getEpisode", Epnum);

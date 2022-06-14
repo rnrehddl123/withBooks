@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,36 +58,14 @@
 				</div>
 			  </div>
 			  <div class="inputWrapper flex checkWrapper">
-			    <div class="form-check marginauto">
-				  <input name="member_preferred" class="form-check-input" type="checkbox" value="판타지" onclick="CountChecked(this)">
-				  <label class="form-check-label" for="flexCheckDefault">
-				    	판타지
-				  </label>
-				</div>
-				<div class="form-check marginauto">
-				  <input name="member_preferred" class="form-check-input" type="checkbox" value="로맨스" onclick="CountChecked(this)">
-				  <label class="form-check-label" for="flexCheckDefault">
-				    	로맨스
-				  </label>
-				</div>
-				<div class="form-check marginauto">
-				  <input name="member_preferred" class="form-check-input" type="checkbox" value="현판" onclick="CountChecked(this)">
-				  <label class="form-check-label" for="flexCheckDefault">
-				    	현판
-				  </label>
-				</div>
-				<div class="form-check marginauto">
-				  <input name="member_preferred" class="form-check-input" type="checkbox" value="판타지" onclick="CountChecked(this)">
-				  <label class="form-check-label" for="flexCheckDefault">
-				    	판타지
-				  </label>
-				</div>
-				<div class="form-check marginauto">
-				  <input name="member_preferred" class="form-check-input" type="checkbox" value="판타지" onclick="CountChecked(this)">
-				  <label class="form-check-label" for="flexCheckDefault">
-				    	판타지
-				  </label>
-				</div>
+			  	<c:forEach items="${categoryList}" var="dto">
+			  		<div class="form-check marginauto">
+					  <input name="member_preferred" class="form-check-input" type="checkbox" value="${dto.cate_name}" onclick="CountChecked(this)">
+					  <label class="form-check-label" for="flexCheckDefault">
+					    	${dto.cate_name}
+					  </label>
+					</div>
+			  	</c:forEach>
 			  </div>
 			  	<button type="submit" class="btn btn-primary">회원가입</button>
 			 </form>

@@ -17,23 +17,23 @@
 				</tr>
 				<tr>
 					<th width="20%">작 가 필 명</th>
-					<td><input type="text" name="Novel_memberName" size="50" class="width80">${getNovel.Novel_memberName}</td>
+					<td><input type="text" name="Novel_memberName" size="50" class="width80" value="${getNovel.novel_memberName}"></td>
 				</tr>
 				<tr>
 					<th width="20%">카 테 고 리</th>
-					<td><input type="text" name="Novel_cate" size="50" class="width80">${getNovel.Novel_cate}</td>
+					<td><input type="text" name="Novel_cate" size="50" class="width80" value="${getNovel.novel_cate}"></td>
 				</tr>			
 				<tr>
 					<th width="20%">대 제 목(소설의 제목)</th>
-					<td><input type="text" name="Novel_subject" size="50" class="width80">${getNovel.Novel_subject}</td>
+					<td><input type="text" name="Novel_subject" size="50" class="width80" value="${getNovel.novel_subject}"></td>
 				</tr>
 				<tr>
 					<th width="20%">소 설 이 미 지</th>
-					<td><input type="file" name="Novel_image" size="50" class="width80">${getNovel.Novel_image}</td>
+					<td><input type="file" name="Novel_image" size="50" class="width80" value="${getNovel.novel_image}"></td>
 				</tr>
 				<tr>
 					<th width="20%">줄 거 리</th>
-					<td><textarea name="Novel_summary" rows="10" cols="70" class="width80">${getNovel.Novel_summary}</textarea></td>
+					<td><textarea name="Novel_summary" rows="10" cols="70" class="width80">${getNovel.novel_summary}</textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="2">

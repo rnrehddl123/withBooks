@@ -9,7 +9,8 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<form name="f" action="" method="post" onsubmit="return check()">
+		<form name="f" action="writerNovel" method="post" onsubmit="return check()">
+			<input type="hidden" value="1" name="mnum">
 			<table align="center" class="writer">
 				<tr>
 					<td colspan="2" align="center">소설 쓰기(처음 시작할 때)</td>

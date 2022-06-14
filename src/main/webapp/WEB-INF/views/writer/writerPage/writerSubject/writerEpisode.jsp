@@ -17,6 +17,12 @@
 			</div>
 			<div class="mb-3 box">
 				<div class="flex"><label for="exampleFormControlTextarea1" class="form-label">내용</label></div>
+		<form class="editorWrapper" name="f" action="writerEpisode" method="post" onsubmit="return check()">
+			<input type="hidden" value="1" name="mnum">
+			<ul class="flex titleWrapper">
+				<li>제목</li>
+				<li><input type="text" name="Epi_subject"></li>
+			</ul>
 			<div class="box">
 				<div id="editor">
 				  <p><br></p>

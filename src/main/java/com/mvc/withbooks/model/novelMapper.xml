@@ -4,12 +4,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.mvc.withbooks.model.novelMapper"> 
-	<select id="ListNovel" resultType="NovelDTO">
+	<select id="writerListNovel" resultType="NovelDTO">
 		select * from novel
 	</select>
 	
 	<insert id="insertNovel" parameterType="NovelDTO">
-		insert into novel(Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary, member.Mnum) values(seq_novel.nextval, #{Novel_subject}, #{Novel_memberName}, #{Novel_image}, #{Novel_cate}, #{Novel_summary}, #{MemberDTO.getMnum})
+		insert into novel(Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary, Mnum) values(seq_novel.nextval, #{Novel_subject}, #{Novel_memberName}, #{Novel_image}, #{Novel_cate}, #{Novel_summary}, #{memberDTO.mnum})
 	</insert>
 
 	<delete id="deleteNovel" parameterType="int">

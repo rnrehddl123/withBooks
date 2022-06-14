@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.MemberDTO;
 
 @Service
 public class NovelMapper {
@@ -16,13 +17,15 @@ public class NovelMapper {
 	private SqlSession sqlSession;
 	
 	
-	public int insertNovel(NovelDTO dto) {
+	public int insertNovel(NovelDTO dto,int mnum) {
+		MemberDTO mdto = sqlSession.selectOne("getMember", mnum);
+		dto.setMemberDTO(mdto);
 		int res = sqlSession.insert("insertNovel", dto);
 		return res;
 	}
 	
 	public List<NovelDTO> listNovel() {
-		List<NovelDTO> list = sqlSession.selectList("listNovel");
+		List<NovelDTO> list = sqlSession.selectList("writerListNovel");
 		return list;
 	}
 	

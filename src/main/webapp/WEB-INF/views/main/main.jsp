@@ -17,7 +17,7 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="resources/img/HarryPotter.jpg" class="d-block w-100" alt="...">
+            <img src="resources/img/HarryPotter.jpg" class="d-block w-100" alt="..." height = "800" width="800">
             <div class="carousel-caption d-none d-md-block">
               <h5>Harry Potter and the Deathly Hallows</h5>
               <p>해리의 열일곱 살 생일을 앞두고 더즐리 가족은 집을 떠난다. 해리가 마법사 세계 기준으로 성인이 되는 열일곱 살이 되는 순간, 더즐리네 집에 걸려 있던 보호 마법이 깨질 것이고, 볼드모트의 공격에 그대로 노출될 것이기 때문이다. 
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="resources/img/goguruy.jpg" class="d-block w-100" alt="...">
+            <img src="resources/img/goguruy.jpg" class="d-block w-100" alt="..." height = "800" width="800">
             <div class="carousel-caption d-none d-md-block">
               <h5>고구려</h5>
               <p>작가는 대한민국의 젊은이들이 고구려에 대해 알기를 바라는 마음으로 17년에 걸친 자료의 검토와 해석 끝에 이 소설을 냈다고 한다. 
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="resources/img/Sonagi.jpg" class="d-block w-100" alt="...">
+            <img src="resources/img/Sonagi.jpg" class="d-block w-100" alt="..." height = "800" width="800">
             <div class="carousel-caption d-none d-md-block">
               <h5>소나기</h5>
               <p>어느 가을날 한 줄기 소나기처럼 너무나 짧게 끝나버린 소년과 소녀의 안타깝고도 순수한 사랑을 그린 이야기를 다루고 있다. </p>

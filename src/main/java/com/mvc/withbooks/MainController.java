@@ -17,7 +17,6 @@ public class MainController {
 		return "/main/login";
 	}
 	
-	
 	@RequestMapping("/findId")
 	public String findId() {
 		return "/main/findId";

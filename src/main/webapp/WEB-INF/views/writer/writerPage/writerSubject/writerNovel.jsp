@@ -9,7 +9,7 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<form name="f" action="writerNovel" method="post" onsubmit="return check()">
+		<form name="f" action="writerNovel" method="post" onsubmit="return check()" enctype="multipart/form-data">
 			<input type="hidden" value="1" name="mnum">
 			<table align="center" class="writer">
 				<tr>

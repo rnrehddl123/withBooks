@@ -3,7 +3,7 @@ package com.mvc.withbooks.dto;
 public class AdminSuggestDTO {
 	
 	private int sunum;
-	private String SuggestNovel;
+	private String suggestNovel;
 	private NovelDTO novelDTO; //foreign key
 	
 	
@@ -14,10 +14,10 @@ public class AdminSuggestDTO {
 		this.sunum = sunum;
 	}
 	public String getSuggestNovel() {
-		return SuggestNovel;
+		return suggestNovel;
 	}
 	public void setSuggestNovel(String suggestNovel) {
-		SuggestNovel = suggestNovel;
+		this.suggestNovel = suggestNovel;
 	}
 	public NovelDTO getNovelDTO() {
 		return novelDTO;

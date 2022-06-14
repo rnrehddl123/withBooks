@@ -1,5 +1,6 @@
 package com.mvc.withbooks;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.MemberDTO;
+import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.MemberMapper;
 
 @Controller
@@ -19,6 +23,8 @@ public class ClientController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	@Autowired
+	private CategoryMapper categoryMapper;
 	
 	@RequestMapping("/clientMypage")//留덉씠�럹�씠吏�
 	public String ClientmyPage() {
@@ -92,7 +98,9 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/signUp")//�쉶�썝媛��엯 �럹�씠吏�
-	public String SignUp() {
+	public String SignUp(HttpServletRequest req) {
+		List<CategoryDTO> list=categoryMapper.listCategory();
+		req.setAttribute("categoryList", list);
 		return "main/signUp";
 	}
 	

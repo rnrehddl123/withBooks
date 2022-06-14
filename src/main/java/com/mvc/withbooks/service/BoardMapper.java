@@ -42,6 +42,12 @@ public class BoardMapper {
 		return res;
 	}
 	
+	public int adminDeleteBoard(int Bnum) {
+		BoardDTO dto = getBoard(Bnum, "admin");
+		int res = sqlSession.delete("adminDeleteBoard",Bnum);
+		return res;
+	}
+	
 	public int updateBoard(BoardDTO dto) {
 		BoardDTO dto2 = getBoard(dto.getBnum(), "password");
 		if (!dto.getBoard_passwd().equals(dto2.getBoard_passwd())) {

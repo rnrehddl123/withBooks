@@ -20,6 +20,10 @@
  		delete from Board where Bnum = #{Bnum}
  	</select>
  	
+ 	<select id="adminDeleteBoard" parameterType="int">
+ 		delete from Board where Bnum = #{Bnum}
+ 	</select>
+ 	
  	<select id="updateBoard" parameterType="int">
  		update Board set Board_writer=#{board_writer}, Board_email=#{board_email}, Board_subject=#{board_subject}, Board_content=#{board_content} where Bnum=#{Bnum}
  	</select>

@@ -26,6 +26,7 @@ import com.mvc.withbooks.dto.NoticeDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
+import com.mvc.withbooks.service.BoardMapper;
 import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.NoticeMapper;
 import com.mvc.withbooks.service.NovelMapper;
@@ -43,6 +44,8 @@ public class AdminPageController {
 	private NovelMapper novelMapper;
 	@Autowired
 	private NoticeMapper noticeMapper;
+	@Autowired 
+	private BoardMapper boardMapper;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -158,9 +161,34 @@ public class AdminPageController {
 		return "homepage/admin/cateManage/cateList";
 	}
 	
+	@RequestMapping("/boardContent")
+	public String boardContent(HttpServletRequest req, int bnum) {
+		BoardDTO dto = boardMapper.getBoard(bnum, "admin");
+		req.setAttribute("getBoard", dto);
+		return "homepage/admin/boardManage/boardContent";
+	}
+	
 	@RequestMapping("/boardList")
-	public String boardManageList() {
+	public String boardManageList(HttpServletRequest req) {
+		List<BoardDTO> list = boardMapper.listBoard();
+		req.setAttribute("listBoard", list);
 		return "homepage/admin/boardManage/boardList";
+	}
+	
+	@RequestMapping("/adminDeleteBoard")
+	public String adminDeleteBoard(HttpServletRequest req, int bnum) {
+		int res = boardMapper.adminDeleteBoard(bnum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "게시글 삭제 성공";
+			url = "boardList";
+		}else {
+			msg = "게시글 삭제 실패";
+			url = "boardList";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
 	}
 	
 	@RequestMapping("/noticeList")

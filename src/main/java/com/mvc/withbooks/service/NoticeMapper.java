@@ -14,7 +14,7 @@ public class NoticeMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<NoticeDTO> listBoard(){
+	public List<NoticeDTO> listNotice(){
 		List<NoticeDTO> list = sqlSession.selectList("listNotice");
 		return list;
 	}
@@ -38,7 +38,7 @@ public class NoticeMapper {
 	}
 	
 	public int updateNotice(NoticeDTO dto) {
-		int res = sqlSession.update("updateMember",dto);
+		int res = sqlSession.update("updateNotice",dto);
 		return res;
 	}
 	

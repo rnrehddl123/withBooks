@@ -12,23 +12,23 @@
 	<form name="f" action="noticeInsert" method="post">
 		<table border="1" width="500" width="1000" height="500">
 				<tr>
-					<td colspan="2" align="center">공지사항 작성</td>
+					<td colspan="2" align="center">공지사항 보기</td>
 				</tr>
 				<tr>
 					<th>제 목</th>
 					<td>
-						<input type="text" name="notice_title" size="40">
+						<input type="text" name="subject" size="40" value="${getNotice.notice_title}">
 					</td>
 				</tr>
 				<tr>
 					<th>내 용</th>
-					<td><textarea name="notice_content" rows="11" cols="50"></textarea></td>
+					<td><textarea name="content" rows="11" cols="50">${getNotice.notice_content}</textarea></td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-						<input type="submit" value="글쓰기">
-						<input type="reset" value="다시작성">
-						<input type="button" value="목록보기">
+						<input type="button" value="수정" onclick="window.location='noticeUpdate?nonum=${getNotice.nonum}'">
+						<input type="button" value="삭제" onclick="window.location='noticeDelete?nonum=${getNotice.nonum}'">
+						<input type="button" value="목록보기" onclick="window.location='noticeList'">
 					</td>
 				</tr>
 		</table>

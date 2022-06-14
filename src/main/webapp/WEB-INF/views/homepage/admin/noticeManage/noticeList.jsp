@@ -12,52 +12,23 @@
 	<h3>공지사항</h3>
 
 	<table border="1" width="1000" height="500" align="center">
-			<!-- 공지/안내 select-option -->
+	<c:if test="${empty listNotice}">
 		<tr>
-			<td>
-				<a href="">[공지]엄청 긴 제목---------------------------------</a>
-						<!-- AdminSlideMapper.xml : list -->
-				<p>
-				sysdate
-			</td>
-			<td>
-				<input type="button" value="수정" onclick="window.location='noticeUpdate'">
-						<!-- AdminNoticeMapper.xml : update -->
-			</td>
-			<td>
-				<input type="button" value="삭제">
-						<!-- AdminSlideMapper.xml : delete -->
-			</td>
+			<td colspan="5" align="center">등록된 게시글이 없습니다.</td>
 		</tr>
-		
+	</c:if>
+    <c:forEach var="ndto" items="${listNotice}">
 		<tr>
-			<td>
-			<a href="">[안내]제목제목2</a>
-			<p>
-			2022.03.01
+			<td width="60%">
+				<a href="noticeContent?nonum=${ndto.nonum}">
+					${ndto.notice_title}
+				</a>
 			</td>
-			<td>
-			<input type="button" value="수정" onclick="window.location='noticeUpdate'">
-			</td>
-			<td>
-			<input type="button" value="삭제">
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
-			[공지/안내]공지사항 List
-			<p>
-			2022.02.01
-			</td>
-			<td>
-			<input type="button" value="수정" onclick="window.location='noticeUpdate'">
-			</td>
-			<td>
-			<input type="button" value="삭제">
-			</td>
-		</tr>
-		
+			<td width="20%">${ndto.notice_reg_date}</td>
+			<td width="10%"><input type="button" value="수정" onclick="window.location='noticeUpdate?nonum=${ndto.nonum}'"></td>
+			<td width="10%"><input type="button" value="삭제" onclick="window.location='noticeDelete?nonum=${ndto.nonum}'"></td>
+		</tr>		
+	</c:forEach>	
 	</table>
 	
 	

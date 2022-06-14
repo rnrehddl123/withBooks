@@ -20,11 +20,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.withbooks.dto.AdminSlideDTO;
 import com.mvc.withbooks.dto.AdminSuggestDTO;
+import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.CategoryDTO;
+import com.mvc.withbooks.dto.NoticeDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.CategoryMapper;
+import com.mvc.withbooks.service.NoticeMapper;
 import com.mvc.withbooks.service.NovelMapper;
 
 @Controller
@@ -38,6 +41,8 @@ public class AdminPageController {
 	private AdminSlideMapper adminSlideMapper;
 	@Autowired
 	private NovelMapper novelMapper;
+	@Autowired
+	private NoticeMapper noticeMapper;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -159,18 +164,77 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/noticeList")
-	public String noticeList() {
+	public String noticeList(HttpServletRequest req) {
+		List<NoticeDTO> list = noticeMapper.listNotice();
+		req.setAttribute("listNotice", list);
 		return "homepage/admin/noticeManage/noticeList";
 	}
 	
-	@RequestMapping("/noticeInsert")
+	@RequestMapping(value="/noticeInsert", method=RequestMethod.GET)
 	public String noticeInsert() {
 		return "homepage/admin/noticeManage/noticeInsert";
 	}
 	
-	@RequestMapping("/noticeUpdate")
-	public String noticeUpdate() {
+	@RequestMapping(value="/noticeInsert", method=RequestMethod.POST)
+	public String noticeInsert(HttpServletRequest req,NoticeDTO dto) {
+		int res = noticeMapper.insertNotice(dto);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "공지사항 입력 성공";
+			url = "noticeList";
+		}else {
+			msg = "카테고리 입력 실패";
+			url = "noticeInsert";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
+	
+	@RequestMapping(value="/noticeUpdate", method=RequestMethod.GET)
+	public String noticeUpdate(HttpServletRequest req, int nonum) {
+		NoticeDTO dto = noticeMapper.getNotice(nonum, "update");
+		req.setAttribute("getNotice", dto);
 		return "homepage/admin/noticeManage/noticeUpdate";
+	}
+	
+	@RequestMapping(value="/noticeUpdate", method=RequestMethod.POST)
+	public String noticeUpdate(HttpServletRequest req, NoticeDTO dto) {
+		int res = noticeMapper.updateNotice(dto);
+		if (res > 0) {
+			req.setAttribute("msg", "공지사항 수정 성공");
+			req.setAttribute("url", "noticeList");
+		}else if (res < 0) {
+			req.setAttribute("msg", "공지사항 수정 실패");
+			req.setAttribute("url", "noticeUpdate?nonum=" + dto.getNonum());
+		}else {
+			req.setAttribute("msg", "공지사항 수정 실패");
+			req.setAttribute("url", "noticeContent?nonum=" + dto.getNonum());
+		}
+		return "forward:message";
+	}
+	
+	@RequestMapping("/noticeDelete")
+	public String noticeDelete(HttpServletRequest req, int nonum) {
+		int res = noticeMapper.deleteNotice(nonum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "공지사항 삭제 성공";
+			url = "noticeList";
+		}else {
+			msg = "공지사항 삭제 실패";
+			url = "noticeList";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
+	
+	@RequestMapping("/noticeContent")
+	public String noticeContent(HttpServletRequest req, int nonum) {
+		NoticeDTO dto = noticeMapper.getNotice(nonum, "admin");
+		req.setAttribute("getNotice", dto);
+		return "homepage/admin/noticeManage/noticeContent";
 	}
 	
 	@RequestMapping("/clientList")

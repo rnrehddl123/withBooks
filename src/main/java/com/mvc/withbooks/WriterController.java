@@ -45,20 +45,11 @@ public class WriterController {
 		return "writer/writerPage/writerOrderList/writerNovelSubject";
 	}
 	
-	
 	@RequestMapping("/writerEpisodeList")
 	public String WriterEpisodeLIst(HttpServletRequest req) {
 		List<EpisodeDTO> list = episodeMapper.listEpisode();
 		req.setAttribute("listEpisode", list);
 		return "writer/writerPage/writerSubject/writerEpisodeList";
-	}
-	
-	
-	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
-	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum) {
-		EpisodeDTO dto = episodeMapper.getEpisode(Epnum, "update");
-		req.setAttribute("getEpisode", dto);
-		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
 	}
 		
 	//에피소드 작성 페이지
@@ -92,32 +83,33 @@ public class WriterController {
 	}
 	
 	//에피소드 삭제
-	@RequestMapping(value="/deleteEpisode", method=RequestMethod.GET)
-	public String deleteEpisode() {
-		return "main/main";
-	}
-	
-	@RequestMapping(value="/deleteEpisode", method=RequestMethod.POST)
-	public ModelAndView deleteEpisode(@RequestParam int epnum) {
+	@RequestMapping("/deleteEpisode")
+	public String deleteEpisode(HttpServletRequest req,@RequestParam int epnum) {
 		int res = episodeMapper.deleteEpisode(epnum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 삭제 성공, 에피소드 페이지로 이동합니다.";
-			url = "writer/writerPage/writerSubject/writerEpisode";
+			url = "writerEpisodeList";
 		}else {
 			msg = "에피소드 삭제 실패!!, 에피소드 페이지로 이동합니다.";
-			url = "writer/writerPage/writerSubject/writerEpisode";
+			url = "writerEpisodeList";
 		}
-		ModelAndView mav = new ModelAndView("forward:message");
-		mav.addObject("msg", msg);
-		mav.addObject("url", url);
-		return mav;
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "message";
 	}
 	
 	//에피소드 수정
 	@RequestMapping(value="/updateEpisode", method=RequestMethod.GET)
 	public String WriterEpisodeUpdate() {
 		return "main/main";
+	}
+	
+	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
+	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum) {
+		EpisodeDTO dto = episodeMapper.getEpisode(Epnum, "update");
+		req.setAttribute("getEpisode", dto);
+		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
 	}
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)

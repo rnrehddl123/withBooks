@@ -1,15 +1,28 @@
 package com.mvc.withbooks;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.UploadContext;
+import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.mvc.withbooks.dto.*;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
@@ -25,6 +38,9 @@ public class WriterController {
 	
 	@Autowired
 	private EpisodeMapper episodeMapper;
+	
+	 @Resource(name="uploadPath")
+	 String uploadPath;
 	
 	@Autowired
 	private MemberMapper memberMapper;
@@ -127,11 +143,25 @@ public class WriterController {
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.GET)
 	public String WriterNovelForm() {
+		
 		return "writer/writerPage/writerSubject/writerNovel";
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
-	public String WriterNovel(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum) {
+	public String WriterNovel(HttpServletRequest req, 
+			@ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
+		
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+		MultipartFile mf = mr.getFile("Novel_image");
+		String filename = mf.getOriginalFilename();
+		dto.setNovel_image(filename);
+		if (filename != null && !(filename.trim().equals(""))) {
+			File file = new File(uploadPath, filename);
+			try {
+				mf.transferTo(file);
+			}catch(IOException e) {}
+		}
+		
 		int res = novelMapper.insertNovel(dto,mnum);
 		String msg = null, url = null;
 		if(res>0) {
@@ -161,7 +191,20 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.POST)
-	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum) {
+	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto, 
+			@RequestParam int mnum,BindingResult result) {
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+		MultipartFile mf = mr.getFile("Novel_image");
+		String filename = mf.getOriginalFilename();
+		if (filename != null && !(filename.trim().equals(""))) {
+			File file = new File(uploadPath, filename);
+			try {
+				mf.transferTo(file);
+			}catch(IOException e) {}
+		}else {
+			filename = req.getParameter("Novel_image2"); 
+		}		
+		dto.setNovel_image(filename);
 		int res = novelMapper.updateNovel(dto,mnum);
 		String msg = null, url = null;
 		if(res>0) {

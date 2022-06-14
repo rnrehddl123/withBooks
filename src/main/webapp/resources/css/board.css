@@ -1,0 +1,33 @@
+.flex{
+	display: flex !important;
+}
+
+
+.boardWrapper{
+	border: solid 0.5px #c2c2c2;
+	border-radius: 0.5rem;
+}
+
+
+.title{
+	text-align: left;
+	margin-left: 20px;
+}
+
+.contant{
+	min-height: 500px;
+}
+
+.boardInfo{
+	background-color: #f5f6f6;
+	text-align: left;
+}
+
+.iconWrapper{
+	margin-left: 20px;
+}
+
+.time{
+	margin-left: auto;
+	margin-right: 20px;
+}

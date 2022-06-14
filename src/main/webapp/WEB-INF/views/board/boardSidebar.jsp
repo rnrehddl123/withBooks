@@ -3,6 +3,7 @@
 <html>
 <head>  
 	<title>자유 게시판 목록</title>
+	<link href="resources/css/board.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>

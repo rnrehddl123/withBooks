@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mvc.withbooks.dto.*;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
+import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NovelMapper;
 import org.springframework.web.servlet.ModelAndView;
 import com.mvc.withbooks.dto.EpisodeDTO;
@@ -28,6 +29,10 @@ public class WriterController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	
+	@Autowired
+	private NoticeEpisodeMapper noticeEpisodeMapper;
+	
 	
 	@RequestMapping("/writerOrderList")
 	public String WriterOrderList() {
@@ -66,8 +71,8 @@ public class WriterController {
 	
 	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
 	public ModelAndView insertEpisode(@ModelAttribute EpisodeDTO dto, int Nnum) {
-		System.out.println(dto.getEpi_content());
 		int res = episodeMapper.insertEpisode(dto, Nnum);
+
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 등록 성공, 에피소드 페이지로 이동합니다.";
@@ -76,6 +81,7 @@ public class WriterController {
 			msg = "에피소드 등록 실패!!, 에피소드 페이지로 이동합니다.";
 			url = "writer/writerPage/writerSubject/writerEpisode";
 		}
+		
 		ModelAndView mav = new ModelAndView("forward:message.jsp");
 		mav.addObject("msg", msg);
 		mav.addObject("url", url);

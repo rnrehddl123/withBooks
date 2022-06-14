@@ -107,11 +107,12 @@ public class ClientController {
 		dto.setMember_Tel(params.get("member_tel1")+params.get("member_tel2")+params.get("member_tel3"));	
 		if (member_preferred.length>0) {
 			dto.setMember_preferred1(member_preferred[0]);
-		}
-		if (member_preferred.length>1) {
+		}else if (member_preferred.length>1) {
+			dto.setMember_preferred1(member_preferred[0]);
 			dto.setMember_preferred2(member_preferred[1]);
-		}
-		if (member_preferred.length>2) {
+		}else if(member_preferred.length>2) {
+			dto.setMember_preferred1(member_preferred[0]);
+			dto.setMember_preferred2(member_preferred[1]);
 			dto.setMember_preferred3(member_preferred[2]);
 		}
 		int res = memberMapper.insertMember(dto);

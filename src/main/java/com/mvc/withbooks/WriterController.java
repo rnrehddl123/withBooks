@@ -89,6 +89,7 @@ public class WriterController {
 	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum) {
 		System.out.println(dto.getEpi_content());
 		int res = episodeMapper.insertEpisode(dto, Nnum);
+		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 등록 성공, 에피소드 목록 페이지로 이동합니다.";

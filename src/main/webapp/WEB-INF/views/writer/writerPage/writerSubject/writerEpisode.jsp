@@ -21,7 +21,6 @@
 				<div class="flex"><label for="exampleFormControlTextarea1" class="form-label">내용</label></div>
 			<div class="box">
 				<div id="editor">
-				  <p><br></p>
 				</div>
 				<input type="hidden" name="Epi_content" id='hidden-input'>
 			</div>
@@ -29,17 +28,17 @@
 		</form>
 	</div>
 <script>
-  var quill = new Quill('#editor', {
+var quill = new Quill('#editor', {
     theme: 'snow'
   });
   
   var myEditor = document.querySelector('#editor')
   var html = myEditor.children[0].innerHTML;
   
-  let inputElement = document.querySelector('#hidden-input')
+  let inputElement = document.getElementById('hidden-input')
   quill.on('text-change', function() {
-    inputElement.value = html;
-    console.log(html);
+	console.log(html);
+    inputElement.value = myEditor.children[0].innerHTML;
   });
 </script>
 <jsp:include page="../../../main/footer.jsp"/>

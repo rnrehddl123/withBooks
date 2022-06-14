@@ -24,7 +24,15 @@
 }
 
 .iconWrapper{
-	margin-left: 20px;
+	margin-left: 30px;
+	position: relative;
+}
+
+.iconWrapper svg{
+	position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
 }
 
 .time{

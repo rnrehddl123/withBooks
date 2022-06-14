@@ -49,40 +49,40 @@
 			  <div class="flex inputWrapper">
 			  	<input name="member_birth" type="text" class="form-control birth" aria-describedby="emailHelp" placeholder="생일">
 			    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-				  <input name="member_sex" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+				  <input name="member_sex" value="man" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 				  <label class="btn btn-outline-primary" for="btnradio1">남자</label>
 				
-				  <input name="member_sex" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+				  <input name="member_sex" value="woman" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
 				  <label class="btn btn-outline-primary" for="btnradio2">여자</label>
 				</div>
 			  </div>
 			  <div class="inputWrapper flex checkWrapper">
 			    <div class="form-check marginauto">
-				  <input name="member_prefered" class="form-check-input" type="checkbox" value="" onclick="CountChecked(this)">
+				  <input name="member_preferred" class="form-check-input" type="checkbox" value="판타지" onclick="CountChecked(this)">
 				  <label class="form-check-label" for="flexCheckDefault">
 				    	판타지
 				  </label>
 				</div>
 				<div class="form-check marginauto">
-				  <input name="member_prefered" class="form-check-input" type="checkbox" value="" onclick="CountChecked(this)">
+				  <input name="member_preferred" class="form-check-input" type="checkbox" value="로맨스" onclick="CountChecked(this)">
 				  <label class="form-check-label" for="flexCheckDefault">
 				    	로맨스
 				  </label>
 				</div>
 				<div class="form-check marginauto">
-				  <input name="member_prefered" class="form-check-input" type="checkbox" value="" onclick="CountChecked(this)">
+				  <input name="member_preferred" class="form-check-input" type="checkbox" value="현판" onclick="CountChecked(this)">
 				  <label class="form-check-label" for="flexCheckDefault">
 				    	현판
 				  </label>
 				</div>
 				<div class="form-check marginauto">
-				  <input name="member_prefered" class="form-check-input" type="checkbox" value="" onclick="CountChecked(this)">
+				  <input name="member_preferred" class="form-check-input" type="checkbox" value="판타지" onclick="CountChecked(this)">
 				  <label class="form-check-label" for="flexCheckDefault">
 				    	판타지
 				  </label>
 				</div>
 				<div class="form-check marginauto">
-				  <input name="member_prefered" class="form-check-input" type="checkbox" value="" onclick="CountChecked(this)">
+				  <input name="member_preferred" class="form-check-input" type="checkbox" value="판타지" onclick="CountChecked(this)">
 				  <label class="form-check-label" for="flexCheckDefault">
 				    	판타지
 				  </label>

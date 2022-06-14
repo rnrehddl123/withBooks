@@ -22,12 +22,14 @@ import com.mvc.withbooks.dto.AdminSlideDTO;
 import com.mvc.withbooks.dto.AdminSuggestDTO;
 import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.CategoryDTO;
+import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.BoardMapper;
 import com.mvc.withbooks.service.CategoryMapper;
+import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeMapper;
 import com.mvc.withbooks.service.NovelMapper;
 
@@ -46,6 +48,8 @@ public class AdminPageController {
 	private NoticeMapper noticeMapper;
 	@Autowired 
 	private BoardMapper boardMapper;
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -266,10 +270,27 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/clientList")
-	public String clientList() {
+	public String clientList(HttpServletRequest req) {
+		List<MemberDTO> list = memberMapper.listMember();
+		req.setAttribute("listMember", list);
 		return "homepage/admin/memberManage/clientList";
 	}
 	
+	@RequestMapping("/deleteMember")
+	public String deleteMember(HttpServletRequest req, int mnum) {
+		int res = memberMapper.deleteMember(mnum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "회원 삭제 성공";
+			url = "clientList";
+		}else {
+			msg = "공지사항 삭제 실패";
+			url = "clientList";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
 
 	@RequestMapping("/clientUpgrade")
 	public String clientUpgrade() {

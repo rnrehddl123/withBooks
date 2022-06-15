@@ -36,7 +36,10 @@
   					<td>${getBoard.board_readcount}</td>
   				</tr>
   				<tr>
-  					<td colspan="2"><a href="deleteBoardAdmin?bnum=${getBoard.bnum}">삭제</a></td>
+  					<td colspan="2">
+  						<a href="deleteBoardAdmin?bnum=${getBoard.bnum}">삭제</a>
+  						<a href="listBoardAdmin">목록</a>
+  					</td>
   				</tr>	
 			</table>
 		</div>	

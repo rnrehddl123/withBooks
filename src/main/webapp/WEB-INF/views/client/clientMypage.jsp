@@ -24,14 +24,15 @@
 			<tr height="30%">
 				<td width="200" align="center">장바구니</td>
 				<td width="200" align="center">선호 장르</td>
-				<td width="200"></td>
+				<td width="200"><!-- 공백 --></td>
 			</tr>
 			<tr height="35%">
 				<td colspan="3" align="center">
 					<ul>
-						<li><a href="clientUpdate"><h3>개인정보수정</h3></a></li>
-						<li><a href="clientOrderList"><h3>구매내역</h3></a></li>
-						<li><h3>회원탈퇴</h3></li>
+						<li><h3><a href="clientOrderList">구매내역</a></h3></li>
+						<li><h3><a href="clientUpdate">개인정보수정</a></h3></li>
+						<li><h3><a href="clientDelete">회원탈퇴</a></h3></li>
+						<!-- clientController에 clientDelete추가 해야함 -->
 					</ul>		
 				</td>
 			</tr>

@@ -18,6 +18,7 @@
 		
 		<div>
 		<h1>일반고객</h1>
+			<li><h3><a href="clientDelete">일반회원 탈퇴페이지</a></h3>
 			<li><h3><a href="clientOrder">일반회원 주문하기</a></h3>
 			<li><h3><a href="clientNovelEpi">일반회원 에피소드보기</a></h3>
 			<li><h3><a href="clientNovelSubject">일반회원 소설보기</a></h3>

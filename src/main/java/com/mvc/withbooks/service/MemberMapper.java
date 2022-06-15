@@ -31,7 +31,6 @@ public class MemberMapper {
 			return list;
 	}
 	
-	
 	public int deleteMember(int mnum) {
 			int res = sqlSession.delete("deleteMember", mnum);
 			return res;
@@ -68,20 +67,25 @@ public class MemberMapper {
 						+ "' and Member_Tel='"+params.get("Member_Tel") + "' and Member_address='"+params.get("Member_address")+"'";
 				params.put("sql", sql);
 				MemberDTO dto = sqlSession.selectOne("searchMember", params);
-				if (dto == null) return "ÀÔ·ÂµÈ°ª°ú ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.";
-				return "¾ÆÀÌµð´Â " + dto.getMember_id() +" ÀÔ´Ï´Ù.";
+				if (dto == null) return "ï¿½Ô·ÂµÈ°ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
+				return "ï¿½ï¿½ï¿½Ìµï¿½ï¿½ " + dto.getMember_id() +" ï¿½Ô´Ï´ï¿½.";
 			}else {
 				sql = "select * from member where Member_name='"+params.get("Member_name") 
 						+ "' and Member_Tel='"+params.get("Member_Tel") + "' and Member_address='"+params.get("Member_address")+"' and Member_id='"+params.get("Member_id")+"'";
 				params.put("sql", sql);
 				MemberDTO dto = sqlSession.selectOne("searchMember", params);
-				if (dto == null) return "ÀÔ·ÂµÈ°ª°ú ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.";
-				return "ºñ¹Ð¹øÈ£´Â " + dto.getMember_passwd() + " ÀÔ´Ï´Ù.";
+				if (dto == null) return "ï¿½Ô·ÂµÈ°ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
+				return "ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ " + dto.getMember_passwd() + " ï¿½Ô´Ï´ï¿½.";
 			}
 	}
 	
 	public int updateCash(Map<String, Integer> params) {
 		int res = sqlSession.update("updateCash", params);
+		return res;
+	}
+	
+	public int updateAuthority(MemberDTO dto) {
+		int res = sqlSession.update("updateAuthority", dto);
 		return res;
 	}
 }

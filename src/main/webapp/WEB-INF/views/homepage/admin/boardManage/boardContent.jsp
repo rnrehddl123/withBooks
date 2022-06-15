@@ -28,11 +28,18 @@
   					<td>${getBoard.board_date}</td>
   				</tr>
   				<tr>
+  					<td>내용</td>
+  					<td>${getBoard.board_content}</td>
+  				</tr>
+  				<tr>
   					<td>조회수</td>
   					<td>${getBoard.board_readcount}</td>
   				</tr>
   				<tr>
-  					<td colspan="2"><a href="adminDeleteBoard?bnum=${getBoard.bnum}">삭제</a></td>
+  					<td colspan="2">
+  						<a href="deleteBoardAdmin?bnum=${getBoard.bnum}">삭제</a>
+  						<a href="listBoardAdmin">목록</a>
+  					</td>
   				</tr>	
 			</table>
 		</div>	

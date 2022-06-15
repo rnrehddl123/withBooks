@@ -7,10 +7,10 @@
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
-<div class="clientList">
+<div class="listClient">
 	<p>
 	<b><h3 align="center">회원 관리</h3></b>
-	<table border="1" width="1000" height="500">
+	<table border="1" width="1000" height="300">
 		<tr height="50">
 			<th>회원 번호</th>
 			<th>회원 이름</th>
@@ -39,9 +39,9 @@
 	<p>
 	
 	<b><h3 align="center">작가 관리</h3></b>
-	<table border="1" width="1000" height="500">
+	<table border="1" width="1000" height="300">
 		<tr height="50"> 
-			<th>작가 번호</th>
+			<th>회원 번호</th>
 			<th>작가 이름</th>
 			<th>작가 아이디</th>
 			<th>전화번호</th>

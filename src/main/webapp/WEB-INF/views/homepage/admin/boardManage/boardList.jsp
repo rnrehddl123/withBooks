@@ -10,7 +10,7 @@
 <%@ include file="../../adminHeader.jsp"%>
 		<div class="adminboard">
 			<b><h1>게시판 관리</h1></b><p>
-			<table>
+			<table border="1" width="1000" height="500">
    				<tr>
       				<th>번호</th>
       				<th>제목</th>
@@ -28,7 +28,7 @@
 				<tr>
 					<td align="left">${bdto.bnum}</td>
 					<td align="left">
-						<a href="boardContent?bnum=${bdto.bnum}">
+						<a href="contentBoardAdmin?bnum=${bdto.bnum}">
 							${bdto.board_subject}
 						</a>
 					</td>
@@ -36,7 +36,7 @@
 					<td>${bdto.board_date}</td>
 					<td>${bdto.board_readcount}</td>
 					<td>
-						<input type="button" value="삭제" onclick="window.location='adminDeleteBoard?bnum=${bdto.bnum}'">
+						<input type="button" value="삭제" onclick="window.location='deleteBoardAdmin?bnum=${bdto.bnum}'">
 					</td>
 				</tr>		
 			</c:forEach>

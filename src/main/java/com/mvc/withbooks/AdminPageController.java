@@ -96,16 +96,22 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
-	@RequestMapping(value="/suggest", method=RequestMethod.GET)//추천작 페이지 이동
-	public String suggest(HttpServletRequest req) {
-		List<NovelDTO> list = novelMapper.listNovel();
+	@RequestMapping("/suggest")//추천작 페이지 이동
+	public String suggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
+		List<NovelDTO> list = null;
+		if(mode == null) {
+			list = novelMapper.listNovel();
+		}else {
+			String searchString = req.getParameter("searchString");
+			list = novelMapper.findNovel("Novel_subject", searchString);
+		}
 		req.setAttribute("listNovel", list);
 		List<AdminSuggestDTO> slist = adminSuggestMapper.listAdminSuggest();
 		req.setAttribute("listAdminSuggest", slist);
 		return "homepage/admin/banerManage/suggest";
 	}
 	
-	@RequestMapping(value="/suggest", method=RequestMethod.POST)//추천작 등록
+	@RequestMapping("/InsertSuggest")//추천작 등록
 	public String suggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto, int nnum) {
 		int res = adminSuggestMapper.insertAdminSuggest(dto, nnum);
 		String msg = null, url = null;
@@ -121,7 +127,7 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
-	@RequestMapping("/suggestDelete")
+	@RequestMapping("/deleteSuggest")
 	public String suggestDelete(HttpServletRequest req, int sunum) {
 		int res = adminSuggestMapper.deleteAdminSuggest(sunum);
 		String msg = null, url = null;
@@ -137,139 +143,145 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
-	@RequestMapping(value="/cateInsert", method=RequestMethod.GET)//카테고리 페이지 이동
+	@RequestMapping(value="/insertCate", method=RequestMethod.GET)//카테고리 페이지 이동
 	public String cateInsert() {
 		return "homepage/admin/cateManage/cateInsert";
 	}
 	
-	@RequestMapping(value="/cateInsert", method=RequestMethod.POST)//카테고리 등록
+	@RequestMapping(value="/insertCate", method=RequestMethod.POST)//카테고리 등록
 	public String cateInsert(HttpServletRequest req, @ModelAttribute CategoryDTO dto) {
 		int res = categoryMapper.insertCategory(dto);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "카테고리 입력 성공";
-			url = "cateList";
+			url = "listCate";
 		}else {
 			msg = "카테고리 입력 실패";
-			url = "cateInsert";
+			url = "insertCate";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
 	}
 	
-	@RequestMapping("/cateList")//카테고리 리스트 페이지 이동
+	@RequestMapping("/listCate")//카테고리 리스트 페이지 이동
 	public String cateList(HttpServletRequest req) {
 		List<CategoryDTO> list = categoryMapper.listCategory();
 		req.setAttribute("listCategory", list);
 		return "homepage/admin/cateManage/cateList";
 	}
 	
-	@RequestMapping("/boardContent")
+	@RequestMapping("/contentBoardAdmin")
 	public String boardContent(HttpServletRequest req, int bnum) {
 		BoardDTO dto = boardMapper.getBoard(bnum, "admin");
 		req.setAttribute("getBoard", dto);
 		return "homepage/admin/boardManage/boardContent";
 	}
 	
-	@RequestMapping("/boardList")
+	@RequestMapping("/listBoardAdmin")
 	public String boardManageList(HttpServletRequest req) {
 		List<BoardDTO> list = boardMapper.listBoard();
 		req.setAttribute("listBoard", list);
 		return "homepage/admin/boardManage/boardList";
 	}
 	
-	@RequestMapping("/adminDeleteBoard")
+	@RequestMapping("/deleteBoardAdmin")
 	public String adminDeleteBoard(HttpServletRequest req, int bnum) {
-		int res = boardMapper.adminDeleteBoard(bnum);
+		int res = boardMapper.deleteBoardAdmin(bnum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "게시글 삭제 성공";
-			url = "boardList";
+			url = "listBoardAdmin";
 		}else {
 			msg = "게시글 삭제 실패";
-			url = "boardList";
+			url = "listBoardAdmin";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
 	}
 	
-	@RequestMapping("/noticeList")
-	public String noticeList(HttpServletRequest req) {
-		List<NoticeDTO> list = noticeMapper.listNotice();
+	@RequestMapping("/listNotice")
+	public String noticeList(HttpServletRequest req, @RequestParam(required = false) String mode) {
+		List<NoticeDTO> list = null;
+		if(mode == null) {
+			list = noticeMapper.listNotice();
+		}else {
+			String searchString = req.getParameter("searchString");
+			list = noticeMapper.findNotice("Notice_title", searchString);
+		}
 		req.setAttribute("listNotice", list);
 		return "homepage/admin/noticeManage/noticeList";
 	}
 	
-	@RequestMapping(value="/noticeInsert", method=RequestMethod.GET)
+	@RequestMapping(value="/insertNotice", method=RequestMethod.GET)
 	public String noticeInsert() {
 		return "homepage/admin/noticeManage/noticeInsert";
 	}
 	
-	@RequestMapping(value="/noticeInsert", method=RequestMethod.POST)
+	@RequestMapping(value="/insertNotice", method=RequestMethod.POST)
 	public String noticeInsert(HttpServletRequest req,NoticeDTO dto) {
 		int res = noticeMapper.insertNotice(dto);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "공지사항 입력 성공";
-			url = "noticeList";
+			url = "listNotice";
 		}else {
 			msg = "카테고리 입력 실패";
-			url = "noticeInsert";
+			url = "insertNotice";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
 	}
 	
-	@RequestMapping(value="/noticeUpdate", method=RequestMethod.GET)
+	@RequestMapping(value="/updateNotice", method=RequestMethod.GET)
 	public String noticeUpdate(HttpServletRequest req, int nonum) {
 		NoticeDTO dto = noticeMapper.getNotice(nonum, "update");
 		req.setAttribute("getNotice", dto);
 		return "homepage/admin/noticeManage/noticeUpdate";
 	}
 	
-	@RequestMapping(value="/noticeUpdate", method=RequestMethod.POST)
+	@RequestMapping(value="/updateNotice", method=RequestMethod.POST)
 	public String noticeUpdate(HttpServletRequest req, NoticeDTO dto) {
 		int res = noticeMapper.updateNotice(dto);
 		if (res > 0) {
 			req.setAttribute("msg", "공지사항 수정 성공");
-			req.setAttribute("url", "noticeList");
+			req.setAttribute("url", "listNotice");
 		}else if (res < 0) {
 			req.setAttribute("msg", "공지사항 수정 실패");
-			req.setAttribute("url", "noticeUpdate?nonum=" + dto.getNonum());
+			req.setAttribute("url", "updateNotice?nonum=" + dto.getNonum());
 		}else {
 			req.setAttribute("msg", "공지사항 수정 실패");
-			req.setAttribute("url", "noticeContent?nonum=" + dto.getNonum());
+			req.setAttribute("url", "contentNotice?nonum=" + dto.getNonum());
 		}
 		return "forward:message";
 	}
 	
-	@RequestMapping("/noticeDelete")
+	@RequestMapping("/deleteNotice")
 	public String noticeDelete(HttpServletRequest req, int nonum) {
 		int res = noticeMapper.deleteNotice(nonum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "공지사항 삭제 성공";
-			url = "noticeList";
+			url = "listNotice";
 		}else {
 			msg = "공지사항 삭제 실패";
-			url = "noticeList";
+			url = "listNotice";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
 	}
 	
-	@RequestMapping("/noticeContent")
+	@RequestMapping("/contentNotice")
 	public String noticeContent(HttpServletRequest req, int nonum) {
 		NoticeDTO dto = noticeMapper.getNotice(nonum, "admin");
 		req.setAttribute("getNotice", dto);
 		return "homepage/admin/noticeManage/noticeContent";
 	}
 	
-	@RequestMapping("/clientList")
+	@RequestMapping("/listClient")
 	public String clientList(HttpServletRequest req) {
 		List<MemberDTO> list = memberMapper.listMember();
 		req.setAttribute("listMember", list);
@@ -282,17 +294,17 @@ public class AdminPageController {
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "회원 삭제 성공";
-			url = "clientList";
+			url = "listClient";
 		}else {
-			msg = "공지사항 삭제 실패";
-			url = "clientList";
+			msg = "회원 삭제 실패";
+			url = "listClient";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
 	}
 
-	@RequestMapping("/clientUpgrade")
+	@RequestMapping("/upgradeClient")
 	public String clientUpgrade() {
 		return "homepage/admin/memberManage/clientUpgrade";
 	}

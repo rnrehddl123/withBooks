@@ -20,7 +20,7 @@
  		delete from Board where Bnum = #{Bnum}
  	</select>
  	
- 	<select id="adminDeleteBoard" parameterType="int">
+ 	<select id="deleteBoardAdmin" parameterType="int">
  		delete from Board where Bnum = #{Bnum}
  	</select>
  	

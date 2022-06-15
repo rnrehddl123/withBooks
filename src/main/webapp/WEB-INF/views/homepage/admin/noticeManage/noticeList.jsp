@@ -7,7 +7,7 @@
 <%@include file="../../adminHeader.jsp"%>
 <body>
 
-<div class="noticeList">
+<div class="listNotice">
 
 	<h3>공지사항</h3>
 
@@ -20,23 +20,25 @@
     <c:forEach var="ndto" items="${listNotice}">
 		<tr>
 			<td width="60%">
-				<a href="noticeContent?nonum=${ndto.nonum}">
+				<a href="contentNotice?nonum=${ndto.nonum}">
 					${ndto.notice_title}
 				</a>
 			</td>
 			<td width="20%">${ndto.notice_reg_date}</td>
-			<td width="10%"><input type="button" value="수정" onclick="window.location='noticeUpdate?nonum=${ndto.nonum}'"></td>
-			<td width="10%"><input type="button" value="삭제" onclick="window.location='noticeDelete?nonum=${ndto.nonum}'"></td>
+			<td width="10%"><input type="button" value="수정" onclick="window.location='updateNotice?nonum=${ndto.nonum}'"></td>
+			<td width="10%"><input type="button" value="삭제" onclick="window.location='deleteNotice?nonum=${ndto.nonum}'"></td>
 		</tr>		
 	</c:forEach>	
 	</table>
 	
-	
-	검색: <input type="text" name="search"> <input type="button" value="검색">
+	<form name="f" action="listNotice" method="post">
+	<input type="hidden" name="mode" value="search">
+	검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+	</form>
 				<!-- AdminSlideMapper.xml : search -->
 	
 
-	<input type="button" value="글쓰기" align="right" onclick="window.location='noticeInsert'">
+	<input type="button" value="글쓰기" align="right" onclick="window.location='insertNotice'">
 				<!-- AdminSlideMapper.xml : insert -->
 	
 </div>

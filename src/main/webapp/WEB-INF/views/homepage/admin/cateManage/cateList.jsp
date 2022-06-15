@@ -8,10 +8,10 @@
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
-<div class="cateList">
+<div class="listCate">
 	<b><h3>카테고리 목록</h3></b>
-	<table border="1" width="1000" height="500">
-		<tr width="10%">
+	<table border="1" width="500" height="200">
+		<tr>
 			<th width="30%">번호</th>
 			<th width="70%">카테고리명</th>
 		</tr>
@@ -30,7 +30,7 @@
 	
 	<p>
 	
-		<input type="button" value="카테고리 추가" onclick="window.location='cateInsert'">
+		<input type="button" value="카테고리 추가" onclick="window.location='insertCate'">
 </div>
 </body>
 </html>

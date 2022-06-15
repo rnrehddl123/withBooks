@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- writeNovel.jsp -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
@@ -21,7 +22,18 @@
 				</tr>
 				<tr>
 					<th width="20%">카 테 고 리</th>
-					<td><input type="text" name="Novel_cate" size="50" class="width80"></td>
+					<td>
+						<div class="cateWrapper">
+  						     <c:forEach items="${listCategory}" var="dto">
+			  					<div class="form-check">
+								  <input class="form-check-input" name="Novel_cate" type="radio" value="${dto.cate_name}">
+								  <label class="form-check-label" for="flexRadioDefault1">
+ 									  ${dto.cate_name}
+								  </label>
+								</div>
+			  				</c:forEach>
+						</div>
+					</td>
 				</tr>			
 				<tr>
 					<th width="20%">대 제 목(소설의 제목)</th>
@@ -29,7 +41,7 @@
 				</tr>
 				<tr>
 					<th width="20%">소 설 이 미 지</th>
-					<td><input type="file" name="Novel_image" size="50" class="width80"></td>
+					<td><input type="file" name="file" size="50" class="width80"></td>
 				</tr>
 				<tr>
 					<th width="20%">줄 거 리</th>

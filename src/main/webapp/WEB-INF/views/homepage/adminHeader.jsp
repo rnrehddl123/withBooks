@@ -15,7 +15,7 @@
 <div class="col-md-3 adminSideBar">
 <!-- 사이드 바 메뉴-->
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="homepage" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4">관리자 페이지</span>
     </a>
@@ -34,49 +34,43 @@
         </a>
       </li>
       <li>
-        <a href="cateInsert" class="nav-link text-white">
+        <a href="insertCate" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           	카테고리 추가
         </a>
       </li>
       <li>
-        <a href="cateList" class="nav-link text-white">
+        <a href="listCate" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	카테고리 목록
         </a>
       </li>
       <li>
-        <a href="noticeInsert" class="nav-link text-white">
+        <a href="insertNotice" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	공지사항 추가
         </a>
       </li>
       <li>
-        <a href="noticeUpdate" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          	공지사항 수정
-        </a>
-      </li>
-      <li>
-        <a href="noticeList" class="nav-link text-white">
+        <a href="listNotice" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	공지사항 목록
         </a>
       </li>
       <li>
-        <a href="boardList" class="nav-link text-white">
+        <a href="listBoardAdmin" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	게시판 관리
         </a>
       </li>
       <li>
-        <a href="clientList" class="nav-link text-white">
+        <a href="listClient" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	회원 관리
         </a>
       </li>
       <li>
-        <a href="clientUpgrade" class="nav-link text-white">
+        <a href="upgradeClient" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	작가 신청 관리
         </a>
@@ -120,4 +114,4 @@
       </ul>
     </div>
  </div>
-		<div class="adminmain">
+		<div class="adminmain" align="center">

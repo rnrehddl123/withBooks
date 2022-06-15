@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.withbooks.dto.*;
+import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
@@ -33,15 +34,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WriterController {
 	
+	@Resource(name="uploadPath")
+	 String uploadPath;
+	
 	@Autowired
 	private NovelMapper novelMapper;
 	
 	@Autowired
 	private EpisodeMapper episodeMapper;
 	
-	 @Resource(name="uploadPath")
-	 String uploadPath;
+	@Autowired
+	private CategoryMapper categoryMapper;
 	
+
 	@Autowired
 	private MemberMapper memberMapper;
 	
@@ -145,39 +150,40 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.GET)
-	public String WriterNovelForm() {
-		
+	public String WriterNovelForm(HttpServletRequest req) {
+		List<CategoryDTO> list = categoryMapper.listCategory();
+		req.setAttribute("listCategory", list);
 		return "writer/writerPage/writerSubject/writerNovel";
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
-	public String WriterNovel(HttpServletRequest req, 
-			@ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
-		
-		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-		MultipartFile mf = mr.getFile("Novel_image");
-		String filename = mf.getOriginalFilename();
-		dto.setNovel_image(filename);
-		if (filename != null && !(filename.trim().equals(""))) {
-			File file = new File(uploadPath, filename);
-			try {
-				mf.transferTo(file);
-			}catch(IOException e) {}
-		}
-		
-		int res = novelMapper.insertNovel(dto,mnum);
-		String msg = null, url = null;
-		if(res>0) {
-			msg = "�Ҽ� ��� ����!! �Ҽ� ��� �������� �̵��մϴ�.";
-			url = "writerNovelList";
-		}else {
-			msg = "�Ҽ� ��� ���� !! �Ҽ� ��� �������� �̵��մϴ�.";
-			url = "writerNovelList";
-		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
-	}
+	public String WriterNovel(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
+	      MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+	      MultipartFile mf = mr.getFile("file");
+	      String filename = mf.getOriginalFilename();
+	      UUID uuid = UUID.randomUUID();
+	      filename = uuid.toString() + "_" + filename;
+	      dto.setNovel_image(filename);
+	      if (filename != null && !(filename.trim().equals(""))) {
+	         File file = new File(uploadPath, filename);
+	         try {
+	            mf.transferTo(file);
+	         }catch(IOException e) {}
+	      }
+	      
+	      int res = novelMapper.insertNovel(dto,mnum);
+	      String msg = null, url = null;
+	      if(res>0) {
+	         msg = "등록 성공";
+	         url = "writerNovelList";
+	      }else {
+	         msg = "등록 실패";
+	         url = "writerNovelList";
+	      }
+	      req.setAttribute("msg", msg);
+	      req.setAttribute("url", url);
+	      return "message";
+	   }
 	
 	@RequestMapping("/writerNovelList")
 	public String WriterNovelList(HttpServletRequest req) {
@@ -197,15 +203,17 @@ public class WriterController {
 	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto, 
 			@RequestParam int mnum,BindingResult result) {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-		MultipartFile mf = mr.getFile("Novel_image");
+		MultipartFile mf = mr.getFile("file");
 		String filename = mf.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+	    filename = uuid.toString() + "_" + filename;
 		if (filename != null && !(filename.trim().equals(""))) {
 			File file = new File(uploadPath, filename);
 			try {
 				mf.transferTo(file);
 			}catch(IOException e) {}
 		}else {
-			filename = req.getParameter("Novel_image2"); 
+			filename = req.getParameter("file2"); 
 		}		
 		dto.setNovel_image(filename);
 		int res = novelMapper.updateNovel(dto,mnum);

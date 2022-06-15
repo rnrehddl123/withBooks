@@ -10,7 +10,7 @@
 <body>
 <div align="center">
 	<form name="updateCash" action="updateCash" method="POST"> 
-	<input type="hidden" name="mnum" value="1">
+	<input type="hidden" name="mnum" value="101">
 	<table width="600">
 		<tr>
 			<th colspan="3" align="left">내 포인트<font color="blue">(잔액표시)원</font></th>

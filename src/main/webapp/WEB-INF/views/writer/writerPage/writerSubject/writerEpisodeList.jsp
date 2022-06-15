@@ -10,7 +10,7 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<b> (소 설 제 목) 에피소드 목록</b>
+		<b>${getNovel.novel_subject}의 에피소드 목록</b>
 		<table align="center" class="writer">
 			<tr>
 				<td colspan="6" align="right"><a href="writerEpisode">새로운 에피소드 쓰기</a></td>

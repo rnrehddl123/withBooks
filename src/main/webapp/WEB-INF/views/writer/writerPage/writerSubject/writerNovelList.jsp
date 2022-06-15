@@ -31,7 +31,7 @@
 			<tr>
 				<td align="right">${dto.nnum}</td>
 				<td>
-					<a href="writerNovelEpisodeList?Epnum=${dto.nnum}">
+					<a href="writerEpisodeList?nnum=${dto.nnum}">
 						${dto.novel_subject}
 					</a>
 				</td>

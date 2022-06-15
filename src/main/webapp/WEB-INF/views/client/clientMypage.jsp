@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- clientMypage -->
 <jsp:include page="../main/header.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<title>clientMypage</title>
@@ -13,26 +14,24 @@
 			<tr height="5%">
 				<td align="left" colspan="3"><h3>(id)님 환영합니다</h3></td>
 			</tr>
-			<tr height="5%">
-				<td align="right" colspan="3"><h3>(작가로 회원가입을 한 경우)글쓰기</h3></td>
+			<tr height="5%"><!-- 공백 --></tr>
+			<tr height="30%">
+				<td width="200" align="center">보유 포인트<br>10000<br><a href="clientPay">충전하러가기</a></td>
+				<td width="200" align="center">쿠폰<br>보유하신 쿠폰이 없습니다.</td>
+				<td width="200" align="center"><a href="clientLibrary">내 서재</a></td>
 			</tr>
 			<tr height="30%">
-				<td width="200" align="center">보유 포인트</td>
-				<td width="200" align="center">쿠폰</td>
-				<td width="200" align="center">내 서재</td>
-			</tr>
-			<tr height="30%">
-				<td width="200" align="center">장바구니</td>
-				<td width="200" align="center">선호 장르</td>
-				<td width="200"><!-- 공백 --></td>
+				<td width="200" align="center"><a href="clientCart">장바구니</a></td>
+				<td width="200" align="center">선호 장르<br>판타지, 로맨스</td>
+				<td width="200" align="center">(작가=소설쓰기)<br>(일반회원=공백)</td>
 			</tr>
 			<tr height="35%">
 				<td colspan="3" align="center">
 					<ul>
+						<li><h3><a href="clientRequest">작가신청</a></h3></li>
 						<li><h3><a href="clientOrderList">구매내역</a></h3></li>
 						<li><h3><a href="clientUpdate">개인정보수정</a></h3></li>
-						<li><h3><a href="clientDelete">회원탈퇴</a></h3></li>
-						<!-- clientController에 clientDelete추가 해야함 -->
+						<li><h3><a href="clientLeave">회원탈퇴</a></h3></li>
 					</ul>		
 				</td>
 			</tr>

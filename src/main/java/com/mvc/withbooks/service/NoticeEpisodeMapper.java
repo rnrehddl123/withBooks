@@ -22,7 +22,6 @@ public class NoticeEpisodeMapper {
 	public int sendNoticeEpisode(EpisodeDTO epdto) {
 		NoticeEpisodeDTO dto = new NoticeEpisodeDTO();
 		dto.setEpisodeDTO(epdto);
-		System.out.println(dto.getEpisodeDTO().getEpnum());
 		int res = sqlSession.insert("sendNoticeEpisode", dto);
 		return res;
 	}

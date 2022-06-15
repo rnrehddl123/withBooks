@@ -28,16 +28,16 @@
 			</tr>
 	</c:if>
   <tbody>
-    <c:forEach var="RequestWriterdto" items="${listRequestWriter}">
+    <c:forEach var="rdto" items="${listRequestWriter}">
 			<tr>
-				<td align="left">${RequestWriterdto.rwnum}</td>
+				<td align="left">${rdto.rwnum}</td>
 				<td align="left">
-					<a href="contentRequestWriter?Rwnum=${RequestWriterdto.rwnum}">
-						${RequestWriterdto.requestWriter_subject}
+					<a href="contentRequestWriter?Rwnum=${rdto.rwnum}">
+						${rdto.request_subject}
 					</a>
 				</td>
-				<td align="left">${RequestWriterdto.requestWriter_writer}</td>
-				<td align="left">${RequestWriterdto.requestWriter_reg_date}</td>
+				<td align="left">${rdto.request_writer}</td>
+				<td align="left">${rdto.request_reg_date}</td>
 			</tr>		
 			</c:forEach>	
 			<div align="right">

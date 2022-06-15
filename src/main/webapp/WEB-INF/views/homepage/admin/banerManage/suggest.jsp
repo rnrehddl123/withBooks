@@ -20,7 +20,7 @@
 		</c:if>
 		<c:forEach items="${listNovel}" var="dto">
 		<tr>
-			<form action="suggest" method="post">
+			<form name="s" action="InsertSuggest" method="post">
 			<input type="hidden" name="nnum" value="${dto.nnum}"/>
 			<input type="hidden" name="suggestNovel" value="${dto.novel_subject}"/>
 			<td width="70%">${dto.novel_subject}</td>
@@ -30,7 +30,10 @@
 		</c:forEach>
 	</table>
 	
-	검색 : <input type="text"><input type="button" value="검색"><p>
+	<form name="f" action="suggest" method="post">
+	<input type="hidden" name="mode" value="search">
+	검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+	</form>
 	 <!-- AdminSuggestMapper.xml : searchAdminSuggest -->
 	 
 	<table border="1" width="1000" height="500">
@@ -46,7 +49,7 @@
 	<c:forEach items="${listAdminSuggest}" var="sdto">
 		<tr>
 			<td width="70%">${sdto.suggestNovel}</td>
-			<td width="30%"><a href="suggestDelete?sunum=${sdto.sunum}">삭제</a></td>
+			<td width="30%"><a href="deleteSuggest?sunum=${sdto.sunum}">삭제</a></td>
 		</tr>
 	</c:forEach>
 	</table>

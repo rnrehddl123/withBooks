@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
-<div class="cateList">
+<div class="listCate">
 	<b><h3>카테고리 목록</h3></b>
 	<table border="1" width="1000" height="500">
 		<tr width="10%">
@@ -30,7 +30,7 @@
 	
 	<p>
 	
-		<input type="button" value="카테고리 추가" onclick="window.location='cateInsert'">
+		<input type="button" value="카테고리 추가" onclick="window.location='insertCate'">
 </div>
 </body>
 </html>

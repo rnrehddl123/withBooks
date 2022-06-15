@@ -7,7 +7,7 @@
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
-<div class="clientList">
+<div class="listClient">
 	<p>
 	<b><h3 align="center">회원 관리</h3></b>
 	<table border="1" width="1000" height="500">

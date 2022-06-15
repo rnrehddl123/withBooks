@@ -42,9 +42,9 @@ public class BoardMapper {
 		return res;
 	}
 	
-	public int adminDeleteBoard(int Bnum) {
+	public int deleteBoardAdmin(int Bnum) {
 		BoardDTO dto = getBoard(Bnum, "admin");
-		int res = sqlSession.delete("adminDeleteBoard",Bnum);
+		int res = sqlSession.delete("deleteBoardAdmin",Bnum);
 		return res;
 	}
 	

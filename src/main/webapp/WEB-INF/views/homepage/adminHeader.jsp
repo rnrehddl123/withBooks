@@ -34,49 +34,43 @@
         </a>
       </li>
       <li>
-        <a href="cateInsert" class="nav-link text-white">
+        <a href="insertCate" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           	카테고리 추가
         </a>
       </li>
       <li>
-        <a href="cateList" class="nav-link text-white">
+        <a href="listCate" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	카테고리 목록
         </a>
       </li>
       <li>
-        <a href="noticeInsert" class="nav-link text-white">
+        <a href="insertNotice" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	공지사항 추가
         </a>
       </li>
       <li>
-        <a href="noticeUpdate" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          	공지사항 수정
-        </a>
-      </li>
-      <li>
-        <a href="noticeList" class="nav-link text-white">
+        <a href="listNotice" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	공지사항 목록
         </a>
       </li>
       <li>
-        <a href="boardList" class="nav-link text-white">
+        <a href="listBoardAdmin" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	게시판 관리
         </a>
       </li>
       <li>
-        <a href="clientList" class="nav-link text-white">
+        <a href="listClient" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	회원 관리
         </a>
       </li>
       <li>
-        <a href="clientUpgrade" class="nav-link text-white">
+        <a href="upgradeClient" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	작가 신청 관리
         </a>

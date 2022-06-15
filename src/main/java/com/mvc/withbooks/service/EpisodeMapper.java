@@ -23,8 +23,8 @@ public class EpisodeMapper {
 	}
 	
 	
-	public List<EpisodeDTO> listEpisode() {
-		List<EpisodeDTO> list = sqlSession.selectList("listEpisode");
+	public List<EpisodeDTO> listEpisode(int nnum) {
+		List<EpisodeDTO> list = sqlSession.selectList("listEpisode", nnum);
 		return list;
 	}
 	

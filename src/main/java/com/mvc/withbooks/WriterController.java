@@ -152,7 +152,7 @@ public class WriterController {
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
 	public String WriterNovel(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-		MultipartFile mf = mr.getFile("Novel_image");
+		MultipartFile mf = mr.getFile("file");
 		String filename = mf.getOriginalFilename();
 		dto.setNovel_image(filename);
 		if (filename != null && !(filename.trim().equals(""))) {
@@ -165,10 +165,10 @@ public class WriterController {
 		int res = novelMapper.insertNovel(dto,mnum);
 		String msg = null, url = null;
 		if(res>0) {
-			msg = "�Ҽ� ��� ����!! �Ҽ� ��� �������� �̵��մϴ�.";
+			msg = "등록 성공";
 			url = "writerNovelList";
 		}else {
-			msg = "�Ҽ� ��� ���� !! �Ҽ� ��� �������� �̵��մϴ�.";
+			msg = "등록 실패";
 			url = "writerNovelList";
 		}
 		req.setAttribute("msg", msg);

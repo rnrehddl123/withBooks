@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<th width="20%">소 설 이 미 지</th>
-					<td><input type="file" name="Novel_image" size="50" class="width80"></td>
+					<td><input type="file" name="file" size="50" class="width80"></td>
 				</tr>
 				<tr>
 					<th width="20%">줄 거 리</th>

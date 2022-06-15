@@ -9,6 +9,6 @@
 	</insert>
 	
 	<select id="sendNoticeList" parameterType="MemberDTO" resultType="NoticeEpisodeDTO">
-		SELECT *  FROM NOTICE_EPISODE WHERE MNUM = #{mnum};
+		SELECT *  FROM NOTICE_EPISODE WHERE MNUM = #{mnum}
 	</select>
 </mapper>

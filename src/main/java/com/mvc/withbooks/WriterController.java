@@ -29,7 +29,6 @@ import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NovelMapper;
 import org.springframework.web.servlet.ModelAndView;
-import com.mvc.withbooks.dto.EpisodeDTO;
 
 @Controller
 public class WriterController {
@@ -87,7 +86,6 @@ public class WriterController {
 	
 	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
 	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum) {
-		System.out.println(dto.getEpi_content());
 		int res = episodeMapper.insertEpisode(dto, Nnum);
 		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);
 		String msg = null, url = null;

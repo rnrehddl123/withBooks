@@ -18,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.MemberDTO;
+import com.mvc.withbooks.dto.NoticeEpisodeDTO;
 import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.MemberMapper;
+import com.mvc.withbooks.service.NoticeEpisodeMapper;
 
 @Controller
 public class ClientController {
@@ -28,6 +30,8 @@ public class ClientController {
 	private MemberMapper memberMapper;
 	@Autowired
 	private CategoryMapper categoryMapper;
+	@Autowired
+	private NoticeEpisodeMapper noticeEpisodeMapper;
 	
 	@RequestMapping("/clientMypage")//留덉씠�럹�씠吏�
 	public String ClientmyPage() {
@@ -178,6 +182,8 @@ public class ClientController {
 				url = "main";
 				HttpSession session = req.getSession();
 				session.setAttribute("mbdto", dto);
+				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
+				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
 				Cookie ck = new Cookie("saveId", dto.getMember_id());
 				if (params.containsKey("saveId")){
 					ck.setMaxAge(0);

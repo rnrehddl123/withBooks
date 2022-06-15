@@ -170,13 +170,15 @@ public class ClientController {
 	
 	
 	@RequestMapping(value="login", method=RequestMethod.GET)
-	public String LoginForm() {
+	public String LoginForm(HttpServletRequest req) {
+		String referrer = req.getHeader("Referer");
+		req.getSession().setAttribute("prevPage",referrer);
 		return "/main/login";
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public String Login(HttpServletRequest req, HttpServletResponse resp,			
-			@RequestParam Map<String, String> params) {
+			@RequestParam Map<String, String> params,HttpSession session) {
 		MemberDTO dto = memberMapper.getMember(params.get("Member_id"));
 		String msg = null, url = null;
 		if (dto == null){	
@@ -185,9 +187,6 @@ public class ClientController {
 			return "message";
 		}else {
 			if (params.get("Member_passwd").equals(dto.getMember_passwd())){
-				msg = dto.getMember_name()+"님, 환영합니다!!";
-				url = "main";
-				HttpSession session = req.getSession();
 				session.setAttribute("login", dto);
 				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
 				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
@@ -201,20 +200,16 @@ public class ClientController {
 			}else {	
 				msg = "비밀번호가 틀렸습니다. 다시 확인하고 로그인해 주세요!!";
 				url = "login";
+				return "message";
 			}
 		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
+		return "redirect:" + session.getAttribute("prevPage");
 	}
 	
 	@RequestMapping("logout")
-	public String Logout(HttpServletRequest req) {
-		HttpSession session = req.getSession();
+	public String Logout(HttpServletRequest req,HttpSession session) {
 		session.removeAttribute("login");
-		req.setAttribute("msg", "로그아웃 되었습니다.");
-		req.setAttribute("url", "login");
-		return "message";
+		return "redirect:" + req.getHeader("Referer");
 	}
 	
 	@RequestMapping(value="updateMember", method=RequestMethod.GET)

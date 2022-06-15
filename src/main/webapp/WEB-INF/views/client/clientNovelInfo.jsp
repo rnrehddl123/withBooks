@@ -5,11 +5,11 @@
 <html>
 <head>
    <title>clientNovelInfo</title>
-   <link href="resources/css/client.css" rel="stylesheet" type="text/css" />
+   <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
    <div>
-      <table border="1" align="center" width="600" height="600">
+      <table class="writerNovelSubject">
          <tr>
             <td align="center" rowspan="2">일러스트</td>
             <td align="center" colspan="3">제목 : </td>

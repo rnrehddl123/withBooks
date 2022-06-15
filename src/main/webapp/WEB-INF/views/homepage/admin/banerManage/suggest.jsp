@@ -38,8 +38,7 @@
 	 
 	<table border="1" width="1000" height="300">
 		<tr width="10%" height="50" align="center">
-			<th width="85%" align="center">추천작</th>
-			<th width="15%" align="center">삭제</th>
+			<th colspan="2" align="center">추천작</th>
 		</tr>
 	<c:if test="${empty listAdminSuggest}">
 		<tr>

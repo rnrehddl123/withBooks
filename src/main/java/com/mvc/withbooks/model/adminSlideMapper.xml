@@ -14,4 +14,8 @@
  	select * from adminSlide where Snum = #{Snum}
  </select>
  
+ <select id="listSlide" resultType="AdminSlideDTO">
+ 	select * from adminSlide
+ </select>
+ 
  </mapper>

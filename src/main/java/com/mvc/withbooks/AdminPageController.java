@@ -96,6 +96,13 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
+	@RequestMapping(value="/listSlide", method=RequestMethod.GET)//슬라이드 페이지 이동
+	public String listSlide(HttpServletRequest req) {
+		List<AdminSlideDTO> list = adminSlideMapper.listSlide();
+		req.setAttribute("listSlide", list);
+		return "main/main";
+	}
+	
 	@RequestMapping("/suggest")//추천작 페이지 이동
 	public String suggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
 		List<NovelDTO> list = null;

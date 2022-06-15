@@ -41,6 +41,15 @@
               <p>어느 가을날 한 줄기 소나기처럼 너무나 짧게 끝나버린 소년과 소녀의 안타깝고도 순수한 사랑을 그린 이야기를 다루고 있다. </p>
             </div>
           </div>
+          <c:forEach items="${listSlide}" var="sdto">
+          <div class="carousel-item">
+            <img src="${upPath}/${sdto.slidet_image}" class="d-block w-100" alt="..." height = "500" width="800">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>소나기</h5>
+              <p>어느 가을날 한 줄기 소나기처럼 너무나 짧게 끝나버린 소년과 소녀의 안타깝고도 순수한 사랑을 그린 이야기를 다루고 있다. </p>
+            </div>
+          </div>
+          </c:forEach>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

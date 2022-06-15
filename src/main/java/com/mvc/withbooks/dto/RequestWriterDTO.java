@@ -4,7 +4,7 @@ public class RequestWriterDTO {
 	private int Rwnum;
 	private String Request_writer;
 	private String Request_subject;
-	private String Request_date;
+	private String Request_reg_date;
 	private String Request_content;
 	
 	public int getRwnum() {
@@ -25,11 +25,11 @@ public class RequestWriterDTO {
 	public void setRequest_subject(String request_subject) {
 		Request_subject = request_subject;
 	}
-	public String getRequest_date() {
-		return Request_date;
+	public String getRequest_reg_date() {
+		return Request_reg_date;
 	}
-	public void setRequest_date(String request_date) {
-		Request_date = request_date;
+	public void setRequest_reg_date(String request_reg_date) {
+		Request_reg_date = request_reg_date;
 	}
 	public String getRequest_content() {
 		return Request_content;

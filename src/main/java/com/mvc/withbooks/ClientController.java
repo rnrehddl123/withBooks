@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
+import com.mvc.withbooks.dto.NoticeNovelDTO;
+import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
+import com.mvc.withbooks.service.NoticeNovelMapper;
+import com.mvc.withbooks.service.NovelMapper;
 
 @Controller
 public class ClientController {
@@ -30,6 +34,10 @@ public class ClientController {
 	private CategoryMapper categoryMapper;
 	@Autowired
 	private NoticeEpisodeMapper noticeEpisodeMapper;
+	@Autowired
+	private NovelMapper novelMapper;
+	@Autowired
+	private NoticeNovelMapper noticeNovelMapper;
 	
 	@RequestMapping("/clientMypage")//留덉씠�럹�씠吏�
 	public String ClientmyPage(HttpSession session) {
@@ -44,7 +52,7 @@ public class ClientController {
 		return "client/clientMypage/clientUpdate";
 	}
 	
-	@RequestMapping("/clientLeave")//회원탈퇴 페이지
+	@RequestMapping("/clientLeave")//회원탈퇴 페이지f
 	public String ClientLeave() {
 		return "client/clientMypage/clientLeave";
 	}
@@ -114,7 +122,11 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
-	public String ClientNovelInfo() {
+	public String ClientNovelInfo(HttpServletRequest req,@RequestParam int nnum) {
+		NovelDTO ndto=novelMapper.getNovel(nnum);
+		NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(nnum);
+		req.setAttribute("noveldto", ndto);
+		req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		return "client/clientNovelInfo";
 	}
 	

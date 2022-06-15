@@ -11,4 +11,8 @@
 	<delete id="deleteNoticeNovel" parameterType="java.util.Map">
 		delete from NOTICE_NOVEL where mnum = #{mnum} and nnum = #{nnum}
 	</delete>
+	
+	<select id="getNoticeNovel" parameterType="int" resultType="NoticeNovelDTO">
+		SELECT NNNUM FROM NOTICE_NOVEL where mnum = #{mnum} and nnum = #{nnum}
+	</select>
 </mapper>

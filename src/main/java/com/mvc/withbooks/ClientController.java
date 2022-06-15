@@ -32,7 +32,10 @@ public class ClientController {
 	private NoticeEpisodeMapper noticeEpisodeMapper;
 	
 	@RequestMapping("/clientMypage")//留덉씠�럹�씠吏�
-	public String ClientmyPage() {
+	public String ClientmyPage(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage";
 	}
 	
@@ -179,12 +182,13 @@ public class ClientController {
 		if (dto == null){	
 			msg = "해당하는 아이디가 없습니다. 다시 확인하고 로그인해 주세요!!";
 			url = "login";
+			return "message";
 		}else {
 			if (params.get("Member_passwd").equals(dto.getMember_passwd())){
 				msg = dto.getMember_name()+"님, 환영합니다!!";
 				url = "main";
 				HttpSession session = req.getSession();
-				session.setAttribute("mbdto", dto);
+				session.setAttribute("login", dto);
 				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
 				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
 				Cookie ck = new Cookie("saveId", dto.getMember_id());
@@ -207,7 +211,7 @@ public class ClientController {
 	@RequestMapping("logout")
 	public String Logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		session.invalidate();
+		session.removeAttribute("login");
 		req.setAttribute("msg", "로그아웃 되었습니다.");
 		req.setAttribute("url", "login");
 		return "message";

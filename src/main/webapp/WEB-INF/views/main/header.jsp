@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +18,19 @@
   <div class="wrapper">
     <header>
       <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" href="login">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signUp">회원가입</a>
-        </li>
+      	<c:if test="${empty login}">
+	        <li class="nav-item">
+	          <a class="nav-link" href="login">로그인</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="signUp">회원가입</a>
+	        </li>
+	     </c:if>
+	     <c:if test="${not empty login}">
+	        <li class="nav-item">
+	          <a class="nav-link" href="logout">로그아웃</a>
+	        </li>
+	     </c:if>
       </ul>
       <nav class="navbar navbar-expand navbar-light">
         <div class="container-fluid">
@@ -69,7 +77,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="myPage.do">
+              <a class="nav-link" href="clientMypage">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                 </svg>

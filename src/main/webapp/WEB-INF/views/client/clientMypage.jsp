@@ -16,7 +16,7 @@
 			</tr>
 			<tr height="5%"><!-- 공백 --></tr>
 			<tr height="30%">
-				<td width="200" align="center">보유 포인트<br>10000<br><a href="clientPay">충전하러가기</a></td>
+				<td width="200" align="center">보유 포인트<br>${login.cash}<br><a href="clientPay">충전하러가기</a></td>
 				<td width="200" align="center">쿠폰<br>보유하신 쿠폰이 없습니다.</td>
 				<td width="200" align="center"><a href="clientLibrary">내 서재</a></td>
 			</tr>
@@ -28,7 +28,6 @@
 			<tr height="35%">
 				<td colspan="3" align="center">
 					<ul>
-						<li><h3><a href="clientRequest">작가신청</a></h3></li>
 						<li><h3><a href="clientOrderList">구매내역</a></h3></li>
 						<li><h3><a href="clientUpdate">개인정보수정</a></h3></li>
 						<li><h3><a href="clientLeave">회원탈퇴</a></h3></li>

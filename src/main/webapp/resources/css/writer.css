@@ -50,3 +50,11 @@
 	width: 50%;
 	margin-top: 90px
 }
+
+.cateWrapper{
+	display : flex;
+	width: 80%;
+    margin: auto;
+    flex-wrap: wrap;
+    margin-right: 10px;
+}

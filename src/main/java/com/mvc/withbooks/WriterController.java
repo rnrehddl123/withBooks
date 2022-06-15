@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.withbooks.dto.*;
+import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
@@ -43,10 +44,15 @@ public class WriterController {
 	private EpisodeMapper episodeMapper;
 	
 	@Autowired
+	private CategoryMapper categoryMapper;
+	
+
+	@Autowired
 	private MemberMapper memberMapper;
 	
 	@Autowired
 	private NoticeEpisodeMapper noticeEpisodeMapper;
+	
 	
 	@RequestMapping("/writerOrderList")
 	public String WriterOrderList() {
@@ -144,8 +150,9 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.GET)
-	public String WriterNovelForm() {
-		
+	public String WriterNovelForm(HttpServletRequest req) {
+		List<CategoryDTO> list = categoryMapper.listCategory();
+		req.setAttribute("listCategory", list);
 		return "writer/writerPage/writerSubject/writerNovel";
 	}
 	

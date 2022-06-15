@@ -23,8 +23,8 @@
 			<form name="s" action="InsertSuggest" method="post">
 			<input type="hidden" name="nnum" value="${dto.nnum}"/>
 			<input type="hidden" name="suggestNovel" value="${dto.novel_subject}"/>
-			<td width="70%">${dto.novel_subject}</td>
-			<td width="15%"><input type="submit" value="등록"></td>
+			<td width="85%" align="center">${dto.novel_subject}</td>
+			<td width="15%" align="center"><input type="submit" value="등록"></td>
 			</form>	
 		</tr>
 		</c:forEach>
@@ -36,10 +36,10 @@
 	</form>
 	 <!-- AdminSuggestMapper.xml : searchAdminSuggest -->
 	 
-	<table border="1" width="1000" height="500">
+	<table border="1" width="1000" height="300">
 		<tr width="10%" height="50" align="center">
-			<th width="70%">추천작</th>
-			<th width="30%">삭제</th>
+			<th width="85%" align="center">추천작</th>
+			<th width="15%" align="center">삭제</th>
 		</tr>
 	<c:if test="${empty listAdminSuggest}">
 		<tr>
@@ -48,8 +48,8 @@
 	</c:if>
 	<c:forEach items="${listAdminSuggest}" var="sdto">
 		<tr>
-			<td width="70%">${sdto.suggestNovel}</td>
-			<td width="30%"><a href="deleteSuggest?sunum=${sdto.sunum}">삭제</a></td>
+			<td width="70%" align="center">${sdto.suggestNovel}</td>
+			<td width="30%" align="center"><input type="button" value="삭제" onclick="window.location='deleteSuggest?sunum=${sdto.sunum}'"></td>
 		</tr>
 	</c:forEach>
 	</table>

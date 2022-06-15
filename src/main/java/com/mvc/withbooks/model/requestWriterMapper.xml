@@ -13,11 +13,7 @@
  	</select>
  	
  	<select id="inserRequestWriter" parameterType="RequestWriterDTO">
- 		insert into RequestWriter(Rwnum,RequestWriter_writer,RequestWriter_subject,RequestWriter_date,RequestWriter_content) values(seq_requestWriter.nextval, #{RequestWriter_writer}, #{RequestWriter_subject}, sysdate, #{RequestWriter_content})
- 	</select>
- 	
- 	<select id="deleteRequestWriter" parameterType="int">
- 		delete from RequestWriter where Rwnum = #{Rwnum}
+ 		insert into RequestWriter(Rwnum,RequestWriter_writer,RequestWriter_subject,RequestWriter_reg_date,RequestWriter_content) values(seq_requestWriter.nextval, #{RequestWriter_writer}, #{RequestWriter_subject}, sysdate, #{RequestWriter_content})
  	</select>
  	
  	<select id="updateRequestWriter" parameterType="int">

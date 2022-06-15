@@ -30,14 +30,14 @@
   <tbody>
     <c:forEach var="RequestWriterdto" items="${listRequestWriter}">
 			<tr>
-				<td align="left">${RequestWriterdto.bnum}</td>
+				<td align="left">${RequestWriterdto.rwnum}</td>
 				<td align="left">
-					<a href="contentBoard?Bnum=${RequestWriterdto.Rwnum}">
-						${RequestWriterdto.RequestWriter_subject}
+					<a href="contentRequestWriter?Rwnum=${RequestWriterdto.rwnum}">
+						${RequestWriterdto.requestWriter_subject}
 					</a>
 				</td>
-				<td align="left">${RequestWriterdto.RequestWriter_writer}</td>
-				<td align="left">${RequestWriterdto.RequestWriter_date}</td>
+				<td align="left">${RequestWriterdto.requestWriter_writer}</td>
+				<td align="left">${RequestWriterdto.requestWriter_reg_date}</td>
 			</tr>		
 			</c:forEach>	
 			<div align="right">

@@ -29,12 +29,6 @@ public class RequestWriterMapper {
 		return res;
 	}
 	
-	public int deleteRequestWriter(int Rwnum) {
-		RequestWriterDTO dto = getRequestWriter(Rwnum);
-		int res = sqlSession.delete("deleteRequestWriter",Rwnum);
-		return res;
-	}
-	
 	public int updateRequestWriter(RequestWriterDTO dto) {
 		RequestWriterDTO dto2 = getRequestWriter(dto.getRwnum());
 		int res = sqlSession.update("updateRequestWriter", dto);

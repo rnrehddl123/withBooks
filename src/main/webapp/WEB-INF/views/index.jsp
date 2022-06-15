@@ -63,11 +63,19 @@
 		<div>
 		<h1>관리자</h1>
 			<li><h3><a href="homepage">관리자 페이지</a></h3>
+<<<<<<< HEAD
 			<li><h3><a href="listCate">관리자 카테고리 관리</a></h3>
 			<li><h3><a href="listNotice">공지사항</a></h3>
 			<li><h3><a href="listClient">일반 회원 관리</a></h3>
 			<li><h3><a href="upgradeClient">작가 신청 관리</a></h3>
 			<li><h3><a href="listBoardAdmin">게시판 관리</a></h3>
+=======
+			<li><h3><a href="cateList">관리자 카테고리 관리</a></h3>
+			<li><h3><a href="noticeList">공지사항</a></h3>
+			<li><h3><a href="clientList">일반 회원 관리</a></h3>
+			<li><h3><a href="listRequestWriter">작가 신청 관리</a></h3>
+			<li><h3><a href="boardList">게시판 관리</a></h3>
+>>>>>>> WJ
 			<li><h3><a href="saleManageClient">회원 매출 관리</a></h3>
 			<li><h3><a href="saleManageWriter">작가 매출 관리</a></h3>
 			<li><h3><a href="saleTotal">총 매출 관리</a></h3>

@@ -7,7 +7,7 @@
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>
-<div class="clientUpgrade">
+<div class="upgradeClient">
 	<div><b><h3 align="center">작가 신청 관리</h3></b></div><br>
 	<table border="1" width="1000" height="500">
 		<tr height="50">

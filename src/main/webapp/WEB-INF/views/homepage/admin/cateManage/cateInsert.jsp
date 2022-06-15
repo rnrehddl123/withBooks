@@ -8,9 +8,9 @@
 </head>
 <body>
 <%@include file="../../adminHeader.jsp"%>
-<div class="cateInsert">
+<div class="insertCate">
 		<b><h1>카테고리 추가</h1></b><p>
-		<form name="f" action="cateInsert" method="post">
+		<form name="f" action="insertCate" method="post">
 		<table border="1" width="1000" height="500">
 			<tr>
 				<th width="30%">카테고리 이름</th>

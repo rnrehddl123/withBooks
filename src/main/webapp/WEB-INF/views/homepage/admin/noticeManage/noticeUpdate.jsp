@@ -7,8 +7,8 @@
 </head>
 <%@include file="../../adminHeader.jsp"%>
 <body>
-<div class="noticeUpdate">
-	<form name="f" action="#" method="post">
+<div class="updateNotice">
+	<form name="f" action="updateNotice" method="post">
 	<input type="hidden" name="nonum" value="${getNotice.nonum}"/>
 		<table border="1" width="1000" height="500">
 				<tr>
@@ -28,7 +28,7 @@
 					<td align="center" colspan="2">
 						<input type="submit" value="글수정">
 						<input type="reset" value="다시작성">
-						<input type="button" value="목록보기" onclick="window.location='noticeList'">
+						<input type="button" value="목록보기" onclick="window.location='listNotice'">
 					</td>
 				</tr>
 		</table>

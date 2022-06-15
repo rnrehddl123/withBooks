@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="updateNotice" parameterType="NoticeDTO">
-		update Notice set Notice_title = #{Notice_title}, Notice_content = #{Notice_content}
+		update Notice set Notice_title = #{Notice_title}, Notice_content = #{Notice_content} where Nonum = #{Nonum}
 	</select>
 	
 	<select id="plusReadcount" parameterType="int">

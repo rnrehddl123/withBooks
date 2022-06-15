@@ -103,7 +103,6 @@ public class AdminPageController {
 			list = novelMapper.listNovel();
 		}else {
 			String searchString = req.getParameter("searchString");
-			System.out.print("서치스트링 : " + searchString);
 			list = novelMapper.findNovel("Novel_subject", searchString);
 		}
 		req.setAttribute("listNovel", list);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 	
+<mapper namespace="com.mvc.withBooks.model.requestWriterMapper">
+	<select id="listRequestWriter" resultType="RequestWriterDTO">
+ 		select * from RequestWriter order by Rwnum desc
+ 	</select>
+
+	<select id="getRequestWriter" parameterType="int" resultType="RequestWriterDTO">
+ 		select * from RequestWriter where Rwnum = #{Rwnum}
+ 	</select>
+ 	
+ 	<select id="inserRequestWriter" parameterType="RequestWriterDTO">
+ 		insert into RequestWriter(Rwnum,RequestWriter_writer,RequestWriter_subject,RequestWriter_date,RequestWriter_content) values(seq_requestWriter.nextval, #{RequestWriter_writer}, #{RequestWriter_subject}, sysdate, #{RequestWriter_content})
+ 	</select>
+ 	
+ 	<select id="deleteRequestWriter" parameterType="int">
+ 		delete from RequestWriter where Rwnum = #{Rwnum}
+ 	</select>
+ 	
+ 	<select id="updateRequestWriter" parameterType="int">
+ 		update RequestWriter set RequestWriter_writer=#{RequestWriter_writer}, RequestWriter_subject=#{RequestWriter_subject}, RequestWriter_content=#{RequestWriter_content} where Rwnum=#{Rwnum}
+ 	</select>
+
+</mapper>

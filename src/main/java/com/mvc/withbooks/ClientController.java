@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
@@ -41,6 +39,11 @@ public class ClientController {
 	@RequestMapping("/clientUpdate")//�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
 	public String ClientUpdate() {
 		return "client/clientMypage/clientUpdate";
+	}
+	
+	@RequestMapping("/clientLeave")//회원탈퇴 페이지
+	public String ClientLeave() {
+		return "client/clientMypage/clientLeave";
 	}
 	
 	@RequestMapping("/clientLibrary")//�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
@@ -211,15 +214,15 @@ public class ClientController {
 	}
 	
 	
-	@RequestMapping(value="clientUpdate", method=RequestMethod.GET)
-	public String ClientUpdateForm(HttpServletRequest req, @RequestParam int mnum) {
+	@RequestMapping(value="updateMember", method=RequestMethod.GET)
+	public String updateMember(HttpServletRequest req, @RequestParam int mnum) {
 		MemberDTO dto = memberMapper.getMember(mnum);
 		req.setAttribute("getMember", dto);
 		return "client/clientMypage/clientUpdate";
 	}
 	
-	@RequestMapping(value="clientUpdate", method=RequestMethod.POST)
-	public String ClientUpdate(HttpServletRequest req, @ModelAttribute MemberDTO dto) {
+	@RequestMapping(value="updateMember", method=RequestMethod.POST)
+	public String updateMember(HttpServletRequest req, @ModelAttribute MemberDTO dto) {
 		int res = memberMapper.updateMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
@@ -228,6 +231,22 @@ public class ClientController {
 		}else {
 			msg = "회원 정보 수정 실패하였습니다.";
 			url = "clientUpdate";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "message";
+	}
+	
+	@RequestMapping("/leaveMember")
+	public String leaveMember(HttpServletRequest req, @RequestParam int mnum) {
+		int res = memberMapper.deleteMember(mnum);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "회원탈퇴 성공, 메인 페이지로 이동합니다.";
+			url = "main";
+		}else {
+			msg = "회원탈퇴 실패!!, 마이 페이지로 이동합니다.";
+			url = "clientMypage";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);

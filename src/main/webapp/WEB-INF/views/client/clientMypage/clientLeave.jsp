@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div align="center">
-		<form name="deleteMember" action="deleteMember" method="POST">
+		<form name="leaveMember" action="leaveMember" method="POST">
 		<input type="hidden" name="mnum" value="1">
 		<table width="600" heigth="600">
 			<tr>

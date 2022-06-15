@@ -4,6 +4,7 @@ package com.mvc.withbooks;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +52,7 @@ public class AdminPageController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	@Resource(name="uploadPath")
+	@Resource(name="slideUploadPath")
 	private String uploadPath;
 
 	@RequestMapping("/homepage")//어드민 페이지 이동
@@ -75,6 +76,8 @@ public class AdminPageController {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 		MultipartFile mf = mr.getFile("slidet_image");
 		String filename = mf.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+	    filename = uuid.toString() + "_" + filename;
 		dto.setSlidet_image(filename);
 		if (filename != null && !(filename.trim().equals(""))) {
 			File file = new File(uploadPath, filename);
@@ -94,13 +97,6 @@ public class AdminPageController {
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
-	}
-	
-	@RequestMapping(value="/listSlide", method=RequestMethod.GET)//슬라이드 페이지 이동
-	public String listSlide(HttpServletRequest req) {
-		List<AdminSlideDTO> list = adminSlideMapper.listSlide();
-		req.setAttribute("listSlide", list);
-		return "main/main";
 	}
 	
 	@RequestMapping("/suggest")//추천작 페이지 이동

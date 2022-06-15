@@ -1,6 +1,6 @@
 package com.mvc.withbooks.dto;
 
-public class NoticeNobelDTO {
+public class NoticeNovelDTO {
 	private int Nnnum;
 	private NovelDTO novelDTO;
 	private MemberDTO memberDTO;

@@ -13,7 +13,7 @@
 	<input type="hidden" name="mnum" value="${login.mnum}">
 	<table width="600">
 		<tr>
-			<th colspan="3" align="left">내 포인트<font color="blue">(잔액표시)원</font></th>
+			<th colspan="3" align="left">내 포인트 <font color="blue">${login.cash}원</font></th>
 		</tr>
 		<tr>
 			<td colspan="3"><hr width="600"></td>

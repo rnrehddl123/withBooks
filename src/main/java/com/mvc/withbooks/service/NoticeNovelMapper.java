@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
-import com.mvc.withbooks.dto.NoticeNobelDTO;
+import com.mvc.withbooks.dto.NoticeNovelDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 
 @Service
@@ -26,4 +26,10 @@ public class NoticeNovelMapper {
 		int res = sqlSession.delete("deleteNoticeNovel", params);
 		return res;
 	}
+	
+	public NoticeNovelDTO getNoticeNovel(int nnum){
+		NoticeNovelDTO noticeNovelDTO = sqlSession.selectOne("getNoticeNovel", nnum);
+		return noticeNovelDTO;
+	}
+	
 }

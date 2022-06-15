@@ -101,11 +101,14 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="updateCash", method=RequestMethod.POST)
-	public String updateCash(HttpServletRequest req, @RequestParam Map<String, Integer> params) {
+	public String updateCash(HttpServletRequest req, @RequestParam Map<String, String> params, HttpSession session) {
 		int res = memberMapper.updateCash(params);
 		if(res>0) {
 			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
 			req.setAttribute("url", "clientMypage");
+			MemberDTO login = (MemberDTO)session.getAttribute("login");
+			login.setCash(login.getCash() + Integer.parseInt(params.get("cash")));
+			session.setAttribute("login", login);
 		}else {
 			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
 			req.setAttribute("url", "clientMypage");

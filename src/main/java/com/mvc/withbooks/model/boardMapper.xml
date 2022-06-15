@@ -8,7 +8,7 @@
  		select * from Board order by Bnum desc
  	</select>
 
-	 <select id="getBoard" parameterType="int" resultType="BoardDTO">
+	<select id="getBoard" parameterType="int" resultType="BoardDTO">
  		select * from Board where Bnum = #{Bnum}
  	</select>
  	

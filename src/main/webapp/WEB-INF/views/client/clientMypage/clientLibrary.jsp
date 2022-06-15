@@ -25,18 +25,18 @@
 		<th>소설(시리즈) 제목</th>
 		<th>작가명</th>
 	</tr>
-	<!-- if -->
+	<c:if test="">
 		<tr>
 			<td colspan="3" align="center">구매한 소설이 없습니다.</td>
 		</tr>
-	<!-- if끝 -->
-	<!-- for -->
+	</c:if>
+	<c:forEach var="dto" items="">
 		<tr align="center">
 			<td><!-- 이미지 --></td>
-			<td><a href=""><!-- 제목 -->제목클릭하면 해당소설로 이동</a></td>
+			<td><a href=""><!-- 소설제목 -->제목 클릭하면 해당소설로 이동</a></td>
 			<td><!-- 작가명 --></td>
 		</tr>	
-	<!-- for끝 -->
+	</c:forEach>
 	</table>
 	<hr class="hrLine">
 </div>

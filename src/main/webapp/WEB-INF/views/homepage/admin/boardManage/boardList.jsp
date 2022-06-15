@@ -10,7 +10,7 @@
 <%@ include file="../../adminHeader.jsp"%>
 		<div class="adminboard">
 			<b><h1>게시판 관리</h1></b><p>
-			<table>
+			<table border="1" width="1000" height="500">
    				<tr>
       				<th>번호</th>
       				<th>제목</th>

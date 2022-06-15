@@ -34,21 +34,20 @@ import com.mvc.withbooks.dto.EpisodeDTO;
 @Controller
 public class WriterController {
 	
+	@Resource(name="uploadPath")
+	 String uploadPath;
+	
 	@Autowired
 	private NovelMapper novelMapper;
 	
 	@Autowired
 	private EpisodeMapper episodeMapper;
 	
-	 @Resource(name="uploadPath")
-	 String uploadPath;
-	
 	@Autowired
 	private MemberMapper memberMapper;
 	
 	@Autowired
 	private NoticeEpisodeMapper noticeEpisodeMapper;
-	
 	
 	@RequestMapping("/writerOrderList")
 	public String WriterOrderList() {
@@ -152,9 +151,7 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
-	public String WriterNovel(HttpServletRequest req, 
-			@ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
-		
+	public String WriterNovel(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 		MultipartFile mf = mr.getFile("Novel_image");
 		String filename = mf.getOriginalFilename();

@@ -31,7 +31,7 @@ public class ClientController {
 	@Autowired
 	private NoticeEpisodeMapper noticeEpisodeMapper;
 	
-	@RequestMapping("/clientMypage")//留덉씠�럹�씠吏�
+	@RequestMapping("/clientMypage")//일반회원 마이 페이지
 	public String ClientmyPage(HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
@@ -39,69 +39,84 @@ public class ClientController {
 		return "client/clientMypage";
 	}
 	
-	@RequestMapping("/clientUpdate")//�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
-	public String ClientUpdate() {
+	@RequestMapping("/clientUpdate")//일반회원 수정 페이지
+	public String ClientUpdate(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientUpdate";
 	}
 	
 	@RequestMapping("/clientLeave")//회원탈퇴 페이지
-	public String ClientLeave() {
+	public String ClientLeave(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientLeave";
 	}
 	
-	@RequestMapping("/clientLibrary")//�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
-	public String ClientLibrary() {
+	@RequestMapping("/clientLibrary")//일반회원 내 서재
+	public String ClientLibrary(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientLibrary";
 	}
 	
-	@RequestMapping("/clientCart")//�뜝�룞�삕熬귛뜝�룞�삕�뜝占�
-	public String ClientCart() {
+	@RequestMapping("/clientCart")//일반회원 장바구니
+	public String ClientCart(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientCart";
 	}
 	
-	@RequestMapping("/clientOrder")//�뜝�뙇諭꾩삕�뜝�떦源띿삕
-	public String ClientOrder() {
+	@RequestMapping("/clientOrder")//일반회원 주문하기
+	public String ClientOrder(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientCart/clientOrder";
 	}
 	
-	@RequestMapping("/clientOrderList")//�뜝�룞�삕�뜝�떊�냲�삕�뜝�룞�삕
-	public String ClientOrderList() {
+	@RequestMapping("/clientOrderList")//일반회원 구매내역
+	public String ClientOrderList(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientOrderList";
 	}
 	
-	@RequestMapping("/clientNovelSubject")//�뜝���눦�삕�뜝�룞�삕�뜝�룞�삕
-	public String ClientNovelSubject() {
-		return "client/clientMypage/clientOrderList/clientNovelSubject";
-	}
-	
-	@RequestMapping("/clientNovelEpi")//�뜝�룞�삕�뜝�떎�냼�뱶蹂닷뜝�룞�삕
-	public String ClientNovelEpi() {
-		return "client/clientMypage/clientOrderList/clientNovelEpi";
-	}
-	
-	@RequestMapping("/clientViewer")//�뜝�룞�삕�뜝�떎�냼�뱶蹂닷뜝�룞�삕
-	public String ClientViewer() {
+	@RequestMapping("/clientViewer")//일반회원 소설보기
+	public String ClientViewer(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientViewer";
 	}
 	
-	
-	@RequestMapping("/clientRequest")//�뜝�뙗怨ㅼ삕 �뜝�룞�삕泥�
-	public String ClientNovelRequest() {
-		return "client/clientMypage/clientRequest";
-	}
-	
-	@RequestMapping("/clientPay")//�뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕
-	public String ClientPay() {
+	@RequestMapping("/clientPay")//일반회원 충전 페이지
+	public String ClientPay(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientMypage/clientPay";
 	}
 	
+	//일반회원 충전 기능
 	@RequestMapping(value="/updateCash", method=RequestMethod.GET)
-	public String updateCash() {
+	public String updateCash(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "main/main";
 	}
 	
 	@RequestMapping(value="updateCash", method=RequestMethod.POST)
 	public String updateCash(HttpServletRequest req, @RequestParam Map<String, String> params, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = memberMapper.updateCash(params);
 		if(res>0) {
 			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
@@ -116,29 +131,22 @@ public class ClientController {
 		return "message";
 	}
 	
-	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
-	public String ClientNovelInfo() {
+	@RequestMapping("/clientNovelInfo")//일반회원 소설요약 페이지
+	public String ClientNovelInfo(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "client/clientNovelInfo";
 	}
 	
-	@RequestMapping("/clientNotice")//�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
-	public String ClientNotice() {
-		return "client/clientNotice";
-	}
-	
-	@RequestMapping("/clientBoard")//�뜝�룞�삕�뜝�룞�삕�뜝�뙃�룞�삕�뜝�룞�삕
-	public String ClientBoard() {
-		return "client/clientBoard";
-	}
-	
-	@RequestMapping("/signUp")//�쉶�썝媛��엯 �럹�씠吏�
+	@RequestMapping("/signUp")//회원가입 페이지
 	public String SignUp(HttpServletRequest req) {
 		List<CategoryDTO> list=categoryMapper.listCategory();
 		req.setAttribute("categoryList", list);
 		return "main/signUp";
 	}
 	
-	//�쉶�썝媛��엯
+	//회원가입 기능
 	@RequestMapping(value="/insertMember", method=RequestMethod.GET)
 	public String insertMember() {
 		return "main/signUp";
@@ -171,7 +179,7 @@ public class ClientController {
 		return "message";
 	}
 	
-	
+	//로그인 기능
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String LoginForm(HttpServletRequest req) {
 		String referrer = req.getHeader("Referer");
@@ -209,21 +217,29 @@ public class ClientController {
 		return "redirect:" + session.getAttribute("prevPage");
 	}
 	
+	//로그아웃 기능
 	@RequestMapping("logout")
 	public String Logout(HttpServletRequest req,HttpSession session) {
 		session.removeAttribute("login");
 		return "redirect:" + req.getHeader("Referer");
 	}
 	
+	//일반회원 정보수정 기능
 	@RequestMapping(value="updateMember", method=RequestMethod.GET)
-	public String updateMember(HttpServletRequest req, @RequestParam int mnum) {
+	public String updateMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		MemberDTO dto = memberMapper.getMember(mnum);
 		req.setAttribute("getMember", dto);
 		return "client/clientMypage/clientUpdate";
 	}
 	
 	@RequestMapping(value="updateMember", method=RequestMethod.POST)
-	public String updateMember(HttpServletRequest req, @ModelAttribute MemberDTO dto) {
+	public String updateMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = memberMapper.updateMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
@@ -238,13 +254,20 @@ public class ClientController {
 		return "message";
 	}
 	
+	//일반회원 탈퇴기능
 	@RequestMapping(value="leaveMember", method=RequestMethod.GET)
-	public String leaveMember() {
+	public String leaveMember(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		return "/main/main";
 	}
 	
 	@RequestMapping(value="leaveMember", method=RequestMethod.POST)
 	public String leaveMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = memberMapper.deleteMember(mnum);
 		String msg = null, url = null;
 		if (res>0) {

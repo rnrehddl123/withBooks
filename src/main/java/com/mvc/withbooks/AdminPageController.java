@@ -203,8 +203,14 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listNotice")
-	public String noticeList(HttpServletRequest req) {
-		List<NoticeDTO> list = noticeMapper.listNotice();
+	public String noticeList(HttpServletRequest req, @RequestParam(required = false) String mode) {
+		List<NoticeDTO> list = null;
+		if(mode == null) {
+			list = noticeMapper.listNotice();
+		}else {
+			String searchString = req.getParameter("searchString");
+			list = noticeMapper.findNotice("Notice_title", searchString);
+		}
 		req.setAttribute("listNotice", list);
 		return "homepage/admin/noticeManage/noticeList";
 	}

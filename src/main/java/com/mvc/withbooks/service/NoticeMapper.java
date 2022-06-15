@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.NoticeDTO;
+import com.mvc.withbooks.dto.NovelDTO;
 
 @Service
 public class NoticeMapper {
@@ -40,6 +41,14 @@ public class NoticeMapper {
 	public int updateNotice(NoticeDTO dto) {
 		int res = sqlSession.update("updateNotice",dto);
 		return res;
+	}
+	
+	public List<NoticeDTO> findNotice(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<NoticeDTO> find = sqlSession.selectList("findNotice", map);
+		return find;
 	}
 	
 }

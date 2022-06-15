@@ -158,30 +158,32 @@ public class WriterController {
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
 	public String WriterNovel(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
-		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-		MultipartFile mf = mr.getFile("file");
-		String filename = mf.getOriginalFilename();
-		dto.setNovel_image(filename);
-		if (filename != null && !(filename.trim().equals(""))) {
-			File file = new File(uploadPath, filename);
-			try {
-				mf.transferTo(file);
-			}catch(IOException e) {}
-		}
-		
-		int res = novelMapper.insertNovel(dto,mnum);
-		String msg = null, url = null;
-		if(res>0) {
-			msg = "등록 성공";
-			url = "writerNovelList";
-		}else {
-			msg = "등록 실패";
-			url = "writerNovelList";
-		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
-	}
+	      MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+	      MultipartFile mf = mr.getFile("file");
+	      String filename = mf.getOriginalFilename();
+	      UUID uuid = UUID.randomUUID();
+	      filename = uuid.toString() + "_" + filename;
+	      dto.setNovel_image(filename);
+	      if (filename != null && !(filename.trim().equals(""))) {
+	         File file = new File(uploadPath, filename);
+	         try {
+	            mf.transferTo(file);
+	         }catch(IOException e) {}
+	      }
+	      
+	      int res = novelMapper.insertNovel(dto,mnum);
+	      String msg = null, url = null;
+	      if(res>0) {
+	         msg = "등록 성공";
+	         url = "writerNovelList";
+	      }else {
+	         msg = "등록 실패";
+	         url = "writerNovelList";
+	      }
+	      req.setAttribute("msg", msg);
+	      req.setAttribute("url", url);
+	      return "message";
+	   }
 	
 	@RequestMapping("/writerNovelList")
 	public String WriterNovelList(HttpServletRequest req) {
@@ -201,15 +203,17 @@ public class WriterController {
 	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto, 
 			@RequestParam int mnum,BindingResult result) {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-		MultipartFile mf = mr.getFile("Novel_image");
+		MultipartFile mf = mr.getFile("file");
 		String filename = mf.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+	    filename = uuid.toString() + "_" + filename;
 		if (filename != null && !(filename.trim().equals(""))) {
 			File file = new File(uploadPath, filename);
 			try {
 				mf.transferTo(file);
 			}catch(IOException e) {}
 		}else {
-			filename = req.getParameter("Novel_image2"); 
+			filename = req.getParameter("file2"); 
 		}		
 		dto.setNovel_image(filename);
 		int res = novelMapper.updateNovel(dto,mnum);

@@ -10,8 +10,8 @@
 <%@include file="../../adminHeader.jsp"%>
 <div class="listCate">
 	<b><h3>카테고리 목록</h3></b>
-	<table border="1" width="1000" height="500">
-		<tr width="10%">
+	<table border="1" width="500" height="200">
+		<tr>
 			<th width="30%">번호</th>
 			<th width="70%">카테고리명</th>
 		</tr>

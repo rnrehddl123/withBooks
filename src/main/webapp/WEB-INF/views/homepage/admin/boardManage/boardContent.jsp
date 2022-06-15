@@ -28,6 +28,10 @@
   					<td>${getBoard.board_date}</td>
   				</tr>
   				<tr>
+  					<td>내용</td>
+  					<td>${getBoard.board_content}</td>
+  				</tr>
+  				<tr>
   					<td>조회수</td>
   					<td>${getBoard.board_readcount}</td>
   				</tr>

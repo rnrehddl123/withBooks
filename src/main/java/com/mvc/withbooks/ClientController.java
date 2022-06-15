@@ -213,7 +213,6 @@ public class ClientController {
 		return "message";
 	}
 	
-	
 	@RequestMapping(value="updateMember", method=RequestMethod.GET)
 	public String updateMember(HttpServletRequest req, @RequestParam int mnum) {
 		MemberDTO dto = memberMapper.getMember(mnum);
@@ -237,15 +236,21 @@ public class ClientController {
 		return "message";
 	}
 	
-	@RequestMapping("/leaveMember")
-	public String leaveMember(HttpServletRequest req, @RequestParam int mnum) {
+	@RequestMapping(value="leaveMember", method=RequestMethod.GET)
+	public String leaveMember() {
+		return "/main/main";
+	}
+	
+	@RequestMapping(value="leaveMember", method=RequestMethod.POST)
+	public String leaveMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
 		int res = memberMapper.deleteMember(mnum);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "회원탈퇴 성공, 메인 페이지로 이동합니다.";
-			url = "main";
+			session.invalidate();
+			msg = "회원탈퇴 성공, 이용해주셔서 감사합니다.";
+			url = "redirect:main";
 		}else {
-			msg = "회원탈퇴 실패!!, 마이 페이지로 이동합니다.";
+			msg = "회원탈퇴 실패, 마이 페이지로 이동합니다.";
 			url = "clientMypage";
 		}
 		req.setAttribute("msg", msg);

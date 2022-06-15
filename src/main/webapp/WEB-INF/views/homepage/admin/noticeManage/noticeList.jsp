@@ -31,8 +31,10 @@
 	</c:forEach>	
 	</table>
 	
-	
-	검색: <input type="text" name="search"> <input type="button" value="검색">
+	<form name="f" action="listNotice" method="post">
+	<input type="hidden" name="mode" value="search">
+	검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+	</form>
 				<!-- AdminSlideMapper.xml : search -->
 	
 

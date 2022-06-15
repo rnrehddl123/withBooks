@@ -5,7 +5,7 @@
 <html>
 <head>
    <title>clientNovelInfo</title>
-   <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
+   <link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="clientNovelInfoWrapper">

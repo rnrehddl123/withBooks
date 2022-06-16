@@ -1,5 +1,6 @@
 package com.mvc.withbooks.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,9 +28,14 @@ public class NoticeNovelMapper {
 		return res;
 	}
 	
-	public NoticeNovelDTO getNoticeNovel(int nnum){
-		NoticeNovelDTO noticeNovelDTO = sqlSession.selectOne("getNoticeNovel", nnum);
+	public NoticeNovelDTO getNoticeNovel(Map<String, String> params){
+		NoticeNovelDTO noticeNovelDTO = sqlSession.selectOne("getNoticeNovel", params);
 		return noticeNovelDTO;
+	}
+	
+	public List<NoticeNovelDTO> listNoticeNovel(int nnum){
+		List<NoticeNovelDTO> list = sqlSession.selectList("listNoticeNovel", nnum);
+		return list;
 	}
 	
 }

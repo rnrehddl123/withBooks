@@ -4,9 +4,24 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.mvc.withbooks.model.noticeEpisodeMapper"> 
-	<insert id="sendNoticeEpisode" parameterType="NoticeEpisodeDTO">
-		INSERT INTO NOTICE_EPISODE(NENUM, SENDTIME,EPNUM, MNUM) VALUES (SEQ_NOTICE_EPISODE.nextval, sysdate,#{episodeDTO.epnum},1)
-	</insert>
+	<update id="sendNoticeEpisode" parameterType="java.util.Map">
+		INSERT INTO NOTICE_EPISODE (
+			  NENUM
+			, SENDTIME
+			, EPNUM
+			, MNUM
+		)
+		SELECT SEQ_NOTICE_EPISODE.NEXTVAL AS epSeq
+			 , T.* 
+		  FROM (
+		         <foreach collection="list" item="item" index="index" separator="union all">
+				SELECT 	sysdate
+				        , #{epdto.epnum}
+				        , #{item}
+				 FROM SYS.DUAL
+		         </foreach> 
+		  ) T
+	</update>
 	
 	<select id="sendNoticeList" parameterType="MemberDTO" resultType="NoticeEpisodeDTO">
 		SELECT *  FROM NOTICE_EPISODE WHERE MNUM = #{mnum}

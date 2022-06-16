@@ -5,14 +5,18 @@
   
 <mapper namespace="com.mvc.withbooks.model.noticeNovelMapper"> 
 	<insert id="insertNoticeNovel" parameterType="java.util.Map">
-		INSERT INTO NOTICE_NOVEL(NNNUM, MNUM, NNUM, NOTICE_TIME)VALUES(SEQ_NOTICE_NOVEL.nextval, #{nnum},#{mnum}, sysdate)
+		INSERT INTO NOTICE_NOVEL(NNNUM, MNUM, NNUM, NOTICE_TIME)VALUES(SEQ_NOTICE_NOVEL.nextval, #{mnum},#{nnum}, sysdate)
 	</insert>
 	
 	<delete id="deleteNoticeNovel" parameterType="java.util.Map">
 		delete from NOTICE_NOVEL where mnum = #{mnum} and nnum = #{nnum}
 	</delete>
 	
-	<select id="getNoticeNovel" parameterType="int" resultType="NoticeNovelDTO">
+	<select id="getNoticeNovel" parameterType="java.util.Map" resultType="NoticeNovelDTO">
 		SELECT NNNUM FROM NOTICE_NOVEL where mnum = #{mnum} and nnum = #{nnum}
+	</select>
+	
+	<select id="listNoticeNovel" parameterType="int" resultType="int">
+		SELECT MNUM FROM NOTICE_NOVEL where nnum = #{nnum}
 	</select>
 </mapper>

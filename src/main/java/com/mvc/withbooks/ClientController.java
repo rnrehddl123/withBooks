@@ -1,5 +1,6 @@
 package com.mvc.withbooks;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -142,11 +143,17 @@ public class ClientController {
 	
 
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
-	public String ClientNovelInfo(HttpServletRequest req,@RequestParam int nnum) {
+	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum) {
+		MemberDTO login=(MemberDTO)session.getAttribute("login");
 		NovelDTO ndto=novelMapper.getNovel(nnum);
-		NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(nnum);
+		if(login!=null){
+			HashMap<String, String> params=new HashMap<String, String>();
+			params.put("nnum", Integer.toString(nnum));
+			params.put("mnum", Integer.toString(login.getMnum()));
+			NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
+			req.setAttribute("noticeNovelDTO", noticeNovelDTO);
+		}
 		req.setAttribute("noveldto", ndto);
-		req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		return "client/clientNovelInfo";
 	}
 	

@@ -37,6 +37,9 @@ public class NoticeEpisodeMapper {
 	}
 	
 	
-	
+	public List<HashMap<String, String>> getNoticeEpisodeMsg(int mnum){
+		List<HashMap<String, String>> list = sqlSession.selectList("getNoticeEpisodeMsg", mnum);
+		return list;
+	}
 	
 }

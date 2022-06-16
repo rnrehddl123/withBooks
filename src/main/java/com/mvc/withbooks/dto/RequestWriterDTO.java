@@ -6,7 +6,15 @@ public class RequestWriterDTO {
 	private String Request_subject;
 	private String Request_reg_date;
 	private String Request_content;
+	private MemberDTO memberDTO;
 	
+	
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
 	public int getRwnum() {
 		return Rwnum;
 	}

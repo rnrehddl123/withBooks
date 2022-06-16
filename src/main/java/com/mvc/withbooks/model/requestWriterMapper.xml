@@ -12,9 +12,9 @@
  		select * from RequestWriter where Rwnum = #{Rwnum}
  	</select>
  	
- 	<select id="inserRequestWriter" parameterType="RequestWriterDTO">
- 		insert into RequestWriter(Rwnum,RequestWriter_writer,RequestWriter_subject,RequestWriter_reg_date,RequestWriter_content) values(seq_requestWriter.nextval, #{RequestWriter_writer}, #{RequestWriter_subject}, sysdate, #{RequestWriter_content})
- 	</select>
+ 	<insert id="insertRequestWriter" parameterType="RequestWriterDTO">
+ 		insert into RequestWriter(Rwnum,RequestWriter_writer,RequestWriter_subject,RequestWriter_reg_date,RequestWriter_content,Mnum) values(seq_requestWriter.nextval, #{RequestWriter_writer}, #{RequestWriter_subject}, sysdate, #{RequestWriter_content},#{memberDTO.mnum})
+ 	</insert>
  	
  	<select id="updateRequestWriter" parameterType="int">
  		update RequestWriter set RequestWriter_writer=#{RequestWriter_writer}, RequestWriter_subject=#{RequestWriter_subject}, RequestWriter_content=#{RequestWriter_content} where Rwnum=#{Rwnum}

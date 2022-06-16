@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.RequestWriterDTO;
 
 @Service
@@ -24,7 +25,9 @@ public class RequestWriterMapper {
 		return dto;
 	}
 	
-	public int insertRequestWriter(RequestWriterDTO dto) {
+	public int insertRequestWriter(RequestWriterDTO dto, int mnum) {
+		MemberDTO mdto= sqlSession.selectOne("getMember", mnum);
+		dto.setMemberDTO(mdto);
 		int res = sqlSession.insert("inserRequestWriter",dto);
 		return res;
 	}

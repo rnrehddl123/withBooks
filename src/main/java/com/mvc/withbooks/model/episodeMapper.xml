@@ -5,7 +5,7 @@
 
 <mapper namespace="com.mvc.withbooks.model.episodeMapper"> 
 	<select id="listEpisode" resultType="EpisodeDTO">
-		select * from episode
+		select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum}
 	</select>
 	
 	<insert id="insertEpisode" parameterType="EpisodeDTO" useGeneratedKeys="true" keyColumn="Epnum" keyProperty="Epnum">

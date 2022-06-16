@@ -128,13 +128,13 @@ public class ClientController {
 		}
 		int res = memberMapper.updateCash(params);
 		if(res>0) {
-			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
+			req.setAttribute("msg", "충전성공.");
 			req.setAttribute("url", "clientMypage");
 			MemberDTO login = (MemberDTO)session.getAttribute("login");
 			login.setCash(login.getCash() + Integer.parseInt(params.get("cash")));
 			session.setAttribute("login", login);
 		}else {
-			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
+			req.setAttribute("msg", "충전실패.");
 			req.setAttribute("url", "clientMypage");
 		}
 		return "message";
@@ -158,10 +158,6 @@ public class ClientController {
 	}
 	
 	//회원가입 기능
-	@RequestMapping(value="/insertMember", method=RequestMethod.GET)
-	public String insertMember() {
-		return "main/signUp";
-	}
 	
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
 	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, @RequestParam Map<String, String> params,@RequestParam(required = false) String[] member_preferred){
@@ -176,6 +172,7 @@ public class ClientController {
 			dto.setMember_preferred2(member_preferred[1]);
 			dto.setMember_preferred3(member_preferred[2]);
 		}
+		
 		int res = memberMapper.insertMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
@@ -237,12 +234,17 @@ public class ClientController {
 	
 	//일반회원 정보수정 기능
 	@RequestMapping(value="updateMember", method=RequestMethod.GET)
-	public String updateMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
+	public String updateMember(HttpServletRequest req, HttpSession session) {
+		List<CategoryDTO> list=categoryMapper.listCategory();
+		req.setAttribute("categoryList", list);
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		MemberDTO dto = memberMapper.getMember(mnum);
-		req.setAttribute("getMember", dto);
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		String[] tel = login.getMember_Tel().split("-");
+		req.setAttribute("tel1", tel[0]);
+		req.setAttribute("tel2", tel[1]);
+		req.setAttribute("tel3", tel[2]);
 		return "client/clientMypage/clientUpdate";
 	}
 	

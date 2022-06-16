@@ -81,17 +81,14 @@ public class WriterController {
 		
 	//에피소드 작성 페이지
 	@RequestMapping("/writerEpisode")
-	public String WriterEpisode() {
+	public String WriterEpisode(HttpServletRequest req, int nnum) {
+		req.setAttribute("nnum", nnum);
 		return "writer/writerPage/writerSubject/writerEpisode";
 	}
 	
 	//에피소드 추가
-	@RequestMapping(value="/insertEpisode", method=RequestMethod.GET)
-	public String insertEpisode() {
-		return "main/main";
-	}
 	
-	@RequestMapping(value="/insertEpisode", method=RequestMethod.POST)
+	@RequestMapping("/insertEpisode")
 	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum) {
 		int res = episodeMapper.insertEpisode(dto, Nnum);
 		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);

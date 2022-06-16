@@ -21,7 +21,7 @@
 				<th>작성일</th>
 				<th>조회수</th>
 				<th>추천수</th>
-				<th>수정|삭제</th>
+				<th>수정</th>
 			</tr>
 			<c:if test="${empty listEpisode}">
 			<tr>
@@ -35,7 +35,7 @@
 				<td align="center">${dto.epi_date}</td>
 				<td align="center">${dto.epi_readcount}</td>
 				<td align="center">${dto.epi_recommand}</td>
-				<td align="center"><a href="writerEpisodeUpdate?Epnum=${dto.epnum}&nnum=${getNovel.nnum}">수정</a> | <a href="writerEpisodeDelete?Epnum=${dto.epnum}&nnum=${getNovel.nnum}">삭제</a></td>
+				<td align="center"><a href="writerEpisodeUpdate?Epnum=${dto.epnum}&nnum=${getNovel.nnum}">수정</a></td>
 			</tr>		
 			</c:forEach>
 		</table>

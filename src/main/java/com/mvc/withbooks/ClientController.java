@@ -229,13 +229,15 @@ public class ClientController {
 				return "message";
 			}
 		}
+		List<HashMap<String, String>> noticeList=noticeEpisodeMapper.getNoticeEpisodeMsg(dto.getMnum());
+		session.setAttribute("noticeList", noticeList);
 		return "redirect:" + session.getAttribute("prevPage");
 	}
 	
 	//로그아웃 기능
 	@RequestMapping("logout")
 	public String Logout(HttpServletRequest req,HttpSession session) {
-		session.removeAttribute("login");
+		session.invalidate();
 		return "redirect:" + req.getHeader("Referer");
 	}
 	

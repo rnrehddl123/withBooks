@@ -26,4 +26,8 @@
 	<select id="sendNoticeList" parameterType="MemberDTO" resultType="NoticeEpisodeDTO">
 		SELECT *  FROM NOTICE_EPISODE WHERE MNUM = #{mnum}
 	</select>
+	
+	<select id="getNoticeEpisodeMsg" parameterType="int" resultType="java.util.Map">
+		SELECT * FROM NOTICE_EPISODE where mnum = #{mnum}
+	</select>
 </mapper>

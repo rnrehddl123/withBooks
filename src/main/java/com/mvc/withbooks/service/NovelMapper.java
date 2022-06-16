@@ -24,8 +24,8 @@ public class NovelMapper {
 		return res;
 	}
 	
-	public List<NovelDTO> listNovel() {
-		List<NovelDTO> list = sqlSession.selectList("writerListNovel");
+	public List<NovelDTO> listNovel(int mnum) {
+		List<NovelDTO> list = sqlSession.selectList("writerListNovel", mnum);
 		return list;
 	}
 	

@@ -45,7 +45,7 @@
 			<li><h3><a href="writerEpisodeList">에피소드 리스트</a></h3>
 			<li><h3><a href="writerEpisodeUpdate">에피소드 수정</a></h3>
 			<li><h3><a href="writerNovel">소설 작성</a></h3>
-			<li><h3><a href="writerNovelList">소설 리스트</a></h3>
+			<li><h3><a href="writerNovelList?mnum=${login.mnum}">소설 리스트</a></h3>
 			<li><h3><a href="writerNovelUpdate">소설 수정</a></h3>
 			<li><h3><a href="writerChart">Chart</a></h3>
 			<li><h3><a href="writerLibrary">작가 소설 구매 내역</a></h3>

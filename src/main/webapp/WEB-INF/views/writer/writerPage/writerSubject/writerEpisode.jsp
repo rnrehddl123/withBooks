@@ -11,8 +11,8 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 	<div align="center">
 		<form class="editorWrapper" name="f" action="insertEpisode" method="post" onsubmit="return check()">
-			<input type="hidden" value="1" name="mnum">
-			<input type="hidden" name="Nnum" value="1">
+			<input type="hidden" value="${login.mnum}" name="mnum">
+			<input type="hidden" name="Nnum" value="${nnum}">
 			<div class="mb-3">
 			  <div class="flex"><label for="exampleFormControlInput1" class="form-label">제목</label></div>
 			  <input type="text" name="Epi_subject" class="form-control" id="exampleFormControlInput1">

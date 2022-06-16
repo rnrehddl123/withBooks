@@ -210,11 +210,13 @@ public class WriterController {
 	   }
 	
 	@RequestMapping("/writerNovelList")
-	public String WriterNovelList(HttpServletRequest req, HttpSession session) {
+	public String WriterNovelList(HttpServletRequest req, HttpSession session, int mnum) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		List<NovelDTO> list = novelMapper.listNovel();
+		MemberDTO dto = memberMapper.getMember(mnum);
+		req.setAttribute("getMember", dto);
+		List<NovelDTO> list = novelMapper.listNovel(mnum);
 		req.setAttribute("writerListNovel", list);
 		return "writer/writerPage/writerSubject/writerNovelList";
 	}

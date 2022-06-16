@@ -5,7 +5,7 @@
   
 <mapper namespace="com.mvc.withbooks.model.novelMapper"> 
 	<select id="writerListNovel" resultType="NovelDTO">
-		select * from novel
+		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{Mnum}
 	</select>
 	
 	<insert id="insertNovel" parameterType="NovelDTO">

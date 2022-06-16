@@ -10,7 +10,7 @@
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<b> 내가 쓴 소설 목록</b>
+		<b>${getMember.member_name}님의 소설</b>
 		<table align="center" class="writer">
 			<tr>
 				<td colspan="5" align="right"><a href="writerNovel">새로운 소설 쓰기</a></td>

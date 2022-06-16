@@ -4,9 +4,16 @@ public class AdminSuggestDTO {
 	
 	private int sunum;
 	private String suggestNovel;
+	private int nnum;
 	private NovelDTO novelDTO; //foreign key
 	
 	
+	public int getNnum() {
+		return nnum;
+	}
+	public void setNnum(int nnum) {
+		this.nnum = nnum;
+	}
 	public int getSunum() {
 		return sunum;
 	}

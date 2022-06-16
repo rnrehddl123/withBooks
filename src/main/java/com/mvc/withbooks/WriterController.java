@@ -34,7 +34,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WriterController {
 	
-	@Resource(name="uploadPath")
+	@Resource(name="novelUploadPath")
 	 String uploadPath;
 	
 	@Autowired

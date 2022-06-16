@@ -241,7 +241,7 @@ public class ClientController {
 //			Map<String, String> epmap=episodeMapper.getEpisode(map.get("epnum"));
 //			EpisodeDTO epdto=novelMapper.getNovel(epdto.getEpnum());
 //		}
-		session.setAttribute("noticeList", noticeList);
+//		session.setAttribute("noticeList", noticeList);
 		return "redirect:" + session.getAttribute("prevPage");
 	}
 	

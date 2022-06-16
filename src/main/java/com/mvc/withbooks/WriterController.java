@@ -98,7 +98,7 @@ public class WriterController {
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 등록 성공, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList";
+			url = "writerEpisodeList?nnum=" + Nnum;
 		}else {
 			msg = "에피소드 등록 실패!!, 에피소드 목록 페이지로 이동합니다.";
 			url = "writerEpisodeList";
@@ -109,16 +109,16 @@ public class WriterController {
 	}
 	
 	//에피소드 삭제
-	@RequestMapping("/deleteEpisode")
-	public String deleteEpisode(HttpServletRequest req, @RequestParam int epnum) {
-		int res = episodeMapper.deleteEpisode(epnum);
+	@RequestMapping("/writerEpisodeDelete")
+	public String WriterEpisodeDelete(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum) {
+		int res = episodeMapper.deleteEpisode(Epnum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 삭제 성공, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList";
+			url = "writerEpisodeList?nnum=" + nnum;
 		}else {
 			msg = "에피소드 삭제 실패!!, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList";
+			url = "writerEpisodeList?nnum" + nnum;
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
@@ -126,29 +126,29 @@ public class WriterController {
 	}
 	
 	//에피소드 수정
-	@RequestMapping(value="/updateEpisode", method=RequestMethod.GET)
-	public String WriterEpisodeUpdate() {
-		return "main/main";
-	}
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
-	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum) {
+	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum) {
 		EpisodeDTO dto = episodeMapper.getEpisode(Epnum, "update");
 		req.setAttribute("getEpisode", dto);
+		req.setAttribute("nnum", nnum);
 		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
 	}
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
-	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto) {
+	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, @RequestParam int nnum) {
 		int res = episodeMapper.updateEpisode(dto);
-		if(res>0) {
-			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
-			req.setAttribute("url", "writerEpisodeList");
-		}else {
-			req.setAttribute("msg", "���Ǽҵ� ���� ����!! ���Ǽҵ� ��� �������� �̵��մϴ�.");
-			req.setAttribute("url", "writerEpisodeList");
-		}
-		return "message";
+	      String msg = null, url = null;
+	      if(res>0) {
+	         msg = "에피소드가 수정되었습니다";
+	         url = "writerEpisodeList?nnum=" + nnum;
+	      }else {
+	         msg = "에피소드를 다시 수정해주세요!";
+	         url = "writerNovelList";
+	      }
+	      req.setAttribute("msg", msg);
+	      req.setAttribute("url", url);
+	      return "message";
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.GET)

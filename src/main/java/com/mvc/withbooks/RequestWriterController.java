@@ -20,7 +20,7 @@ public class RequestWriterController {
 	@Autowired
 	private RequestWriterMapper requestWriterMapper;
 	
-	//½ÅÃ» ¸ñ·Ï
+	//ï¿½ï¿½Ã» ï¿½ï¿½ï¿½
 	@RequestMapping("/listRequestWriter")
 	public String listRequestWrinte(HttpServletRequest req) {
 		List<RequestWriterDTO> list = requestWriterMapper.listRequestWriter();
@@ -28,26 +28,26 @@ public class RequestWriterController {
 		return "requestWriter/listRequestWriter";
 	}
 	
-	//½ÅÃ» ÀÛ¼º
+	//ï¿½ï¿½Ã» ï¿½Û¼ï¿½
 	@RequestMapping(value = "/writeRequestWriter", method=RequestMethod.GET)
 	public String writeFormRequestWriter() {
 		return "requestWriter/writeFormRequestWriter";
 	}
 	
 	@RequestMapping(value = "/writeRequestWriter", method=RequestMethod.POST)
-	public String writeProRequestWriter(HttpServletRequest req,RequestWriterDTO dto) {
-		int res = requestWriterMapper.insertRequestWriter(dto);
+	public String writeProRequestWriter(HttpServletRequest req,RequestWriterDTO dto, @RequestParam int mnum) {
+		int res = requestWriterMapper.insertRequestWriter(dto,mnum);
 		if(res>0) {
-			req.setAttribute("msg", "ÀÛ°¡ ½ÅÃ» ¼º°ø! ¸ñ·ÏÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Û°ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "listRequestWriter");
 		}else {
-			req.setAttribute("msg", "ÀÛ°¡ ½ÅÃ» ½ÇÆÐ! ½ÅÃ»ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Û°ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "writeRequestWriter");
 		}
 		return "message";
 	}
 	
-	// ½ÅÃ»³»¿ë È®ÀÎ
+	// ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	@RequestMapping("/contentRequestWriter")
 	public String contentRequestWriter(HttpServletRequest req, int Rwnum) {
 		RequestWriterDTO dto = requestWriterMapper.getRequestWriter(Rwnum);
@@ -55,7 +55,7 @@ public class RequestWriterController {
 		return "requestWriter/contentRequestWriter";
 	}
 	
-	// ½ÅÃ»³»¿ë ¼öÁ¤
+	// ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/updateRequestWriter", method = RequestMethod.GET)
 	public String updateFormRequestWrinter(HttpServletRequest req,int Rwnum) {
 		RequestWriterDTO dto = requestWriterMapper.getRequestWriter(Rwnum);
@@ -67,15 +67,15 @@ public class RequestWriterController {
 	public String updateProRequestWrinter(HttpServletRequest req,RequestWriterDTO dto) {
 		int res = requestWriterMapper.updateRequestWriter(dto);
 		if(res>0) {
-			req.setAttribute("msg", "¼öÁ¤ ¼º°ø! ¸ñ·ÏÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "listRequestWriter");
 		}else {
-			req.setAttribute("msg", "¼öÁ¤ ½ÇÆÐ! ³»¿ë º¸±â ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "contentRequestWriter?Rwnum" + dto.getRwnum());
 		}
 		return "message";
 	}
 	
-	//½ÅÃ»³»¿ë »èÁ¦
+	//ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 }

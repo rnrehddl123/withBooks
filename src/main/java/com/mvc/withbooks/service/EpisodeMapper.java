@@ -1,6 +1,7 @@
 package com.mvc.withbooks.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class EpisodeMapper {
 		}
 		EpisodeDTO dto = sqlSession.selectOne("getEpisode", Epnum);
 		return dto;
+	}
+	
+	public Map<String, String> getEpisode(String Epnum) {
+		Map<String, String> params = sqlSession.selectOne("getEpisode", Epnum);
+		return params;
 	}
 }

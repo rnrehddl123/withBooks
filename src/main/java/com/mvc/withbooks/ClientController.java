@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.mvc.withbooks.dto.CategoryDTO;
+import com.mvc.withbooks.dto.EpisodeDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
 import com.mvc.withbooks.dto.NoticeNovelDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.CategoryMapper;
+import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
@@ -39,6 +41,8 @@ public class ClientController {
 	private NovelMapper novelMapper;
 	@Autowired
 	private NoticeNovelMapper noticeNovelMapper;
+	@Autowired
+	private EpisodeMapper episodeMapper;
 	
 	@RequestMapping("/clientMypage")//일반회원 마이 페이지
 	public String ClientmyPage(HttpSession session) {
@@ -229,8 +233,9 @@ public class ClientController {
 				return "message";
 			}
 		}
-		List<HashMap<String, String>> noticeList=noticeEpisodeMapper.getNoticeEpisodeMsg(dto.getMnum());
-		session.setAttribute("noticeList", noticeList);
+		
+		//알림설정
+
 		return "redirect:" + session.getAttribute("prevPage");
 	}
 	

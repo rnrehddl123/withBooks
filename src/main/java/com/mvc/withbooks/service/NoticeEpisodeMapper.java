@@ -25,6 +25,9 @@ public class NoticeEpisodeMapper {
 		HashMap<String,Object> params=new HashMap<String, Object>();
 		params.put("epdto", epdto);
 		List<Integer> list=sqlSession.selectList("listNoticeNovel", epdto.getNovelDTO().getNnum());
+		if(list.size()==0) {
+			return 0;
+		}
 		params.put("list",list);
 		int res = sqlSession.insert("sendNoticeEpisode", params);
 		return res;

@@ -58,25 +58,11 @@
               <div class="arrow_box_wrapper hidden">
                 	<div class="arrow"></div>
 	                <div class="arrow_box">
-	                	<div class="content">
-	                			asdkpjporjawerk;jg;sjdfk;ajewrjaweㅈㄷ거ㅐㅣㅏㄴ오ㅓㄻ;놀뫠rlknae;lsjfdjawp'erjakjewrlnsfdk;
-	                	</div>
-	                	<div class="content">
-	                			asdkpjporjawerk;jg;sjdfk;ajewrjaweㅈㄷ거ㅐㅣㅏㄴ오ㅓㄻ;놀뫠rlknae;lsjfdjawp'erjakjewrlnsfdk;
-	                	</div>
-	                	<div class="content">
-	                			asdkpjporjawerk;jg;sjdfk;ajewrjaweㅈㄷ거ㅐㅣㅏㄴ오ㅓㄻ;놀뫠rlknae;lsjfdjawp'erjakjewrlnsfdk;
-	                	</div>
-	                	<div class="content">
-	                			asdkpjporjawerk;jg;sjdfk;ajewrjaweㅈㄷ거ㅐㅣㅏㄴ오ㅓㄻ;놀뫠rlknae;lsjfdjawp'erjakjewrlnsfdk;
-	                	</div>
-	                	<div class="content">
-	                			asdkpjporjawerk;jg;sjdfk;ajewrjaweㅈㄷ거ㅐㅣㅏㄴ오ㅓㄻ;놀뫠rlknae;lsjfdjawp'erjakjewrlnsfdk;
-	                	</div>
 	                	<c:forEach items="${noticeList}" var="notice">
 	                		<div class="content">
-	                			${notice.EPNUM}
+	                			${notice.SUBJECT}의 최산화 ${notice.EPI_SUBJECT}가 연재 되었습니다 지금 확인하세요.
 	                		</div>
+	                		${notice.SENDTIME}
 				        </c:forEach>
 	                </div>
                 </div>

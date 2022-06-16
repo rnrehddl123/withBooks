@@ -48,7 +48,7 @@ public class EpisodeMapper {
 	}
 	
 	public Map<String, String> getEpisode(String Epnum) {
-		Map<String, String> params = sqlSession.selectOne("getEpisode", Epnum);
+		Map<String, String> params = sqlSession.selectOne("getEpisodeSubject", Epnum);
 		return params;
 	}
 }

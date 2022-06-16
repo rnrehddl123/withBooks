@@ -29,7 +29,7 @@
 		update episode set readcount=readcount+1 where Epnum=#{Epnum}
 	</select>
 	
-	<select id="getEpisodeSubject" parameterType="int" resultType="java.util.Map">
+	<select id="getEpisodeSubject" parameterType="String" resultType="java.util.Map">
 		select EPNUM,EPI_SUBJECT,NNUM from episode where Epnum = #{Epnum}
 	</select>
 </mapper>

@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.UploadContext;
 import org.apache.ibatis.binding.BindingException;
@@ -71,7 +72,10 @@ public class WriterController {
 	}
 	
 	@RequestMapping("/writerEpisodeList")
-	public String WriterEpisodeLIst(HttpServletRequest req, int nnum) {
+	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		NovelDTO dto = novelMapper.getNovel(nnum);
 		req.setAttribute("getNovel", dto);
 		List<EpisodeDTO> list = episodeMapper.listEpisode(nnum);
@@ -81,7 +85,10 @@ public class WriterController {
 		
 	//에피소드 작성 페이지
 	@RequestMapping("/writerEpisode")
-	public String WriterEpisode(HttpServletRequest req, int nnum) {
+	public String WriterEpisode(HttpServletRequest req, int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		req.setAttribute("nnum", nnum);
 		return "writer/writerPage/writerSubject/writerEpisode";
 	}
@@ -89,7 +96,10 @@ public class WriterController {
 	//에피소드 추가
 	
 	@RequestMapping("/insertEpisode")
-	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum) {
+	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = episodeMapper.insertEpisode(dto, Nnum);
 		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);
 		String msg = null, url = null;
@@ -107,7 +117,10 @@ public class WriterController {
 	
 	//에피소드 삭제
 	@RequestMapping("/writerEpisodeDelete")
-	public String WriterEpisodeDelete(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum) {
+	public String WriterEpisodeDelete(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = episodeMapper.deleteEpisode(Epnum);
 		String msg = null, url = null;
 		if (res>0) {
@@ -125,7 +138,10 @@ public class WriterController {
 	//에피소드 수정
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
-	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum) {
+	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		EpisodeDTO dto = episodeMapper.getEpisode(Epnum, "update");
 		req.setAttribute("getEpisode", dto);
 		req.setAttribute("nnum", nnum);
@@ -133,7 +149,10 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
-	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, @RequestParam int nnum) {
+	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, @RequestParam int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = episodeMapper.updateEpisode(dto);
 	      String msg = null, url = null;
 	      if(res>0) {
@@ -149,15 +168,21 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.GET)
-	public String WriterNovelForm(HttpServletRequest req) {
+	public String WriterNovelForm(HttpServletRequest req, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		List<CategoryDTO> list = categoryMapper.listCategory();
 		req.setAttribute("listCategory", list);
 		return "writer/writerPage/writerSubject/writerNovel";
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
-	public String WriterNovel(HttpServletRequest req, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
-	      MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+	public String WriterNovel(HttpServletRequest req, HttpSession session, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}  
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 	      MultipartFile mf = mr.getFile("file");
 	      String filename = mf.getOriginalFilename();
 	      UUID uuid = UUID.randomUUID();
@@ -174,7 +199,7 @@ public class WriterController {
 	      String msg = null, url = null;
 	      if(res>0) {
 	         msg = "등록 성공";
-	         url = "writerNovelList";
+	         url = "writerNovelList?mnum=" + mnum;
 	      }else {
 	         msg = "등록 실패";
 	         url = "writerNovelList";
@@ -185,14 +210,20 @@ public class WriterController {
 	   }
 	
 	@RequestMapping("/writerNovelList")
-	public String WriterNovelList(HttpServletRequest req) {
+	public String WriterNovelList(HttpServletRequest req, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		List<NovelDTO> list = novelMapper.listNovel();
 		req.setAttribute("writerListNovel", list);
 		return "writer/writerPage/writerSubject/writerNovelList";
 	}
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.GET)
-	public String WriterNovelUpdateForm(HttpServletRequest req, @RequestParam int nnum) {
+	public String WriterNovelUpdateForm(HttpServletRequest req, @RequestParam int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		NovelDTO dto = novelMapper.getNovel(nnum);
 		req.setAttribute("getNovel", dto);
 		return "writer/writerPage/writerSubject/writerNovelUpdate";
@@ -200,8 +231,11 @@ public class WriterController {
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.POST)
 	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto,		
-	         @RequestParam int mnum,BindingResult result) {
-	      MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+	         @RequestParam int mnum,BindingResult result, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}  
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 	      MultipartFile mf = mr.getFile("file");
 	      String filename = mf.getOriginalFilename();
 	      UUID uuid = UUID.randomUUID();
@@ -230,7 +264,10 @@ public class WriterController {
 	   }
 	
 	@RequestMapping("/writerNoveldelete")
-	public String writerNoveldelete(HttpServletRequest req, @RequestParam int nnum) {
+	public String writerNoveldelete(HttpServletRequest req, @RequestParam int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
 		int res = novelMapper.deleteNovel(nnum);
 		String msg = null, url = null;
 		if(res>0) {

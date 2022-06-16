@@ -37,7 +37,7 @@
 				</td>
 				<td align="center">${dto.novel_memberName}</td>
 				<td align="center">${dto.novel_recommand}</td>
-				<td align="center"><a href="writerNovelUpdate?nnum=${dto.nnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.nnum}">삭제</a></td>
+				<td align="center"><a href="writerNovelUpdate?nnum=${dto.nnum}&mnum=${getMember.mnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.nnum}&mnum=${getMember.mnum}">삭제</a></td>
 			</tr>		
 			</c:forEach>
 		</table>

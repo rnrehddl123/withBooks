@@ -13,20 +13,20 @@
 	</insert>
 
 	<delete id="deleteEpisode" parameterType="int">
-		delete from episode where Epnum = #{Epnum}
+		delete from episode where Epnum = #{epnum}
 	</delete>
 	
 	<update id="updateEpisode" parameterType="EpisodeDTO">
-		update episode set Epi_subject=#{Epi_subject}, Epi_content=#{Epi_content}, Epi_recommand=#{Epi_recommand} where Epnum = #{Epnum} 
+		update episode set Epi_subject=#{Epi_subject}, Epi_content=#{Epi_content}, Epi_recommand=#{Epi_recommand} where Epnum = #{epnum} 
 	</update>
 		
 	
 	<select id="getEpisode" parameterType="int" resultType="EpisodeDTO">
-		select * from episode where Epnum = #{Epnum}
+		select * from episode where Epnum = #{epnum}
 	</select>
 	
-	<select id="plusReadcount" parameterType="int">
-		update episode set readcount=readcount+1 where Epnum=#{epnum}
+	<select id="plusReadcountEpi" parameterType="int">
+		update episode set Epi_readcount=Epi_readcount+1 where Epnum=#{epnum}
 	</select>
 	
 	<select id="getEpisodeSubject" parameterType="String" resultType="java.util.Map">

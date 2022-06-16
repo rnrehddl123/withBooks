@@ -66,9 +66,9 @@ public class WriterController {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "view");
+		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "writerNovelEpisode");
 		req.setAttribute("getEpisode", dto);
-		req.setAttribute("Epnum", epnum);
+		req.setAttribute("epnum", epnum);
 		return "writer/writerPage/writerOrderList/writerNovelEpisode";
 	}
 	
@@ -102,19 +102,19 @@ public class WriterController {
 	//에피소드 추가
 	
 	@RequestMapping("/insertEpisode")
-	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int Nnum, HttpSession session) {
+	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int nnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		int res = episodeMapper.insertEpisode(dto, Nnum);
+		int res = episodeMapper.insertEpisode(dto, nnum);
 		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 등록 성공, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList?nnum=" + Nnum;
+			url = "writerEpisodeList?nnum=" + nnum;
 		}else {
 			msg = "에피소드 등록 실패!!, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList";
+			url = "writerEpisodeList?nnum=" + nnum;
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
@@ -123,11 +123,11 @@ public class WriterController {
 	
 	//에피소드 삭제
 	@RequestMapping("/writerEpisodeDelete")
-	public String WriterEpisodeDelete(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum, HttpSession session) {
+	public String WriterEpisodeDelete(HttpServletRequest req, @RequestParam int epnum, @RequestParam int nnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		int res = episodeMapper.deleteEpisode(Epnum);
+		int res = episodeMapper.deleteEpisode(epnum);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 삭제 성공, 에피소드 목록 페이지로 이동합니다.";
@@ -144,11 +144,11 @@ public class WriterController {
 	//에피소드 수정
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
-	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int Epnum, @RequestParam int nnum, HttpSession session) {
+	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int epnum, @RequestParam int nnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		EpisodeDTO dto = episodeMapper.getEpisode(Epnum, "update");
+		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "update");
 		req.setAttribute("getEpisode", dto);
 		req.setAttribute("nnum", nnum);
 		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
@@ -166,7 +166,7 @@ public class WriterController {
 	         url = "writerEpisodeList?nnum=" + nnum;
 	      }else {
 	         msg = "에피소드를 다시 수정해주세요!";
-	         url = "writerNovelList";
+	         url = "writerNovelList?nnum=" + nnum;
 	      }
 	      req.setAttribute("msg", msg);
 	      req.setAttribute("url", url);
@@ -208,7 +208,7 @@ public class WriterController {
 	         url = "writerNovelList?mnum=" + mnum;
 	      }else {
 	         msg = "등록 실패";
-	         url = "writerNovelList";
+	         url = "writerNovelList?mnum=" + mnum;
 	      }
 	      req.setAttribute("msg", msg);
 	      req.setAttribute("url", url);
@@ -260,11 +260,11 @@ public class WriterController {
 	      int res = novelMapper.updateNovel(dto,mnum);
 	      String msg = null, url = null;
 	      if(res>0) {
-	         msg = " Ҽ           !!  Ҽ                ̵  մϴ .";
-	         url = "writerNovelList";
+	         msg = "소설이 수정되었습니다.";
+	         url = "writerNovelList?mnum=" + mnum;
 	      }else {
-	         msg = " Ҽ            !!  Ҽ                ̵  մϴ .";
-	         url = "writerNovelList";
+	         msg = "소설 수정에 실패하였습니다.";
+	         url = "writerNovelList?mnum" + mnum;
 	      }
 	      req.setAttribute("msg", msg);
 	      req.setAttribute("url", url);
@@ -272,18 +272,18 @@ public class WriterController {
 	   }
 	
 	@RequestMapping("/writerNoveldelete")
-	public String writerNoveldelete(HttpServletRequest req, @RequestParam int nnum, HttpSession session) {
+	public String writerNoveldelete(HttpServletRequest req, @RequestParam int nnum, HttpSession session, @RequestParam int mnum) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
 		int res = novelMapper.deleteNovel(nnum);
 		String msg = null, url = null;
 		if(res>0) {
-			msg = "�Ҽ� ���� ����!! �Ҽ� ��� �������� �̵��մϴ�.";
-			url = "writerNovelList";
+			msg = "소설이 삭제 되었습니다.";
+			url = "writerNovelList?mnum=" + mnum;
 		}else {
-			msg = "�Ҽ� ���� ���� !! �Ҽ� ��� �������� �̵��մϴ�.";
-			url = "writerNovelList";
+			msg = "소설 삭제에 실패하였습니다.";
+			url = "writerNovelList?mnum=" + mnum;
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);

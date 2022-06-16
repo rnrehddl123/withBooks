@@ -21,7 +21,7 @@
 	</delete>
 	
 	<update id="updateNovel" parameterType="NovelDTO">
-		update novel set Novel_subject=#{Novel_subject}, Novel_memberName=#{Novel_memberName}, Novel_image=#{Novel_image}, Novel_cate=#{Novel_cate}, Novel_summary=#{Novel_summary} where nnum = #{nnum} 
+		update novel set Novel_subject=#{Novel_subject}, Novel_memberName=#{Novel_memberName}, Novel_image=#{Novel_image}, Novel_summary=#{Novel_summary} where nnum = #{nnum} 
 	</update>
 	
 	<select id="getNovel" parameterType="int" resultType="NovelDTO">

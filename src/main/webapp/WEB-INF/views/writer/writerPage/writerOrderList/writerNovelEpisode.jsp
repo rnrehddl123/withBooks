@@ -12,6 +12,7 @@
 <body>
 	<div align="center">
 		<font>${getEpisode.epi_content}</font>
+		<font><a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a></font>
 	</div>
 	
 <jsp:include page="../../../main/footer.jsp"/>

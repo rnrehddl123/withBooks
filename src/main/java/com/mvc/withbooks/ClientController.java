@@ -218,8 +218,8 @@ public class ClientController {
 		}else {
 			if (params.get("Member_passwd").equals(dto.getMember_passwd())){
 				session.setAttribute("login", dto);
-				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
-				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
+//				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
+//				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
 				Cookie ck = new Cookie("saveId", dto.getMember_id());
 				if (params.containsKey("saveId")){
 					ck.setMaxAge(0);
@@ -235,7 +235,12 @@ public class ClientController {
 		}
 		
 		//알림설정
-
+//		List<HashMap<String, String>> noticeList=noticeEpisodeMapper.getNoticeEpisodeMsg(dto.getMnum());
+//		for(HashMap<String, String> map : noticeList) {
+//			Map<String, String> epmap=episodeMapper.getEpisode(map.get("epnum"));
+//			EpisodeDTO epdto=novelMapper.getNovel(epdto.getEpnum());
+//		}
+		session.setAttribute("noticeList", noticeList);
 		return "redirect:" + session.getAttribute("prevPage");
 	}
 	

@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <!-- clientOrderList -->
 <jsp:include page="../../main/header.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>구매내역</title>
 </head>
 <body>
 <div align="center">
-	<h4>(id)님의 구매내역</h4> 
+	<h4>${login.member_name}님의 구매내역</h4> 
 	<table class="outline">
 <!-- 작품1 -->
 		<tr>

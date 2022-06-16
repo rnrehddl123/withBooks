@@ -12,7 +12,7 @@
 	<div align="center">
 		<table width="600" height="600">
 			<tr height="5%">
-				<td align="left" colspan="3"><h3>(id)님 환영합니다</h3></td>
+				<td align="left" colspan="3"><h3>${login.member_name}님 환영합니다</h3></td>
 			</tr>
 			<tr height="5%"><!-- 공백 --></tr>
 			<tr height="30%">

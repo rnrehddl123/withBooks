@@ -20,7 +20,7 @@ public class MemberMapper {
 		if (dto == null) return false;
 		else return true;
 	}
-
+	
 	public int insertMember(MemberDTO dto) {
 			int res = sqlSession.insert("insertMember", dto);
 			return res;

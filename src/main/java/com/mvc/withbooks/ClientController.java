@@ -53,10 +53,18 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientUpdate")//일반회원 수정 페이지
-	public String ClientUpdate(HttpSession session) {
+	public String ClientUpdate(HttpSession session, HttpServletRequest req, @RequestParam Map<String, String> params, String[] member_preferred) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		String[] tel = login.getMember_Tel().split("-");
+		req.setAttribute("tel1", tel[0]);
+		req.setAttribute("tel2", tel[1]);
+		req.setAttribute("tel3", tel[2]);
+		List<CategoryDTO> list = categoryMapper.listCategory();
+		req.setAttribute("categoryList", list);
+		req.setAttribute("member_preferred", member_preferred);
 		return "client/clientMypage/clientUpdate";
 	}
 	
@@ -173,16 +181,16 @@ public class ClientController {
 	
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
 	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, @RequestParam Map<String, String> params,@RequestParam(required = false) String[] member_preferred){
-		dto.setMember_Tel(params.get("member_tel1"+"-")+params.get("member_tel2"+"-")+params.get("member_tel3"));	
-		if (member_preferred.length>0) {
-			dto.setMember_preferred1(member_preferred[0]);
-		}else if (member_preferred.length>1) {
-			dto.setMember_preferred1(member_preferred[0]);
-			dto.setMember_preferred2(member_preferred[1]);
-		}else if(member_preferred.length>2) {
+		dto.setMember_Tel(req.getAttribute("tel1")+"-"+req.getAttribute("tel2")+"-"+req.getAttribute("tel3"));
+		if(member_preferred.length>2) {
 			dto.setMember_preferred1(member_preferred[0]);
 			dto.setMember_preferred2(member_preferred[1]);
 			dto.setMember_preferred3(member_preferred[2]);
+		}else if (member_preferred.length>1) {
+			dto.setMember_preferred1(member_preferred[0]);
+			dto.setMember_preferred2(member_preferred[1]);
+		}else if (member_preferred.length>0) {
+			dto.setMember_preferred1(member_preferred[0]);
 		}
 		
 		int res = memberMapper.insertMember(dto);
@@ -218,7 +226,9 @@ public class ClientController {
 			return "message";
 		}else {
 			if (params.get("Member_passwd").equals(dto.getMember_passwd())){
-				session.setAttribute("login", dto);
+				session.setAttribute("login", dto);		
+				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
+				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
 				Cookie ck = new Cookie("saveId", dto.getMember_id());
 				if (params.containsKey("saveId")){
 					ck.setMaxAge(0);
@@ -253,37 +263,41 @@ public class ClientController {
 	}
 	
 	//일반회원 정보수정 기능
-	@RequestMapping(value="updateMember", method=RequestMethod.GET)
-	public String updateMember(HttpServletRequest req, HttpSession session) {
-		List<CategoryDTO> list=categoryMapper.listCategory();
-		req.setAttribute("categoryList", list);
+	@RequestMapping(value="updateMember", method=RequestMethod.POST)
+	public String updateMember(HttpServletRequest req, @ModelAttribute MemberDTO dto,
+			HttpSession session, @RequestParam Map<String, String> params, String[] member_preferred) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		MemberDTO login = (MemberDTO)session.getAttribute("login");
-		String[] tel = login.getMember_Tel().split("-");
-		req.setAttribute("tel1", tel[0]);
-		req.setAttribute("tel2", tel[1]);
-		req.setAttribute("tel3", tel[2]);
-		return "client/clientMypage/clientUpdate";
-	}
-	
-	@RequestMapping(value="updateMember", method=RequestMethod.POST)
-	public String updateMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+		dto.setMember_Tel(params.get("Member_tel1")+"-"+params.get("Member_tel2")+"-"+params.get("Member_tel3"));
+		if(member_preferred!=null) {
+			if(member_preferred.length>2) {
+				dto.setMember_preferred1(member_preferred[0]);
+				dto.setMember_preferred2(member_preferred[1]);
+				dto.setMember_preferred3(member_preferred[2]);
+			}else if (member_preferred.length>1) {
+				dto.setMember_preferred1(member_preferred[0]);
+				dto.setMember_preferred2(member_preferred[1]);
+			}else if (member_preferred.length>0) {
+				dto.setMember_preferred1(member_preferred[0]);
+			}
+		}else {
+			dto.setMember_preferred1(null);
+			dto.setMember_preferred2(null);
+			dto.setMember_preferred3(null);
 		}
 		int res = memberMapper.updateMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "회원 정보가 수정되었습니다.";
-			url = "main";
+			url = "clientMypage";
 		}else {
 			msg = "회원 정보 수정 실패하였습니다.";
-			url = "clientUpdate";
+			url = "clientMypage";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
+		session.setAttribute("login", dto);
 		return "message";
 	}
 	

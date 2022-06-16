@@ -216,8 +216,8 @@ public class WriterController {
 		}
 		MemberDTO dto = memberMapper.getMember(mnum);
 		req.setAttribute("getMember", dto);
-		List<NovelDTO> list = novelMapper.listNovel(mnum);
-		req.setAttribute("writerListNovel", list);
+		List<NovelDTO> list = novelMapper.listmemberNovel(mnum);
+		req.setAttribute("listmemberNovel", list);
 		return "writer/writerPage/writerSubject/writerNovelList";
 	}
 	

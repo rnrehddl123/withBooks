@@ -22,12 +22,12 @@
 				<th>추천수</th>
 				<th>수정 | 삭제</th>
 			</tr>
-			<c:if test="${empty writerListNovel}">
+			<c:if test="${empty listmemberNovel}">
 			<tr>
 				<td colspan="5">등록된 소설이 없습니다.</td>
 			</tr>
 			</c:if>
-			<c:forEach var="dto" items="${writerListNovel}">
+			<c:forEach var="dto" items="${listmemberNovel}">
 			<tr>
 				<td align="right">${dto.nnum}</td>
 				<td>

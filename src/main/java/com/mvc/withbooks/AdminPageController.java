@@ -100,10 +100,10 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/suggest")//추천작 페이지 이동
-	public String suggest(HttpServletRequest req, @RequestParam(required = false) String mode, int mnum) {
+	public String suggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
 		List<NovelDTO> list = null;
 		if(mode == null) {
-			list = novelMapper.listNovel(mnum);
+			list = novelMapper.listNovel();
 		}else {
 			String searchString = req.getParameter("searchString");
 			list = novelMapper.findNovel("Novel_subject", searchString);

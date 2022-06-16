@@ -53,7 +53,7 @@
 <script type="text/javascript">
 
 	var notice = document.querySelector('.notice');
-	var nnum = ${noveldto.nnum};
+	var nnum = ${nnum};
 	var mnum;
 	<c:if test="${not empty login.mnum}">mnum=${login.mnum}</c:if>
 	var noticeData = {

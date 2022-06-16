@@ -39,11 +39,11 @@ public class EpisodeMapper {
 		return res;
 	}
 	
-	public EpisodeDTO getEpisode(int Epnum, String mode) {
+	public EpisodeDTO getEpisode(int epnum, String mode) {
 		if (mode.equals("writerNovelEpisode")) {	//���Ǽҵ� ���� �Ѿ�� �Ǹ� ��ȸ���� ������ �ϱ� ����
-			sqlSession.update("plusReadcount", Epnum);
+			sqlSession.update("plusReadcount", epnum);
 		}
-		EpisodeDTO dto = sqlSession.selectOne("getEpisode", Epnum);
+		EpisodeDTO dto = sqlSession.selectOne("getEpisode", epnum);
 		return dto;
 	}
 	

@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="plusReadcount" parameterType="int">
-		update episode set readcount=readcount+1 where Epnum=#{Epnum}
+		update episode set readcount=readcount+1 where Epnum=#{epnum}
 	</select>
 	
 	<select id="getEpisodeSubject" parameterType="String" resultType="java.util.Map">

@@ -62,7 +62,13 @@ public class WriterController {
 	
 	
 	@RequestMapping("/writerNovelEpisode")
-	public String WriterNovelEpisode() {
+	public String WriterNovelEpisode(HttpServletRequest req, @RequestParam int epnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
+		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "view");
+		req.setAttribute("getEpisode", dto);
+		req.setAttribute("Epnum", epnum);
 		return "writer/writerPage/writerOrderList/writerNovelEpisode";
 	}
 	

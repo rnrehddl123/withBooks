@@ -126,14 +126,6 @@ public class ClientController {
 	}
 	
 	//일반회원 충전 기능
-	@RequestMapping(value="/updateCash", method=RequestMethod.GET)
-	public String updateCash(HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		return "main/main";
-	}
-	
 	@RequestMapping(value="updateCash", method=RequestMethod.POST)
 	public String updateCash(HttpServletRequest req, @RequestParam Map<String, String> params, HttpSession session) {
 		if(session.getAttribute("login")==null){
@@ -266,6 +258,7 @@ public class ClientController {
 	@RequestMapping(value="updateMember", method=RequestMethod.POST)
 	public String updateMember(HttpServletRequest req, @ModelAttribute MemberDTO dto,
 			HttpSession session, @RequestParam Map<String, String> params, String[] member_preferred) {
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
@@ -295,6 +288,7 @@ public class ClientController {
 			msg = "회원 정보 수정 실패하였습니다.";
 			url = "clientMypage";
 		}
+		dto.setCash(login.getCash());
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		session.setAttribute("login", dto);

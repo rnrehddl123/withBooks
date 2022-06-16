@@ -227,29 +227,30 @@
       </div>
       <div id="carouselExampleControls" class="carousel slide cardslide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-             <c:forEach items="${listAdminSuggest}" var="sudto">
-             <c:forEach items="${listNovel}" var="ndto">
-             <c:if test="${ndto.nnum eq sudto.nnum}">
-              <div class="card col" style="width: 18rem;">
-              	<div class="card-image">
-                <img src="resources/img/${ndto.novel_image}" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">${sudto.suggestNovel}</h5>
-                  <p class="card-text">${ndto.novel_summary}</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-             </c:if>
+           <c:forEach items="${sslist}" var="cslist">
+            	<div class="carousel-item carousel-items ">
+            		<div class="row">
+             	<c:forEach items="${cslist}" var="sudto">
+             		<c:forEach items="${listNovel}" var="ndto">
+             			<c:if test="${ndto.nnum eq sudto.nnum}">
+              				<div class="card col" style="width: 18rem;">
+              					<div class="card-image">
+                					<img src="resources/img/${ndto.novel_image}" class="card-img-top" alt="...">
+                				</div>
+                				<div class="card-body">
+                  				<h5 class="card-title">${sudto.suggestNovel}</h5>
+                  				<p class="card-text">${ndto.novel_summary}</p>
+                  				<a href="#" class="btn btn-primary">Go somewhere</a>
+                				</div>
+                			</div>
+             			</c:if>
+             		</c:forEach>
+             	</c:forEach>
+             	</div>
+         		 </div>
              </c:forEach>
-             </c:forEach>
-            </div>
-          </div>
         </div>
-      </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
@@ -258,8 +259,13 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+
+      </div>
+      
 <script type="text/javascript">
 	var firstslide =document.querySelector('.carousel-item');
 	firstslide.classList.add("active");
+	var firstslides =document.querySelector('.carousel-items');
+	firstslides.classList.add("active");
 </script>
 <jsp:include page="footer.jsp"/>

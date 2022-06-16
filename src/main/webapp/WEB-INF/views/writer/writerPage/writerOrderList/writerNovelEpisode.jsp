@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- writerNovelEpisode -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../../main/header.jsp"/>
 <html>
 <head>
@@ -9,5 +10,8 @@
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
-	<font>에피소드</font>
+	<div align="center">
+		<font>${getEpisode.epi_content}</font>
+	</div>
+	
 <jsp:include page="../../../main/footer.jsp"/>

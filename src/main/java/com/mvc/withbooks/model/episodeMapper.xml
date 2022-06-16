@@ -26,6 +26,6 @@
 	</select>
 	
 	<select id="plusReadcount" parameterType="int">
-		update episode set readcount=readcount+1 where Epnum=#{Epnum}
+		update episode set readcount=readcount+1 where Epnum=#{epnum}
 	</select>
 </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <jsp:include page="header.jsp"/>
     <div class="mainpage content">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -224,84 +225,30 @@
           </div>
         </div>
       </div>
-
-
-      
       <div id="carouselExampleControls" class="carousel slide cardslide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">
+             <c:forEach items="${listAdminSuggest}" var="sudto">
+             <c:forEach items="${listNovel}" var="ndto">
+             <c:if test="${ndto.nnum eq sudto.nnum}">
               <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
+              	<div class="card-image">
+                <img src="resources/img/${ndto.novel_image}" class="card-img-top" alt="...">
+                </div>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">${sudto.suggestNovel}</h5>
+                  <p class="card-text">${ndto.novel_summary}</p>
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card col" style="width: 18rem;">
-                <img src="resources/img/nav_logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+             </c:if>
+             </c:forEach>
+             </c:forEach>
             </div>
           </div>
         </div>
+      </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
@@ -311,7 +258,6 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-    </div>
 <script type="text/javascript">
 	var firstslide =document.querySelector('.carousel-item');
 	firstslide.classList.add("active");

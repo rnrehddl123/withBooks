@@ -14,17 +14,31 @@
 	   delete from adminSuggest where Sunum= #{Sunum}
 	 </delete>
 	 
-	  <select id="listNovel" resultType="NovelDTO">
-	 	select * from novel
+	 <select id="listNovel" parameterType="java.util.Map" resultType="NovelDTO">
+	  select * from (select rownum rn, A.* from (select * from novel order by Nnum desc)A) where rn between #{start} and #{end}
 	 </select>
 	 
-	 <select id="listAdminSuggest" resultType="AdminSuggestDTO">
+	 <select id="listAdminSuggest" parameterType="java.util.Map" resultType="AdminSuggestDTO">
+	 	select * from (select rownum rn, A.* from (select * from adminSuggest order by sunum desc)A) where rn between #{start} and #{end}
+	 </select>
+	 
+	 <select id="listAdminSuggestMain" resultType="AdminSuggestDTO">
 	 	select * from adminSuggest
 	 </select>
 	 
-	 <select id="searchAdminSuggest" parameterType="String" resultType="NovelDTO">
-	 	select * from novel where Novel_subject = #{Novel_subject}
+	 <select id="findAdminSuggest" parameterType="String" resultType="AdminSuggestDTO">
+	 	select * from adminSuggest where ${search} = #{searchString}
+	 </select>
+	 
+	 <select id="findNovelAdmin" parameterType="String" resultType="NovelDTO">
+	 	select * from novel where ${search} = #{searchString}
 	 </select>
  
- 
+ 	 <select id="getSuggestCount" resultType="int">
+		select count(*) from adminSuggest
+	 </select>
+	 
+	 <select id="getNovelCount" resultType="int">
+		select count(*) from novel
+	 </select>
  </mapper>

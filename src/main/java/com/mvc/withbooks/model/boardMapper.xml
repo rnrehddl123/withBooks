@@ -4,9 +4,21 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  	
  <mapper namespace="com.mvc.withBooks.model.boardMapper">
- 	<select id="listBoard" resultType="BoardDTO">
+ 	<select id="listBoard" parameterType="java.util.Map" resultType="BoardDTO">
  		select * from (select rownum rn, A.* from (select * from Board order by Bnum desc)A) where rn between #{start} and #{end}
  	</select>
+ 	
+ 	<select id="listBoardAdmin" parameterType="java.util.Map" resultType="BoardDTO">
+		select * from (select rownum rn, A.* from (select * from Board order by Bnum desc)A) where rn between #{start} and #{end}
+	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		select count(*) from Board
+	</select>
+	
+	<select id="findBoard" parameterType="java.util.Map" resultType="BoardDTO">
+		select * from Board where ${search} = #{searchString}
+	</select>
 
 	<select id="getBoard" parameterType="int" resultType="BoardDTO">
  		select * from Board where Bnum = #{Bnum}
@@ -30,13 +42,5 @@
  	
 	<select id="plusCount" parameterType="int">
 		update Board set Board_readcount = Board_readcount + 1 where Bnum = #{Bnum}
-	</select>
-	
-	<select id="getBoardCount" resultType="int">
-		select count(*) from Board
-	</select>
-	
-	<select id="findBoard" parameterType="java.util.Map" resultType="BoardDTO">
-		select * from Board where ${search} = #{searchString}
 	</select>
  </mapper>

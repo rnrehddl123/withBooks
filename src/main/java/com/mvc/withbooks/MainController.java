@@ -32,8 +32,8 @@ public class MainController {
 	public String main(HttpServletRequest req) {
 		List<AdminSlideDTO> list = adminSlideMapper.listSlide();
 		req.setAttribute("listSlide", list);
-		List<AdminSuggestDTO> slist = adminSuggestMapper.listAdminSuggest();
-		req.setAttribute("listAdminSuggest", slist);
+		List<AdminSuggestDTO> slist = adminSuggestMapper.listAdminSuggestMain();
+		req.setAttribute("listAdminSuggestMain", slist);
 		List<NovelDTO> nlist = novelMapper.listNovel();
 		req.setAttribute("listNovel", nlist);
 		List<List<AdminSuggestDTO>> sslist = new ArrayList<List<AdminSuggestDTO>>();

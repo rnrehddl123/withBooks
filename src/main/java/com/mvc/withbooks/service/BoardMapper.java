@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.BoardDTO;
+import com.mvc.withbooks.dto.NoticeDTO;
 
 @Service
 public class BoardMapper {
@@ -18,8 +19,29 @@ public class BoardMapper {
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);
 		map.put("end", end);
-		List<BoardDTO> list = sqlSession.selectList("listBoard",map);
+		List<BoardDTO> list = sqlSession.selectList("listBoard", map);
 		return list;
+	}
+	
+	public List<BoardDTO> listBoardAdmin(int start, int end){
+		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+		map.put("start", start);
+		map.put("end", end);
+		List<BoardDTO> list = sqlSession.selectList("listBoardAdmin", map);
+		return list;
+	}
+	
+	public int getBoardCount() {		
+		int count = sqlSession.selectOne("getBoardCount");
+		return count;
+	}
+	
+	public List<BoardDTO> findBoard(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<BoardDTO> find = sqlSession.selectList("findBoard", map);
+		return find;
 	}
 	
 	public BoardDTO getBoard(int Bnum,String mode){
@@ -58,19 +80,6 @@ public class BoardMapper {
 		}
 		int res = sqlSession.update("updateBoard", dto);
 		return res;
-	}
-	
-	public int getBoardCount() {		
-		int count = sqlSession.selectOne("getBoardCount");
-		return count;
-	}
-	
-	public List<BoardDTO> findBoard(String search, String searchString){
-		java.util.Map<String, String> map = new java.util.Hashtable<>();
-		map.put("search", search);
-		map.put("searchString", searchString);
-		List<BoardDTO> find = sqlSession.selectList("findBoard", map);
-		return find;
 	}
 	
 }

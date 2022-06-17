@@ -9,6 +9,10 @@
 		select * from (select rownum rn, A.* from (select * from member order by Mnum desc)A) where rn between #{start} and #{end}
 	</select>
 	
+	<select id="listWriter" parameterType="java.util.Map" resultType="memberDTO">
+		select * from (select rownum rn, A.* from (select * from member where Member_authority = 'writer'  order by Mnum desc)A) where rn between #{start} and #{end}
+	</select>
+	
 	<select id="findMember" parameterType="java.util.Map" resultType="memberDTO">
 		select * from member where ${search} = #{searchString}
 	</select>
@@ -57,5 +61,15 @@
 	<!-- 페이징 -->
 	<select id="getMemberCount" resultType="int">
 		select count(*) from member
+	</select>
+	<select id="getWriterCount" resultType="int">
+		select count(*) from member where Member_authority = 'writer' 
+	</select>
+	
+	<select id="searchNovelSubject" parameterType="int" resultType="novelDTO">
+		select * from novel where Novel_subject like '%#{searchString}%'
+	</select>
+	<select id="searchNovelMemberName" parameterType="java.util.Map" resultType="novelDTO">
+		select * from novel where Novel_memberName like '%#{searchString}%'
 	</select>
 </mapper>

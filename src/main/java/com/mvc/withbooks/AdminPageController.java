@@ -99,31 +99,95 @@ public class AdminPageController {
 		return "forward:message";
 	}
 	
-	@RequestMapping("/suggest")//추천작 페이지 이동
-	public String suggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
-		List<NovelDTO> list = null;
-		if(mode == null) {
-			list = novelMapper.listNovel();
-		}else {
-			String searchString = req.getParameter("searchString");
-			list = novelMapper.findNovel("Novel_subject", searchString);
+	@RequestMapping("/listSuggest")//추천작 리스트 페이지 이동
+	public String listSuggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
 		}
-		req.setAttribute("listNovel", list);
-		List<AdminSuggestDTO> slist = adminSuggestMapper.listAdminSuggest();
-		req.setAttribute("listAdminSuggest", slist);
-		return "homepage/admin/banerManage/suggest";
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = adminSuggestMapper.getSuggestCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<AdminSuggestDTO> list = null;
+		int suggestNum = 0;
+		if (rowCount>0){
+			if(mode == null) {
+				list = adminSuggestMapper.listAdminSuggest(startRow, endRow);
+				suggestNum = rowCount - (startRow - 1);
+				if (rowCount>0) {
+					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+					int pageBlock = 3;
+					int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+					int endPage = startPage + pageBlock - 1;
+					if (endPage > pageCount) endPage = pageCount;
+					req.setAttribute("pageCount", pageCount);
+					req.setAttribute("startPage", startPage);
+					req.setAttribute("endPage", endPage);
+				}
+			}else {
+				String searchString = req.getParameter("searchString");
+				list = adminSuggestMapper.findAdminSuggest("suggestNovel", searchString);
+			}
+		} 
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("suggestNum", suggestNum);
+		req.setAttribute("listAdminSuggest", list);
+		return "homepage/admin/banerManage/suggestList";
 	}
 	
-	@RequestMapping("/InsertSuggest")//추천작 등록
-	public String suggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto, int nnum) {
+	@RequestMapping("/insertSuggest")//추천작 추가 페이지 이동
+	public String insertSuggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = adminSuggestMapper.getNovelCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<NovelDTO> list = null;
+		int novelNum = 0;
+		if (rowCount>0){
+			if(mode == null) {
+				list = adminSuggestMapper.listNovel(startRow, endRow);
+				novelNum = rowCount - (startRow - 1);
+				if (rowCount>0) {
+					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+					int pageBlock = 3;
+					int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+					int endPage = startPage + pageBlock - 1;
+					if (endPage > pageCount) endPage = pageCount;
+					req.setAttribute("pageCount", pageCount);
+					req.setAttribute("startPage", startPage);
+					req.setAttribute("endPage", endPage);
+				}
+			}else {
+				String search = req.getParameter("search");
+				String searchString = req.getParameter("searchString");
+				list = adminSuggestMapper.findNovelAdmin(search, searchString);
+			}
+		} 
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("novelNum", novelNum);
+		req.setAttribute("listNovel", list);
+		return "homepage/admin/banerManage/suggestInsert";
+	}
+	
+	@RequestMapping("/insertSuggestOk")//추천작 추가 기능
+	public String insertSuggest(HttpServletRequest req, @ModelAttribute AdminSuggestDTO dto, int nnum) {
 		int res = adminSuggestMapper.insertAdminSuggest(dto, nnum);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "추천작 입력 성공";
-			url = "suggest";
+			msg = "추천작 추가 성공";
+			url = "insertSuggest";
 		}else {
-			msg = "추천작 입력 실패";
-			url = "suggest";
+			msg = "추천작 추가 실패";
+			url = "insertSuggest";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
@@ -182,22 +246,22 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listBoardAdmin")
-	public String boardManageList(HttpServletRequest req,@RequestParam(required = false) String mode) {
+	public String boardManageList(HttpServletRequest req, @RequestParam(required = false) String mode) {
 		int pageSize = 5;
-		String pageBoardNum = req.getParameter("pageBoardNum");
-		if (pageBoardNum==null){
-			pageBoardNum = "1";
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
 		}
-		int currentPage = Integer.parseInt(pageBoardNum);
+		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1) * pageSize + 1;
 		int endRow = startRow + pageSize -1;
-		int rowCount = noticeMapper.getNoticeCount();
+		int rowCount = boardMapper.getBoardCount();
 		if (endRow > rowCount) endRow = rowCount;
 		List<BoardDTO> list = null;
 		int boardNum = 0;
 		if (rowCount>0){
 			if(mode == null) {
-				list = boardMapper.listBoard(startRow, endRow);
+				list = boardMapper.listBoardAdmin(startRow, endRow);
 				boardNum = rowCount - (startRow - 1);
 				if (rowCount>0) {
 					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
@@ -210,8 +274,9 @@ public class AdminPageController {
 					req.setAttribute("endPage", endPage);
 				}
 			}else {
+				String search = req.getParameter("search");
 				String searchString = req.getParameter("searchString");
-				list = boardMapper.findBoard("Board_subject", searchString);
+				list = boardMapper.findBoard(search, searchString);
 			}
 		} 
 		req.setAttribute("rowCount", rowCount);
@@ -343,7 +408,7 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listClient")
-	public String clientList(HttpServletRequest req,@RequestParam(required = false) String mode) {
+	public String listClient(HttpServletRequest req,@RequestParam(required = false) String mode) {
 		int pageSize = 5;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
@@ -359,11 +424,12 @@ public class AdminPageController {
 			if(mode == null) {
 				list = memberMapper.listMember(startRow, endRow);
 			}else {
+				String search = req.getParameter("search");
 				String searchString = req.getParameter("searchString");
-				list = memberMapper.findMember("Member_id",searchString);
+				list = memberMapper.findMember(search, searchString);
 			}
 		} 
-		int memberNum = rowCount - (startRow - 1);
+		int memberNum = 0;
 		if (rowCount>0) {
 			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
 			int pageBlock = 3;
@@ -378,6 +444,45 @@ public class AdminPageController {
 		req.setAttribute("memberNum", memberNum);
 		req.setAttribute("listMember", list);
 		return "homepage/admin/memberManage/clientList";
+	}
+	
+	@RequestMapping("/listWriter")
+	public String listWriter(HttpServletRequest req,@RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = memberMapper.getWriterCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<MemberDTO> list = null;
+		if (rowCount>0){
+			if(mode == null) {
+				list = memberMapper.listWriter(startRow, endRow);
+			}else {
+				String search = req.getParameter("search");
+				String searchString = req.getParameter("searchString");
+				list = memberMapper.findMember(search, searchString);
+			}
+		} 
+		int writerNum = 0;
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("writerNum", writerNum);
+		req.setAttribute("listWriter", list);
+		return "homepage/admin/memberManage/writerList";
 	}
 	
 	@RequestMapping("/deleteMember")

@@ -9,6 +9,8 @@
 <%@include file="../../adminHeader.jsp"%>
 <div class="listClient">
 	<p>
+						<!-- 작가관리 페이지 -->
+	
 	<b><h3 align="center">회원 관리</h3></b>
 	<table border="1" width="1000" height="300">
 		<tr height="50">
@@ -35,9 +37,27 @@
 		</c:if>	
 	</c:forEach>
 	</table>
+							<!-- 회원관리 : 페이징 -->
+	<c:if test="${rowCount>0}">			
+			<c:if test="${startPage>1}">
+				[<a href="listClient?pageNum=${startPage-1}">이전</a>]			
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				[<a href="listClient?pageNum=${i}"><c:out value="${i}"/></a>]	
+			</c:forEach>
+			<c:if test="${endPage<pageCount}">
+				[<a href="listClient?pageNum=${endPage+1}">다음</a>]			
+			</c:if>
+	</c:if>
+							<!-- 회원관리 : 서치 -->
+	<form name="f" action="listClient" method="post">
+	<input type="hidden" name="mode" value="search">
+	검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+	</form>>
 	
 	<p>
 	
+							<!-- 작가관리 페이지 -->
 	<b><h3 align="center">작가 관리</h3></b>
 	<table border="1" width="1000" height="300">
 		<tr height="50"> 
@@ -59,6 +79,20 @@
 		</c:if>	
 	</c:forEach>
 	</table>
+	
+						<!-- 회원관리 : 페이징 -->
+	<c:if test="${rowCount>0}">			
+			<c:if test="${startPage>1}">
+				[<a href="listClient?pageNum=${startPage-1}">이전</a>]			
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				[<a href="listClient?pageNum=${i}"><c:out value="${i}"/></a>]	
+			</c:forEach>
+			<c:if test="${endPage<pageCount}">
+				[<a href="listClient?pageNum=${endPage+1}">다음</a>]			
+			</c:if>
+	</c:if>
+	
 </div>
 </body>
 </html>

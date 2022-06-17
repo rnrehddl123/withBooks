@@ -49,4 +49,8 @@
 	<update id="updateAuthority">
 		update member set Member_authority=#{Member_authority} where Mnum = #{mnum}
 	</update>
+	
+	<update id="purchaseCash" parameterType="java.util.Map">
+		update member set cash=cash-#{cash} where Mnum=#{mnum}
+	</update>
 </mapper>

@@ -329,4 +329,32 @@ public class ClientController {
 		req.setAttribute("url", url);
 		return "message";
 	}
+	
+	
+	@RequestMapping(value="/purchaseCash", method=RequestMethod.GET)
+	public String PurchaseCashForm(HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
+		return "main/main";
+	}
+	
+	@RequestMapping(value="purchaseCash", method=RequestMethod.POST)
+	public String PurchaseCash(HttpServletRequest req, @RequestParam Map<String, String> params, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
+		int res = memberMapper.purchaseCash(params);
+		if(res>0) {
+			req.setAttribute("msg", "구매성공.");
+			req.setAttribute("url", "writerPay");
+			MemberDTO login = (MemberDTO)session.getAttribute("login");
+			login.setCash(login.getCash() - Integer.parseInt(params.get("cash")));
+			session.setAttribute("login", login);
+		}else {
+			req.setAttribute("msg", "구매실패.");
+			req.setAttribute("url", "writerPay");
+		}
+		return "message";
+	}
 }

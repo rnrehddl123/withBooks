@@ -6,11 +6,14 @@
 <html>
 <head>
 	<title>에피소드 목록</title>
+	<
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
 		<b>${getNovel.novel_subject}의 에피소드 목록</b>
+		<form name="EpisodeOrder" action="EpisodeOrder" method="post" onsubmit="return check()">
+		<input type="hidden" name="mnum" value="${login.mnum}">
 		<table align="center" class="writer">
 			<tr>
 				<td colspan="6" align="right"><a href="writerEpisode?nnum=${getNovel.nnum}">새로운 에피소드 쓰기</a> |
@@ -31,7 +34,7 @@
 			</c:if>
 			<c:forEach var="dto" items="${listEpisode}">
 			<tr>
-				<td align="right">${dto.epnum}</td>
+				<td align="center"><input type="radio" name="epnum" value="${dto.epnum}"></td>
 				<td><a href="writerNovelEpisode?epnum=${dto.epnum}">${dto.epi_subject}</a></td>
 				<td align="center">${dto.epi_date}</td>
 				<td align="center">${dto.epi_readcount}</td>
@@ -40,5 +43,7 @@
 			</tr>		
 			</c:forEach>
 		</table>
+			<input type="submit" value="결제">
+		</form>
 	</div>
 <jsp:include page="../../../main/footer.jsp"/>

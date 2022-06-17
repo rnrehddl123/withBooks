@@ -76,6 +76,12 @@
         </a>
       </li>
       <li>
+        <a href="listWriter" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          	작가 관리
+        </a>
+      </li>
+      <li>
         <a href="upgradeClient" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	작가 신청 관리

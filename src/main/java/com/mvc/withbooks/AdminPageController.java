@@ -408,7 +408,7 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listClient")
-	public String clientList(HttpServletRequest req,@RequestParam(required = false) String mode) {
+	public String listClient(HttpServletRequest req,@RequestParam(required = false) String mode) {
 		int pageSize = 5;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
@@ -424,11 +424,12 @@ public class AdminPageController {
 			if(mode == null) {
 				list = memberMapper.listMember(startRow, endRow);
 			}else {
+				String search = req.getParameter("search");
 				String searchString = req.getParameter("searchString");
-				list = memberMapper.findMember("Member_id",searchString);
+				list = memberMapper.findMember(search, searchString);
 			}
 		} 
-		int memberNum = rowCount - (startRow - 1);
+		int memberNum = 0;
 		if (rowCount>0) {
 			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
 			int pageBlock = 3;
@@ -443,6 +444,45 @@ public class AdminPageController {
 		req.setAttribute("memberNum", memberNum);
 		req.setAttribute("listMember", list);
 		return "homepage/admin/memberManage/clientList";
+	}
+	
+	@RequestMapping("/listWriter")
+	public String listWriter(HttpServletRequest req,@RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = memberMapper.getWriterCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<MemberDTO> list = null;
+		if (rowCount>0){
+			if(mode == null) {
+				list = memberMapper.listWriter(startRow, endRow);
+			}else {
+				String search = req.getParameter("search");
+				String searchString = req.getParameter("searchString");
+				list = memberMapper.findMember(search, searchString);
+			}
+		} 
+		int writerNum = 0;
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("writerNum", writerNum);
+		req.setAttribute("listWriter", list);
+		return "homepage/admin/memberManage/writerList";
 	}
 	
 	@RequestMapping("/deleteMember")

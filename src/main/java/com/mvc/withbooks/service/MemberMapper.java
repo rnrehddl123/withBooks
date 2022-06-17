@@ -36,6 +36,14 @@ public class MemberMapper {
 			return list;
 	}
 	
+	public List<MemberDTO> listWriter(int start, int end){
+		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+		map.put("start", start);
+		map.put("end", end);
+		List<MemberDTO> list = sqlSession.selectList("listWriter",map);
+		return list;
+}
+	
 	public int deleteMember(int mnum) {
 			int res = sqlSession.delete("deleteMember", mnum);
 			return res;
@@ -102,6 +110,11 @@ public class MemberMapper {
 	//페이징
 	public int getMemberCount() {		
 		int count = sqlSession.selectOne("getMemberCount");
+		return count;
+	}
+	
+	public int getWriterCount() {		
+		int count = sqlSession.selectOne("getWriterCount");
 		return count;
 	}
 	

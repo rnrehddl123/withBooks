@@ -23,7 +23,7 @@ public class BoardController {
 	// �Խ��� ��� 
 	@RequestMapping("/listBoard")
 	public String listBoard(HttpServletRequest req,@RequestParam(required = false) String mode) {
-		int pageSize = 3;
+		int pageSize = 5;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";

@@ -26,8 +26,11 @@ public class MemberMapper {
 			return res;
 	}
 	
-	public List<MemberDTO> listMember(){
-			List<MemberDTO> list = sqlSession.selectList("listMember");
+	public List<MemberDTO> listMember(int start, int end){
+			java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+			map.put("start", start);
+			map.put("end", end);
+			List<MemberDTO> list = sqlSession.selectList("listMember",map);
 			return list;
 	}
 	
@@ -87,5 +90,11 @@ public class MemberMapper {
 	public int updateAuthority(MemberDTO dto) {
 		int res = sqlSession.update("updateAuthority", dto);
 		return res;
+	}
+	
+	//페이징
+	public int getMemberCount() {		
+		int count = sqlSession.selectOne("getMemberCount");
+		return count;
 	}
 }

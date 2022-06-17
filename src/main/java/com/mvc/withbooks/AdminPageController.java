@@ -310,8 +310,39 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listClient")
-	public String clientList(HttpServletRequest req) {
-		List<MemberDTO> list = memberMapper.listMember();
+	public String clientList(HttpServletRequest req,@RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = memberMapper.getMemberCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<MemberDTO> list = null;
+		if (rowCount>0){
+			if(mode == null) {
+				list = memberMapper.listMember(startRow, endRow);
+			}else {
+				String searchString = req.getParameter("searchString");
+				list = memberMapper.findMember("Member_id",searchString);
+			}
+		} 
+		int memberNum = rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("memberNum", memberNum);
 		req.setAttribute("listMember", list);
 		return "homepage/admin/memberManage/clientList";
 	}

@@ -5,7 +5,7 @@
  	
  <mapper namespace="com.mvc.withBooks.model.boardMapper">
  	<select id="listBoard" resultType="BoardDTO">
- 		select * from Board order by Bnum desc
+ 		select * from (select rownum rn, A.* from (select * from Board order by Bnum desc)A) where rn between #{start} and #{end}
  	</select>
 
 	<select id="getBoard" parameterType="int" resultType="BoardDTO">

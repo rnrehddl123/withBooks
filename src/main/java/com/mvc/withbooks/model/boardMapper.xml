@@ -31,4 +31,12 @@
 	<select id="plusCount" parameterType="int">
 		update Board set Board_readcount = Board_readcount + 1 where Bnum = #{Bnum}
 	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		select count(*) from Board
+	</select>
+	
+	<select id="findBoard" parameterType="java.util.Map" resultType="BoardDTO">
+		select * from Board where ${search} = #{searchString}
+	</select>
  </mapper>

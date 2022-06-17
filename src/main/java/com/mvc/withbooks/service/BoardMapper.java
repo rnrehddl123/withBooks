@@ -14,8 +14,11 @@ public class BoardMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<BoardDTO> listBoard(){
-		List<BoardDTO> list = sqlSession.selectList("listBoard");
+	public List<BoardDTO> listBoard(int start, int end){
+		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+		map.put("start", start);
+		map.put("end", end);
+		List<BoardDTO> list = sqlSession.selectList("listBoard",map);
 		return list;
 	}
 	
@@ -55,6 +58,19 @@ public class BoardMapper {
 		}
 		int res = sqlSession.update("updateBoard", dto);
 		return res;
+	}
+	
+	public int getBoardCount() {		
+		int count = sqlSession.selectOne("getBoardCount");
+		return count;
+	}
+	
+	public List<BoardDTO> findBoard(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<BoardDTO> find = sqlSession.selectList("findBoard", map);
+		return find;
 	}
 	
 }

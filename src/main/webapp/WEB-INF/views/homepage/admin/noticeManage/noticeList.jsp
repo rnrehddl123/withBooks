@@ -12,6 +12,7 @@
 	<h3>공지사항</h3>
 
 	<table border="1" width="1000" height="500" align="center">
+	<c:set var="pageNum" value="${noticeNum}"/>
 	<c:if test="${empty listNotice}">
 		<tr>
 			<td colspan="5" align="center">등록된 게시글이 없습니다.</td>
@@ -30,6 +31,17 @@
 		</tr>		
 	</c:forEach>	
 	</table>
+	<c:if test="${rowCount>0}">			
+			<c:if test="${startPage>1}">
+				[<a href="listNotice?pageNum=${startPage-1}">이전</a>]			
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				[<a href="listNotice?pageNum=${i}"><c:out value="${i}"/></a>]	
+			</c:forEach>
+			<c:if test="${endPage<pageCount}">
+				[<a href="listNotice?pageNum=${endPage+1}">다음</a>]			
+			</c:if>
+	</c:if>
 	
 	<form name="f" action="listNotice" method="post">
 	<input type="hidden" name="mode" value="search">

@@ -36,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class WriterController {
 	
 	@Resource(name="novelUploadPath")
-	 String uploadPath;
+	 String novelUploadPath;
 	
 	@Autowired
 	private NovelMapper novelMapper;
@@ -195,7 +195,7 @@ public class WriterController {
 	      filename = uuid.toString() + "_" + filename;
 	      dto.setNovel_image(filename);
 	      if (filename != null && !(filename.trim().equals(""))) {
-	         File file = new File(uploadPath, filename);
+	         File file = new File(novelUploadPath, filename);
 	         try {
 	            mf.transferTo(file);
 	         }catch(IOException e) {}
@@ -249,7 +249,7 @@ public class WriterController {
 	      UUID uuid = UUID.randomUUID();
 	       filename = uuid.toString() + "_" + filename;
 	      if (filename != null && !(filename.trim().equals(""))) {
-	         File file = new File(uploadPath, filename);
+	         File file = new File(novelUploadPath, filename);
 	         try {
 	            mf.transferTo(file);
 	         }catch(IOException e) {}

@@ -34,10 +34,10 @@
     <hr>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <strong>아이디</strong>
+        <strong>${login.member_name}님</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-        <li><a class="dropdown-item" href="clientMyPage">마이페이지</a></li>
+        <li><a class="dropdown-item" href="clientMypage">마이페이지</a></li>
         <li><a class="dropdown-item" href="main">메인</a></li>
         
         <li><hr class="dropdown-divider"></li>

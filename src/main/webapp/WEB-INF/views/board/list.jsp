@@ -40,13 +40,28 @@
 				<td align="left">${Boarddto.board_writer}</td>
 				<td align="left">${Boarddto.board_date}</td>
 				<td align="left">${Boarddto.board_readcount}</td>
-			</tr>		
-			</c:forEach>	
-			<div align="right">
-					<input type="submit" value="게시판 글등록" onclick="window.location='writeBoard'">
-				</div>
+			</tr>
+	</c:forEach>
   </tbody>
 </table>
+<div>
+	<c:if test="${rowCount>0}">
+		<c:if test="${startPage>1}">
+			[<a href="listBoard?pageBoardNum=${startPage-1}">이전</a>]			
+		</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			[<a href="listBoard?pageBoardNum=${i}"><c:out value="${i}"/></a>]	
+		</c:forEach>
+		<c:if test="${endPage<pageCount}">
+			[<a href="listBoard?pageBoardNum=${endPage+1}">다음</a>]			
+		</c:if>
+	</c:if>
+	
+	<form name="f" action="listBoard" method="post">
+		<input type="hidden" name="mode" value="search">
+			검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+	</form>
+</div>
 
  <jsp:include page="../main/footer.jsp"/>
   

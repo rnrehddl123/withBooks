@@ -20,35 +20,67 @@ public class BoardController {
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	// °Ô½ÃÆÇ ¸ñ·Ï 
+	// ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 	@RequestMapping("/listBoard")
-	public String listBoard(HttpServletRequest req) {
-		List<BoardDTO> list = boardMapper.listBoard();
+	public String listBoard(HttpServletRequest req,@RequestParam(required = false) String mode) {
+		int pageSize = 3;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = boardMapper.getBoardCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<BoardDTO> list = null;
+		int boardNum = 0;
+		if (rowCount>0){
+			if(mode == null) {
+				list = boardMapper.listBoard(startRow, endRow);
+				boardNum = rowCount - (startRow - 1);
+				if (rowCount>0) {
+					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+					int pageBlock = 3;
+					int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+					int endPage = startPage + pageBlock - 1;
+					if (endPage > pageCount) endPage = pageCount;
+					req.setAttribute("pageCount", pageCount);
+					req.setAttribute("startPage", startPage);
+					req.setAttribute("endPage", endPage);
+				}
+			}else {
+				String searchString = req.getParameter("searchString");
+				list = boardMapper.findBoard("Board_subject", searchString);
+			}
+		} 
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("boardNum", boardNum);
 		req.setAttribute("listBoard", list);
 		return "board/list";
 	}
 	
-	// °Ô½ÃÆÇ ÀÛ¼º (ÆäÀÌÁö ÀÌµ¿)
+	// ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½)
 	@RequestMapping(value="/writeBoard", method=RequestMethod.GET)
 	public String writeFormBoard() {
 		return "board/writeForm";
 	}
 	
-	// °Ô½ÃÆÇ ÀÛµ¿ È®ÀÎ&¸Þ¼¼Áö
+	// ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ È®ï¿½ï¿½&ï¿½Þ¼ï¿½ï¿½ï¿½
 	@RequestMapping(value="/writeBoard", method=RequestMethod.POST)
 	public String writeProBoard(HttpServletRequest req, BoardDTO dto) {
 		int res = boardMapper.insertBoard(dto);
 		if (res>0) {
-			req.setAttribute("msg", "°Ô½Ã±Û µî·Ï ¼º°ø! °Ô½Ã±Û ¸ñ·ÏÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "listBoard");
 		}else {
-			req.setAttribute("msg", "°Ô½Ã±Û µî·Ï ½ÇÆÐ! °Ô½Ã±Û µî·ÏÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "writeBoard");
 		}
 		return "message";
 	}
 	
-	// °Ô½ÃÆÇ ¸ñ·Ï ´©¸£¸é ÇØ´ç ÀÛ¼ºÂÊÀ¸·Î ÀÌµ¿
+	// ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping("/contentBoard")
 	public String contentBoard(HttpServletRequest req, @RequestParam int Bnum) {
 		BoardDTO dto = boardMapper.getBoard(Bnum, "content");
@@ -56,7 +88,7 @@ public class BoardController {
 		return "board/content";
 	}
 	
-	//°Ô½ÃÆÇ ¾÷µ¥ÀÌÆ®
+	//ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	@RequestMapping(value="/updateBoard", method=RequestMethod.GET)
 	public String updateFormBoard(HttpServletRequest req, @RequestParam int Bnum) {
 		BoardDTO dto = boardMapper.getBoard(Bnum, "update");
@@ -68,19 +100,19 @@ public class BoardController {
 	public String updateProBoard(HttpServletRequest req, BoardDTO dto) {
 		int res = boardMapper.updateBoard(dto);
 		if (res > 0) {
-			req.setAttribute("msg", "°Ô½Ã±Û ¼öÁ¤ ¼º°ø!! °Ô½Ã±Û ¸ñ·ÏÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "listBoard");
 		}else if (res < 0) {
-			req.setAttribute("msg", "ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+			req.setAttribute("msg", "ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ Æ²ï¿½È½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			req.setAttribute("url", "updateBoard?Bnum=" + dto.getBnum());
 		}else {
-			req.setAttribute("msg", "°Ô½Ã±Û ¼öÁ¤ ½ÇÆÐ!! °Ô½Ã±Û º¸±âÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "contentBoard?Bnum=" + dto.getBnum());
 		}
 		return "message";
 	}
 	
-	//°Ô½ÃÆÇ »èÁ¦
+	//ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/deleteBoard", method=RequestMethod.GET)
 	public String deleteFormBoard(HttpServletRequest req, @RequestParam Map<String, String> params) {
 		return "board/deleteForm";
@@ -92,13 +124,13 @@ public class BoardController {
 		String passwd = params.get("passwd");
 		int res = boardMapper.deleteBoard(Integer.parseInt(Bnum), passwd);
 		if (res > 0) {
-			req.setAttribute("msg", "°Ô½Ã±Û »èÁ¦ ¼º°ø!! °Ô½Ã±Û ¸ñ·ÏÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "listBoard");
 		}else if (res < 0) {
-			req.setAttribute("msg", "ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+			req.setAttribute("msg", "ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ Æ²ï¿½È½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			req.setAttribute("url", "deleteBoard?Bnum=" + Bnum);
 		}else {
-			req.setAttribute("msg", "°Ô½Ã±Û »èÁ¦ ½ÇÆÐ!! °Ô½Ã±Û º¸±âÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+			req.setAttribute("msg", "ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!! ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.");
 			req.setAttribute("url", "contentBoard?Bnum=" + Bnum);
 		}
 		return "message.jsp";

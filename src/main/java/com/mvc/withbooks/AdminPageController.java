@@ -182,8 +182,8 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listBoardAdmin")
-	public String boardManageList(HttpServletRequest req) {
-		List<BoardDTO> list = boardMapper.listBoard();
+	public String boardManageList(HttpServletRequest req,int start, int end) {
+		List<BoardDTO> list = boardMapper.listBoard(start, end);
 		req.setAttribute("listBoard", list);
 		return "homepage/admin/boardManage/boardList";
 	}

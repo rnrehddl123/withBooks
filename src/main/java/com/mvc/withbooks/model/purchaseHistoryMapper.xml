@@ -6,4 +6,9 @@
 	<select id="purchaseHistoryList" resultType="PurchaseHistoryDTO" parameterType="int">
 		select Novel.Novel_image, Novel.Novel_subject, Novel.Novel_cate, PurchaseHistory.Purchase_date from Novel, PurchaseHistory where Novel.Mnum = PurchaseHistory.Mnum and Novel.Mnum = #{memberDTO.getMnum}
 	</select>
+	
+	<insert id="insertPurchase" parameterType="PurchaseHistoryDTO">
+		insert into PurchaseHistory(Phnum, Purchase_product, Purchase_date, purchase_price, Mnum) values(seq_purchaseHistory, ${Purchase_product}, ${Purchase_date}, ${purchase_price}, #{memberDTO.mnum})
+	</insert>
+	
 </mapper>

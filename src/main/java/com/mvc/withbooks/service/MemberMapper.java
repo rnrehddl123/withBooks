@@ -88,4 +88,9 @@ public class MemberMapper {
 		int res = sqlSession.update("updateAuthority", dto);
 		return res;
 	}
+	
+	public int purchaseCash(Map<String, String> params) {
+		int res = sqlSession.update("purchaseCash", params);
+		return res;
+	}
 }

@@ -92,15 +92,13 @@ public class MemberMapper {
 		return res;
 	}
 	
-<<<<<<< HEAD
 	public int purchaseCash(Map<String, String> params) {
 		int res = sqlSession.update("purchaseCash", params);
 		return res;
-=======
+	}
 	//페이징
 	public int getMemberCount() {		
 		int count = sqlSession.selectOne("getMemberCount");
 		return count;
->>>>>>> 원경희
 	}
 }

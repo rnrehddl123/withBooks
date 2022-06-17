@@ -51,6 +51,6 @@
 	</update>
 	
 	<update id="purchaseCash" parameterType="java.util.Map">
-		update member set cash=cash-#{cash} where Mnum=#{mnum}
+		update member set cash=cash-#{Purchase_price} where Mnum=#{mnum}
 	</update>
 </mapper>

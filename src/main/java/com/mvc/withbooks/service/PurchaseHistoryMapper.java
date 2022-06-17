@@ -1,11 +1,13 @@
 package com.mvc.withbooks.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mvc.withbooks.dto.EpisodeDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.PurchaseHistoryDTO;
 
@@ -20,10 +22,10 @@ public class PurchaseHistoryMapper {
 		return list;
 	}
 	
-	public int insertPurchase(PurchaseHistoryDTO dto, int mnum) {
-		MemberDTO mdto = sqlSession.selectOne("getMember", mnum);
-		dto.setMemberDTO(mdto);
-		int res = sqlSession.insert("insertPurchase", mnum);
+	public int insertPurchase(Map<String, String> params) {
+		MemberDTO mdto = sqlSession.selectOne("getMember", params);
+		params.put("mnum", Integer.toString(mdto.getMnum()));
+		int res = sqlSession.insert("insertPurchase", params);
 		return res;
 	}
 }

@@ -14,6 +14,7 @@
 		<b>${getNovel.novel_subject}의 에피소드 목록</b>
 		<form name="EpisodeOrder" action="EpisodeOrder" method="post" onsubmit="return check()">
 		<input type="hidden" name="mnum" value="${login.mnum}">
+		<input type="hidden" name="Purchase_price" value="100">
 		<table align="center" class="writer">
 			<tr>
 				<td colspan="6" align="right"><a href="writerEpisode?nnum=${getNovel.nnum}">새로운 에피소드 쓰기</a> |

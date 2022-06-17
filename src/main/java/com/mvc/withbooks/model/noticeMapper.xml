@@ -4,8 +4,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mvc.withBooks.model.NoticeMapper">
-	<select id="listNotice" resultType="NoticeDTO">
-		select * from Notice order by Nonum desc
+	<select id="listNotice" parameterType="java.util.Map" resultType="NoticeDTO">
+		select * from (select rownum rn, A.* from (select * from notice order by Nonum desc)A) where rn between #{start} and #{end}
 	</select>
 	
 	<select id="getNotice" parameterType="int" resultType="NoticeDTO">
@@ -30,5 +30,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="findNotice" parameterType="java.util.Map" resultType="NoticeDTO">
 		select * from notice where ${search} = #{searchString}
+	</select>
+	
+	<select id="getNoticeCount" resultType="int">
+		select count(*) from notice
 	</select>
 </mapper>

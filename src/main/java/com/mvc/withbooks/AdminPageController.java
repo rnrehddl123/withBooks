@@ -206,13 +206,38 @@ public class AdminPageController {
 	
 	@RequestMapping("/listNotice")
 	public String noticeList(HttpServletRequest req, @RequestParam(required = false) String mode) {
-		List<NoticeDTO> list = null;
-		if(mode == null) {
-			list = noticeMapper.listNotice();
-		}else {
-			String searchString = req.getParameter("searchString");
-			list = noticeMapper.findNotice("Notice_title", searchString);
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
 		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = noticeMapper.getNoticeCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<NoticeDTO> list = null;
+		if (rowCount>0){
+			if(mode == null) {
+				list = noticeMapper.listNotice(startRow, endRow);
+			}else {
+				String searchString = req.getParameter("searchString");
+				list = noticeMapper.findNotice("Notice_title", searchString);
+			}
+		} 
+		int noticeNum = rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("noticeNum", noticeNum);
 		req.setAttribute("listNotice", list);
 		return "homepage/admin/noticeManage/noticeList";
 	}

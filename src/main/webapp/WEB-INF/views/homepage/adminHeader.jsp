@@ -28,9 +28,15 @@
         </a>
       </li>
       <li>
-        <a href="suggest" class="nav-link text-white">
+        <a href="insertSuggest" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-          	추천작 관리
+          	추천작 추가
+        </a>
+      </li>
+      <li>
+        <a href="listSuggest" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          	추천작 목록
         </a>
       </li>
       <li>

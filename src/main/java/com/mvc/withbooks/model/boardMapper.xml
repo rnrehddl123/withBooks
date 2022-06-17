@@ -7,6 +7,18 @@
  	<select id="listBoard" resultType="BoardDTO">
  		select * from Board order by Bnum desc
  	</select>
+ 	
+ 	<select id="listBoardAdmin" parameterType="java.util.Map" resultType="BoardDTO">
+		select * from (select rownum rn, A.* from (select * from Board order by Bnum desc)A) where rn between #{start} and #{end}
+	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		select count(*) from Board
+	</select>
+	
+	<select id="findBoard" parameterType="java.util.Map" resultType="BoardDTO">
+		select * from Board where ${search} = #{searchString}
+	</select>
 
 	<select id="getBoard" parameterType="int" resultType="BoardDTO">
  		select * from Board where Bnum = #{Bnum}

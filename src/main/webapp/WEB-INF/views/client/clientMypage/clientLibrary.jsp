@@ -25,16 +25,16 @@
 		<th>소설(시리즈) 제목</th>
 		<th>작가명</th>
 	</tr>
-	<c:if test="">
+	<c:if test="${empty nlist}">
 		<tr>
 			<td colspan="3" align="center">구매한 소설이 없습니다.</td>
 		</tr>
 	</c:if>
-	<c:forEach var="dto" items="">
+	<c:forEach var="dto" items="${nlist}">
 		<tr align="center">
-			<td><!-- 이미지 --></td>
-			<td><a href=""><!-- 소설제목 -->제목 클릭하면 해당소설로 이동</a></td>
-			<td><!-- 작가명 --></td>
+			<td><img src="resources/img/${dto.novel_image}"></td>
+			<td><a href="novelViewInfo?nnum=${dto.nnum}">${dto.novel_subject}>제목 클릭하면 해당소설로 이동</a></td>
+			<td>${dto.novel_memberName}</td>
 		</tr>	
 	</c:forEach>
 	</table>

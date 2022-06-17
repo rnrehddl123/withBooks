@@ -11,4 +11,8 @@
 		insert into PurchaseHistory(Phnum, EPNUM, Purchase_date, Purchase_price, Mnum, Nnum) values(seq_purchaseHistory.nextval, #{epnum}, sysdate, #{Purchase_price}, #{mnum}, #{nnum})
 	</insert>
 	
+	<select id="purchaseLibrary" resultType="Integer" parameterType="int">
+		SELECT NNUM FROM PURCHASEHISTORY WHERE MNUM =#{mnum} GROUP BY NNUM
+	</select>
+	
 </mapper>

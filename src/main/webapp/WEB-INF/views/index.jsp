@@ -21,7 +21,7 @@
 			<li><h3><a href="clientLeave">일반회원 탈퇴페이지</a></h3>
 			<li><h3><a href="clientOrder">일반회원 주문하기</a></h3>
 			<li><h3><a href="clientCart">일반회원 장바구니</a></h3>
-			<li><h3><a href="clientLibrary">일반회원 내 서재</a></h3>
+			<li><h3><a href="clientLibrary?mnum=${login.mnum}">일반회원 내 서재</a></h3>
 			<li><h3><a href="clientOrderList">일반회원 구매내역</a></h3>
 			<li><h3><a href="clientPay">일반회원 충전하기</a></h3>
 			<li><h3><a href="clientUpdate">일반회원 개인정보수정</a></h3>

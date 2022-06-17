@@ -28,4 +28,9 @@ public class PurchaseHistoryMapper {
 		int res = sqlSession.insert("insertPurchase", params);
 		return res;
 	}
+	
+	public List<Integer> purchaseLibrary(int mnum) {
+		List<Integer> list = sqlSession.selectList("purchaseLibrary", mnum);
+		return list;
+	}
 }

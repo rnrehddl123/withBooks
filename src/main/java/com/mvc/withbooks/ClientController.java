@@ -110,10 +110,13 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientViewer")//일반회원 소설보기
-	public String ClientViewer(HttpSession session) {
+	public String ClientViewer(HttpServletRequest req,HttpSession session,@RequestParam int epnum) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
+		EpisodeDTO epdto=episodeMapper.getEpisode(epnum,"view");
+		System.out.println(epdto.getEpi_content());
+		req.setAttribute("epdto", epdto);
 		return "client/clientViewer";
 	}
 	

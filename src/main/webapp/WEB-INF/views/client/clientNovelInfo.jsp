@@ -35,7 +35,7 @@
 		<div class="listEpisode">
 			<div class="list-group">
 				<c:forEach items="${elist}" var="episode">
-				  	<a href="#" class="list-group-item list-group-item-action">
+				  	<a href="clientViewer?epnum=${episode.epnum}" class="list-group-item list-group-item-action">
 				  		${episode.epi_subject}
 				  		<p>${episode.epi_date}</p>
 				  	</a>

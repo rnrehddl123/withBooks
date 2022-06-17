@@ -5,6 +5,10 @@
 }
 
 
+.ql-editor p{
+	font-size: 20px;
+}
+
 
 .marginauto{
 	margin: auto;
@@ -162,7 +166,7 @@ header .navbar-collapse form{
     height: 15px;
     top: 15px;
     right: 0px;
-    background-color: 0d6efd;
+    background-color: #0d6efd;
     border-radius: 100%;
     font-size: 5px;
     color: white;

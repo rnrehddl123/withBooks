@@ -45,7 +45,7 @@ public class EpisodeMapper {
 	}
 	
 	public EpisodeDTO getEpisode(int epnum, String mode) {
-		if (mode.equals("writerNovelEpisode")) {	//���Ǽҵ� ���� �Ѿ�� �Ǹ� ��ȸ���� ������ �ϱ� ����
+		if (mode.equals("view")) {	//���Ǽҵ� ���� �Ѿ�� �Ǹ� ��ȸ���� ������ �ϱ� ����
 			sqlSession.update("plusReadcountEpi", epnum);
 		}
 		EpisodeDTO dto = sqlSession.selectOne("getEpisode", epnum);

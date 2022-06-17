@@ -155,6 +155,19 @@ header .navbar-collapse form{
 	position: relative;
 }
 
+.notice_bell .count_box{
+    position: absolute;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    top: 15px;
+    right: 0px;
+    background-color: 0d6efd;
+    border-radius: 100%;
+    font-size: 5px;
+    color: white;
+}
+
 
 .notice_bell .arrow_box {
   transform: translate(-83px,5px);
@@ -178,6 +191,39 @@ header .navbar-collapse form{
 	right: 0px;
 	bottom: 0px;
 	color: #0d6efd;
+}
+
+.notice_bell .animation svg{
+	animation-name:bell;
+	animation-duration:1s;
+	animation-iteration-count: infinite;
+	animation-direction:alternate;
+	animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes bell {
+  0% {
+  transform: rotate(0deg);
+  animation-timing-function:cubic-bezier(1,0,0.8,1);
+  }
+  10%{
+  transform: rotate(0deg);
+  }
+  20%{
+  transform: rotate(-25deg);
+  }
+  25%{
+  transform: rotate(0deg);
+  }
+  40%{
+  transform: rotate(25deg);
+  }
+  50% {
+  transform: rotate(0deg);
+  }
+  100% {
+  transform: rotate(0deg);
+  }
 }
 
 .arrow_box_wrapper{

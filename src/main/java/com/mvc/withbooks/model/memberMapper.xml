@@ -51,14 +51,11 @@
 		update member set Member_authority=#{Member_authority} where Mnum = #{mnum}
 	</update>
 	
-<<<<<<< HEAD
 	<update id="purchaseCash" parameterType="java.util.Map">
 		update member set cash=cash-#{Purchase_price} where Mnum=#{mnum}
 	</update>
-=======
 	<!-- 페이징 -->
 	<select id="getMemberCount" resultType="int">
 		select count(*) from member
 	</select>
->>>>>>> 원경희
 </mapper>

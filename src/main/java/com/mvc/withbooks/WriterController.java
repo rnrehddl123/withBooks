@@ -60,7 +60,7 @@ public class WriterController {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "writerNovelEpisode");
+		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "view");
 		req.setAttribute("getEpisode", dto);
 		req.setAttribute("epnum", epnum);
 		return "writer/writerPage/writerOrderList/writerNovelEpisode";
@@ -211,14 +211,19 @@ public class WriterController {
 	
 	@RequestMapping("/writerNovelList")
 	public String WriterNovelList(HttpServletRequest req, HttpSession session, int mnum) {
-		if(session.getAttribute("login")==null){
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
 			return "/main/login";
 		}
-		MemberDTO dto = memberMapper.getMember(mnum);
-		req.setAttribute("getMember", dto);
-		List<NovelDTO> list = novelMapper.listmemberNovel(mnum);
-		req.setAttribute("listmemberNovel", list);
-		return "writer/writerPage/writerSubject/writerNovelList";
+		if(login.getMnum()==mnum) {
+			MemberDTO dto = memberMapper.getMember(login.getMnum());
+			req.setAttribute("getMember", dto);
+			List<NovelDTO> list = novelMapper.listmemberNovel(login.getMnum());
+			req.setAttribute("listmemberNovel", list);
+			return "writer/writerPage/writerSubject/writerNovelList";
+		}else {
+			return "/main/main";
+		}
 	}
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.GET)
@@ -287,11 +292,6 @@ public class WriterController {
 	@RequestMapping("/writerChart")
 	public String WriterChart() {
 		return "writer/writerPage/writerChart";
-	}
-	
-	@RequestMapping("/writerLibrary")
-	public String WriterLibrary() {
-		return "writer/writerPage/writerLibrary";
 	}
 	
 	@RequestMapping("/writerPay")

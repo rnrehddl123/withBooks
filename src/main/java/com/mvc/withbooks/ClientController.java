@@ -1,5 +1,6 @@
 package com.mvc.withbooks;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.PurchaseHistoryMapper;
 
 @Controller
 public class ClientController {
@@ -43,11 +45,17 @@ public class ClientController {
 	private NoticeNovelMapper noticeNovelMapper;
 	@Autowired
 	private EpisodeMapper episodeMapper;
+	@Autowired
+	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
+
 	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
 	public String ClientNovelListForCate() {
 		return "client/clientNovelListForCate";
 	}
+
+
+
 	
 	@RequestMapping("/clientMypage")//일반회원 마이 페이지
 	public String ClientmyPage(HttpSession session) {
@@ -83,10 +91,18 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientLibrary")//일반회원 내 서재
-	public String ClientLibrary(HttpSession session) {
+	public String ClientLibrary(HttpSession session, HttpServletRequest req, int mnum) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
+		
+		List<Integer> list = purchaseHistoryMapper.purchaseLibrary(mnum);
+		List<NovelDTO> nlist = new ArrayList<NovelDTO>();
+		for(int nnum : list) {
+			NovelDTO dto = novelMapper.getNovel(nnum);
+			nlist.add(dto);
+		}
+		req.setAttribute("nlist", nlist);
 		return "client/clientMypage/clientLibrary";
 	}
 	
@@ -253,6 +269,9 @@ public class ClientController {
 			map.put("SUBJECT", ndto.getNovel_subject());
 		}
 		session.setAttribute("noticeList", noticeList);
+		if(session.getAttribute("prevPage")==null) {
+			return "/main/main";
+		}
 		return "redirect:" + session.getAttribute("prevPage");
 	}
 	

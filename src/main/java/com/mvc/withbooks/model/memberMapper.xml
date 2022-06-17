@@ -39,7 +39,6 @@
 	<select id="searchMember" parameterType="java.util.Map" resultType="memberDTO">
 		${sql}
 	</select>
-	
 	<select id="getMemberId" parameterType="String" resultType="memberDTO">
 		select * from member where Member_id = #{Member_id}
 	</select>
@@ -49,4 +48,10 @@
 	<update id="updateAuthority">
 		update member set Member_authority=#{Member_authority} where Mnum = #{mnum}
 	</update>
+	<select id="searchNovelSubject" parameterType="int" resultType="novelDTO">
+		select * from novel where Novel_subject like '%#{searchString}%'
+	</select>
+	<select id="searchNovelMemberName" parameterType="java.util.Map" resultType="novelDTO">
+		select * from novel where Novel_memberName like '%#{searchString}%'
+	</select>
 </mapper>

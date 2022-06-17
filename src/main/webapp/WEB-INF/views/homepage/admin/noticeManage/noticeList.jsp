@@ -20,8 +20,6 @@
 	</c:if>
     <c:forEach var="ndto" items="${listNotice}">
 		<tr>
-			<td align="right"><c:out value="${pageNum}"/></td>
-				<c:set var="pageNum" value="${pageNum-1}"/>
 			<td width="60%">
 				<a href="contentNotice?nonum=${ndto.nonum}">
 					${ndto.notice_title}

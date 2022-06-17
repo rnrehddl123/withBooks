@@ -217,25 +217,26 @@ public class AdminPageController {
 		int rowCount = noticeMapper.getNoticeCount();
 		if (endRow > rowCount) endRow = rowCount;
 		List<NoticeDTO> list = null;
+		int noticeNum = 0;
 		if (rowCount>0){
 			if(mode == null) {
 				list = noticeMapper.listNotice(startRow, endRow);
+				noticeNum = rowCount - (startRow - 1);
+				if (rowCount>0) {
+					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+					int pageBlock = 3;
+					int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+					int endPage = startPage + pageBlock - 1;
+					if (endPage > pageCount) endPage = pageCount;
+					req.setAttribute("pageCount", pageCount);
+					req.setAttribute("startPage", startPage);
+					req.setAttribute("endPage", endPage);
+				}
 			}else {
 				String searchString = req.getParameter("searchString");
 				list = noticeMapper.findNotice("Notice_title", searchString);
 			}
 		} 
-		int noticeNum = rowCount - (startRow - 1);
-		if (rowCount>0) {
-			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
-			int pageBlock = 3;
-			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
-			int endPage = startPage + pageBlock - 1;
-			if (endPage > pageCount) endPage = pageCount;
-			req.setAttribute("pageCount", pageCount);
-			req.setAttribute("startPage", startPage);
-			req.setAttribute("endPage", endPage);
-		}
 		req.setAttribute("rowCount", rowCount);
 		req.setAttribute("noticeNum", noticeNum);
 		req.setAttribute("listNotice", list);

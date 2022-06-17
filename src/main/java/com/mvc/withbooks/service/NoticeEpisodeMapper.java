@@ -45,4 +45,9 @@ public class NoticeEpisodeMapper {
 		return list;
 	}
 	
+	public int deleteNoticeEpisode(Map<String, Integer> params){
+		int res = sqlSession.delete("deleteNoticeEpisode", params);
+		return res;
+	}
+	
 }

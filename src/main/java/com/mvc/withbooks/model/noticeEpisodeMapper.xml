@@ -30,4 +30,8 @@
 	<select id="getNoticeEpisodeMsg" parameterType="int" resultType="java.util.Map">
 		SELECT * FROM NOTICE_EPISODE where mnum = #{mnum}
 	</select>
+	
+	<delete id="deleteNoticeEpisode" parameterType="java.util.Map">
+		delete from NOTICE_EPISODE where nenum = #{nenum}
+	</delete>
 </mapper>

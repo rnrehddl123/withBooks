@@ -170,6 +170,14 @@ header .navbar-collapse form{
 	border: 0.5px solid;
 	border-radius: 10px;
 	margin-top: 1px;
+	position: relative;
+}
+
+.notice_bell .content svg{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	color: #0d6efd;
 }
 
 .arrow_box_wrapper{

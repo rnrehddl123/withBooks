@@ -1,5 +1,6 @@
 package com.mvc.withbooks.service;
 
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mvc.withbooks.dto.MemberDTO;	
+import com.mvc.withbooks.dto.MemberDTO;
+import com.mvc.withbooks.dto.NovelDTO;	
 
 @Service
 public class MemberMapper {
@@ -96,9 +98,24 @@ public class MemberMapper {
 		int res = sqlSession.update("purchaseCash", params);
 		return res;
 	}
+	
 	//페이징
 	public int getMemberCount() {		
 		int count = sqlSession.selectOne("getMemberCount");
 		return count;
+	}
+	
+	public List<NovelDTO> searchNovelSubject(String searchString){
+		Map<String, String> map = new Hashtable<>();
+		map.put("searchString", searchString);
+		List<NovelDTO> searchNovelSubject = sqlSession.selectList("searchNovelSubject", map);
+		return searchNovelSubject;
+	}
+	
+	public List<NovelDTO> searchNovelMemberName(String searchString){
+		Map<String, String> map = new Hashtable<>();
+		map.put("searchString", searchString);
+		List<NovelDTO> searchNovelMemberName = sqlSession.selectList("searchNovelMemberName", map);
+		return searchNovelMemberName;
 	}
 }

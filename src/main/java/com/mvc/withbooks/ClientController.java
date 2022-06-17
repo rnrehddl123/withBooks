@@ -44,6 +44,11 @@ public class ClientController {
 	@Autowired
 	private EpisodeMapper episodeMapper;
 	
+	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
+	public String ClientNovelListForCate() {
+		return "client/clientNovelListForCate";
+	}
+	
 	@RequestMapping("/clientMypage")//일반회원 마이 페이지
 	public String ClientmyPage(HttpSession session) {
 		if(session.getAttribute("login")==null){
@@ -236,7 +241,7 @@ public class ClientController {
 			}
 		}
 		
-		//알림설정
+	//알림설정
 		List<HashMap<String, String>> noticeList=noticeEpisodeMapper.getNoticeEpisodeMsg(dto.getMnum());
 		for(HashMap<String, String> map : noticeList) {
 			Map<String, String> epmap=episodeMapper.getEpisode(String.valueOf(map.get("EPNUM")));

@@ -8,6 +8,10 @@
 		select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum}
 	</select>
 	
+	<select id="listNoEpisode" resultType="EpisodeDTO">
+		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epi_date
+	</select>
+	
 	<insert id="insertEpisode" parameterType="EpisodeDTO" useGeneratedKeys="true" keyColumn="Epnum" keyProperty="Epnum">
 		insert into episode(Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount, Nnum) values(seq_episode.nextval, #{Epi_subject}, #{Epi_content}, sysdate, #{Epi_recommand}, 0, #{novelDTO.nnum})
 	</insert>
@@ -32,4 +36,6 @@
 	<select id="getEpisodeSubject" parameterType="String" resultType="java.util.Map">
 		select EPNUM,EPI_SUBJECT,NNUM from episode where Epnum = #{Epnum}
 	</select>
+	
+	
 </mapper>

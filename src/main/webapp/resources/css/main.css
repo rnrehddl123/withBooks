@@ -174,16 +174,18 @@ header .navbar-collapse form{
 }
 
 .notice_bell .content{
-	word-break:break-all;
 	width: 100%;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;  
-	overflow: hidden;
 	border: 0.5px solid;
 	border-radius: 10px;
 	margin-top: 1px;
 	position: relative;
+}
+
+.notice_bell .content .msg{
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;  
+	overflow: hidden;
 }
 
 .notice_bell .content svg{

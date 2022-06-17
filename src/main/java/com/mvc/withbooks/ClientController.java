@@ -157,7 +157,8 @@ public class ClientController {
 			NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
 			req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		}
-		req.setAttribute("nnum", nnum);
+		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
+		req.setAttribute("elist", elist);
 		req.setAttribute("noveldto", ndto);
 		return "client/clientNovelInfo";
 	}

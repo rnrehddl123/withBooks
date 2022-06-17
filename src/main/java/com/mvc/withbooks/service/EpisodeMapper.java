@@ -29,6 +29,11 @@ public class EpisodeMapper {
 		return list;
 	}
 	
+	public List<EpisodeDTO> listNoEpisode(int nnum) {
+		List<EpisodeDTO> list = sqlSession.selectList("listEpisode", nnum);
+		return list;
+	}
+	
 	public int deleteEpisode(int epnum) {
 		int res = sqlSession.delete("deleteEpisode", epnum);
 		return res;

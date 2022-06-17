@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!-- clientBookInfo -->
 <jsp:include page="../main/header.jsp"/>
 <html>
@@ -24,7 +25,7 @@
 				<div class="title">${noveldto.novel_subject}</div>
 				<div class="detail">
 					<div class="writer"><strong>${noveldto.novel_memberName}</strong> 저</div>
-					<div>총 화</div>
+					<div>총 ${fn:length(elist)}화</div>
 					<div class="contant">
 						${noveldto.novel_summary}
 					</div>
@@ -33,18 +34,12 @@
 		</div>
 		<div class="listEpisode">
 			<div class="list-group">
-			  <a href="#" class="list-group-item list-group-item-action">1화:css는 귀찮다
-			  	<p>2022-06-15</p>
-			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">2화:퍼블리싱은 노가다
-			  	<p>2022-06-15</p>
-			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">3화:알림은 어렵다.
-			  	<p>2022-06-15</p>
-			  </a>
-			  <a href="#" class="list-group-item list-group-item-action">4화:정말 어렵다.
-			  	<p>2022-06-15</p>
-			  </a>
+				<c:forEach items="${elist}" var="episode">
+				  	<a href="#" class="list-group-item list-group-item-action">
+				  		${episode.epi_subject}
+				  		<p>${episode.epi_date}</p>
+				  	</a>
+			 	</c:forEach>
 			</div>
 		</div>
 	</div>
@@ -53,7 +48,7 @@
 <script type="text/javascript">
 
 	var notice = document.querySelector('.notice');
-	var nnum = ${nnum};
+	var nnum = ${noveldto.nnum};
 	var mnum;
 	<c:if test="${not empty login.mnum}">mnum=${login.mnum}</c:if>
 	var noticeData = {

@@ -7,8 +7,8 @@
 		select Novel.Novel_image, Novel.Novel_subject, Novel.Novel_cate, PurchaseHistory.Purchase_date from Novel, PurchaseHistory where Novel.Mnum = PurchaseHistory.Mnum and Novel.Mnum = #{memberDTO.getMnum}
 	</select>
 	
-	<insert id="insertPurchase" parameterType="PurchaseHistoryDTO">
-		insert into PurchaseHistory(Phnum, Purchase_product, Purchase_date, purchase_price, Mnum) values(seq_purchaseHistory, ${Purchase_product}, ${Purchase_date}, ${purchase_price}, #{memberDTO.mnum})
+	<insert id="insertPurchase" parameterType="java.util.Map">
+		insert into PurchaseHistory(Phnum, EPNUM, Purchase_date, Purchase_price, Mnum, Nnum) values(seq_purchaseHistory.nextval, #{epnum}, sysdate, #{Purchase_price}, #{mnum}, #{nnum})
 	</insert>
 	
 </mapper>

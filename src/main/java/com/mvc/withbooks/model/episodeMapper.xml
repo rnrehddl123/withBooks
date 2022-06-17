@@ -37,5 +37,7 @@
 		select EPNUM,EPI_SUBJECT,NNUM from episode where Epnum = #{Epnum}
 	</select>
 	
-	
+	<select id="contentNoEpisode" parameterType="int" resultType="java.util.Map">
+		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount, Nnum from episode where epnum=#{epnum}
+	</select>
 </mapper>

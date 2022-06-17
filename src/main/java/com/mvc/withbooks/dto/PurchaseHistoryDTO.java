@@ -2,22 +2,15 @@ package com.mvc.withbooks.dto;
 
 public class PurchaseHistoryDTO {
 	private int Phnum;
-	private String Purchase_product;
 	private String Purchase_date;
 	private int Purchase_price;
 	private MemberDTO memberDTO;
-	
+	private EpisodeDTO episodeDTO;
 	public int getPhnum() {
 		return Phnum;
 	}
 	public void setPhnum(int phnum) {
 		Phnum = phnum;
-	}
-	public String getPurchase_product() {
-		return Purchase_product;
-	}
-	public void setPurchase_product(String purchase_product) {
-		Purchase_product = purchase_product;
 	}
 	public String getPurchase_date() {
 		return Purchase_date;
@@ -37,4 +30,11 @@ public class PurchaseHistoryDTO {
 	public void setMemberDTO(MemberDTO memberDTO) {
 		this.memberDTO = memberDTO;
 	}
+	public EpisodeDTO getEpisodeDTO() {
+		return episodeDTO;
+	}
+	public void setEpisodeDTO(EpisodeDTO episodeDTO) {
+		this.episodeDTO = episodeDTO;
+	}
+	
 }

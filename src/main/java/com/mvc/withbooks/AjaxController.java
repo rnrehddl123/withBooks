@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
+import com.mvc.withbooks.dto.EpisodeDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.PurchaseHistoryDTO;
+import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
 import com.mvc.withbooks.service.PurchaseHistoryMapper;
@@ -30,7 +32,8 @@ public class AjaxController {
 	NoticeNovelMapper noticeNovelMapper;
 	@Autowired
 	NoticeEpisodeMapper noticeEpisodeMapper;
-	
+	@Autowired
+	private EpisodeMapper episodeMapper;
 	
 	@Autowired
 	private MemberMapper memberMapper;
@@ -80,13 +83,16 @@ public class AjaxController {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
+		Map<String, String> epmap = episodeMapper.contentNoEpisode(Integer.parseInt(params.get("epnum")));
 		int res = memberMapper.purchaseCash(params);
-		int res2 = purchaseHistoryMapper.insertPurchase(dto, Integer.parseInt(params.get("mnum")));
+		params.put("nnum", String.valueOf(epmap.get("NNUM")));
+		params.put("epnum", String.valueOf(epmap.get("EPNUM")));
+		int res2 = purchaseHistoryMapper.insertPurchase(params);
 		if(res>0) {
 			req.setAttribute("msg", "에피소드 구매성공.");
 			req.setAttribute("url", "writerEpisodeList?nnum=" + Integer.parseInt(params.get("nnum")));
 			MemberDTO login = (MemberDTO)session.getAttribute("login");
-			login.setCash(login.getCash() - Integer.parseInt(params.get("cash")));
+			login.setCash(login.getCash() - Integer.parseInt(params.get("Purchase_price")));
 			session.setAttribute("login", login);
 		}else {
 			req.setAttribute("msg", "에피소드 구매실패.");

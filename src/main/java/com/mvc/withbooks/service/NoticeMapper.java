@@ -1,5 +1,6 @@
 package com.mvc.withbooks.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,8 +16,11 @@ public class NoticeMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<NoticeDTO> listNotice(){
-		List<NoticeDTO> list = sqlSession.selectList("listNotice");
+	public List<NoticeDTO> listNotice(int start, int end){
+		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+		map.put("start", start);
+		map.put("end", end);
+		List<NoticeDTO> list = sqlSession.selectList("listNotice", map);
 		return list;
 	}
 	
@@ -49,6 +53,11 @@ public class NoticeMapper {
 		map.put("searchString", searchString);
 		List<NoticeDTO> find = sqlSession.selectList("findNotice", map);
 		return find;
+	}
+	
+	public int getNoticeCount() {		
+		int count = sqlSession.selectOne("getNoticeCount");
+		return count;
 	}
 	
 }

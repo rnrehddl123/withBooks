@@ -47,13 +47,13 @@
 <div>
 	<c:if test="${rowCount>0}">
 		<c:if test="${startPage>1}">
-			[<a href="listBoard?pageBoardNum=${startPage-1}">이전</a>]			
+			[<a href="listBoard?pageNum=${startPage-1}">이전</a>]			
 		</c:if>
 		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			[<a href="listBoard?pageBoardNum=${i}"><c:out value="${i}"/></a>]	
+			[<a href="listBoard?pageNum=${i}"><c:out value="${i}"/></a>]	
 		</c:forEach>
 		<c:if test="${endPage<pageCount}">
-			[<a href="listBoard?pageBoardNum=${endPage+1}">다음</a>]			
+			[<a href="listBoard?pageNum=${endPage+1}">다음</a>]			
 		</c:if>
 	</c:if>
 	

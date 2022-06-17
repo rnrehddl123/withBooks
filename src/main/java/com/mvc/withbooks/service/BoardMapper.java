@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.BoardDTO;
-import com.mvc.withbooks.dto.NoticeDTO;
 
 @Service
 public class BoardMapper {

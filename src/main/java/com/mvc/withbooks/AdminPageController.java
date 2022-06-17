@@ -182,8 +182,40 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/listBoardAdmin")
-	public String boardManageList(HttpServletRequest req,int start, int end) {
-		List<BoardDTO> list = boardMapper.listBoard(start, end);
+	public String boardManageList(HttpServletRequest req,@RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageBoardNum = req.getParameter("pageBoardNum");
+		if (pageBoardNum==null){
+			pageBoardNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageBoardNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = noticeMapper.getNoticeCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<BoardDTO> list = null;
+		int boardNum = 0;
+		if (rowCount>0){
+			if(mode == null) {
+				list = boardMapper.listBoard(startRow, endRow);
+				boardNum = rowCount - (startRow - 1);
+				if (rowCount>0) {
+					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+					int pageBlock = 3;
+					int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+					int endPage = startPage + pageBlock - 1;
+					if (endPage > pageCount) endPage = pageCount;
+					req.setAttribute("pageCount", pageCount);
+					req.setAttribute("startPage", startPage);
+					req.setAttribute("endPage", endPage);
+				}
+			}else {
+				String searchString = req.getParameter("searchString");
+				list = boardMapper.findBoard("Board_subject", searchString);
+			}
+		} 
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("boardNum", boardNum);
 		req.setAttribute("listBoard", list);
 		return "homepage/admin/boardManage/boardList";
 	}

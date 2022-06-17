@@ -24,8 +24,8 @@
 	
 	<update id="updateMember" parameterType="memberDTO">
 		update member set Member_passwd=#{Member_passwd}, Member_Tel=#{Member_Tel}, Member_address=#{Member_address},
-										Member_email=#{Member_email}, Member_preferred1=#{Member_preferred1}, Member_preferred2=#{Member_preferred2},
-										 Member_preferred3=#{Member_preferred3}, Member_authority=#{Member_authority} where Mnum = #{mnum} 
+										Member_email=#{Member_email}, Member_preferred1=#{Member_preferred1,jdbcType=VARCHAR}, Member_preferred2=#{Member_preferred2,jdbcType=VARCHAR},
+										 Member_preferred3=#{Member_preferred3,jdbcType=VARCHAR}, Member_authority=#{Member_authority,jdbcType=VARCHAR} where Mnum = #{mnum} 
 	</update>
 	
 	<select id="getMember" parameterType="int" resultType="memberDTO">

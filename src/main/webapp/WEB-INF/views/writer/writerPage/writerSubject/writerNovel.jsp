@@ -18,7 +18,7 @@
 				</tr>
 				<tr>
 					<th width="20%">작 가 필 명</th>
-					<td><input type="text" name="Novel_memberName" size="50" class="width80"></td>
+					<td><input type="text" name="Novel_memberName" size="50" class="width80" required></td>
 				</tr>
 				<tr>
 					<th width="20%">카 테 고 리</th>
@@ -26,7 +26,7 @@
 						<div class="cateWrapper">
   						     <c:forEach items="${listCategory}" var="dto">
 			  					<div class="form-check">
-								  <input class="form-check-input" name="Novel_cate" type="radio" value="${dto.cate_name}">
+								  <input class="form-check-input" name="Novel_cate" type="radio" value="${dto.cate_name}" required>
 								  <label class="form-check-label" for="flexRadioDefault1">
  									  ${dto.cate_name}
 								  </label>
@@ -37,7 +37,7 @@
 				</tr>			
 				<tr>
 					<th width="20%">대 제 목(소설의 제목)</th>
-					<td><input type="text" name="Novel_subject" size="50" class="width80"></td>
+					<td><input type="text" name="Novel_subject" size="50" class="width80" required></td>
 				</tr>
 				<tr>
 					<th width="20%">소 설 이 미 지</th>
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<th width="20%">줄 거 리</th>
-					<td><textarea name="Novel_summary" rows="10" cols="70" class="width80"></textarea></td>
+					<td><textarea name="Novel_summary" rows="10" cols="70" class="width80" required></textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="2">

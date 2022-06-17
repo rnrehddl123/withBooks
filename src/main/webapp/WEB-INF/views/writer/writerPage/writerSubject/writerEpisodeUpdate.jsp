@@ -5,12 +5,22 @@
 <html>
 <head>
 	<title>writeEpisodeUpdate</title>
+	<script type="text/javascript">
+		function check(){
+			if (f.Epi_content.value==""){
+				alert("내용을 입력해 주세요!!")
+				f.Epi_content.focus()
+				return false
+			}
+			return true
+		}
+	</script>
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
 	<div align="center">
-		<form name="f" action="writerEpisodeUpdate" method="post">
-		<input type="hidden" name="Epnum" value="${getEpisode.epnum}"/>
+		<form name="f" action="writerEpisodeUpdate" method="post" onsubmit="return check()">
+		<input type="hidden" name="epnum" value="${getEpisode.epnum}"/>
 		<input type="hidden" name="nnum" value="${nnum}"/>
 			<table align="center" class="writer">
 				<tr>
@@ -18,11 +28,11 @@
 				</tr>			
 				<tr>
 					<th width="20%">소 제 목(수정가능)</th>
-					<td><input type="text" name="Epi_subject" size="65" class="width80" value="${getEpisode.epi_subject}"></td>
+					<td><input type="text" name="Epi_subject" size="65" class="width80" value="${getEpisode.epi_subject}" required></td>
 				</tr>
 				<tr>
 					<th width="20%">내 용(수정가능)</th>
-					<td><textarea name="Epi_content" rows="30" cols="70" class="width80">${getEpisode.epi_content}</textarea></td>
+					<td><textarea name="Epi_content" rows="30" cols="70" class="width80" required>${getEpisode.epi_content}</textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="2">

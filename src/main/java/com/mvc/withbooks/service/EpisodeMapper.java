@@ -29,8 +29,8 @@ public class EpisodeMapper {
 		return list;
 	}
 	
-	public int deleteEpisode(int Epnum) {
-		int res = sqlSession.delete("deleteEpisode", Epnum);
+	public int deleteEpisode(int epnum) {
+		int res = sqlSession.delete("deleteEpisode", epnum);
 		return res;
 	}
 	
@@ -39,11 +39,11 @@ public class EpisodeMapper {
 		return res;
 	}
 	
-	public EpisodeDTO getEpisode(int Epnum, String mode) {
+	public EpisodeDTO getEpisode(int epnum, String mode) {
 		if (mode.equals("writerNovelEpisode")) {	//���Ǽҵ� ���� �Ѿ�� �Ǹ� ��ȸ���� ������ �ϱ� ����
-			sqlSession.update("plusReadcount", Epnum);
+			sqlSession.update("plusReadcountEpi", epnum);
 		}
-		EpisodeDTO dto = sqlSession.selectOne("getEpisode", Epnum);
+		EpisodeDTO dto = sqlSession.selectOne("getEpisode", epnum);
 		return dto;
 	}
 	

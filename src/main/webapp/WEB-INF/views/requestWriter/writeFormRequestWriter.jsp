@@ -35,6 +35,7 @@
 
 	<div align="center">
 		<form name="f" action="writeRequestWriter" method="post" onsubmit="return check()">
+			<input type="hidden" name="name" value="${dto.member_name}"/>
 			<div>
 						<h1>작가 신청</h1>
 						<h3>※ 일반회원이 작가로 등업하기 위한 신청서 작성 페이지 입니다.※</h3>

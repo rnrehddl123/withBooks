@@ -65,7 +65,7 @@
 					    	${dto.cate_name}
 					  </label>
 					</div>
-			  	</c:forEach>
+				</c:forEach>
 			  </div>
 			  	<button type="submit" class="btn btn-primary">회원가입</button>
 			 </form>

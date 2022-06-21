@@ -110,9 +110,9 @@ public class AjaxController {
 	public String checkNextEpi(@RequestBody String data,HttpSession session){
 		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
-//		if (!checkList.contains(data)) {
-//			return "Purchase";
-//		}
+		if (!checkList.contains(data)) {
+			return "Purchase";
+		}
 		int count=-1;
 		for(EpisodeDTO dto : elist) {
 			count++;

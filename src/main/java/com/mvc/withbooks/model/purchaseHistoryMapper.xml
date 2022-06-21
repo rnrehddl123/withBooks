@@ -16,7 +16,7 @@
 		SELECT NNUM FROM PURCHASEHISTORY WHERE MNUM =#{mnum} GROUP BY NNUM
 	</select>
 	
-	<select id="purchaseHistoryCheckList" parameterType="int" resultType="java.util.List">
+	<select id="purchaseHistoryCheckList" parameterType="int" resultType="int">
 		SELECT EPNUM FROM PURCHASEHISTORY WHERE MNUM =#{mnum}
 	</select>
 	

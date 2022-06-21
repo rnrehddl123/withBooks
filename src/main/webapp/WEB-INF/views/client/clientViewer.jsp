@@ -47,16 +47,21 @@
 			<div class="content flex">
 				<a>화</a>
 				<div class="icon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
-					  <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
-					</svg>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-					  <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-					</svg>
+					<div class="prev_btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+						  <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+						</svg>
+					</div>
+					<div class="next_btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+						  <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+						</svg>
+					</div>
 				</div>
 			</div>
 		</footer>
 	</div>
+	<jsp:include page="/WEB-INF/views/purchase_modal.jsp"></jsp:include>
 </body>
 
 <script type="text/javascript">
@@ -69,5 +74,55 @@
 			  document.querySelector(".bot").classList.remove("hide")
 		  }
 		});
+	
+	
+	var purchase_modal = document.querySelector('.purchase_modal');
+	var close_btn = document.querySelector('.purchase_modal .close');
+	var prev_btn = document.querySelector('.prev_btn');
+	var next_btn = document.querySelector('.next_btn');
+	var modal_msg = document.querySelector('.modal-body p');
+	var epnum = ${epdto.epnum};
+	var nextData = {
+            method: 'POST',
+            body: '${epdto.epnum}',
+            headers: {
+                'Content-Type': 'text/plain'
+            }
+        };
+	
+	close_btn.addEventListener('click', function(e){
+		purchase_modal.classList.add('hidden');
+	});
+	
+	
+	next_btn.addEventListener('click', function(e){
+			fetch('checkNextEpi', nextData)
+	        .then(response => response.text())
+	        .then(response => {
+	        	console.log(response)
+	        	if(response=='Purchase'){
+	        		modal_msg.innerHTML="다음화를 구매 하시겠습니까?"
+	        		purchase_modal.classList.remove('hidden');
+	        	}else if(response=='noepi'){
+	        		modal_msg.innerHTML="다음화가 없습니다"
+	        		purchase_modal.classList.remove('hidden');
+	        	}
+	        });
+    });
+	
+	prev_btn.addEventListener('click', function(e){
+		fetch('checkPrevEpi', nextData)
+        .then(response => response.text())
+        .then(response => {
+    		console.log(response);
+        	if(response=='Purchase'){
+        		modal_msg.innerHTML="이전화를 구매 하시겠습니까?"
+        		purchase_modal.classList.remove('hidden');
+        	}else if(response=='noepi'){
+        		modal_msg.innerHTML="이전화가 없습니다"
+        		purchase_modal.classList.remove('hidden');
+        	}
+        });
+});
 </script>
 </html>

@@ -27,6 +27,7 @@ import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.PurchaseHistoryMapper;
 
 @Controller
 public class ClientController {
@@ -43,6 +44,8 @@ public class ClientController {
 	private NoticeNovelMapper noticeNovelMapper;
 	@Autowired
 	private EpisodeMapper episodeMapper;
+	@Autowired
+	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
 	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
 	public String ClientNovelListForCate() {
@@ -120,7 +123,6 @@ public class ClientController {
 			return "/main/login";
 		}
 		EpisodeDTO epdto=episodeMapper.getEpisode(epnum,"view");
-		System.out.println(epdto.getEpi_content());
 		req.setAttribute("epdto", epdto);
 		return "client/clientViewer";
 	}
@@ -166,7 +168,7 @@ public class ClientController {
 			req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		}
 		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
-		req.setAttribute("elist", elist);
+		session.setAttribute("elist", elist);
 		req.setAttribute("noveldto", ndto);
 		return "client/clientNovelInfo";
 	}
@@ -230,6 +232,8 @@ public class ClientController {
 				session.setAttribute("login", dto);		
 				List<NoticeEpisodeDTO> noticeEpisodeList=noticeEpisodeMapper.sendNoticeList(dto);
 				session.setAttribute("noticeEpisodeList",noticeEpisodeList);
+				List<Integer> checkList=purchaseHistoryMapper.purchaseHistoryCheckList(dto.getMnum());
+				session.setAttribute("checkList", checkList);
 				Cookie ck = new Cookie("saveId", dto.getMember_id());
 				if (params.containsKey("saveId")){
 					ck.setMaxAge(0);

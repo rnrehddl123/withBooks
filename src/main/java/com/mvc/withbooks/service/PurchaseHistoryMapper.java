@@ -1,5 +1,6 @@
 package com.mvc.withbooks.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,5 +28,10 @@ public class PurchaseHistoryMapper {
 		params.put("mnum", Integer.toString(mdto.getMnum()));
 		int res = sqlSession.insert("insertPurchase", params);
 		return res;
+	}
+	
+	public List<Integer> purchaseHistoryCheckList(int mnum) {
+		List<Integer> checkList=sqlSession.selectList("purchaseHistoryCheckList",mnum);
+		return checkList;
 	}
 }

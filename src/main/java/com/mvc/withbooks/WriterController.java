@@ -3,6 +3,7 @@ package com.mvc.withbooks;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.PurchaseHistoryMapper;
 
 @Controller
 public class WriterController {
@@ -48,6 +50,8 @@ public class WriterController {
 	@Autowired
 	private NoticeEpisodeMapper noticeEpisodeMapper;
 	
+	@Autowired
+	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
 	@RequestMapping("/writerOrderList")
 	public String WriterOrderList() {
@@ -96,16 +100,26 @@ public class WriterController {
 	//에피소드 추가
 	
 	@RequestMapping("/insertEpisode")
-	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int nnum, HttpSession session) {
+	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int nnum, HttpSession session, @RequestParam Map<String, String> params) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		params.put("mnum", String.valueOf(login.getMnum()));
+		params.put("Purchase_price","0");
 		int res = episodeMapper.insertEpisode(dto, nnum);
-		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);
+		int res2= noticeEpisodeMapper.sendNoticeEpisode(dto);	
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "에피소드 등록 성공, 에피소드 목록 페이지로 이동합니다.";
 			url = "writerEpisodeList?nnum=" + nnum;
+			List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
+			checkList.add(dto.getEpnum());
+			session.setAttribute("checkList", checkList);
+			Map<String, String> epmap = episodeMapper.contentNoEpisode(dto.getEpnum());
+			params.put("nnum", String.valueOf(nnum));
+			params.put("epnum", String.valueOf(dto.getEpnum()));
+			int res3= purchaseHistoryMapper.insertPurchase(params);
 		}else {
 			msg = "에피소드 등록 실패!!, 에피소드 목록 페이지로 이동합니다.";
 			url = "writerEpisodeList?nnum=" + nnum;

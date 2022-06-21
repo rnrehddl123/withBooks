@@ -41,7 +41,7 @@
         <li><a class="dropdown-item" href="main">메인</a></li>
         
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">로그아웃</a></li>
+        <li><a class="dropdown-item" href="logout">로그아웃</a></li>
       </ul>
 	</div>
 			</div>

@@ -132,8 +132,11 @@ public class ClientController {
 	
 	@RequestMapping("/clientViewer")//일반회원 소설보기
 	public String ClientViewer(HttpServletRequest req,HttpSession session,@RequestParam int epnum) {
+		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
 		if(session.getAttribute("login")==null){
 			return "/main/login";
+		}else if (!checkList.contains(epnum)) {
+			return "/main/main";
 		}
 		EpisodeDTO epdto=episodeMapper.getEpisode(epnum,"view");
 		req.setAttribute("epdto", epdto);

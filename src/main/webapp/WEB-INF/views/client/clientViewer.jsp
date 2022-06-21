@@ -81,6 +81,7 @@
 	var prev_btn = document.querySelector('.prev_btn');
 	var next_btn = document.querySelector('.next_btn');
 	var modal_msg = document.querySelector('.modal-body p');
+	var modal_footer = document.querySelector('.modal-footer');
 	var epnum = ${epdto.epnum};
 	var nextData = {
             method: 'POST',
@@ -90,38 +91,49 @@
             }
         };
 	
-	close_btn.addEventListener('click', function(e){
+	function close_modal(){
 		purchase_modal.classList.add('hidden');
-	});
+	};
+	
+	
 	
 	
 	next_btn.addEventListener('click', function(e){
 			fetch('checkNextEpi', nextData)
-	        .then(response => response.text())
+	        .then(response => response.json())
 	        .then(response => {
-	        	console.log(response)
-	        	if(response=='Purchase'){
-	        		modal_msg.innerHTML="다음화를 구매 하시겠습니까?"
+	        	console.log(response);
+	        	if(response.type=='Purchase'){
+	        		modal_msg.innerHTML="다음화를 구매 하시겠습니까?";
+	        		modal_footer.innerHTML="<button onclick='close_modal()' type='button' class='btn btn-secondary close' data-bs-dismiss='modal'>닫기</button><a href=EpisodeOrder?epnum="
+	        		+response.epnum+"><button type='button' class='btn btn-primary'>구매하기</button></a>"
 	        		purchase_modal.classList.remove('hidden');
-	        	}else if(response=='noepi'){
+	        	}else if(response.type=='noepi'){
 	        		modal_msg.innerHTML="다음화가 없습니다"
 	        		purchase_modal.classList.remove('hidden');
-	        	}
+	        	}else if(response.type=='go'){
+	        		purchase_modal.classList.add('hidden');
+	        		location.href='clientViewer?epnum='+response.epnum;
+		        }
 	        });
     });
 	
 	prev_btn.addEventListener('click', function(e){
 		fetch('checkPrevEpi', nextData)
-        .then(response => response.text())
+        .then(response => response.json())
         .then(response => {
-    		console.log(response);
-        	if(response=='Purchase'){
-        		modal_msg.innerHTML="이전화를 구매 하시겠습니까?"
+        	if(response.type=='Purchase'){
+        		modal_msg.innerHTML="이전화를 구매 하시겠습니까?";
+        		modal_footer.innerHTML="<button onclick='close_modal()' type='button' class='btn btn-secondary close' data-bs-dismiss='modal'>닫기</button><a href=EpisodeOrder?epnum="
+        		+response.epnum+"><button type='button' class='btn btn-primary'>구매하기</button></a>"
         		purchase_modal.classList.remove('hidden');
-        	}else if(response=='noepi'){
+        	}else if(response.type=='noepi'){
         		modal_msg.innerHTML="이전화가 없습니다"
         		purchase_modal.classList.remove('hidden');
-        	}
+        	}else if(response.type=='go'){
+        		purchase_modal.classList.add('hidden');
+        		location.href='clientViewer?epnum='+response.epnum;
+	        }
         });
 });
 </script>

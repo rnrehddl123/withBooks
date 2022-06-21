@@ -81,6 +81,9 @@ public class AjaxController {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		params.put("mnum", String.valueOf(login.getMnum()));
+		params.put("Purchase_price","100");
 		Map<String, String> epmap = episodeMapper.contentNoEpisode(Integer.parseInt(params.get("epnum")));
 		int res = memberMapper.purchaseCash(params);
 		params.put("nnum", String.valueOf(epmap.get("NNUM")));
@@ -89,9 +92,11 @@ public class AjaxController {
 		if(res>0) {
 			req.setAttribute("msg", "에피소드 구매성공.");
 			req.setAttribute("url", "clientViewer?epnum=" + Integer.parseInt(params.get("epnum")));
-			MemberDTO login = (MemberDTO)session.getAttribute("login");
-			if(login.getCash()>0){
+			if(login.getCash()>100){
 				login.setCash(login.getCash() - Integer.parseInt(params.get("Purchase_price")));
+				List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
+				checkList.add(Integer.parseInt(params.get("epnum")));
+				session.setAttribute("checkList", checkList);
 				session.setAttribute("login", login);
 			}else {
 				req.setAttribute("msg", "보유 포인트가 부족합니다. 포인트 충전 사이트로 이동합니다.");
@@ -108,11 +113,10 @@ public class AjaxController {
 	@RequestMapping("/checkNextEpi")
 	@ResponseBody
 	public String checkNextEpi(@RequestBody String data,HttpSession session){
+		Gson gson = new Gson();
 		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
-		if (!checkList.contains(data)) {
-			return "Purchase";
-		}
+		Map<String, String> mapdata=new HashMap<String, String>();
 		int count=-1;
 		for(EpisodeDTO dto : elist) {
 			count++;
@@ -120,25 +124,31 @@ public class AjaxController {
 				break;
 			}
 		}
-		if(count<0) {
-			return "noepi";
-		}
 		try {
 			elist.get(count+1).getEpnum();
 		} catch (Exception e) {
-			return "noepi";
+			mapdata.put("type", "noepi");
+			String javadata = gson.toJson(mapdata);
+			return javadata;
 		}
-		return String.valueOf(elist.get(count+1).getEpnum());
+		mapdata.put("epnum",String.valueOf(elist.get(count+1).getEpnum()));
+		if (!checkList.contains(elist.get(count+1).getEpnum())) {
+			mapdata.put("type", "Purchase");
+			String javadata = gson.toJson(mapdata);
+			return javadata;
+		}
+		mapdata.put("type", "go");
+		String javadata = gson.toJson(mapdata);
+		return javadata;
 	}
 	
 	@RequestMapping("/checkPrevEpi")
 	@ResponseBody
 	public String checkPrevEpi(@RequestBody String data,HttpSession session){
+		Gson gson = new Gson();
 		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
-//		if (!checkList.contains(data)) {
-//			return "Purchase";
-//		}
+		Map<String, String> mapdata=new HashMap<String, String>();
 		int count=-1;
 		for(EpisodeDTO dto : elist) {
 			count++;
@@ -146,10 +156,22 @@ public class AjaxController {
 				break;
 			}
 		}
-		if(count<1) {
-			return "noepi";
+		try {
+			elist.get(count-1).getEpnum();
+		} catch (Exception e) {
+			mapdata.put("type", "noepi");
+			String javadata = gson.toJson(mapdata);
+			return javadata;
 		}
-		return String.valueOf(elist.get(count-1).getEpnum());
+		mapdata.put("epnum",String.valueOf(elist.get(count-1).getEpnum()));
+		if (!checkList.contains(elist.get(count-1).getEpnum())) {
+			mapdata.put("type", "Purchase");
+			String javadata = gson.toJson(mapdata);
+			return javadata;
+		}
+		mapdata.put("type", "go");
+		String javadata = gson.toJson(mapdata);
+		return javadata;
 	}
 }
 

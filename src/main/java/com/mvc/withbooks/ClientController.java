@@ -371,10 +371,15 @@ public class ClientController {
 			req.setAttribute("msg", "구매성공.");
 			req.setAttribute("url", "writerPay");
 			MemberDTO login = (MemberDTO)session.getAttribute("login");
-			login.setCash(login.getCash() - Integer.parseInt(params.get("cash")));
-			session.setAttribute("login", login);
+			if(login.getCash()>0) {
+				login.setCash(login.getCash() - Integer.parseInt(params.get("Purchase_price")));
+				session.setAttribute("login", login);
+			}else {
+				req.setAttribute("msg", "보유 포인트가 부족합니다. 포인트 충전 사이트로 이동합니다.");
+				req.setAttribute("url", "clientPay");
+			}
 		}else {
-			req.setAttribute("msg", "구매실패.");
+			req.setAttribute("msg", "구매실패");
 			req.setAttribute("url", "writerPay");
 		}
 		return "message";

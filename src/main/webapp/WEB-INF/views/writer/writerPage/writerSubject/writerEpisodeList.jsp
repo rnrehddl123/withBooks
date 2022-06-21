@@ -36,7 +36,7 @@
 			<c:forEach var="dto" items="${listEpisode}">
 			<tr>
 				<td align="center"><input type="radio" name="epnum" value="${dto.epnum}"></td>
-				<td><a href="writerNovelEpisode?epnum=${dto.epnum}">${dto.epi_subject}</a></td>
+				<td><a href="clientViewer?epnum=${dto.epnum}">${dto.epi_subject}</a></td>
 				<td align="center">${dto.epi_date}</td>
 				<td align="center">${dto.epi_readcount}</td>
 				<td align="center">${dto.epi_recommand}</td>

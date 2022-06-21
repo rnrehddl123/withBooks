@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.RequestWriterDTO;
 
@@ -15,7 +16,10 @@ public class RequestWriterMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<RequestWriterDTO> listRequestWriter(){
+	public List<RequestWriterDTO> listRequestWriter(int start, int end){
+		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+		map.put("start", start);
+		map.put("end", end);
 		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriter");
 		return list;
 	}
@@ -36,6 +40,19 @@ public class RequestWriterMapper {
 		RequestWriterDTO dto2 = getRequestWriter(dto.getRwnum());
 		int res = sqlSession.update("updateRequestWriter", dto);
 		return res;
+	}
+	
+	public int getRequestWriterCount() {		
+		int count = sqlSession.selectOne("getRequestWriterCount");
+		return count;
+	}
+	
+	public List<RequestWriterDTO> findRequestWriter(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<RequestWriterDTO> find = sqlSession.selectList("findRequestWriter", map);
+		return find;
 	}
 	
 }

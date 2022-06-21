@@ -240,7 +240,7 @@
                 				<div class="card-body">
                   				<h5 class="card-title">${sudto.suggestNovel}</h5>
                   				<p class="card-text">${ndto.novel_summary}</p>
-                  				<a href="#" class="btn btn-primary">Go somewhere</a>
+                  				<a href="clientNovelInfo?nnum=${ndto.nnum}" class="btn btn-primary">Go somewhere</a>
                 				</div>
                 			</div>
              			</c:if>

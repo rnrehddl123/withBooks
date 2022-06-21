@@ -29,11 +29,11 @@
    </beans:bean>
 	
 	<beans:bean id="novelUploadPath" class="java.lang.String">
-    	<beans:constructor-arg value="C:\javaclass\withBooks\src\main\webapp\resources\img" />
+    	<beans:constructor-arg value="C:\project\withBooks\src\main\webapp\resources\img" />
   	</beans:bean>
   	
   	<beans:bean id="slideUploadPath" class="java.lang.String">
-    	<beans:constructor-arg value="C:\javaclass\withBooks\src\main\webapp\resources\slideImages" />
+    	<beans:constructor-arg value="C:\project\withBooks\src\main\webapp\resources\slideImages" />
   	</beans:bean>
 	
 </beans:beans>

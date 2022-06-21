@@ -40,6 +40,7 @@
 
 .view .icon{
 	margin-left: auto;
+	display: flex;
 }
 .view .top svg{
 	margin-top: auto;

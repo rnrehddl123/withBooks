@@ -266,6 +266,13 @@ header .navbar-collapse form{
   pointer-events: none;
 }
 
+.purchase_modal{
+}
+
+.block{
+	display: block!important;
+}
+
 .hidden{
 	display: none!important;
 }

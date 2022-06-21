@@ -29,15 +29,13 @@ import com.mvc.withbooks.service.PurchaseHistoryMapper;
 public class AjaxController {
 
 	@Autowired
-	NoticeNovelMapper noticeNovelMapper;
+	private NoticeNovelMapper noticeNovelMapper;
 	@Autowired
-	NoticeEpisodeMapper noticeEpisodeMapper;
+	private NoticeEpisodeMapper noticeEpisodeMapper;
 	@Autowired
 	private EpisodeMapper episodeMapper;
-	
 	@Autowired
 	private MemberMapper memberMapper;
-	
 	@Autowired
 	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
@@ -104,6 +102,54 @@ public class AjaxController {
 			req.setAttribute("url", "writerEpisodeList?nnum=" + Integer.parseInt(params.get("nnum")));
 		}
 		return "message";
+	}
+	
+	
+	@RequestMapping("/checkNextEpi")
+	@ResponseBody
+	public String checkNextEpi(@RequestBody String data,HttpSession session){
+		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
+		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
+//		if (!checkList.contains(data)) {
+//			return "Purchase";
+//		}
+		int count=-1;
+		for(EpisodeDTO dto : elist) {
+			count++;
+			if (dto.getEpnum()==Integer.parseInt(data)) {
+				break;
+			}
+		}
+		if(count<0) {
+			return "noepi";
+		}
+		try {
+			elist.get(count+1).getEpnum();
+		} catch (Exception e) {
+			return "noepi";
+		}
+		return String.valueOf(elist.get(count+1).getEpnum());
+	}
+	
+	@RequestMapping("/checkPrevEpi")
+	@ResponseBody
+	public String checkPrevEpi(@RequestBody String data,HttpSession session){
+		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
+		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
+//		if (!checkList.contains(data)) {
+//			return "Purchase";
+//		}
+		int count=-1;
+		for(EpisodeDTO dto : elist) {
+			count++;
+			if (dto.getEpnum()==Integer.parseInt(data)) {
+				break;
+			}
+		}
+		if(count<1) {
+			return "noepi";
+		}
+		return String.valueOf(elist.get(count-1).getEpnum());
 	}
 }
 

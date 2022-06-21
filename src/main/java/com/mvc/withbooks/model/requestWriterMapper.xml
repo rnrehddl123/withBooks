@@ -5,7 +5,7 @@
  	
 <mapper namespace="com.mvc.withBooks.model.requestWriterMapper">
 	<select id="listRequestWriter" resultType="RequestWriterDTO">
- 		select * from RequestWriter order by Rwnum DESC
+ 		select * from (select rownum rn, A.* from (select * from RequestWriter order by Rwnum desc)A) where rn between #{start} and #{end}
  	</select>
 
 	<select id="getRequestWriter" parameterType="int" resultType="RequestWriterDTO">
@@ -19,5 +19,13 @@
  	<select id="updateRequestWriter" parameterType="int">
  		update RequestWriter set RequestWriter_writer=#{RequestWriter_writer}, RequestWriter_subject=#{RequestWriter_subject}, RequestWriter_content=#{RequestWriter_content} where Rwnum=#{Rwnum}
  	</select>
+
+	<select id="getRequestWriterCount" resultType="int">
+		select count(*) from RequestWriter
+	</select>
+	
+	<select id="findRequestWriter" parameterType="java.util.Map" resultType="BoardDTO">
+		select * from RequestWriter where ${search} = #{searchString}
+	</select>
 
 </mapper>

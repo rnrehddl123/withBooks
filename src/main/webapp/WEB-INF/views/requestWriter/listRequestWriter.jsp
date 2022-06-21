@@ -46,6 +46,25 @@
   </tbody>
 </table>
 
+<div>
+	<c:if test="${rowCount>0}">
+		<c:if test="${startPage>1}">
+			[<a href="listRequestWriter?pageNum=${startPage-1}">이전</a>]			
+		</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			[<a href="listRequestWriter?pageNum=${i}"><c:out value="${i}"/></a>]	
+		</c:forEach>
+		<c:if test="${endPage<pageCount}">
+			[<a href="listRequestWriter?pageNum=${endPage+1}">다음</a>]			
+		</c:if>
+	</c:if>
+	
+	<form name="f" action="listlistRequestWriter" method="post">
+		<input type="hidden" name="mode" value="search">
+			검색 : <input type="text" name="searchString"><input type="submit" value="검색" placeholder="작가 이름"><p>
+	</form>
+</div>
+
  <jsp:include page="../main/footer.jsp"/>
   
 

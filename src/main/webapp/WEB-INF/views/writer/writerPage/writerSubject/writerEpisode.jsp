@@ -23,6 +23,7 @@
 		<form class="editorWrapper" name="f" action="insertEpisode" method="post" onsubmit="return check()">
 			<input type="hidden" value="${login.mnum}" name="mnum">
 			<input type="hidden" name="nnum" value="${nnum}">
+			<input type="hidden" name="Purchase_price" value="0">
 			<div class="mb-3">
 			  <div class="flex"><label for="exampleFormControlInput1" class="form-label">제목</label></div>
 			  <input type="text" name="Epi_subject" class="form-control" id="exampleFormControlInput1" required>

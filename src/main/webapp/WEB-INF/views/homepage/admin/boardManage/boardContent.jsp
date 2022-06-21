@@ -37,8 +37,11 @@
   				</tr>
   				<tr>
   					<td colspan="2">
-  						<a href="deleteBoardAdmin?bnum=${getBoard.bnum}">삭제</a>
-  						<a href="listBoardAdmin">목록</a>
+  						<a href="deleteBoardAdmin?bnum=${getBoard.bnum}">삭제 </a>|
+  						<a href="listBoardAdmin">목록 </a>|
+  						<a href="contentBoard?Bnum=${getBoard.bnum}">
+							해당페이지로 이동
+						</a>
   					</td>
   				</tr>	
 			</table>

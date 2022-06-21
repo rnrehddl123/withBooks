@@ -25,7 +25,7 @@
 			<td colspan="3"><hr width="600"></td>
 		</tr>
 		<tr>
-			<td align="center" width="10%"><input type="radio" name="cash" value="100"></td>
+			<td align="center" width="10%"><input type="radio" name="Purchase_price" value="100"></td>
 			<td align="center">100포인트</td>
 			<td align="center">100원</td>
 		</tr>

@@ -38,3 +38,4 @@
 	</div>
 </body>
 </html>
+<jsp:include page="../main/footer.jsp"/>

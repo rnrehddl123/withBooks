@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- deleteForm.jsp -->
+<jsp:include page="../main/header.jsp"/>
 <html>
 <head>
 <div align="center" style="
@@ -32,3 +33,4 @@
 	</div>
 </body>
 </html>
+<jsp:include page="../main/footer.jsp"/>

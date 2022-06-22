@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="../main/header.jsp"/>
 <jsp:include page="boardSidebar.jsp"/>
 <html><head>
 <div align="center" style="
@@ -72,3 +73,4 @@
 	</div>
 </body>
 </html>
+<jsp:include page="../main/footer.jsp"/>

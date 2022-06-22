@@ -136,3 +136,35 @@
 	margin-bottom: 0px;
 	font-size: 5px;
 }
+
+
+.textdiv{
+
+}
+
+.reviw .content{
+
+}
+
+.review_wrapper{
+	width: 800px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.review .form-label{
+	font-size: 40px;
+}
+
+.review p{
+
+}
+
+
+.stars{
+	display: flex;
+}
+
+.bi-star{
+	font-size: 60px;
+}

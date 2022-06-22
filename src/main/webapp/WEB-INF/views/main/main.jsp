@@ -6,7 +6,7 @@
     <div class="mainpage content">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-primary"><a href="novelList.do">글쓰기</a></button>
-        <button type="button" class="btn btn-outline-primary"><a href="novelListForCate">카테고리</a></button>
+        <button type="button" class="btn btn-outline-primary"><a href="clientNovelListForCate">카테고리</a></button>
         <button type="button" class="btn btn-outline-primary"><a href="listBoard">게시판</a></button>
       </div>
 

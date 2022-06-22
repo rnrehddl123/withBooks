@@ -50,7 +50,7 @@
 				  <button type="button" class="btn btn-primary" onclick="window.location='deleteBoard.do?Bnum=${getBoard.bnum}'">글삭제</button>
 				  <button type="button" class="btn btn-primary" onclick="window.location='listBoard'">글목록</button>
 				</div>
-  		</div>
+  			</div>
   	</div>
 </body>
 </html>

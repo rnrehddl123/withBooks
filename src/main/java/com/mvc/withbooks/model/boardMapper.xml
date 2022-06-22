@@ -43,4 +43,5 @@
 	<select id="plusCount" parameterType="int">
 		update Board set Board_readcount = Board_readcount + 1 where Bnum = #{Bnum}
 	</select>
+	
  </mapper>

@@ -10,6 +10,22 @@
     width: 70%;
 ">
 
+<script type="text/javascript">
+var count1=0;
+var count2=0;
+	function increase(){
+	    count1=count1+1;
+	    document.querySelector("#countPlus").innerText=count1;
+	}
+	
+	function decrease(){
+	    count2=count2-1;
+	    document.querySelector("#countMinus").innerText=count2;
+	}
+	
+	
+</script>
+
 <table class="table">
   <thead>
   <div align="center">
@@ -21,11 +37,12 @@
       <th scope="col" align="center">작성자</th>
       <th scope="col" align="center">작성일</th>
       <th scope="col" align="center">조회수</th>
+     
     </tr>
   </thead>
   	<c:if test="${empty listBoard}">
 			<tr>
-				<td colspan="5" align="center">등록된 게시글이 없습니다.</td>
+				<td colspan="7" align="center">등록된 게시글이 없습니다.</td>
 			</tr>
 	</c:if>
   <tbody>
@@ -42,6 +59,7 @@
 				<td align="left">${Boarddto.board_readcount}</td>
 			</tr>
 	</c:forEach>
+			
   </tbody>
 </table>
 <div>

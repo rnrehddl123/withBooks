@@ -16,6 +16,10 @@
 	<select id="findMember" parameterType="java.util.Map" resultType="memberDTO">
 		select * from member where ${search} = #{searchString}
 	</select>
+	
+	<select id="findWriter" parameterType="java.util.Map" resultType="memberDTO">
+		select * from member where Member_authority = 'writer' and Member_id like '%'||#{searchString}||'%'
+	</select>
 
 	<insert id="insertMember" parameterType="memberDTO">
 		insert into member(Mnum, Member_name, Member_id, Member_passwd, Member_Tel, Member_address, Member_email, Member_birth, Member_sex, Member_preferred1, Member_preferred2, Member_preferred3,Member_authority, cash)

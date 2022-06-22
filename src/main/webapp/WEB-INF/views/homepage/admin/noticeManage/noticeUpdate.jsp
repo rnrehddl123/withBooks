@@ -26,7 +26,7 @@
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-						<input type="submit" value="글수정">
+						<input type="submit" value="등록하기">
 						<input type="reset" value="다시작성">
 						<input type="button" value="목록보기" onclick="window.location='listNotice'">
 					</td>

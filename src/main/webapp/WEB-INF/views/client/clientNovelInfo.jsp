@@ -25,7 +25,7 @@
 				<div class="cate">${noveldto.novel_cate}</div>
 				<div class="title">${noveldto.novel_subject}</div>
 				<div class="detail">
-					<div class="writer"><strong>${noveldto.novel_memberName}</strong> 저</div>
+					<div class="writer"><strong>${noveldto.novel_memberName}</strong> 저자</div>
 					<div>총 ${fn:length(elist)}화</div>
 					<div class="contant">
 						${noveldto.novel_summary}

@@ -201,6 +201,7 @@ public class ClientController {
 		req.setAttribute("noveldto", ndto);
 		return "client/clientNovelInfo";
 	}
+
 	
 	@RequestMapping("/signUp")//회원가입 페이지
 	public String SignUp(HttpServletRequest req) {

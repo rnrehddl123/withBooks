@@ -10,6 +10,21 @@ public class BoardDTO {
 	private int Board_readcount;
 	private String Board_content;
 	
+	private int recommandCount;
+	private int hateCount;
+	
+	public int getRecommandCount() {
+		return recommandCount;
+	}
+	public void setRecommandCount(int recommandCount) {
+		this.recommandCount = recommandCount;
+	}
+	public int getHateCount() {
+		return hateCount;
+	}
+	public void setHateCount(int hateCount) {
+		this.hateCount = hateCount;
+	}
 	public int getBnum() {
 		return Bnum;
 	}

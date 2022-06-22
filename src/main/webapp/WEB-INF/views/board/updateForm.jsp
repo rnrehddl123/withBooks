@@ -46,11 +46,11 @@
 			</div>
 				<div class="mb-3" align="left">	
 				  <label for="exampleFormControlInput1" class="form-label">이름</label>
-				  <input name="Board_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder=${login.member_name} readOnly>
+				  <input name="Board_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder=${getBoard.board_writer} readOnly>
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput2" class="form-label">제목</label>
-				  <input name="Board_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder="제목" readOnly>
+				  <input name="Board_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder=${getBoard.board_subject} readOnly>
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
@@ -58,7 +58,7 @@
 				</div>
 				<div class="mb-3" align="left">
 					 <label for="exampleFormControlInput4" class="form-label">비밀번호</label>
-					<input name="Board_passwd" type="password" class="form-control" id="exampleFormControlInput3" name="passwd" placeholder="*****"></td>
+					<input name="Board_passwd" type="password" class="form-control" id="exampleFormControlInput3" name="passwd" placeholder="****"></td>
 				</div>
 			</c:forEach>
 				<div align="center">

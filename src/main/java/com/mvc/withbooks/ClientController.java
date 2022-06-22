@@ -45,7 +45,22 @@ public class ClientController {
 	private EpisodeMapper episodeMapper;
 	
 	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
-	public String ClientNovelListForCate() {
+	public String ClientNovelListForCate(HttpServletRequest req) {
+		List<CategoryDTO> listCategory = categoryMapper.listCategory();
+		req.setAttribute("listCategory", listCategory);
+		return "client/clientNovelListForCate";
+	}
+	
+	@RequestMapping(value="/clientNovelListForCateGET", method=RequestMethod.GET)
+	public String ClientNovelListForCateGET(HttpSession session, HttpServletRequest req,
+			@RequestParam int cnum) {
+		List<CategoryDTO> listCategory = categoryMapper.listCategory();
+		req.setAttribute("listCategory", listCategory);
+		List<NovelDTO> listNovel = novelMapper.listNovel();
+		req.setAttribute("listNovel", listNovel);
+		String selectCate = categoryMapper.selectCate(cnum);
+		List<NovelDTO> listForCate = novelMapper.listForCate(selectCate);
+		req.setAttribute("listForCate", listForCate);
 		return "client/clientNovelListForCate";
 	}
 	
@@ -73,7 +88,6 @@ public class ClientController {
 		return "client/clientMypage/clientUpdate";
 	}
 	
-
 	@RequestMapping("/clientLeave")//회원탈퇴 페이지
 	public String ClientLeave(HttpSession session) {
 		if(session.getAttribute("login")==null){
@@ -150,7 +164,6 @@ public class ClientController {
 		return "message";
 	}
 	
-
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
 	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum) {
 		MemberDTO login=(MemberDTO)session.getAttribute("login");

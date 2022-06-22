@@ -23,4 +23,9 @@ public class CategoryMapper {
 		List<CategoryDTO> list = sqlSession.selectList("listCategory");
 		return list;
 	}
+	
+	public String selectCate(int cnum) {
+		String selectCate = sqlSession.selectOne("selectCate", cnum);
+		return selectCate;
+	}
 }

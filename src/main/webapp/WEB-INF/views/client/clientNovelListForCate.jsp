@@ -8,35 +8,34 @@
 <title>카테고리별 리스트</title>
 </head>
 <body>
-	<div class="container">
-		<div class="item">
-			<div id="categoryList">
-				<ul>
-					<li>카테고리 목록</li>
-					<c:forEach items="${CategoryDTO}" var="dto">
-						<li><input type="button" value="${dto.Cate_name}"></li>	
-					</c:forEach>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="item">
-			<div id="Cate_name">
-				<h3>${CategoryDTO.Cate_name}</h3>
-			</div>
-			<c:forEach items="${NovelDTO}" var="dto">
-				<div>
-					<div>
-						<div>${dto.Novel_image}</div>
-					</div>
-					<div>
-						<h3>${dto.Novel_subject}</h3>
-						<p>${dto.Novel_memberName}</p>
-					</div>
-				</div>
+<div style="display:flex;">
+	<div style="width:15%;">
+		<table id="listCategory">
+			<tr>
+				<td><h5>카테고리 목록</h5></td>
+			</tr>
+			<c:forEach items="${listCategory}" var="list">
+				<tr>
+					<td>
+						<a href="clientNovelListForCateGET?cnum=${list.cnum}"><div>${list.cate_name}</div></a>
+					</td>
+				</tr>
 			</c:forEach>
-		</div>
+		</table>
 	</div>
+	<div style="width:83%;">
+		<table>
+			<tr height="10%">
+				<td>카테고리 >> </td>
+			</tr>
+			<c:forEach items="${listForCate}" var="list">
+				<tr>
+					<td>${list.novel_image},${list.novel_subject},${list.novel_memberName}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+</div>
 </body>
 </html>
 <jsp:include page="../main/footer.jsp"/>

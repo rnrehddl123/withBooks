@@ -59,4 +59,8 @@ public class NovelMapper {
 		return find;
 	}
 	
+	public List<NovelDTO> listForCate(String selectCate){
+		List<NovelDTO> listForCate = sqlSession.selectList("listForCate", selectCate);
+		return listForCate;
+	}
 }

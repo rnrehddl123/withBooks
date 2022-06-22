@@ -5,7 +5,6 @@ public class CategoryDTO {
 	private int cnum;
 	private String Cate_name;
 	
-	
 	public int getCnum() {
 		return cnum;
 	}

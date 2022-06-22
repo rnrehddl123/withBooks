@@ -276,3 +276,11 @@ header .navbar-collapse form{
 .hidden{
 	display: none!important;
 }
+
+.fa .fa-star .checked.temp{
+	color: orange;
+}
+
+.stars{
+	
+}

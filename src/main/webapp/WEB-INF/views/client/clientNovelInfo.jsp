@@ -8,6 +8,7 @@
 <head>
    <title>clientNovelInfo</title>
    <link href="resources/css/client.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 <body>
 	<div class="clientNovelInfoWrapper">
@@ -41,6 +42,31 @@
 				  	</a>
 			 	</c:forEach>
 			</div>
+		</div>
+	</div>
+	
+	<div class="review_wrapper">
+		<div class="review">
+			<label class="form-label">리뷰</label>
+			<hr>
+			<form>
+				<div class="content">
+				  <div>
+				  	<P>이 책을 평가해주세요!</P>
+				  	<div>
+				  		<div class="stars">
+						    <i class="bi bi-star"></i>
+						    <i class="bi bi-star"></i>
+						    <i class="bi bi-star"></i>
+						    <i class="bi bi-star"></i>
+						    <i class="bi bi-star"></i>
+						</div>
+				  	</div>
+				  	<div class="textdiv"><textarea cols="70" rows="6"></textarea></div>
+				  	<button type="submit" class="btn btn-primary">작성하기</button>
+				  </div>
+				</div>
+			</form>
 		</div>
 	</div>
 	
@@ -80,67 +106,22 @@
 			}
 		}
     });
+	
+	
+	var star = document.querySelectorAll('.bi-star');
+	
+	
+	star[0].addEventListener("click", function(e){
+
+		console.log("asasasa")
+	});
+	
+	
+	
+
 </script>
 
-<div align="center">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-			<style>
-			    .checked {
-			      color: orange;
-			    }
-			</style>
-			
-			    <h7>별점</h7><br>
-			
-			    <span id = "star1" class="fa fa-star" onclick = "clickstar1()"></span>
-			    <span id = "star2" class="fa fa-star" onclick = "clickstar2()"></span>
-			    <span id = "star3" class="fa fa-star" onclick = "clickstar3()"></span>
-			    <span id = "star4" class="fa fa-star" onclick = "clickstar4()"></span>
-			    <span id = "star5" class="fa fa-star" onclick = "clickstar5()"></span>
-			
-			    <script>
-			        function clickstar1() {
-			           document.getElementById('star1').setAttribute("class", "fa fa-star checked");
-			           document.getElementById('star2').setAttribute("class", "fa fa-star");
-			           document.getElementById('star3').setAttribute("class", "fa fa-star");
-			           document.getElementById('star4').setAttribute("class", "fa fa-star");
-			           document.getElementById('star5').setAttribute("class", "fa fa-star");
-			        }
-			
-			        function clickstar2(){
-			            document.getElementById('star1').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star2').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star3').setAttribute("class", "fa fa-star");
-			            document.getElementById('star4').setAttribute("class", "fa fa-star");
-			            document.getElementById('star5').setAttribute("class", "fa fa-star");
-			        }
-			
-			        function clickstar3(){
-			            document.getElementById('star1').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star2').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star3').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star4').setAttribute("class", "fa fa-star");
-			            document.getElementById('star5').setAttribute("class", "fa fa-star");
-			        }
-			
-			        function clickstar4(){
-			            document.getElementById('star1').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star2').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star3').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star4').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star5').setAttribute("class", "fa fa-star");
-			        }
-			
-			        function clickstar5(){
-			            document.getElementById('star1').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star2').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star3').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star4').setAttribute("class", "fa fa-star checked");
-			            document.getElementById('star5').setAttribute("class", "fa fa-star checked");
-			        }
-			
-			    </script>
-		</div>
+
 
 </html>
 <jsp:include page="../main/footer.jsp"/>

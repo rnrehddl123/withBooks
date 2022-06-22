@@ -36,7 +36,7 @@
 		<div class="listEpisode">
 			<div class="list-group">
 				<c:forEach items="${elist}" var="episode">
-				  	<a href="clientViewer?epnum=${episode.epnum}" class="list-group-item list-group-item-action">
+				  	<a onclick="epclick(${episode.epnum})" class="list-group-item list-group-item-action">
 				  		${episode.epi_subject}
 				  		<p>${episode.epi_date}</p>
 				  	</a>
@@ -50,26 +50,29 @@
 			<label class="form-label">리뷰</label>
 			<hr>
 			<form>
-				<div class="content">
-				  <div>
-				  	<P>이 책을 평가해주세요!</P>
-				  	<div>
-				  		<div class="stars">
-						    <i class="bi bi-star"></i>
-						    <i class="bi bi-star"></i>
-						    <i class="bi bi-star"></i>
-						    <i class="bi bi-star"></i>
-						    <i class="bi bi-star"></i>
-						</div>
-				  	</div>
-				  	<div class="textdiv"><textarea cols="70" rows="6"></textarea></div>
-				  	<button type="submit" class="btn btn-primary">작성하기</button>
-				  </div>
-				</div>
+				<div class="review_content">
+					<div class="review_chart">
+						테스트
+					</div>
+					<div class="review_form">
+						<P>이 책을 평가해주세요!</P>
+						<div>
+							<div class="stars" onmouseout="starout()">
+							    <i class="bi bi-star"></i>
+							    <i class="bi bi-star"></i>
+							    <i class="bi bi-star"></i>
+							    <i class="bi bi-star"></i>
+							    <i class="bi bi-star"></i>
+							</div>
+					  	</div>
+					  	<div class="textdiv"><textarea cols="76" rows="6"></textarea></div>
+					  	<button type="submit" class="btn btn-primary">작성하기</button>
+					  </div>
+					</div>
 			</form>
 		</div>
 	</div>
-	
+	<jsp:include page="/WEB-INF/views/purchase_modal.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 
@@ -109,12 +112,199 @@
 	
 	
 	var star = document.querySelectorAll('.bi-star');
+	var stars = document.querySelectorAll('.stars');
+	
+	function starout(){
+		for(var i=0;i<star.length;i++){
+			star[i].classList.remove('temp');
+			if(!star[i].classList.contains('click')){
+				star[i].classList.remove('bi-star-fill');
+				star[i].classList.add('bi-star');
+			}
+		}
+	}
 	
 	
+	function epclick(e){
+		if(mnum==null){
+			location.href='login';
+		}
+		fetch('selectEpi', {
+            method: 'POST',
+            body: JSON.stringify({ epnum:e}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(response => {
+        	console.log(response);
+        	if(response.type=='go'){
+        		location.href='clientViewer?epnum='+e;
+        	}else {
+        		if(response.type=='Purchase'){
+            		modal_msg.innerHTML="구매 하시겠습니까?";
+            		modal_footer.innerHTML="<button onclick='close_modal()' type='button' class='btn btn-secondary close' data-bs-dismiss='modal'>닫기</button><a href=EpisodeOrder?epnum="
+            		+e+"><button type='button' class='btn btn-primary'>구매하기</button></a>"
+            		purchase_modal.classList.remove('hidden');
+            	}
+			}
+        });
+	}
+	
+	
+	
+	star[0].addEventListener("mouseover", function(e){
+		star[0].classList.remove('bi-star');
+		star[0].classList.add('bi-star-fill');
+		if(!star[1].classList.contains('click')){
+			star[1].classList.remove('bi-star-fill');
+			star[1].classList.add('bi-star');
+		}
+		if(!star[2].classList.contains('click')){
+			star[2].classList.remove('bi-star-fill');
+			star[2].classList.add('bi-star');
+		}
+		if(!star[3].classList.contains('click')){
+			star[3].classList.remove('bi-star-fill');
+			star[3].classList.add('bi-star');
+		}
+		if(!star[4].classList.contains('click')){
+			star[4].classList.remove('bi-star-fill');
+			star[4].classList.add('bi-star');
+		}
+		star[0].classList.add('temp');
+		star[1].classList.remove('temp');
+		star[2].classList.remove('temp');
+		star[3].classList.remove('temp');
+		star[4].classList.remove('temp');
+	})
 	star[0].addEventListener("click", function(e){
+		star[0].classList.add('click');
+		star[1].classList.remove('click');
+		star[2].classList.remove('click');
+		star[3].classList.remove('click');
+		star[4].classList.remove('click');
+	})
+	
+	star[1].addEventListener("mouseover", function(e){
+		star[0].classList.remove('bi-star');
+		star[0].classList.add('bi-star-fill');
+		star[1].classList.remove('bi-star');
+		star[1].classList.add('bi-star-fill');
+		if(!star[2].classList.contains('click')){
+			star[2].classList.remove('bi-star-fill');
+			star[2].classList.add('bi-star');
+		}
+		if(!star[3].classList.contains('click')){
+			star[3].classList.remove('bi-star-fill');
+			star[3].classList.add('bi-star');
+		}
+		if(!star[4].classList.contains('click')){
+			star[4].classList.remove('bi-star-fill');
+			star[4].classList.add('bi-star');
+		};
+		star[0].classList.add('temp');
+		star[1].classList.add('temp');
+		star[2].classList.remove('temp');
+		star[3].classList.remove('temp');
+		star[4].classList.remove('temp');
+	})
+	star[1].addEventListener("click", function(e){
+		star[0].classList.add('click');
+		star[1].classList.add('click');
+		star[2].classList.remove('click');
+		star[3].classList.remove('click');
+		star[4].classList.remove('click');
+	})
+	
+	
+	
+	star[2].addEventListener("mouseover", function(e){
+		star[0].classList.remove('bi-star');
+		star[0].classList.add('bi-star-fill');
+		star[1].classList.remove('bi-star');
+		star[1].classList.add('bi-star-fill');
+		star[2].classList.remove('bi-star');
+		star[2].classList.add('bi-star-fill');
+		if(!star[3].classList.contains('click')){
+			star[3].classList.remove('bi-star-fill');
+			star[3].classList.add('bi-star');
+		}
+		if(!star[4].classList.contains('click')){
+			star[4].classList.remove('bi-star-fill');
+			star[4].classList.add('bi-star');
+		};
+		star[0].classList.add('temp');
+		star[1].classList.add('temp');
+		star[2].classList.add('temp');
+		star[3].classList.remove('temp');
+		star[4].classList.remove('temp');
+	})
+	
+	star[2].addEventListener("click", function(e){
+		star[0].classList.add('click');
+		star[1].classList.add('click');
+		star[2].classList.add('click');
+		star[3].classList.remove('click');
+		star[4].classList.remove('click');
+	})
+	
+	star[3].addEventListener("mouseover", function(e){
+		star[0].classList.remove('bi-star');
+		star[0].classList.add('bi-star-fill');
+		star[1].classList.remove('bi-star');
+		star[1].classList.add('bi-star-fill');
+		star[2].classList.remove('bi-star');
+		star[2].classList.add('bi-star-fill');
+		star[3].classList.remove('bi-star');
+		star[3].classList.add('bi-star-fill');
+		if(!star[4].classList.contains('click')){
+			star[4].classList.remove('bi-star-fill');
+			star[4].classList.add('bi-star');
+		};
+		star[0].classList.add('temp');
+		star[1].classList.add('temp');
+		star[2].classList.add('temp');
+		star[3].classList.add('temp');
+		star[4].classList.remove('temp');
+	})
+	
+	star[3].addEventListener("click", function(e){
+		star[0].classList.add('click');
+		star[1].classList.add('click');
+		star[2].classList.add('click');
+		star[3].classList.add('click');
+		star[4].classList.remove('click');
+	})
+	
+	star[4].addEventListener("mouseover", function(e){
+		star[0].classList.remove('bi-star');
+		star[0].classList.add('bi-star-fill');
+		star[1].classList.remove('bi-star');
+		star[1].classList.add('bi-star-fill');
+		star[2].classList.remove('bi-star');
+		star[2].classList.add('bi-star-fill');
+		star[3].classList.remove('bi-star');
+		star[3].classList.add('bi-star-fill');
+		star[4].classList.remove('bi-star');
+		star[4].classList.add('bi-star-fill');
+		star[0].classList.add('temp');
+		star[1].classList.add('temp');
+		star[2].classList.add('temp');
+		star[3].classList.add('temp');
+		star[4].classList.add('temp');
 
-		console.log("asasasa")
-	});
+	})
+	
+	star[4].addEventListener("click", function(e){
+		star[0].classList.add('click');
+		star[1].classList.add('click');
+		star[2].classList.add('click');
+		star[3].classList.add('click');
+		star[4].classList.add('click');
+	})
+
 	
 	
 	

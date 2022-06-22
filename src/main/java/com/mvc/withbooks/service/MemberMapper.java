@@ -42,7 +42,7 @@ public class MemberMapper {
 		map.put("end", end);
 		List<MemberDTO> list = sqlSession.selectList("listWriter",map);
 		return list;
-}
+	}
 	
 	public int deleteMember(int mnum) {
 			int res = sqlSession.delete("deleteMember", mnum);
@@ -69,6 +69,13 @@ public class MemberMapper {
 		map.put("search", search);
 		map.put("searchString", searchString);
 		List<MemberDTO> find = sqlSession.selectList("findMember", map);
+		return find;
+	}
+	
+	public List<MemberDTO> findWriter(String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("searchString", searchString);
+		List<MemberDTO> find = sqlSession.selectList("findWriter", map);
 		return find;
 	}
 	

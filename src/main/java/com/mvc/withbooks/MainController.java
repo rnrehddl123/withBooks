@@ -8,12 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvc.withbooks.dto.AdminSlideDTO;
 import com.mvc.withbooks.dto.AdminSuggestDTO;
+import com.mvc.withbooks.dto.BoardDTO;
+import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
+import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NovelMapper;
 
 @Controller
@@ -25,6 +29,8 @@ public class MainController {
 	private AdminSuggestMapper adminSuggestMapper;
 	@Autowired
 	private NovelMapper novelMapper;
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	
 	
@@ -50,6 +56,15 @@ public class MainController {
 		}
 		req.setAttribute("sslist", sslist);
 		return "/main/main";
+	}
+	
+	@RequestMapping("/searchMain")
+	public String searchMain(HttpServletRequest req, String searchString) {
+		List<NovelDTO> nlist = novelMapper.findNovelMain(searchString);
+		req.setAttribute("listNovel", nlist);
+		List<MemberDTO> mlist = memberMapper.findWriter(searchString);
+		req.setAttribute("listWriter", mlist);
+		return "/main/search";
 	}
 	
 	@RequestMapping("/login")

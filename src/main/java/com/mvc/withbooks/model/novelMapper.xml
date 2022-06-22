@@ -32,6 +32,14 @@
 		select * from novel where ${search} = #{searchString}
 	</select>
 	
+	<select id="findNovelMain" parameterType="java.util.Map" resultType="NovelDTO">
+		select * from novel where Novel_subject like '%'||#{searchString}||'%'
+	</select>
+	
+	<select id="getNovelCount" resultType="int">
+		select count(*) from novel
+	</select>
+	
 	<select id="listForCate" parameterType="String" resultType="NovelDTO">
 		select novel_image, novel_subject, novel_memberName from novel n inner join category c on (n.novel_cate=c.cate_name) where novel_cate=#{selectCate}
 	</select>

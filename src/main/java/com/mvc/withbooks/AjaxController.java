@@ -176,5 +176,23 @@ public class AjaxController {
 		String javadata = gson.toJson(mapdata);
 		return javadata;
 	}
+	
+	
+	@RequestMapping("/selectEpi")
+	@ResponseBody
+	public String selectEpi(@RequestBody String data,HttpSession session){
+		Gson gson = new Gson();
+		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
+		Map<String, String> mapdata=new HashMap<String, String>();
+		Map<String, Double> params = gson.fromJson(data, Map.class);
+		int epnum=(int)Math.round(params.get("epnum"));
+		if(checkList.contains(epnum)) {
+			mapdata.put("type", "go");
+		}else {
+			mapdata.put("type", "Purchase");
+		}
+		String javadata = gson.toJson(mapdata);
+		return javadata;
+	}
 }
 

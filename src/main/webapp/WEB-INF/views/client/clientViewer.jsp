@@ -76,12 +76,8 @@
 		});
 	
 	
-	var purchase_modal = document.querySelector('.purchase_modal');
-	var close_btn = document.querySelector('.purchase_modal .close');
 	var prev_btn = document.querySelector('.prev_btn');
 	var next_btn = document.querySelector('.next_btn');
-	var modal_msg = document.querySelector('.modal-body p');
-	var modal_footer = document.querySelector('.modal-footer');
 	var epnum = ${epdto.epnum};
 	var nextData = {
             method: 'POST',
@@ -90,10 +86,7 @@
                 'Content-Type': 'text/plain'
             }
         };
-	
-	function close_modal(){
-		purchase_modal.classList.add('hidden');
-	};
+
 	
 	
 	

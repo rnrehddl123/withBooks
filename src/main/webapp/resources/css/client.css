@@ -138,33 +138,51 @@
 }
 
 
-.textdiv{
 
-}
 
-.reviw .content{
-
+.review_chart{
+	width: 169px;
 }
 
 .review_wrapper{
 	width: 800px;
 	margin: auto;
 	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 .review .form-label{
 	font-size: 40px;
 }
 
-.review p{
-
+.review button{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
 }
 
-
-.stars{
+.review_content{
 	display: flex;
 }
 
-.bi-star{
+.review_form{
+	width: 631px;
+	position: relative;
+}
+
+.stars{
+	display: flex;
+	justify-content: center;
+}
+
+.stars .bi{
 	font-size: 60px;
 }
+
+
+.stars .bi.click{
+	color: orange;
+}
+
+

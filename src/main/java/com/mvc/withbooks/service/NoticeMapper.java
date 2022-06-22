@@ -25,7 +25,7 @@ public class NoticeMapper {
 	}
 	
 	public NoticeDTO getNotice(int Nonum,String mode) {
-		if(mode.equals("contents")) {
+		if(mode.equals("content")) {
 			sqlSession.update("plusReadcount",Nonum);
 		}
 		NoticeDTO dto = sqlSession.selectOne("getNotice",Nonum);

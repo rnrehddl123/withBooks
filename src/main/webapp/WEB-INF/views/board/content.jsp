@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- content.jsp -->
 <html>
+<jsp:include page="../main/header.jsp"/>
 <jsp:include page="boardSidebar.jsp"/>
 		<div align="center" style="
     margin-top: auto;
@@ -54,13 +55,4 @@
   	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
+<jsp:include page="../main/footer.jsp"/>

@@ -18,7 +18,7 @@
 			<tr height="30%">
 				<td width="200" align="center">보유 포인트<br>${login.cash}<br><a href="clientPay">충전하러가기</a></td>
 				<td width="200" align="center">쿠폰<br>보유하신 쿠폰이 없습니다.</td>
-				<td width="200" align="center"><a href="clientLibrary">내 서재</a></td>
+				<td width="200" align="center"><a href="clientLibrary?mnum=${login.mnum}">내 서재</a></td>
 			</tr>
 			<tr height="30%">
 				<td width="200" align="center"><a href="clientCart">장바구니</a></td>

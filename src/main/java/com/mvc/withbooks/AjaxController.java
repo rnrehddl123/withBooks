@@ -83,20 +83,25 @@ public class AjaxController {
 		}
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		params.put("mnum", String.valueOf(login.getMnum()));
-		params.put("Purchase_price","100");
+		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
+		if(checkList.contains(Integer.parseInt(params.get("epnum")))) {
+			params.put("Purchase_price", "0");
+		}else {
+			params.put("Purchase_price", "100");
+		}
 		Map<String, String> epmap = episodeMapper.contentNoEpisode(Integer.parseInt(params.get("epnum")));
 		int res = memberMapper.purchaseCash(params);
 		params.put("nnum", String.valueOf(epmap.get("NNUM")));
-		params.put("epnum", String.valueOf(epmap.get("EPNUM")));
-		int res2 = purchaseHistoryMapper.insertPurchase(params);		
-		if(res>0) {
+		params.put("epnum", String.valueOf(epmap.get("EPNUM")));		
+		if(checkList.contains(Integer.parseInt(params.get("epnum")))) {
+			req.setAttribute("msg", "구매하신 회차입니다. 에피소드 목록으로 돌아갑니다.");
+			req.setAttribute("url", "clientNovelInfo?nnum=" + Integer.parseInt(params.get("nnum")));
+			login.setCash(login.getCash());
+		}else if(res>0) {
+			int res2 = purchaseHistoryMapper.insertPurchase(params);
 			req.setAttribute("msg", "에피소드 구매성공.");
 			req.setAttribute("url", "clientViewer?epnum=" + Integer.parseInt(params.get("epnum")));
-			List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
-			if(checkList.contains(Integer.parseInt(params.get("epnum")))) {
-				req.setAttribute("msg", "구매하신 회차입니다. 에피소드 목록으로 돌아갑니다.");
-				req.setAttribute("url", "clientNovelInfo?nnum=" + Integer.parseInt(params.get("nnum")));
-			}else if(login.getCash()>100){
+			if(login.getCash()>100){
 				login.setCash(login.getCash() - Integer.parseInt(params.get("Purchase_price")));
 				checkList.add(Integer.parseInt(params.get("epnum")));
 				session.setAttribute("checkList", checkList);

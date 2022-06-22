@@ -22,7 +22,7 @@
       <th scope="col" align="center">조회수</th>
     </tr>
   </thead>
-  	<c:if test="${empty listNotice}">
+  	<c:if test="${empty NlistNotice}">
 			<tr>
 				<td colspan="4" align="center">등록된 공지사항이 없습니다.</td>
 			</tr>

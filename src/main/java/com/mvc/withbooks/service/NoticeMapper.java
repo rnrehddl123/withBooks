@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.NoticeDTO;
-import com.mvc.withbooks.dto.NovelDTO;
 
 @Service
 public class NoticeMapper {

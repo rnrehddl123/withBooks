@@ -18,6 +18,7 @@
 		
 		<div>
 		<h1>일반고객</h1>
+			<li><h3><a href="clientNovelListForCate">일반회원 카테고리별 소설목록 페이지</a></h3>
 			<li><h3><a href="clientLeave">일반회원 탈퇴페이지</a></h3>
 			<li><h3><a href="clientOrder">일반회원 주문하기</a></h3>
 			<li><h3><a href="clientCart">일반회원 장바구니</a></h3>

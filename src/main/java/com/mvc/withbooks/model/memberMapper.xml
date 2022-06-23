@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="findWriter" parameterType="java.util.Map" resultType="memberDTO">
-		select * from (select rownum rn, A.* from (select * from member where Member_authority = 'writer' and Member_id like '%'||#{searchString}||'%')A) where rn between #{start} and #{end}
+		select * from (select rownum rn, A.* from (select * from member where Member_authority = 'writer' and Member_name like '%'||#{searchString}||'%')A) where rn between #{start} and #{end}
 	</select>
 
 	<insert id="insertMember" parameterType="memberDTO">
@@ -70,7 +70,7 @@
 		select count(*) from member where Member_authority = 'writer'
 	</select>
 	<select id="getWriterCountMain" parameterType="java.util.Map" resultType="int">
-		select count(*) from member where Member_authority = 'writer' and Member_id like '%'||#{searchString}||'%'
+		select count(*) from member where Member_authority = 'writer' and Member_name like '%'||#{searchString}||'%'
 	</select>
 	
 	<select id="searchNovelSubject" parameterType="int" resultType="novelDTO">

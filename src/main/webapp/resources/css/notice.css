@@ -1,7 +1,27 @@
+.list{
+	border-top: 1px solid #e6e8eb;
+	
+}
 
+.h1{
+	margin-top: 10px;
+    margin-bottom: 40px;
+}
 
+.a{
+	color: #808991;
+}
 
+.inner{
+	display: block;
+	position: relative;
+}
 
+.titletitle{
+	margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
 
 

@@ -55,6 +55,10 @@ header .navbar-collapse form{
 
 
 
+.kakao{
+	background-image: url( "../../resources/img/kakao_login_medium_wide.png" );
+}
+
 
 .left_card{
     margin-top: 20px;
@@ -96,13 +100,13 @@ header .navbar-collapse form{
 	margin:auto;
 	padding-top:150px;
 	height: 300px;
-	width: 360px;
+	width: 302px;
 }
 
 .login button{
 	margin: auto;
 	width: 100%;
-	height : 40px;
+	height : 48px;
 	margin-top: 10px;
 }
 

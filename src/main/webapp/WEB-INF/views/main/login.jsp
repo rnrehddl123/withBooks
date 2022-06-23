@@ -11,6 +11,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 <body>
 	<div class="login">
@@ -36,10 +37,19 @@
 				    </div>
 			  	</div>
 			  </div>
-			  <button type="submit" class="btn btn-primary">로그인</button>
-			  <button class="btn btn-light"><a href="insertMember">회원가입</a></button>
+				 <button type="submit" class="btn btn-primary">로그인</button>
+				 <a href="insertMember"><button class="btn btn-light" type="button">회원가입</button></a>
+				 
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=16bdacdabe4f6f5bbe134b1aca55b22f&redirect_uri=http://localhost:8080/withbooks/kakaoLogin&response_type=code">
+					<button type="button" class="btn btn-light kakao"></button>
+				</a>
 			 </form>
 		</div>
+		<ul>
+		</ul>
 	</div>
 </body>
+<script type="text/javascript">
+	
+</script>
 </html>

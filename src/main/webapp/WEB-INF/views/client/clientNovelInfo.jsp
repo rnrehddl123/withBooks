@@ -49,27 +49,68 @@
 		<div class="review">
 			<label class="form-label">리뷰</label>
 			<hr>
-			<form>
-				<div class="review_content">
-					<div class="review_chart">
-						테스트
+			<div class="review_content">
+				<div class="review_chart">
+					<c:if test="${ascore ne 'NaN'}">
+						${ascore}
+					</c:if>
+					<div class="review_score">
+						<div class="review_chart_star">
+							<i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						</div>
+						<div class="review_chart_star fill">
+							<i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						    <i class="bi bi-star-fill"></i>
+						</div>
 					</div>
-					<div class="review_form">
-						<P>이 책을 평가해주세요!</P>
-						<div>
-							<div class="stars" onmouseout="starout()">
-							    <i class="bi bi-star"></i>
-							    <i class="bi bi-star"></i>
-							    <i class="bi bi-star"></i>
-							    <i class="bi bi-star"></i>
-							    <i class="bi bi-star"></i>
+				</div>
+				<div class="review_form">
+				<P>이 책을 평가해주세요!</P>
+				<div>
+				<div class="stars" onmouseout="starout()">
+				    <i class="bi bi-star"></i>
+				    <i class="bi bi-star"></i>
+				    <i class="bi bi-star"></i>
+				    <i class="bi bi-star"></i>
+				    <i class="bi bi-star"></i>
+				</div>
+				</div>
+					<div class="textdiv"><textarea class="textarea" cols="76" rows="6"></textarea></div>
+					<button class="review_btn btn btn-primary">작성하기</button>
+				</div>
+			</div>
+			<div class="review_list">
+				<c:if test="${empty reviewList}">
+					첫번째 리뷰를 작성해 주세요.
+				</c:if>
+				<c:if test="${not empty reviewList}">
+					<c:forEach items="${reviewList}" var="review">
+						<section class="review_section">
+							<div class="review_info">
+								<div class="review_star count_${review.SCORE}">
+									<i class="bi bi-star-fill user_score"></i>
+								    <i class="bi bi-star-fill user_score"></i>
+								    <i class="bi bi-star-fill user_score"></i>
+								    <i class="bi bi-star-fill user_score"></i>
+								    <i class="bi bi-star-fill user_score"></i>
+								</div>
+								<p>${review.MEMBER_ID}</p>
+								<p>${review.REVIEW_DATE}</p>
 							</div>
-					  	</div>
-					  	<div class="textdiv"><textarea cols="76" rows="6"></textarea></div>
-					  	<button type="submit" class="btn btn-primary">작성하기</button>
-					  </div>
-					</div>
-			</form>
+							<div class="review_content">
+								<p>${review.CONTENT}</p>
+							</div>
+						</section>
+					</c:forEach>
+				</c:if>
+			</div>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/purchase_modal.jsp"></jsp:include>
@@ -111,8 +152,7 @@
     });
 	
 	
-	var star = document.querySelectorAll('.bi-star');
-	var stars = document.querySelectorAll('.stars');
+	var star = document.querySelectorAll('.stars .bi-star');
 	
 	function starout(){
 		for(var i=0;i<star.length;i++){
@@ -154,6 +194,72 @@
 	
 	
 	
+	var review_btn=document.querySelector('.review_btn');
+
+	
+	
+	review_btn.addEventListener('click', function(e){
+		if(mnum==null){
+			location.href='login';
+		}
+		var content=document.querySelector('.textarea').value;
+		var score= document.querySelectorAll('.click').length;
+		if(content==''){
+			alert('리뷰 내용을 입력해 주세요');
+			return;
+		}else if(score==0){
+			alert('별점을 입력해주세요.');
+			return;
+		}
+		if(review_btn.innerHTML=='작성하기'){
+			fetch('insertReview', {
+		          method: 'POST',
+		          body: JSON.stringify({ nnum, content,score}),
+		          headers: {
+		              'Content-Type': 'application/json'
+		          }
+		      })
+			.then(response => response.text())
+			.then(response => {
+			    if(response=='overap'){
+			    	alert('리뷰는 하나만 작성이 가능합니다.');
+			    }
+			});
+		}else{
+			var rnum=${review.RNUM}
+			fetch('updateReview', {
+		          method: 'POST',
+		          body: JSON.stringify({ nnum, content,score,rnum}),
+		          headers: {
+		              'Content-Type': 'application/json'
+		          }
+		      })
+			.then(response => response.text())
+			.then(response => {
+			    if(response=='overap'){
+			    	alert('리뷰를 작성해주시고 수정해주셔야합니다..');
+			    }
+			});
+		}
+		
+    });
+	
+	
+<c:if test="${not empty review}">
+	var score=${review.SCORE}
+	document.querySelector('.textarea').value='${review.CONTENT}'
+	for(var i=0;i<score;i++){
+		star[i].classList.add('bi-star-fill');
+		star[i].classList.add('click');
+		star[i].classList.remove('bi-star');
+	}
+	review_btn.innerHTML='수정하기'
+</c:if>
+	
+	
+	
+	
+	
 	star[0].addEventListener("mouseover", function(e){
 		star[0].classList.remove('bi-star');
 		star[0].classList.add('bi-star-fill');
@@ -185,6 +291,14 @@
 		star[2].classList.remove('click');
 		star[3].classList.remove('click');
 		star[4].classList.remove('click');
+		star[1].classList.remove('bi-star-fill');
+		star[1].classList.add('bi-star');
+		star[2].classList.remove('bi-star-fill');
+		star[2].classList.add('bi-star');
+		star[3].classList.remove('bi-star-fill');
+		star[3].classList.add('bi-star');
+		star[4].classList.remove('bi-star-fill');
+		star[4].classList.add('bi-star');
 	})
 	
 	star[1].addEventListener("mouseover", function(e){
@@ -216,6 +330,12 @@
 		star[2].classList.remove('click');
 		star[3].classList.remove('click');
 		star[4].classList.remove('click');
+		star[2].classList.remove('bi-star-fill');
+		star[2].classList.add('bi-star');
+		star[3].classList.remove('bi-star-fill');
+		star[3].classList.add('bi-star');
+		star[4].classList.remove('bi-star-fill');
+		star[4].classList.add('bi-star');
 	})
 	
 	
@@ -248,6 +368,10 @@
 		star[2].classList.add('click');
 		star[3].classList.remove('click');
 		star[4].classList.remove('click');
+		star[3].classList.remove('bi-star-fill');
+		star[3].classList.add('bi-star');
+		star[4].classList.remove('bi-star-fill');
+		star[4].classList.add('bi-star');
 	})
 	
 	star[3].addEventListener("mouseover", function(e){
@@ -276,6 +400,8 @@
 		star[2].classList.add('click');
 		star[3].classList.add('click');
 		star[4].classList.remove('click');
+		star[4].classList.remove('bi-star-fill');
+		star[4].classList.add('bi-star');
 	})
 	
 	star[4].addEventListener("mouseover", function(e){
@@ -304,7 +430,10 @@
 		star[3].classList.add('click');
 		star[4].classList.add('click');
 	})
-
+	
+	var review_chart_star=document.querySelector('.review_chart_star.fill');
+	var ascore=${ascore}*20+'%';
+	review_chart_star.style.width=ascore;
 	
 	
 	

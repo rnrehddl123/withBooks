@@ -185,4 +185,54 @@
 	color: orange;
 }
 
+.review_list{
+	margin-top: 60px;
+}
+
+.review_section{
+	display: flex;
+}
+
+.count_1 .user_score:nth-child(-n+1){
+	color: orange;
+}
+
+.count_2 .user_score:nth-child(-n+2){
+	color: orange;
+}
+
+.count_3 .user_score:nth-child(-n+3){
+	color: orange;
+}
+
+.count_4 .user_score:nth-child(-n+4){
+	color: orange;
+}
+
+.count_5 .user_score:nth-child(-n+5){
+	color: orange;
+}
+
+.review_score{
+	position: relative;
+	height: 24px;
+	width: 80px;
+}
+
+
+
+.review_chart_star{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: flex;
+}
+
+.review_chart_star.fill{
+	overflow: hidden;
+}
+
+.fill .bi-star-fill{
+	color: orange;
+}
 

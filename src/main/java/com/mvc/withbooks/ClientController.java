@@ -22,6 +22,7 @@ import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
 import com.mvc.withbooks.dto.NoticeNovelDTO;
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.ReviewDTO;
 import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
@@ -29,6 +30,7 @@ import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
 import com.mvc.withbooks.service.NovelMapper;
 import com.mvc.withbooks.service.PurchaseHistoryMapper;
+import com.mvc.withbooks.service.ReviewMapper;
 
 @Controller
 public class ClientController {
@@ -47,6 +49,8 @@ public class ClientController {
 	private EpisodeMapper episodeMapper;
 	@Autowired
 	private PurchaseHistoryMapper purchaseHistoryMapper;
+	@Autowired
+	private ReviewMapper reviewMapper;
 	
 
 	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
@@ -195,10 +199,19 @@ public class ClientController {
 			params.put("mnum", Integer.toString(login.getMnum()));
 			NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
 			req.setAttribute("noticeNovelDTO", noticeNovelDTO);
+			req.setAttribute("review", reviewMapper.getreview(login.getMnum()));
 		}
 		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
 		session.setAttribute("elist", elist);
 		req.setAttribute("noveldto", ndto);
+		List<Map<String, String>> reviewList = reviewMapper.getReviewList(nnum);
+		req.setAttribute("reviewList", reviewList);
+		double totalscore=0;
+		for(Map<String, String> map : reviewList) {
+			totalscore+=(double)Integer.parseInt(String.valueOf(map.get("SCORE")));
+		}
+		totalscore=totalscore/reviewList.size();
+		req.setAttribute("ascore", totalscore);
 		return "client/clientNovelInfo";
 	}
 

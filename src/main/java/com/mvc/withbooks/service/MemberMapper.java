@@ -147,4 +147,20 @@ public class MemberMapper {
 		List<NovelDTO> searchNovelMemberName = sqlSession.selectList("searchNovelMemberName", map);
 		return searchNovelMemberName;
 	}
+	
+	public String checkKakao(String kakaoid) {
+		String mnum = sqlSession.selectOne("checkKakao", kakaoid);
+		return mnum;
+	}
+	
+	public int insertKakaoMember(Map<String, Object> userInfo) {
+		int res=sqlSession.insert("insertKakaoMember",userInfo);
+		return res;
+	}
+	
+	public MemberDTO loginKakao(String kakaoid){
+		MemberDTO dto = sqlSession.selectOne("loginKakao", kakaoid);
+		return dto;
+	}
+
 }

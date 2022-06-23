@@ -13,7 +13,10 @@
 <table class="table">
   <thead>
   <div align="center">
+ 	<hr color="green">
   	<h1>공지사항</h1>
+  	<hr color="green">
+  	<p>
   </div>
     <tr>
       <th scope="col" align="center">번호</th>
@@ -54,6 +57,8 @@
 			[<a href="NlistNotice?pageNum=${endPage+1}">다음</a>]			
 		</c:if>
 	</c:if>
+	
+	<p>
 	
 	<form name="f" action="NlistNotice" method="post">
 		<input type="hidden" name="mode" value="search">

@@ -15,13 +15,13 @@
 <body>
 	<div align="center">
 		<hr color="green">
-  		<h1>[ 공지사항  ]</h1>
+  		<h1>공지사항</h1>
   		<hr color="green">
   		
   	</div>
   	<div>
-  		<div class="boardWrapper">
-  			<div class="title"><h2>${getNotice.notice_title}</h2></div>
+  		<div class="noticeWrapper">
+  			<div class="title"><h3>${getNotice.notice_title}</h3></div>
   			<div class="noticeInfo flex">
   				<div class="iconWrapper">
 	  				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -41,11 +41,13 @@
 					${getNotice.notice_reg_date}
 				</div>
 			</div>
-  			<div class="content">
+  			<div class="content" style="white-space: pre-line">
   				${getNotice.notice_content}
-<!-- 컨텐츠를 받은 후 줄바꾸기를 적용시키고 싶어요. -->
 
   			</div>
+  			
+  			<p>
+  			
 	  			<div class="btn-group flex" role="group" aria-label="Basic example">
 				  <button type="button" class="btn btn-primary" onclick="window.location='NlistNotice'">공지사항 목록</button>
 				</div>

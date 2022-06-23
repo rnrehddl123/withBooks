@@ -13,19 +13,21 @@
   <thead>
     <tr>
       <th scope="col" align="center">번호</th>
+      <th scope="col" align="center">카테고리</th>
       <th scope="col" align="center">제목</th>
       <th scope="col" align="center">작가</th>
     </tr>
   </thead>
   	<c:if test="${empty listNovel}">
 			<tr>
-				<td colspan="3" align="center">검색된 소설이 없습니다.</td>
+				<td colspan="4" align="center">검색된 소설이 없습니다.</td>
 			</tr>
 	</c:if>
   <tbody>
     <c:forEach var="ndto" items="${listNovel}">
 			<tr>
 				<td align="left">${ndto.nnum}</td>
+				<td align="left">${ndto.novel_cate}</td>
 				<td align="left">
 					<a href="clientNovelInfo?nnum=${ndto.nnum}">
 						${ndto.novel_subject}

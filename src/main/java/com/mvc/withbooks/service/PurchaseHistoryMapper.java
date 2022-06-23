@@ -18,8 +18,8 @@ public class PurchaseHistoryMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<PurchaseHistoryDTO> listPurchaseHistory(){
-		List<PurchaseHistoryDTO> list = sqlSession.selectList("listPurchaseHistory");
+	public List<Map<String, String>> listPurchaseHistory(int mnum){
+		List<Map<String, String>> list = sqlSession.selectList("purchaseHistoryList", mnum);
 		return list;
 	}
 	
@@ -40,5 +40,15 @@ public class PurchaseHistoryMapper {
 		List<Integer> checkList=sqlSession.selectList("purchaseHistoryCheckList",mnum);
 		return checkList;
 
+	}
+	
+	public int getPurchaseHistoryCount(int mnum) {
+		int res = sqlSession.selectOne("getPurchaseHistoryCount", mnum);
+		return res;
+	}
+	
+	public List<Map<String, String>> purchaseList(Map<String, String> params) {
+		List<Map<String, String>> list = sqlSession.selectList("purchaseList", params);
+		return list;
 	}
 }

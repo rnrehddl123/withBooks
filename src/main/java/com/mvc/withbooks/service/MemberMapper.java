@@ -92,7 +92,7 @@ public class MemberMapper {
 			}
 	}
 	
-	public int updateCash(Map<String, String> params) {
+	public int updateCash(Map<String, Object> params) {
 		int res = sqlSession.update("updateCash", params);
 		return res;
 	}

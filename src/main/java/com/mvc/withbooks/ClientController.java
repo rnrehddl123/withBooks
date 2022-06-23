@@ -13,21 +13,26 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.Gson;
 import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.EpisodeDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
 import com.mvc.withbooks.dto.NoticeNovelDTO;
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.PurchaseHistoryDTO;
 import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.PayMapper;
 import com.mvc.withbooks.service.PurchaseHistoryMapper;
 
 @Controller
@@ -47,7 +52,8 @@ public class ClientController {
 	private EpisodeMapper episodeMapper;
 	@Autowired
 	private PurchaseHistoryMapper purchaseHistoryMapper;
-	
+	@Autowired
+	private PayMapper payMapper;
 
 	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
 	public String ClientNovelListForCate() {
@@ -123,10 +129,44 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientOrderList")//일반회원 구매내역
-	public String ClientOrderList(HttpSession session) {
-		if(session.getAttribute("login")==null){
+	public String ClientOrderList(HttpSession session,HttpServletRequest req, int mnum) {
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
 			return "/main/login";
 		}
+		List<Map<String, String>> list = purchaseHistoryMapper.listPurchaseHistory(mnum);
+		int pageSize = 10;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		Map<String, String> parmas = new HashMap<String, String>();
+		parmas.put("mnum", String.valueOf(mnum));
+		parmas.put("startRow", String.valueOf(startRow));
+		parmas.put("endRow", String.valueOf(endRow));
+		int rowCount = purchaseHistoryMapper.getPurchaseHistoryCount(mnum);
+		if (endRow > rowCount) endRow = rowCount;
+		list = null;
+		if (rowCount>0){
+			list = purchaseHistoryMapper.purchaseList(parmas);
+		}
+		int purchaseNum = rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 10;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("purchaseNum", purchaseNum);
+		req.setAttribute("purchaseHistoryList", list);
 		return "client/clientMypage/clientOrderList";
 	}
 	
@@ -157,7 +197,7 @@ public class ClientController {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		int res = memberMapper.updateCash(params);
+		/*int res = memberMapper.updateCash(params);
 		if(res>0) {
 			req.setAttribute("msg", "충전성공.");
 			req.setAttribute("url", "clientMypage");
@@ -167,7 +207,7 @@ public class ClientController {
 		}else {
 			req.setAttribute("msg", "충전실패.");
 			req.setAttribute("url", "clientMypage");
-		}
+		}*/
 		return "message";
 	}
 	
@@ -366,26 +406,27 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="purchaseCash", method=RequestMethod.POST)
-	public String PurchaseCash(HttpServletRequest req, @RequestParam Map<String, String> params, HttpSession session) {
+	public String PurchaseCash(@RequestBody String data,HttpServletRequest req,HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
-		int res = memberMapper.purchaseCash(params);
+		Gson gson = new Gson();
+		Map<String, Object> params = gson.fromJson(data, Map.class);
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		params.put("mnum", String.valueOf(login.getMnum()));
+		int cash=(int)Math.round((Double)params.get("paid_amount"))*1000;
+		params.put("cash",cash);
+		int res = payMapper.insertPay(params);
+		
 		if(res>0) {
-			req.setAttribute("msg", "구매성공.");
-			req.setAttribute("url", "writerPay");
-			MemberDTO login = (MemberDTO)session.getAttribute("login");
-			if(login.getCash()>0) {
-				login.setCash(login.getCash() - Integer.parseInt(params.get("Purchase_price")));
-				session.setAttribute("login", login);
-			}else {
-				req.setAttribute("msg", "보유 포인트가 부족합니다. 포인트 충전 사이트로 이동합니다.");
-				req.setAttribute("url", "clientPay");
-			}
+			int res2 = memberMapper.updateCash(params);
+			login.setCash(login.getCash() + cash);
+			session.setAttribute("login", login);
+			return "clientMypage";
 		}else {
-			req.setAttribute("msg", "구매실패");
-			req.setAttribute("url", "writerPay");
+			req.setAttribute("msg", "실패 성공.");
+			req.setAttribute("url", "clientMypage");
 		}
-		return "message";
+		return "clientMypage";
 	}
 }

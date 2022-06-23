@@ -23,7 +23,7 @@
 			<li><h3><a href="clientCart">일반회원 장바구니</a></h3>
 			<li><h3><a href="clientLibrary?mnum=${login.mnum}">일반회원 내 서재</a></h3>
 			<li><h3><a href="clientOrderList?mnum=${login.mnum}">일반회원 구매내역</a></h3>
-			<li><h3><a href="clientPay">일반회원 충전하기</a></h3>
+			<li><h3><a href="clientPay?mnum=${login.mnum}">일반회원 충전하기</a></h3>
 			<li><h3><a href="clientUpdate">일반회원 개인정보수정</a></h3>
 			<li><h3><a href="clientMypage">일반회원 마이페이지</a></h3>
 			<li><h3><a href="clientNovelInfo">일반회원 소설요약</a></h3>

@@ -6,8 +6,15 @@ public class PurchaseHistoryDTO {
 	private int Purchase_price;
 	private MemberDTO memberDTO;
 	private EpisodeDTO episodeDTO;
+	private NovelDTO novelDTO;
 	public int getPhnum() {
 		return Phnum;
+	}
+	public NovelDTO getNovelDTO() {
+		return novelDTO;
+	}
+	public void setNovelDTO(NovelDTO novelDTO) {
+		this.novelDTO = novelDTO;
 	}
 	public void setPhnum(int phnum) {
 		Phnum = phnum;

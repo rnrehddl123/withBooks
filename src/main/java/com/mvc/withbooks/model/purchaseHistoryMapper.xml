@@ -3,8 +3,8 @@
  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mvc.withBooks.model.purchaseHistoryMapper"> 
-	<select id="purchaseHistoryList" resultType="PurchaseHistoryDTO" parameterType="int">
-		select Novel.Novel_image, Novel.Novel_subject, Novel.Novel_cate, PurchaseHistory.Purchase_date from Novel, PurchaseHistory where Novel.Mnum = PurchaseHistory.Mnum and Novel.Mnum = #{memberDTO.getMnum}
+	<select id="purchaseHistoryList" resultType="java.util.Map" parameterType="int">
+		select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date from EPISODE e , PurchaseHistory where PurchaseHistory.Mnum = #{memberDTO.getMnum}
 	</select>
 	
 	<insert id="insertPurchase" parameterType="java.util.Map">
@@ -20,4 +20,13 @@
 		SELECT EPNUM FROM PURCHASEHISTORY WHERE MNUM =#{mnum}
 	</select>
 	
+	<select id="getPurchaseHistoryCount" resultType="int">
+		select COUNT(*) FROM (select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date from EPISODE e , PurchaseHistory where PurchaseHistory.Mnum = #{memberDTO.getMnum})
+	</select>
+	
+	<select id="purchaseList" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select rownum rn, A.* from 
+		(select * from (select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date from EPISODE e , PurchaseHistory where PurchaseHistory.Mnum = #{mnum}) )A) 
+		where rn between #{startRow} and #{endRow}
+	</select>
 </mapper>

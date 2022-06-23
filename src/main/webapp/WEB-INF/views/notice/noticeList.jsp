@@ -11,11 +11,11 @@
 ">
 
 <table class="table title">
-  <!-- <thead> -->
+  <thead>
   <div align="center" >
- 	<hr color="green">
+  
   	<h1>공지사항</h1>
-  	<hr color="green">
+  	
   	<p>
   </div>
   <!-- 
@@ -26,8 +26,8 @@
       <th scope="col" align="center">조회수</th>
     </tr>
      -->
- <!--  </thead> -->
- 	<div class="list">
+ </thead>
+ 	
   	<c:if test="${empty NlistNotice}">
 			<tr>
 				<td colspan="4" align="center">등록된 공지사항이 없습니다.</td>
@@ -47,7 +47,7 @@
 			</tr>
 	</c:forEach>
   </tbody>
-  </div>
+  
 </table>
 <div>
 	<c:if test="${rowCount>0}">

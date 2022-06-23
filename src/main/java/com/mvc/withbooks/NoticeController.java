@@ -60,7 +60,7 @@ public class NoticeController {
 	
 	
 	@RequestMapping("/NcontentNotice") //noticeContent.jsp
-	public String noticeContent(HttpServletRequest req, int nonum) {
+	public String noticeContent(HttpServletRequest req, @RequestParam int nonum) {
 		NoticeDTO dto = noticeMapper.getNotice(nonum, "content");
 		req.setAttribute("getNotice", dto);
 		return "notice/noticeContent";

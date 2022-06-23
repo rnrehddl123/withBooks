@@ -72,9 +72,11 @@ public class MemberMapper {
 		return find;
 	}
 	
-	public List<MemberDTO> findWriter(String searchString){
-		java.util.Map<String, String> map = new java.util.Hashtable<>();
+	public List<MemberDTO> findWriter(String searchString, int start, int end){
+		java.util.Map<String, Object> map = new java.util.Hashtable<>();
 		map.put("searchString", searchString);
+		map.put("start", start);
+		map.put("end", end);
 		List<MemberDTO> find = sqlSession.selectList("findWriter", map);
 		return find;
 	}
@@ -122,6 +124,13 @@ public class MemberMapper {
 	
 	public int getWriterCount() {		
 		int count = sqlSession.selectOne("getWriterCount");
+		return count;
+	}
+	
+	public int getWriterCountMain(String searchString) {
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("searchString", searchString);
+		int count = sqlSession.selectOne("getWriterCountMain", map);
 		return count;
 	}
 	

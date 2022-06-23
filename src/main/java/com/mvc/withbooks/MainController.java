@@ -60,9 +60,64 @@ public class MainController {
 	
 	@RequestMapping("/searchMain")
 	public String searchMain(HttpServletRequest req, String searchString) {
-		List<NovelDTO> nlist = novelMapper.findNovelMain(searchString);
+		int novelPageSize = 5;
+		String novelPageNum = req.getParameter("novelPageNum");
+		if (novelPageNum==null){
+			novelPageNum = "1";
+		}
+		int novelCurrentPage = Integer.parseInt(novelPageNum);
+		int novelStartRow = (novelCurrentPage-1) * novelPageSize + 1;
+		int novelEndRow = novelStartRow + novelPageSize -1;
+		int novelRowCount = novelMapper.getNovelCountMain(searchString);
+		if (novelEndRow > novelRowCount) novelEndRow = novelRowCount;
+		List<NovelDTO> nlist = null;
+		int novelNum = 0;
+		if (novelRowCount>0){
+			nlist = novelMapper.findNovelMain(searchString, novelStartRow, novelEndRow);
+			novelNum = novelRowCount - (novelStartRow - 1);
+			if (novelRowCount>0) {
+				int novelPageCount = novelRowCount/novelPageSize + (novelRowCount%novelPageSize==0 ? 0 : 1);
+				int novelPageBlock = 3;
+				int novelStartPage = (novelCurrentPage - 1)/novelPageBlock  * novelPageBlock + 1;
+				int novelEndPage = novelStartPage + novelPageBlock - 1;
+				if (novelEndPage > novelPageCount) novelEndPage = novelPageCount;
+				req.setAttribute("novelPageCount", novelPageCount);
+				req.setAttribute("novelStartPage", novelStartPage);
+				req.setAttribute("novelEndPage", novelEndPage);
+			}
+		}
+		req.setAttribute("novelRowCount", novelRowCount);
+		req.setAttribute("novelNum", novelNum);
 		req.setAttribute("listNovel", nlist);
-		List<MemberDTO> mlist = memberMapper.findWriter(searchString);
+		
+		int writerPageSize = 5;
+		String writerPageNum = req.getParameter("writerPageNum");
+		if (writerPageNum==null){
+			writerPageNum = "1";
+		}
+		int writerCurrentPage = Integer.parseInt(writerPageNum);
+		int writerStartRow = (writerCurrentPage-1) * writerPageSize + 1;
+		int writerEndRow = writerStartRow + writerPageSize -1;
+		int writerRowCount = memberMapper.getWriterCountMain(searchString);
+		if (writerEndRow > writerRowCount) writerEndRow = writerRowCount;
+		List<MemberDTO> mlist = null;
+		int writerNum = 0;
+		if (writerRowCount>0){
+			mlist = memberMapper.findWriter(searchString, writerStartRow, writerEndRow);
+			writerNum = writerRowCount - (writerStartRow - 1);
+			if (writerRowCount>0) {
+				int writerPageCount = writerRowCount/writerPageSize + (writerRowCount%writerPageSize==0 ? 0 : 1);
+				int writerPageBlock = 3;
+				int writerStartPage = (writerCurrentPage - 1)/writerPageBlock  * writerPageBlock + 1;
+				int writerEndPage = writerStartPage + writerPageBlock - 1;
+				if (writerEndPage > writerPageCount) writerEndPage = writerPageCount;
+				req.setAttribute("writerPageCount", writerPageCount);
+				req.setAttribute("writerStartPage", writerStartPage);
+				req.setAttribute("writerEndPage", writerEndPage);
+			}
+		}
+		req.setAttribute("writerRowCount", writerRowCount);
+		req.setAttribute("writerNum", writerNum);
 		req.setAttribute("listWriter", mlist);
 		return "/main/search";
 	}

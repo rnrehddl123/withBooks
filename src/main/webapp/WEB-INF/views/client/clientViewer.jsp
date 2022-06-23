@@ -45,7 +45,6 @@
 		</div>
 		<footer class="bot">
 			<div class="content flex">
-				<a>화</a>
 				<div class="icon">
 					<div class="prev_btn">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
@@ -63,8 +62,14 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/purchase_modal.jsp"></jsp:include>
 </body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
 
 <script type="text/javascript">
+
+	document.oncontextmenu = function(){return false;}
+
+
+
 	document.addEventListener("wheel", function (e) {
 		  if (e.deltaY > 0) {
 			  document.querySelector(".top").classList.add("hide")

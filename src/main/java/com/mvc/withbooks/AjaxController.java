@@ -23,6 +23,7 @@ import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
 import com.mvc.withbooks.service.PurchaseHistoryMapper;
+import com.mvc.withbooks.service.ReviewMapper;
 
 
 @Controller
@@ -38,6 +39,8 @@ public class AjaxController {
 	private MemberMapper memberMapper;
 	@Autowired
 	private PurchaseHistoryMapper purchaseHistoryMapper;
+	@Autowired
+	private ReviewMapper reviewMapper;
 	
 	@RequestMapping("/setNoticeNovel")
 	@ResponseBody
@@ -193,6 +196,35 @@ public class AjaxController {
 		}
 		String javadata = gson.toJson(mapdata);
 		return javadata;
+	}
+	
+	
+	@RequestMapping("/insertReview")
+	@ResponseBody
+	public String insertReview(@RequestBody String data,HttpSession session){
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		if(reviewMapper.getreview(login.getMnum())==null) {
+			Gson gson = new Gson();
+			Map<String, Object> params = gson.fromJson(data, Map.class);
+			params.put("mnum",login.getMnum());
+			reviewMapper.insertReview(params);
+			return "test";
+		}
+		return "overap";
+	}
+	
+	@RequestMapping("/updateReview")
+	@ResponseBody
+	public String updateReview(@RequestBody String data,HttpSession session){
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		if(reviewMapper.getreview(login.getMnum())!=null) {
+			Gson gson = new Gson();
+			Map<String, Object> params = gson.fromJson(data, Map.class);
+			params.put("mnum",login.getMnum());
+			reviewMapper.updateReview(params);
+			return "test";
+		}
+		return "overap";
 	}
 }
 

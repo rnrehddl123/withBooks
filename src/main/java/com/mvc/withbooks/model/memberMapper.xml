@@ -72,4 +72,16 @@
 	<select id="searchNovelMemberName" parameterType="java.util.Map" resultType="novelDTO">
 		select * from novel where Novel_memberName like '%#{searchString}%'
 	</select>
+	
+	<insert id="insertKakaoMember" parameterType="java.util.Map">
+		INSERT INTO "MEMBER" (MNUM, MEMBER_NAME,MEMBER_EMAIL,KAKAOID) VALUES (seq_member.nextval,#{nickname},#{email},#{id})
+	</insert>
+	
+	<select id="checkKakao" parameterType="String" resultType="String">
+		select MNUM from MEMBER where KAKAOID=#{kakaoid}
+	</select>
+	
+	<select id="loginKakao" parameterType="String" resultType="memberDTO">
+		select * from member where KAKAOID=#{kakaoid}
+	</select>
 </mapper>

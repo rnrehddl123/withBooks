@@ -224,6 +224,10 @@ public class ClientController {
 			dto.setMember_preferred2(member_preferred[1]);
 		}else if (member_preferred.length>0) {
 			dto.setMember_preferred1(member_preferred[0]);
+		}else {
+			dto.setMember_preferred1(null);
+			dto.setMember_preferred2(null);
+			dto.setMember_preferred3(null);
 		}
 		
 		int res = memberMapper.insertMember(dto);

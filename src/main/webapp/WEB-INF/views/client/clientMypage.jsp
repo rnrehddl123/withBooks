@@ -21,8 +21,24 @@
 				<td width="200" align="center"><a href="clientLibrary?mnum=${login.mnum}">내 서재</a></td>
 			</tr>
 			<tr height="30%">
-				<td width="200" align="center"><a href="clientCart">장바구니</a></td>
-				<td width="200" align="center">선호 장르<br>${login.member_preferred1},${login.member_preferred2},${login.member_preferred3}</td>
+				<td width="200" align="center"><a href="clientCart">찜 목록</a></td>
+				<td width="200" align="center">
+					선호 장르<br>
+					<c:choose>
+						<c:when test="${empty login.member_preferred1 and empty login.member_preferred2 and empty login.member_preferred3}">
+							선호하는 장르가 없습니다.
+						</c:when>
+						<c:when test="${empty login.member_preferred2 and empty login.member_preferred3}">
+							${login.member_preferred1}
+						</c:when>
+						<c:when test="${empty login.member_preferred3}">
+							${login.member_preferred1},${login.member_preferred2}
+						</c:when>
+						<c:otherwise>
+							${login.member_preferred1},${login.member_preferred2},${login.member_preferred3}
+						</c:otherwise>
+					</c:choose>
+				</td>
 				<td width="200" align="center">(작가=소설쓰기)<br>(일반회원=공백)</td>
 			</tr>
 			<tr height="35%">
@@ -31,7 +47,7 @@
 						<li><h3><a href="clientOrderList">구매내역</a></h3></li>
 						<li><h3><a href="clientUpdate">개인정보수정</a></h3></li>
 						<li><h3><a href="clientLeave">회원탈퇴</a></h3></li>
-					</ul>		
+					</ul>
 				</td>
 			</tr>
 		</table>

@@ -29,6 +29,11 @@ public class NovelMapper {
 		return list;
 	}
 	
+	public int getNovelCount() {		
+		int count = sqlSession.selectOne("getNovelCount");
+		return count;
+	}
+	
 	public List<NovelDTO> listmemberNovel(int mnum) {
 		List<NovelDTO> list = sqlSession.selectList("listmemberNovel", mnum);
 		return list;
@@ -56,6 +61,13 @@ public class NovelMapper {
 		map.put("search", search);
 		map.put("searchString", searchString);
 		List<NovelDTO> find = sqlSession.selectList("findNovel", map);
+		return find;
+	}
+	
+	public List<NovelDTO> findNovelMain(String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("searchString", searchString);
+		List<NovelDTO> find = sqlSession.selectList("findNovelMain", map);
 		return find;
 	}
 	

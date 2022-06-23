@@ -10,21 +10,24 @@
     width: 70%;
 ">
 
-<table class="table">
-  <thead>
-  <div align="center">
+<table class="table title">
+  <!-- <thead> -->
+  <div align="center" >
  	<hr color="green">
   	<h1>공지사항</h1>
   	<hr color="green">
   	<p>
   </div>
+  <!-- 
     <tr>
       <th scope="col" align="center">번호</th>
       <th scope="col" align="center">제목</th>
       <th scope="col" align="center">작성일</th>
       <th scope="col" align="center">조회수</th>
     </tr>
-  </thead>
+     -->
+ <!--  </thead> -->
+ 	<div class="list">
   	<c:if test="${empty NlistNotice}">
 			<tr>
 				<td colspan="4" align="center">등록된 공지사항이 없습니다.</td>
@@ -33,17 +36,18 @@
   <tbody>
     <c:forEach var="nodto" items="${NlistNotice}">
 			<tr>
-				<td align="left">${nodto.nonum}</td>
-				<td align="left">
+				<!-- <td align="left">${nodto.nonum}</td> -->			<!-- 넘버 안붙이는게 나아보임 -->
+				<td align="center">
 					<a href="NcontentNotice?nonum=${nodto.nonum}">
-						${nodto.notice_title}
+						<font size="4">${nodto.notice_title}</font>		
 					</a>
+					<p> <font size="2">${nodto.notice_reg_date}</font>
 				</td>
-				<td align="left">${nodto.notice_reg_date}</td>
-				<td align="left">${nodto.notice_readPluscount}</td>
+				<!-- <td align="left">${nodto.notice_readPluscount}</td> -->	<!-- 조회수도 가리는 편이 자연스러운 것 같음 -->
 			</tr>
 	</c:forEach>
   </tbody>
+  </div>
 </table>
 <div>
 	<c:if test="${rowCount>0}">
@@ -62,7 +66,8 @@
 	
 	<form name="f" action="NlistNotice" method="post">
 		<input type="hidden" name="mode" value="search">
-			검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+			<input type="text" name="searchString" placeholder="검색">
+			<input type="submit" value="검색"><p>
 	</form>
 </div>
 

@@ -239,7 +239,10 @@ public class ClientController {
 			params.put("mnum", Integer.toString(login.getMnum()));
 			NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
 			req.setAttribute("noticeNovelDTO", noticeNovelDTO);
-			req.setAttribute("review", reviewMapper.getreview(login.getMnum()));
+			Map<String, Object> myReview=new HashMap<String, Object>();
+			myReview.put("mnum", login.getMnum());
+			myReview.put("nnum", nnum);
+			req.setAttribute("review", reviewMapper.getreview(myReview));
 		}
 		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
 		session.setAttribute("elist", elist);

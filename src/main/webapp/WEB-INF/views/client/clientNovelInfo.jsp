@@ -224,6 +224,7 @@
 			    if(response=='overap'){
 			    	alert('리뷰는 하나만 작성이 가능합니다.');
 			    }
+			    history.go(0);
 			});
 		}else{
 			var rnum=${review.RNUM}
@@ -239,6 +240,7 @@
 			    if(response=='overap'){
 			    	alert('리뷰를 작성해주시고 수정해주셔야합니다..');
 			    }
+			    history.go(0);
 			});
 		}
 		

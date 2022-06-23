@@ -16,9 +16,8 @@
 </head>
 <body>
 	<div align="center">
-		<hr color="green">
+
   		<h1>공지사항</h1>
-  		<hr color="green">
   		
   	</div>
   	<div>

@@ -32,7 +32,19 @@
 			</tr>
 	</c:forEach>
   </tbody>
-</table><p>
+</table>
+<c:if test="${novelRowCount>0}">			
+			<c:if test="${novelStartPage>1}">
+				[<a href="searchMain?novelPageNum=${novelStartPage-1}">이전</a>]			
+			</c:if>
+			<c:forEach var="i" begin="${novelStartPage}" end="${novelEndPage}">
+				[<a href="searchMain?novelPageNum=${i}"><c:out value="${i}"/></a>]	
+			</c:forEach>
+			<c:if test="${novelEndPage<novelPageCount}">
+				[<a href="searchMain?novelPageNum=${novelEndPage+1}">다음</a>]			
+			</c:if>
+</c:if>
+<p>
 <table class="table">
     <thead>
   <div align="center">
@@ -59,6 +71,17 @@
 	</c:forEach>
   </tbody>
 </table>
+<c:if test="${writerRowCount>0}">			
+			<c:if test="${writerStartPage>1}">
+				[<a href="searchMain?writerPageNum=${writerStartPage-1}">이전</a>]			
+			</c:if>
+			<c:forEach var="i" begin="${writerStartPage}" end="${writerEndPage}">
+				[<a href="searchMain?writerPageNum=${i}"><c:out value="${i}"/></a>]	
+			</c:forEach>
+			<c:if test="${writerEndPage<writerPageCount}">
+				[<a href="searchMain?writerPageNum=${writerEndPage+1}">다음</a>]			
+			</c:if>
+</c:if>
 <div>
 	
 <jsp:include page="footer.jsp"/>

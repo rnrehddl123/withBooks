@@ -33,11 +33,11 @@
 	</select>
 	
 	<select id="findNovelMain" parameterType="java.util.Map" resultType="NovelDTO">
-		select * from novel where Novel_subject like '%'||#{searchString}||'%'
+		select * from (select rownum rn, A.* from (select * from novel where Novel_subject like '%'||#{searchString}||'%')A) where rn between #{start} and #{end}
 	</select>
 	
-	<select id="getNovelCount" resultType="int">
-		select count(*) from novel
+	<select id="getNovelCountMain" parameterType="java.util.Map" resultType="int">
+		select count(*) from novel where Novel_subject like '%'||#{searchString}||'%'
 	</select>
 	
 	<select id="listForCate" parameterType="String" resultType="NovelDTO">

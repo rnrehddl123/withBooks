@@ -24,8 +24,8 @@ public class ReviewMapper {
 		return res;
 	}
 	
-	public Map<String, String> getreview(int mnum){
-		Map<String, String> review = sqlSession.selectOne("getReview",mnum);
+	public Map<String, String> getreview(Map<String, Object> params){
+		Map<String, String> review = sqlSession.selectOne("getReview",params);
 		return review;
 	}
 	

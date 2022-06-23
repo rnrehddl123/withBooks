@@ -208,10 +208,10 @@ public class AjaxController {
 	@ResponseBody
 	public String insertReview(@RequestBody String data,HttpSession session){
 		MemberDTO login=(MemberDTO) session.getAttribute("login");
-		if(reviewMapper.getreview(login.getMnum())==null) {
-			Gson gson = new Gson();
-			Map<String, Object> params = gson.fromJson(data, Map.class);
-			params.put("mnum",login.getMnum());
+		Gson gson = new Gson();
+		Map<String, Object> params = gson.fromJson(data, Map.class);
+		params.put("mnum",login.getMnum());
+		if(reviewMapper.getreview(params)==null) {
 			reviewMapper.insertReview(params);
 			return "test";
 		}
@@ -222,9 +222,10 @@ public class AjaxController {
 	@ResponseBody
 	public String updateReview(@RequestBody String data,HttpSession session){
 		MemberDTO login=(MemberDTO) session.getAttribute("login");
-		if(reviewMapper.getreview(login.getMnum())!=null) {
-			Gson gson = new Gson();
-			Map<String, Object> params = gson.fromJson(data, Map.class);
+		Gson gson = new Gson();
+		Map<String, Object> params = gson.fromJson(data, Map.class);
+		params.put("mnum",login.getMnum());
+		if(reviewMapper.getreview(params)!=null) {
 			params.put("mnum",login.getMnum());
 			reviewMapper.updateReview(params);
 			return "test";

@@ -12,8 +12,8 @@
  		UPDATE REVIEW SET CONTENT=#{content}, SCORE=#{score}, REVIEW_DATE=SYSDATE WHERE RNUM=#{rnum}
  	</update>
  	
- 	<select id="getReview" parameterType="int" resultType="java.util.Map">
- 		SELECT RNUM, MNUM, NNUM, CONTENT, SCORE,REVIEW_DATE FROM REVIEW WHERE MNUM=#{mnum}
+ 	<select id="getReview" parameterType="java.util.Map" resultType="java.util.Map">
+ 		SELECT RNUM, MNUM, NNUM, CONTENT, SCORE,REVIEW_DATE FROM REVIEW WHERE MNUM=#{mnum} AND NNUM=#{nnum}
  	</select>
  	
  	<select id="getReviewList" parameterType="int" resultType="java.util.Map">

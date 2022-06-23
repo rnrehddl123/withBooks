@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../main/header.jsp"/>
+<link href="resources/css/notice.css" rel="stylesheet" type="text/css" />
 <div align="center" style="
     margin-top: auto;
     margin-bottom: auto;
@@ -10,11 +11,11 @@
     width: 70%;
 ">
 
-<table class="table title">
-  <thead>
+<table class="table titletitle">
+  
   <div align="center" >
   
-  	<h1>공지사항</h1>
+  	<h1 class="h1">공지사항</h1>
   	
   	<p>
   </div>
@@ -26,8 +27,8 @@
       <th scope="col" align="center">조회수</th>
     </tr>
      -->
- </thead>
- 	
+ 
+ <div class="list">	
   	<c:if test="${empty NlistNotice}">
 			<tr>
 				<td colspan="4" align="center">등록된 공지사항이 없습니다.</td>
@@ -38,16 +39,16 @@
 			<tr>
 				<!-- <td align="left">${nodto.nonum}</td> -->			<!-- 넘버 안붙이는게 나아보임 -->
 				<td align="center">
-					<a href="NcontentNotice?nonum=${nodto.nonum}">
+					<a href="NcontentNotice?nonum=${nodto.nonum}" class="inner">
 						<font size="4">${nodto.notice_title}</font>		
 					</a>
-					<p> <font size="2">${nodto.notice_reg_date}</font>
+					<p><font size="2">${nodto.notice_reg_date}</font>
 				</td>
 				<!-- <td align="left">${nodto.notice_readPluscount}</td> -->	<!-- 조회수도 가리는 편이 자연스러운 것 같음 -->
 			</tr>
 	</c:forEach>
   </tbody>
-  
+  </div>
 </table>
 <div>
 	<c:if test="${rowCount>0}">

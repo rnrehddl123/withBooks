@@ -2,6 +2,7 @@ package com.mvc.withbooks;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -82,8 +83,39 @@ public class WriterController {
 		}
 		NovelDTO dto = novelMapper.getNovel(nnum);
 		req.setAttribute("getNovel", dto);
-		List<EpisodeDTO> list = episodeMapper.listEpisode(nnum);
-		req.setAttribute("listEpisode", list);
+		List<Map<String, String>> list = episodeMapper.listEpisodeCount(nnum);
+		int pageSize = 40;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("nnum", String.valueOf(nnum));
+		params.put("startRow", String.valueOf(startRow));
+		params.put("endRow", String.valueOf(endRow));
+		int rowCount = episodeMapper.getEpisodeCount(nnum);
+		if (endRow > rowCount) endRow = rowCount;
+		list = null;
+		if (rowCount>0){
+			list = episodeMapper.episodeCountList(params);
+		}
+		int episodeNum =  rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 10;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("episodeNum", episodeNum);
+		req.setAttribute("listEpisodeCount", list);
 		return "writer/writerPage/writerSubject/writerEpisodeList";
 	}
 		
@@ -232,7 +264,38 @@ public class WriterController {
 		if(login.getMnum()==mnum) {
 			MemberDTO dto = memberMapper.getMember(login.getMnum());
 			req.setAttribute("getMember", dto);
-			List<NovelDTO> list = novelMapper.listmemberNovel(login.getMnum());
+			List<Map<String, String>> list = novelMapper.listEpisodeCount(login.getMnum());
+			int pageSize = 40;
+			String pageNum = req.getParameter("pageNum");
+			if (pageNum==null){
+				pageNum = "1";
+			}
+			int currentPage = Integer.parseInt(pageNum);
+			int startRow = (currentPage-1) * pageSize + 1;
+			int endRow = startRow + pageSize -1;
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("mnum", String.valueOf(login.getMnum()));
+			params.put("startRow", String.valueOf(startRow));
+			params.put("endRow", String.valueOf(endRow));
+			int rowCount = novelMapper.novelCount(login.getMnum());
+			if (endRow > rowCount) endRow = rowCount;
+			int novelNum =  rowCount - (startRow - 1);
+			list = null;
+			if (rowCount>0){
+				list = novelMapper.novelCountList(params);
+			}
+			if (rowCount>0) {
+				int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+				int pageBlock = 10;
+				int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+				int endPage = startPage + pageBlock - 1;
+				if (endPage > pageCount) endPage = pageCount;
+				req.setAttribute("pageCount", pageCount);
+				req.setAttribute("startPage", startPage);
+				req.setAttribute("endPage", endPage);
+			}
+			req.setAttribute("rowCount", rowCount);
+			req.setAttribute("novelNum", novelNum);
 			req.setAttribute("listmemberNovel", list);
 			return "writer/writerPage/writerSubject/writerNovelList";
 		}else {

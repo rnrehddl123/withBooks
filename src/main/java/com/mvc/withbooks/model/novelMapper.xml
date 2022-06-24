@@ -44,4 +44,17 @@
 		select novel_image, novel_subject, novel_memberName from novel n inner join category c on (n.novel_cate=c.cate_name) where novel_cate=#{selectCate}
 	</select>
 	
+	<select id="NovelCount" resultType="int">
+		select COUNT(*) FROM (select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{mnum})
+	</select>
+	
+	<select id="novelCountList" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select rownum rn, A.* from 
+		(select * from (select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{mnum} ))A) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="listNovelCount" resultType="java.util.Map" parameterType="int">
+		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{Mnum}
+	</select>
 </mapper>

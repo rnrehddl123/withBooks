@@ -31,6 +31,9 @@
 			  <div class="inputWrapper">
 			    <input name="member_passwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
 			  </div>
+			  <div class="inputWrapper">
+			    <input name="member_passwd" type="passwordCheck" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 확인">
+			  </div>
 			  <div class="flex inputWrapper">
 			    <input name="member_tel1" type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">
 			    <div class="marginauto">-</div>
@@ -103,6 +106,21 @@ function CountChecked(field){
 		alert("카테고리는 3개까지만 입력이 가능합니다.");	
 	field.checked = false;					
 	count -= 1;							
+	}
+}
+
+function checkPassword() {
+	var password = document.getElementById('password').value;
+	
+	if(document.getElementById('password').value != "&&document.getElementById('passwordCheck').value!="){
+		if(document.getElementById('password').value == document.getElementById('passwordCheck').value){
+			 document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+			 document.getElementById('check').style.color='blue';
+		}
+		else{
+			 document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.'
+			 document.getElementById('check').style.color='red';
+		}
 	}
 }
 

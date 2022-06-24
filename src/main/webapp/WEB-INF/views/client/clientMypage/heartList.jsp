@@ -31,7 +31,7 @@
 	</c:if>
 	<c:forEach var="hdto" items="${listHeart}">
 		<tr align="center">
-			<td><img src="resources/img/${hdto.novelDTO.novel_image}"></td>
+			<td><img height="100" width="100" src="resources/img/${hdto.novelDTO.novel_image}"></td>
 			<td><a href="clientNovelInfo?nnum=${hdto.novelDTO.nnum}">${hdto.novelDTO.novel_subject}</a></td>
 		</tr>
 	</c:forEach>

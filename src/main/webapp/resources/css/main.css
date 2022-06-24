@@ -284,3 +284,24 @@ header .navbar-collapse form{
 .stars{
 	
 }
+
+.container-fluid{
+	width:79.2%; margin: 0 auto;
+}
+
+.grid-item{
+	margin: 0 auto;
+}
+
+hr {
+	border: 0px;
+    color: #212529;
+    border-color: #212529;
+    background-color: #212529;
+    width:79.2%;
+    margin: 0 auto;
+}
+
+.panel{
+	width:79.2%; margin: 0 auto;
+}

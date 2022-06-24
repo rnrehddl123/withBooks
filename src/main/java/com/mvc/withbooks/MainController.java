@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,6 +90,7 @@ public class MainController {
 		req.setAttribute("novelRowCount", novelRowCount);
 		req.setAttribute("novelNum", novelNum);
 		req.setAttribute("listNovel", nlist);
+		req.setAttribute("searchString", searchString);
 		
 		int writerPageSize = 5;
 		String writerPageNum = req.getParameter("writerPageNum");
@@ -98,12 +100,12 @@ public class MainController {
 		int writerCurrentPage = Integer.parseInt(writerPageNum);
 		int writerStartRow = (writerCurrentPage-1) * writerPageSize + 1;
 		int writerEndRow = writerStartRow + writerPageSize -1;
-		int writerRowCount = memberMapper.getWriterCountMain(searchString);
+		int writerRowCount = novelMapper.getWriterCountMain(searchString);
 		if (writerEndRow > writerRowCount) writerEndRow = writerRowCount;
-		List<MemberDTO> mlist = null;
+		List<NovelDTO> mlist = null;
 		int writerNum = 0;
 		if (writerRowCount>0){
-			mlist = memberMapper.findWriter(searchString, writerStartRow, writerEndRow);
+			mlist = novelMapper.findWriterMain(searchString, writerStartRow, writerEndRow);
 			writerNum = writerRowCount - (writerStartRow - 1);
 			if (writerRowCount>0) {
 				int writerPageCount = writerRowCount/writerPageSize + (writerRowCount%writerPageSize==0 ? 0 : 1);
@@ -120,6 +122,14 @@ public class MainController {
 		req.setAttribute("writerNum", writerNum);
 		req.setAttribute("listWriter", mlist);
 		return "/main/search";
+	}
+	
+	@RequestMapping("/searchWriterNovelList")
+	public String searchWriterNovelList(HttpServletRequest req, int mnum, String novel_memberName) {
+		req.setAttribute("novel_memberName", novel_memberName);
+		List<NovelDTO> list = novelMapper.listmemberNovel(mnum);
+		req.setAttribute("listmemberNovel", list);
+		return "/writer/writerPage/writerSubject/searchWriterNovelList";
 	}
 	
 	@RequestMapping("/login")

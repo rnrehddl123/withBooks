@@ -32,12 +32,37 @@
 		select * from novel where ${search} = #{searchString}
 	</select>
 	
+	<resultMap id="memberDTO" type="com.mvc.withbooks.dto.MemberDTO">
+		<id column="MNUM" property="mnum"/>
+        <result column="B.MNUM" property="mnum"/>
+	</resultMap>
+	
+	<resultMap id="novelDTO" type="com.mvc.withbooks.dto.NovelDTO">
+		<id column="NNUM" property="nnum"/>
+		<result column="NOVEL_SUBJECT" property="novel_subject"/>
+		<result column="NNUM" property="nnum"/>
+		<result column="NOVEL_MEMBERNAME" property="novel_memberName"/>
+		<result column="NOVEL_IMAGE" property="novel_image"/>
+		<result column="NOVEL_CATE" property="novel_cate"/>
+		<result column="NOVEL_SUMMARY" property="novel_summary"/>
+		<result column="NOVEL_RECOMMAND" property="novel_recommand"/>
+        <association property="memberDTO" column="MNUM" resultMap="memberDTO" />
+	</resultMap>
+	
 	<select id="findNovelMain" parameterType="java.util.Map" resultType="NovelDTO">
 		select * from (select rownum rn, A.* from (select * from novel where Novel_subject like '%'||#{searchString}||'%')A) where rn between #{start} and #{end}
 	</select>
 	
+	<select id="findWriterMain" parameterType="java.util.Map" resultType="NovelDTO" resultMap="novelDTO">
+		select * from (select rownum rn, A.* from (select * from novel where Novel_subject like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
+	</select>
+	
 	<select id="getNovelCountMain" parameterType="java.util.Map" resultType="int">
 		select count(*) from novel where Novel_subject like '%'||#{searchString}||'%'
+	</select>
+	
+	<select id="getWriterCountMain" parameterType="java.util.Map" resultType="int">
+		select count(*) from novel where Novel_memberName like '%'||#{searchString}||'%'
 	</select>
 	
 	<select id="listForCate" parameterType="String" resultType="NovelDTO">

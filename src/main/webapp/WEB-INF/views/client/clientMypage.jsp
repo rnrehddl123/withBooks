@@ -21,6 +21,7 @@
 				<td width="200" align="center"><a href="clientLibrary?mnum=${login.mnum}">내 서재</a></td>
 			</tr>
 			<tr height="30%">
+<<<<<<< HEAD
 				<td width="200" align="center"><a href="clientCart">찜 목록</a></td>
 				<td width="200" align="center">
 					선호 장르<br>
@@ -39,6 +40,10 @@
 						</c:otherwise>
 					</c:choose>
 				</td>
+=======
+				<td width="200" align="center"><a href="clientHeart">찜 목록</a></td>
+				<td width="200" align="center">선호 장르<br>${login.member_preferred1},${login.member_preferred2},${login.member_preferred3}</td>
+>>>>>>> WJ
 				<td width="200" align="center">(작가=소설쓰기)<br>(일반회원=공백)</td>
 			</tr>
 			<tr height="35%">

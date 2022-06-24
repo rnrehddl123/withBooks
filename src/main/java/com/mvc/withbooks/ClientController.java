@@ -130,47 +130,6 @@ public class ClientController {
 		return "client/clientMypage/clientLibrary";
 	}
 	
-	@RequestMapping("/clientHeart")//일반회원 찜 목록
-	public String ClientCart(HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		return "client/clientMypage/clientHeartList";
-	}
-	
-	@RequestMapping("/clientHeartAdd")
-	public String ClientHeartAdd(HttpServletRequest req,HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		
-		String select = req.getParameter("select");
-		int nnum = Integer.parseInt(req.getParameter("nnum"));
-		session = req.getSession();
-		List<NovelDTO> heart = null;
-		if(session.getAttribute("heart") == null) {
-			heart = new ArrayList<NovelDTO>();
-		}else {
-			heart = (List)session.getAttribute("heart");
-		}
-		
-		List<NovelDTO> list = (List)session.getAttribute(select);
-		NovelDTO ndto = new NovelDTO();
-		
-		for(NovelDTO dto : list) {
-			if(dto.getNnum() == nnum) {
-				ndto = dto;
-				break;
-			} 
-		}
-		heart.add(ndto);
-		session.setAttribute("heart", heart);
-		req.setAttribute("result", "success");
-		
-		return "client/clientMypage/clientHeart";
-	}
-	
-	
 	@RequestMapping("/clientOrderList")//일반회원 구매내역
 	public String ClientOrderList(HttpSession session,HttpServletRequest req, int mnum) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");

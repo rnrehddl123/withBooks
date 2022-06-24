@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.mvc.withbooks.model.heartMapper">
+	<insert id="insertHeart" parameterType="java.util.Map">
+		INSERT INTO HEART(HNUM, MNUM, NNUM, HEART_REGDATE)VALUES(SEQ_HEART.nextval, #{mnum},#{nnum}, sysdate)
+	</insert>
+	
+	<delete id="deleteHeart" parameterType="java.util.Map">
+		delete from HEART where mnum = #{mnum} and nnum = #{nnum}
+	</delete>
+	
+	<select id="getHeart" parameterType="java.util.Map" resultType="HeartlDTO">
+		SELECT HNUM FROM HEART where mnum = #{mnum} and nnum = #{nnum}
+	</select>
+	
+	<select id="listHeart" parameterType="int" resultType="int">
+		SELECT HNUM FROM HEART where nnum = #{nnum}
+	</select>
+</mapper>

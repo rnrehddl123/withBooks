@@ -41,7 +41,7 @@
 	</select>
 	
 	<select id="listForCate" parameterType="String" resultType="NovelDTO">
-		select novel_cate, novel_image, novel_subject, novel_memberName from novel n inner join category c on (n.novel_cate=c.cate_name) where novel_cate=#{selectCate}
+		select novel_cate, Nnum, novel_image, novel_subject, novel_memberName from novel n inner join category c on (n.novel_cate=c.cate_name) where novel_cate=#{selectCate}
 	</select>
 	
 </mapper>

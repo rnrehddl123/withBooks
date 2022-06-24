@@ -61,6 +61,10 @@ a {
     align: center;
     }
 
+.n_Wrap{
+	width: 90%;
+}
+
 .n_Title{
 	cursor: default;
 	margin: 20px;
@@ -71,11 +75,11 @@ a {
 
 .n_Container{
 	cursor: default;
-    margin-top: 30px;
+    margin: 30px;
 	display: flex;
     flex-direction: row;
     position: relative;
-	width: 85%;
+	width: 95%;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	flex: 1;

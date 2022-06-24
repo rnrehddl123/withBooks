@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.HeartDTO;
 import com.mvc.withbooks.dto.NoticeNovelDTO;
 
@@ -23,17 +24,33 @@ public class HeartMapper {
 	}
 	
 	public int deleteHeart(Map<String, Integer> params) {
-		int res = sqlSession.delete("deleteHeart");
+		int res = sqlSession.delete("deleteHeart",params);
 		return res;
 	}
 	
-	public List<HeartDTO> listHeart(int nnum){
-		List<HeartDTO> list = sqlSession.selectList("listHeart", nnum);
+	public List<HeartDTO> listHeart(int start, int end){
+		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
+		map.put("start", start);
+		map.put("end", end);
+		List<HeartDTO> list = sqlSession.selectList("listHeart", map);
 		return list;
 	}
 	
 	public HeartDTO getHeart(Map<String, String> params){
 		HeartDTO heartDTO = sqlSession.selectOne("getHeart", params);
 		return heartDTO;
+	}
+	
+	public int getHeartCount() {		
+		int count = sqlSession.selectOne("getHeartCount");
+		return count;
+	}
+	
+	public List<HeartDTO> findHeart(String search, String searchString){
+		java.util.Map<String, String> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		List<HeartDTO> find = sqlSession.selectList("findHeart", map);
+		return find;
 	}
 }

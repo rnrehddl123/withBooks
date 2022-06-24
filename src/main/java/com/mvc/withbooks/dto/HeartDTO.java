@@ -5,7 +5,7 @@ public class HeartDTO {
 	private NovelDTO novelDTO;
 	private MemberDTO memberDTO;
 	private String heart_regDate;
-	
+
 	public int getHnum() {
 		return Hnum;
 	}

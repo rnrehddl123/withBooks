@@ -13,7 +13,7 @@
  		select * from category
  	</select>
  	
- 	<select id="selectCate" parameterType="int" resultType="String">
+ 	<select id="selectCate" parameterType="String" resultType="String">
  		select cate_name from category where cnum = #{cnum}
  	</select>
  	

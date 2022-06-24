@@ -30,7 +30,7 @@ public class EpisodeMapper {
 	}
 	
 	public List<EpisodeDTO> listNoEpisode(int nnum) {
-		List<EpisodeDTO> list = sqlSession.selectList("listEpisode", nnum);
+		List<EpisodeDTO> list = sqlSession.selectList("listNoEpisode", nnum);
 		return list;
 	}
 	
@@ -60,5 +60,20 @@ public class EpisodeMapper {
 	public Map<String, String> contentNoEpisode(int epnum) {
 		Map<String, String> params = sqlSession.selectOne("contentNoEpisode", epnum);
 		return params;
+	}
+	
+	public int getEpisodeCount(int nnum) {
+		int res = sqlSession.selectOne("getEpisodeCount", nnum);
+		return res;
+	}
+	
+	public List<Map<String, String>> episodeCountList(Map<String, String> params) {
+		List<Map<String, String>> list = sqlSession.selectList("episodeCountList", params);
+		return list;
+	}
+	
+	public List<Map<String, String>> listEpisodeCount(int nnum) {
+		List<Map<String, String>> list = sqlSession.selectList("listEpisodeCount", nnum);
+		return list;
 	}
 }

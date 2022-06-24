@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="listNoEpisode" resultType="EpisodeDTO">
-		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epi_date
+		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epnum DESC
 	</select>
 	
 	<insert id="insertEpisode" parameterType="EpisodeDTO" useGeneratedKeys="true" keyColumn="Epnum" keyProperty="Epnum">
@@ -39,5 +39,19 @@
 	
 	<select id="contentNoEpisode" parameterType="int" resultType="java.util.Map">
 		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount, Nnum from episode where epnum=#{epnum}
+	</select>
+	
+	<select id="getEpisodeCount" resultType="int">
+		select COUNT(*) FROM (select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum})
+	</select>
+	
+	<select id="episodeCountList" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select rownum rn, A.* from 
+		(select * from (select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum}) )A) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="listEpisodeCount" resultType="java.util.Map" parameterType="int">
+		select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epi_date DESC
 	</select>
 </mapper>

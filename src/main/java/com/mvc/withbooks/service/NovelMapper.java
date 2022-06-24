@@ -95,4 +95,19 @@ public class NovelMapper {
 		List<NovelDTO> listForCate = sqlSession.selectList("listForCate", selectCate);
 		return listForCate;
 	}
+	
+	public int novelCount(int mnum) {
+		int res = sqlSession.selectOne("NovelCount", mnum);
+		return res;
+	}
+	
+	public List<Map<String, String>> novelCountList(Map<String, String> params) {
+		List<Map<String, String>> list = sqlSession.selectList("novelCountList", params);
+		return list;
+	}
+	
+	public List<Map<String, String>> listEpisodeCount(int mnum) {
+		List<Map<String, String>> list = sqlSession.selectList("listNovelCount", mnum);
+		return list;
+	}
 }

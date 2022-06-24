@@ -6,7 +6,6 @@
 <html>
 <head>
 	<title>에피소드 목록</title>
-	<
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
@@ -20,30 +19,41 @@
 				 <a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a></td>
 			</tr>
 			<tr>
-				<th>번호</th>
 				<th>에피소드 제목</th>
 				<th>작성일</th>
 				<th>조회수</th>
 				<th>추천수</th>
 				<th>수정</th>
 			</tr>
-			<c:if test="${empty listEpisode}">
+			<c:set var="pageNum" value="${episodeNum}"/>
+			<c:if test="${empty listEpisodeCount}">
 			<tr>
-				<td colspan="6">등록된 에피소드가 없습니다.</td>
+				<td colspan="5">등록된 에피소드가 없습니다.</td>
 			</tr>
 			</c:if>
-			<c:forEach var="dto" items="${listEpisode}">
+			<c:forEach var="dto" items="${listEpisodeCount}">
 			<tr>
-				<td align="center"><input type="radio" name="epnum" value="${dto.epnum}"></td>
-				<td><a href="clientViewer?epnum=${dto.epnum}">${dto.epi_subject}</a></td>
-				<td align="center">${dto.epi_date}</td>
-				<td align="center">${dto.epi_readcount}</td>
-				<td align="center">${dto.epi_recommand}</td>
+				<td><a href="clientViewer?epnum=${dto.epnum}">${dto.EPI_SUBJECT}</a></td>
+				<td align="center">${dto.EPI_DATE}</td>
+				<td align="center">${dto.EPI_READCOUNT}</td>
+				<td align="center">${dto.EPI_RECOMMAND}</td>
 				<td align="center"><a href="writerEpisodeUpdate?epnum=${dto.epnum}&nnum=${getNovel.nnum}">수정</a></td>
 			</tr>		
 			</c:forEach>
 		</table>
-			<input type="submit" value="결제">
+		<ul class="pagination justify-content-center">
+		<c:if test="${rowCount>0}">			
+			<c:if test="${startPage>1}">
+				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&pageNum=${startPage-1}">이전</a></li>			
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&pageNum=${i}"><c:out value="${i}"/></a></li>	
+			</c:forEach>
+			<c:if test="${endPage<pageCount}">
+				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&pageNum=${endPage+1}">다음</a></li>		
+			</c:if>
+		</c:if>
+		</ul>
 		</form>
 	</div>
 <jsp:include page="../../../main/footer.jsp"/>

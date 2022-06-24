@@ -74,14 +74,22 @@ header .navbar-collapse form{
     background-color: #d3d3d3;
     border-radius: 100%;
     position: absolute;
-    left: 110px;
+    left: 10px;
+}
+
+.cardslide .carousel-control-next{
+	width:5%;
 }
 
 .cardslide .carousel-control-prev-icon{
     background-color: #d3d3d3;
     border-radius: 100%;
     position: absolute;
-    right: 110px;
+    right: 10px;
+}
+
+.cardslide .carousel-control-prev{
+	width:5%;
 }
 
 .login{
@@ -309,3 +317,4 @@ hr {
 .panel{
 	width:79.2%; margin: 0 auto;
 }
+

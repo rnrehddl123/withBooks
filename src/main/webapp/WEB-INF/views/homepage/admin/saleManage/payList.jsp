@@ -10,7 +10,7 @@
 		<div class="adminboard">
 			<b><h1>결제 내역</h1></b><p>
 			<table border="1" width="1000" height="500">
-   				<tr>
+   				<tr height="10%">
       				<th>pnum</th>
       				<th>imp_uid</th>
       				<th>merchant_uid</th>

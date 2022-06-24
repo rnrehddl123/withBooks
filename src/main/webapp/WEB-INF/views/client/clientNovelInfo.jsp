@@ -45,6 +45,10 @@
 		</div>
 	</div>
 	
+	<div>
+		<h3><a href="clientHeartAdd">찜 하기</a></h3>
+	</div>
+	
 	<div class="review_wrapper">
 		<div class="review">
 			<label class="form-label">리뷰</label>

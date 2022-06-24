@@ -88,6 +88,12 @@
         </a>
       </li>
       <li>
+        <a href="listPay" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          	결제 내역
+        </a>
+      </li>
+      <li>
         <a href="saleManageClient" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	회원 매출 관리

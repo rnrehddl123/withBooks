@@ -233,14 +233,14 @@
              	<c:forEach items="${cslist}" var="sudto">
              		<c:forEach items="${listNovel}" var="ndto">
              			<c:if test="${ndto.nnum eq sudto.nnum}">
-              				<div class="card col" style="width: 18rem;">
+              				<div class="card col" style="width: 18rem;" align="center">
               					<div class="card-image">
-                					<img src="resources/img/${ndto.novel_image}" class="card-img-top" alt="...">
+                					<img src="resources/img/${ndto.novel_image}" class="card-img-top" alt="..." width="19%" height="200">
                 				</div>
                 				<div class="card-body">
                   				<h5 class="card-title">${sudto.suggestNovel}</h5>
                   				<p class="card-text">${ndto.novel_summary}</p>
-                  				<a href="clientNovelInfo?nnum=${ndto.nnum}" class="btn btn-primary">Go somewhere</a>
+                  				<a href="clientNovelInfo?nnum=${ndto.nnum}" class="btn btn-primary">소설 읽기</a>
                 				</div>
                 			</div>
              			</c:if>

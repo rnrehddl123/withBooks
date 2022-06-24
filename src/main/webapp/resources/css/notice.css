@@ -1,6 +1,5 @@
 .list{
 	border-top: 1px solid #e6e8eb;
-	
 }
 
 .h1{
@@ -13,8 +12,10 @@
 }
 
 .inner{
+	padding-top: 10px;
 	display: block;
 	position: relative;
+	text-decoration: none;
 }
 
 .titletitle{
@@ -33,6 +34,7 @@
 .noticeWrapper{
 	border: solid 0.5px #c2c2c2;
 	border-radius: 0.5rem;
+	margin-top: 20px;
 }
 
 .title{

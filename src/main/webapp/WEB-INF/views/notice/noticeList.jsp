@@ -40,9 +40,9 @@
 				<!-- <td align="left">${nodto.nonum}</td> -->			<!-- 넘버 안붙이는게 나아보임 -->
 				<td align="center">
 					<a href="NcontentNotice?nonum=${nodto.nonum}" class="inner">
-						<font size="4">${nodto.notice_title}</font>		
-					</a>
-					<p><font size="2">${nodto.notice_reg_date}</font>
+						<font size="4">${nodto.notice_title}</font>
+					</a><br>
+					<font size="2" color="grey">${nodto.notice_reg_date}</font>
 				</td>
 				<!-- <td align="left">${nodto.notice_readPluscount}</td> -->	<!-- 조회수도 가리는 편이 자연스러운 것 같음 -->
 			</tr>

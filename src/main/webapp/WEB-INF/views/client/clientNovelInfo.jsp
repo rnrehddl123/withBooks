@@ -57,23 +57,24 @@
 				<div class="review_chart">
 					<c:if test="${ascore ne 'NaN'}">
 						${ascore}
+						<div class="review_score">
+							<div class="review_chart_star">
+								<i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							</div>
+							<div class="review_chart_star fill">
+								<i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							    <i class="bi bi-star-fill"></i>
+							</div>
+						</div>
 					</c:if>
-					<div class="review_score">
-						<div class="review_chart_star">
-							<i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						</div>
-						<div class="review_chart_star fill">
-							<i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						    <i class="bi bi-star-fill"></i>
-						</div>
-					</div>
+					
 				</div>
 				<div class="review_form">
 				<P>이 책을 평가해주세요!</P>

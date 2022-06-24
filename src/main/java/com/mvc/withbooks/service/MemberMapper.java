@@ -127,13 +127,6 @@ public class MemberMapper {
 		return count;
 	}
 	
-	public int getWriterCountMain(String searchString) {
-		java.util.Map<String, String> map = new java.util.Hashtable<>();
-		map.put("searchString", searchString);
-		int count = sqlSession.selectOne("getWriterCountMain", map);
-		return count;
-	}
-	
 	public List<NovelDTO> searchNovelSubject(String searchString){
 		Map<String, String> map = new Hashtable<>();
 		map.put("searchString", searchString);

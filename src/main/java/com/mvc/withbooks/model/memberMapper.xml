@@ -69,9 +69,6 @@
 	<select id="getWriterCount" resultType="int">
 		select count(*) from member where Member_authority = 'writer'
 	</select>
-	<select id="getWriterCountMain" parameterType="java.util.Map" resultType="int">
-		select count(*) from member where Member_authority = 'writer' and Member_name like '%'||#{searchString}||'%'
-	</select>
 	
 	<select id="searchNovelSubject" parameterType="int" resultType="novelDTO">
 		select * from novel where Novel_subject like '%#{searchString}%'

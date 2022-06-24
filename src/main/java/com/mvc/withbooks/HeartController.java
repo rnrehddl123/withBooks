@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.HeartDTO;
 import com.mvc.withbooks.service.HeartMapper;
 import com.mvc.withbooks.service.MemberMapper;

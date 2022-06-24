@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.gson.Gson;
 import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.EpisodeDTO;
+import com.mvc.withbooks.dto.HeartDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeEpisodeDTO;
 import com.mvc.withbooks.dto.NoticeNovelDTO;
@@ -29,6 +30,7 @@ import com.mvc.withbooks.dto.ReviewDTO;
 import com.mvc.withbooks.dto.PurchaseHistoryDTO;
 import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.EpisodeMapper;
+import com.mvc.withbooks.service.HeartMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeEpisodeMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
@@ -58,6 +60,8 @@ public class ClientController {
 	private ReviewMapper reviewMapper;
 	@Autowired
 	private PayMapper payMapper;
+	@Autowired
+	private HeartMapper heartMapper;
 
 	@RequestMapping("/clientNovelListForCate")//일반회원 카테고리별 소설목록 페이지
 	public String ClientNovelListForCate(HttpServletRequest req) {
@@ -220,16 +224,20 @@ public class ClientController {
 	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum) {
 		MemberDTO login=(MemberDTO)session.getAttribute("login");
 		NovelDTO ndto=novelMapper.getNovel(nnum);
+		
 		if(login!=null){
 			HashMap<String, String> params=new HashMap<String, String>();
 			params.put("nnum", Integer.toString(nnum));
 			params.put("mnum", Integer.toString(login.getMnum()));
 			NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
 			req.setAttribute("noticeNovelDTO", noticeNovelDTO);
+			HeartDTO heartDTO = heartMapper.getHeart(params);
+			req.setAttribute("heartDTO", heartDTO);
 			Map<String, Object> myReview=new HashMap<String, Object>();
 			myReview.put("mnum", login.getMnum());
 			myReview.put("nnum", nnum);
 			req.setAttribute("review", reviewMapper.getreview(myReview));
+			
 		}
 		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
 		session.setAttribute("elist", elist);

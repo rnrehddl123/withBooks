@@ -308,4 +308,27 @@ a {
 .fill .bi-star-fill{
 	color: orange;
 }
+.mypage{
+	margin-top: 80px;
+}
+
+
+.mypage h3{
+	text-align: center;
+}
+
+.myinfo{
+	margin-top:80px;
+	justify-content: space-evenly;
+}
+
+.myinfo i{
+	font-size: 40px;
+	margin: auto;
+}
+
+.myinfo li{
+	display: flex;
+    flex-direction: column;
+}
 

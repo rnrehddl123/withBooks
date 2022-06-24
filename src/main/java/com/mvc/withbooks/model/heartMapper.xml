@@ -16,7 +16,28 @@
 		SELECT HNUM FROM HEART where mnum = #{mnum} and nnum = #{nnum}
 	</select>
 	
-	<select id="listHeart" parameterType="int" resultType="int">
-		SELECT HNUM FROM HEART where nnum = #{nnum}
+	<select id="listHeart" parameterType="java.util.Map" resultType="HeartDTO" resultMap="heartDTO">
+		select * from (select rownum rn, A.* from (SELECT h.*,n.NOVEL_IMAGE,n.NOVEL_SUBJECT  FROM HEART h INNER JOIN NOVEL n ON h.NNUM =N.NNUM)A) where rn between #{start} and #{end}
 	</select>
+	
+	<select id="getHeartCount" resultType="int">
+		select count(*) from HEART
+	</select>
+	
+	<select id="findHeart" parameterType="java.util.Map" resultType="HeartDTO">
+		select * from HEART where ${search} = #{searchString}
+	</select>
+	
+	<resultMap id="heartDTO" type="com.mvc.withbooks.dto.HeartDTO">
+		<id column="HNUM" property="hnum"/>
+		<result column="HEART_REGDATE" property="heart_regDate"/>
+        <association property="novelDTO" column="NNUM" resultMap="novelDTO" />
+	</resultMap>
+	
+	<resultMap id="novelDTO" type="com.mvc.withbooks.dto.NovelDTO">
+		<id column="NNUM" property="nnum"/>
+        <result column="NOVEL_IMAGE" property="novel_image"/>
+        <result column="NOVEL_SUBJECT" property="novel_subject"/>
+	</resultMap>
+	
 </mapper>

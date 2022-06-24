@@ -16,9 +16,9 @@
 				<i class="bi bi-coin"></i>
 				<p>${login.cash}P</p>
 			</li></a>
-			<a href="####"><li>
-				<i class="bi bi-ticket"></i>
-				<p>보유하신 쿠폰이 없습니다.<p>
+			<a href="heartList"><li>
+				<i class="bi bi-bookmark-heart-fill"></i>
+				<p>찜 목록<p>
 			</li></a>
 			<a href="clientLibrary?mnum=${login.mnum}"><li>
 				<i class="bi bi-book"></i>

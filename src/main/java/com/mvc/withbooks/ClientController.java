@@ -76,6 +76,9 @@ public class ClientController {
 		String selectCate = categoryMapper.selectCate(cnum);
 		List<NovelDTO> listForCate = novelMapper.listForCate(selectCate);
 		req.setAttribute("listForCate", listForCate);
+		if(!listForCate.isEmpty()) {
+			req.setAttribute("selectCateName", listForCate.get(0).getNovel_cate());
+		}
 		return "client/clientNovelListForCate";
 	}
 

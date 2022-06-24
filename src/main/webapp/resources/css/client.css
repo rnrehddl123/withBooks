@@ -77,13 +77,18 @@ a {
     position: relative;
 	width: 85%;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: flex-start;
 	flex: 1;
 }
 
+.n_Content{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
 .n_image{
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 200px;
 }
 
 .view .top{

@@ -79,10 +79,15 @@ public class WriterController {
 	
 	@RequestMapping("/writerEpisodeList")
 	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, String change, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
 		}
+		int mnum = login.getMnum();
 		NovelDTO dto = novelMapper.getNovel(nnum);
+		if(dto.getMemberDTO().getMnum()!=mnum) {
+			return "redirect:main";
+		}
 		req.setAttribute("getNovel", dto);
 		List<Map<String, String>> list = episodeMapper.listEpisodeCount(nnum);
 		int pageSize = 20;
@@ -191,10 +196,15 @@ public class WriterController {
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
 	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int epnum, @RequestParam int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
 		}
+		int mnum = login.getMnum();
 		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "update");
+		if(dto.getNovelDTO().getMemberDTO().getMnum()!=mnum) {
+			return "redirect:main";
+		}
 		req.setAttribute("getEpisode", dto);
 		req.setAttribute("nnum", nnum);
 		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
@@ -202,9 +212,11 @@ public class WriterController {
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
 	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, @RequestParam int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
 		}
+		int mnum = login.getMnum();
 		int res = episodeMapper.updateEpisode(dto);
 	      String msg = null, url = null;
 	      if(res>0) {
@@ -230,10 +242,12 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
-	public String WriterNovel(HttpServletRequest req, HttpSession session, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
-		if(session.getAttribute("login")==null){
+	public String WriterNovel(HttpServletRequest req, HttpSession session, @ModelAttribute NovelDTO dto,BindingResult result){
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
 			return "/main/login";
 		}  
+		int mnum = login.getMnum();
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 	      MultipartFile mf = mr.getFile("file");
 	      String filename = mf.getOriginalFilename();
@@ -262,12 +276,12 @@ public class WriterController {
 	   }
 	
 	@RequestMapping("/writerNovelList")
-	public String WriterNovelList(HttpServletRequest req, HttpSession session, int mnum) {
+	public String WriterNovelList(HttpServletRequest req, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
-			return "/main/login";
+			return "redirect:login";
 		}
-		if(login.getMnum()==mnum) {
+		int mnum = login.getMnum();
 			MemberDTO dto = memberMapper.getMember(login.getMnum());
 			req.setAttribute("getMember", dto);
 			List<Map<String, String>> list = novelMapper.listEpisodeCount(login.getMnum());
@@ -304,10 +318,8 @@ public class WriterController {
 			req.setAttribute("novelNum", novelNum);
 			req.setAttribute("listmemberNovel", list);
 			return "writer/writerPage/writerSubject/writerNovelList";
-		}else {
-			return "/main/main";
 		}
-	}
+	
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.GET)
 	public String WriterNovelUpdateForm(HttpServletRequest req, @RequestParam int nnum, HttpSession session) {

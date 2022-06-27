@@ -36,9 +36,9 @@
  		delete from Board where Bnum = #{Bnum}
  	</select>
  	
- 	<select id="updateBoard" parameterType="int">
- 		update Board set Board_writer=#{board_writer}, Board_email=#{board_email}, Board_subject=#{board_subject}, Board_content=#{board_content} where Bnum=#{Bnum}
- 	</select>
+ 	<update id="updateBoard" parameterType="boardDTO">
+ 		update Board set Board_writer=#{board_writer}, Board_email=#{board_email}, Board_subject=#{board_subject}, Board_passwd=#{board_passwd}, Board_content=#{board_content} where Bnum=#{bnum}
+ 	</update>
  	
 	<select id="plusCount" parameterType="int">
 		update Board set Board_readcount = Board_readcount + 1 where Bnum = #{Bnum}

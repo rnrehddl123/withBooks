@@ -38,13 +38,13 @@
 		<ul class="pagination justify-content-center pageinfo orderpageinfo">
 		<c:if test="${rowCount>0}">			
 			<c:if test="${startPage>1}">
-				<li class="page-item"><a class="page-link" href="clientOrderList?mnum=${login.mnum}&pageNum=${startPage-1}">이전</a></li>			
+				<li class="page-item"><a class="page-link" href="clientOrderList?pageNum=${startPage-1}">이전</a></li>			
 			</c:if>
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<li class="page-item"><a class="page-link" href="clientOrderList?mnum=${login.mnum}&pageNum=${i}"><c:out value="${i}"/></a></li>	
+				<li class="page-item"><a class="page-link" href="clientOrderList?pageNum=${i}"><c:out value="${i}"/></a></li>	
 			</c:forEach>
 			<c:if test="${endPage<pageCount}">
-				<li class="page-item"><a class="page-link" href="clientOrderList?mnum=${login.mnum}&pageNum=${endPage+1}">다음</a></li>		
+				<li class="page-item"><a class="page-link" href="clientOrderList?pageNum=${endPage+1}">다음</a></li>		
 			</c:if>
 		</c:if>
 		</ul>

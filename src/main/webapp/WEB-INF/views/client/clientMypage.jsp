@@ -20,7 +20,7 @@
 				<i class="bi bi-bookmark-heart-fill"></i>
 				<p>찜 목록<p>
 			</li></a>
-			<a href="clientLibrary?mnum=${login.mnum}"><li>
+			<a href="clientLibrary"><li>
 				<i class="bi bi-book"></i>
 				내 서재
 			</li></a>
@@ -34,7 +34,7 @@
 				<i class="bi bi-card-checklist"></i>
 				<p>구매내역<p>
 			</li></a>
-			<a href="clientLibrary?mnum=${login.mnum}"><li>
+			<a href="writeRequestWriter"><li>
 				<i class="bi bi-pen"></i>
 				작가신청
 			</li></a>

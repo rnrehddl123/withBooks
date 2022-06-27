@@ -187,6 +187,13 @@ public class ClientController {
 		}else if (!checkList.contains(epnum)) {
 			return "/main/main";
 		}
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		NovelDTO novelDTO=(NovelDTO) session.getAttribute("noveldto");
+		HashMap<String, String> params=new HashMap<String, String>();
+		params.put("nnum", Integer.toString(novelDTO.getNnum()));
+		params.put("mnum", Integer.toString(login.getMnum()));
+		NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
+		req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		EpisodeDTO epdto=episodeMapper.getEpisode(epnum,"view");
 		req.setAttribute("epdto", epdto);
 		return "client/clientViewer";
@@ -279,8 +286,7 @@ public class ClientController {
 		req.setAttribute("episodeNum", episodeNum);
 		session.setAttribute("elist", elist);
 		req.setAttribute("change", change);
-		
-		req.setAttribute("noveldto", ndto);
+		session.setAttribute("noveldto", ndto);
 		List<Map<String, String>> reviewList = reviewMapper.getReviewList(nnum);
 		req.setAttribute("reviewList", reviewList);
 		double totalscore=0;

@@ -22,17 +22,17 @@
 					  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
 				</svg>
 				<a>${epdto.epi_subject}</a>
-				<div class="icon">
+				<div class="notice icon">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
 					  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 					</svg>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-					  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-					</svg>
+					<div class="bell">
+						<i class="bi bi-bell"></i>
+					</div>
 				</div>
 			</div>
 		</nav>
-		<div class="content">
+		<div class="content text">
 			<p><br></p>
 			<p><br></p>
 			<p><br></p>
@@ -62,23 +62,45 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/purchase_modal.jsp"></jsp:include>
 </body>
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
+<!-- <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false"> -->
 
 <script type="text/javascript">
 
-	document.oncontextmenu = function(){return false;}
+<!--	document.oncontextmenu = function(){return false;}-->
 
 
+	var chevron=document.querySelector('.bi-chevron-left');
+	chevron.addEventListener("click", function (e) {
+		location.href="http://localhost:8080/withbooks/clientNovelInfo?nnum=${noveldto.nnum}"
+	});
 
-	document.addEventListener("wheel", function (e) {
-		  if (e.deltaY > 0) {
-			  document.querySelector(".top").classList.add("hide")
-			  document.querySelector(".bot").classList.add("hide")
-		  } else {
-			  document.querySelector(".top").classList.remove("hide")
-			  document.querySelector(".bot").classList.remove("hide")
-		  }
-		});
+
+	var content = document.querySelector('.text.content');
+	content.addEventListener("click", function (e) {
+		if(document.querySelector(".top").classList.contains('hide')){
+			document.querySelector(".top").classList.remove("hide")
+			document.querySelector(".bot").classList.remove("hide")
+		}else {
+			document.querySelector(".top").classList.add("hide")
+			document.querySelector(".bot").classList.add("hide")
+		}
+		
+	});
+	
+	
+	window.addEventListener("wheel", function (e) {
+		
+		let scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
+		let windowHeight = window.innerHeight; // 스크린 창
+		let fullHeight = document.body.scrollHeight; //  margin 값은 포함 x
+
+		if (scrollLocation + windowHeight >= fullHeight-80 || 80 >= scrollLocation) {
+			document.querySelector(".top").classList.remove("hide")
+			document.querySelector(".bot").classList.remove("hide")
+		}else{
+			document.querySelector(".top").classList.add("hide")
+			document.querySelector(".bot").classList.add("hide")
+		}});
 	
 	
 	var prev_btn = document.querySelector('.prev_btn');
@@ -133,6 +155,58 @@
         		location.href='clientViewer?epnum='+response.epnum;
 	        }
         });
-});
+	});
+	
+	var nnnum;
+	<c:if test="${not empty noticeNovelDTO}">
+		nnnum=${noticeNovelDTO.nnnum};
+	</c:if>
+	
+	var mnum;
+	<c:if test="${not empty login.mnum}">mnum=${login.mnum}</c:if>
+	
+	var nnum = ${noveldto.nnum};
+	
+	var bell_icon = document.querySelector('.bi-bell');
+	if(nnnum!=null){
+		bell_icon.classList.remove('bi-bell');
+		bell_icon.classList.add('bi-bell-fill');
+	}
+	
+	var noticeData = {
+            method: 'POST',
+            body: JSON.stringify({ nnum, mnum }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+	
+	
+	
+	bell_icon.addEventListener('click', function(e){
+		if(mnum==null){
+			location.href='login';
+		}else{
+			if(bell_icon.classList.contains('bi-bell-fill')){
+				fetch('deleteNoticeNovel', noticeData)
+		        .then(response => response.text())
+		        .then(response => {
+		            console.log(response)
+		        });
+				bell_icon.classList.remove('bi-bell-fill');
+				bell_icon.classList.add('bi-bell');
+			}else{
+				fetch('setNoticeNovel', noticeData)
+		        .then(response => response.text())
+		        .then(response => {
+		            console.log(response)
+		        });
+				bell_icon.classList.add('bi-bell-fill');
+				bell_icon.classList.remove('bi-bell');
+			}
+		}
+    });
+	
+	
 </script>
 </html>

@@ -330,6 +330,8 @@ a {
 .myinfo li{
 	display: flex;
     flex-direction: column;
+    width: 106px;
+    text-align: center;
 }
 
 .notice.icon .bi{

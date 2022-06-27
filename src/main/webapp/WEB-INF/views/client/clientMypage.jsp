@@ -34,9 +34,27 @@
 				<i class="bi bi-card-checklist"></i>
 				<p>구매내역<p>
 			</li></a>
-			<a href="clientLibrary?mnum=${login.mnum}"><li>
-				<i class="bi bi-pen"></i>
-				작가신청
+			<c:if test="${empty login.member_authority}">
+				<a href="clientLibrary?mnum=${login.mnum}"><li>
+					<i class="bi bi-pen"></i>
+					작가신청
+				</li></a>
+			</c:if>
+			<c:if test="${not empty login.member_authority}">
+				<a href="clientLibrary?mnum=${login.mnum}"><li>
+					<i class="bi bi-pen"></i>
+					작가신청
+				</li></a>
+			</c:if>
+		</ul>
+		<ul class="myinfo flex">
+			<a href="writerNovelList"><li>
+				<i class="bi bi-list"></i>
+				<p>내 소설</p>
+			</li></a>
+			<a href="chart"><li>
+				<i class="bi bi-graph-up"></i>
+				<p>통계<p>
 			</li></a>
 		</ul>
 	</div>

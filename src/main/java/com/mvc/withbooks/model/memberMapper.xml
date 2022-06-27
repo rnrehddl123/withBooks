@@ -37,6 +37,10 @@
 										 Member_preferred3=#{Member_preferred3,jdbcType=VARCHAR}, Member_authority=#{Member_authority,jdbcType=VARCHAR} where Mnum = #{mnum} 
 	</update>
 	
+	<update id="upgradeClientOk" parameterType="int">
+		update member set Member_authority = 'writer' where Mnum = #{mnum}
+	</update>
+	
 	<select id="getMember" parameterType="int" resultType="memberDTO">
 		select * from member where mnum = #{mnum}
 	</select>

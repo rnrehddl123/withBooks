@@ -26,6 +26,7 @@ import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeDTO;
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.RequestWriterDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.BoardMapper;
@@ -33,6 +34,7 @@ import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.RequestWriterMapper;
 
 @Controller
 public class AdminPageController {
@@ -51,6 +53,8 @@ public class AdminPageController {
 	private BoardMapper boardMapper;
 	@Autowired
 	private MemberMapper memberMapper;
+	@Autowired
+	private RequestWriterMapper requestWriterMapper;
 	
 	@Resource(name="slideUploadPath")
 	private String uploadPath;
@@ -501,9 +505,90 @@ public class AdminPageController {
 		return "forward:message";
 	}
 
-	@RequestMapping("/upgradeClient")
-	public String clientUpgrade() {
+	@RequestMapping("/listUpgradeClient")
+	public String clientUpgrade(HttpServletRequest req, @RequestParam(required = false) String mode) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = 0;
+		if(mode == null) {
+			rowCount = requestWriterMapper.getRequestWriterCount();
+		}else {
+			String search = req.getParameter("search");
+			String searchString = req.getParameter("searchString");
+			rowCount = requestWriterMapper.getRequestWriterSearchCount(search, searchString);
+		}
+		if (endRow > rowCount) endRow = rowCount;
+		List<RequestWriterDTO> list = null;
+		if (rowCount>0){
+			if(mode == null) {
+				list = requestWriterMapper.listRequestWriter(startRow, endRow);
+			}else {
+				String search = req.getParameter("search");
+				String searchString = req.getParameter("searchString");
+				list = requestWriterMapper.findRequestWriter(search, searchString, startRow, endRow);
+			}
+		} 
+		int writerNum = 0;
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("writerNum", writerNum);
+		req.setAttribute("listClientUpgrade", list);
 		return "homepage/admin/memberManage/clientUpgrade";
+	}
+	
+	@RequestMapping("/upgradeClientContent")
+	public String contentRequestWriter(HttpServletRequest req, int rwnum) {
+		RequestWriterDTO dto = requestWriterMapper.getRequestWriter(rwnum);
+		req.setAttribute("getRequestWriter", dto);
+		return "homepage/admin/memberManage/clientUpgradeContent";
+	}
+	
+	@RequestMapping("/upgradeClientOk")
+	public String upgradeClientOk(HttpServletRequest req, int mnum, int rwnum, String state) {
+		int res1 = memberMapper.upgradeClientOk(mnum);
+		int res2 = requestWriterMapper.upgradeClientState(rwnum, state);
+		String msg = null, url = null;
+		if (res1>0 && res2>0) {
+			msg = "작가 등록 성공";
+			url = "listWriter";
+		}else {
+			msg = "작가 등록 실패";
+			url = "listUpgradeClient";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
+	
+	@RequestMapping("/upgradeClientRefuse")
+	public String upgradeClientRefuse(HttpServletRequest req, int rwnum, String state) {
+		int res = requestWriterMapper.upgradeClientState(rwnum, state);
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "작가 등록 신청 거절 성공";
+			url = "listUpgradeClient";
+		}else {
+			msg = "작가 등록 신청 거절 실패";
+			url = "listUpgradeClient";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
 	}
 	
 	@RequestMapping("/saleManageClient")

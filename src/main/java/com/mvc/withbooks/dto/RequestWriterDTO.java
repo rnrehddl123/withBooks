@@ -6,15 +6,9 @@ public class RequestWriterDTO {
 	private String Request_subject;
 	private String Request_reg_date;
 	private String Request_content;
+	private String Request_state;
 	private MemberDTO memberDTO;
 	
-	
-	public MemberDTO getMemberDTO() {
-		return memberDTO;
-	}
-	public void setMemberDTO(MemberDTO memberDTO) {
-		this.memberDTO = memberDTO;
-	}
 	public int getRwnum() {
 		return Rwnum;
 	}
@@ -45,6 +39,17 @@ public class RequestWriterDTO {
 	public void setRequest_content(String request_content) {
 		Request_content = request_content;
 	}
-	
+	public String getRequest_state() {
+		return Request_state;
+	}
+	public void setRequest_state(String request_state) {
+		Request_state = request_state;
+	}
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
 	
 }

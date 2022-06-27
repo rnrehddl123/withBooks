@@ -40,20 +40,21 @@
 <body>
 	<div align="center">
 		<form name="f" action="updateRequestWriter" method="post" onsubmit="return check()">
+			<input type="hidden" name="rwnum" value="${getRequestWriter.rwnum}"/>
 			<div>
 						<h1>신청서 수정</h1>
 			</div>
 				<div class="mb-3" align="left">	
 				  <label for="exampleFormControlInput1" class="form-label">이름</label>
-				  <input name="RequestWriter_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
+				  <input name="Request_writer" type="text" class="form-control" id="exampleFormControlInput1"  placeholder=${getRequestWriter.request_writer} readOnly>
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput2" class="form-label">제목</label>
-				  <input name="RequestWriter_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder="제목">
+				  <input name="Request_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder=${getRequestWriter.request_subject}>
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-				  <textarea name="RequestWriter_content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+				  <textarea name="Request_content" class="form-control" id="exampleFormControlTextarea1" placeholder=${getRequestWriter.request_content} rows="10"></textarea>
 				</div>
 				
 				<div align="center">

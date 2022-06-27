@@ -17,6 +17,11 @@ public class RequestWriterMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	public List<RequestWriterDTO> listRequestWriterClient(String member_name){
+		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriterClient", member_name);
+		return list;
+	}
+	
 	public List<RequestWriterDTO> listRequestWriter(int start, int end){
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);

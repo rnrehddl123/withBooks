@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="requestWriterSidebar.jsp"/>
 <html><head>
 <div align="center" style="
@@ -12,19 +13,20 @@
 	<title>글쓰기</title>
 	<script type="text/javascript">
 		function check(){
-			if (f.writer.value==""){
-				alert("이름을 입력해 주세요!!")
-				f.writer.focus()
+			var member_name = '${login.member_name}';
+			if (f.Request_writer.value=="" || f.Request_writer.value!=member_name){
+				alert("이름을 다시 입력해 주세요!!")
+				f.Request_writer.focus()
 				return false
 			}
-			if (f.subject.value==""){
+			if (f.Request_subject.value==""){
 				alert("제목을 입력해 주세요!!")
-				f.subject.focus()
+				f.Request_subject.focus()
 				return false
 			}
-			if (f.content.value==""){
+			if (f.Request_content.value==""){
 				alert("내용을 입력해 주세요!!")
-				f.content.focus()
+				f.Request_content.focus()
 				return false
 			}
 			return true

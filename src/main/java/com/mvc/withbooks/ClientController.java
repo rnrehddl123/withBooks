@@ -142,10 +142,10 @@ public class ClientController {
 	public String ClientOrderList(HttpSession session,HttpServletRequest req, int mnum) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
-			return "/main/login";
+			return "redirect:/main/login";
 		}
 		List<Map<String, String>> list = purchaseHistoryMapper.listPurchaseHistory(mnum);
-		int pageSize = 10;
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";

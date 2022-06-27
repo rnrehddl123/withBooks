@@ -33,7 +33,7 @@
 	<c:forEach var="dto" items="${nlist}">
 		<tr align="center">
 			<td><img src="resources/img/${dto.novel_image}"></td>
-			<td><a href="clientNovelInfo?nnum=${dto.nnum}">${dto.novel_subject}>제목 클릭하면 해당소설로 이동</a></td>
+			<td><a href="clientNovelInfo?nnum=${dto.nnum}&change=now">${dto.novel_subject}>제목 클릭하면 해당소설로 이동</a></td>
 			<td>${dto.novel_memberName}</td>
 		</tr>	
 	</c:forEach>

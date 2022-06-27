@@ -16,7 +16,7 @@
 <body>
 	<div align="center">
 		<form name="f" action="deleteBoard" method="post">
-		<input type="hidden" name="bnum" value="${param.bnum}"/>
+		<input type="hidden" name="bnum" value="${param.Bnum}"/>
 			<div>
 					<h1>게시글 삭제</h1>
 			</div>

@@ -62,9 +62,7 @@ public class BoardMapper {
 		if(!dto.getBoard_passwd().equals(passwd)) {
 			return -1;
 		}
-		int res = sqlSession.delete("deleteBoard",Bnum);
-		sqlSession.commit();
-		return res;
+		return sqlSession.delete("deleteBoard",Bnum);
 	}
 	
 	public int deleteBoardAdmin(int Bnum) {

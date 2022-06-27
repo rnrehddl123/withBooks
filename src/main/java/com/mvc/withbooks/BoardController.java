@@ -120,10 +120,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/deleteBoard", method=RequestMethod.POST)
 	public String deleteProBoard(HttpServletRequest req, @RequestParam Map<String, String> params) {
-		String Bnum = params.get("bnum"); //bnum value를 넣어주어야 한다.
+		String Bnum = params.get("bnum");
 		String passwd = params.get("passwd");
-		System.out.println("Bnum: "+Bnum);
-		System.out.println("passwd: "+passwd);
 		int res = boardMapper.deleteBoard(Integer.parseInt(Bnum), passwd);
 		if (res > 0) {
 			req.setAttribute("msg", "�Խñ� ���� ����!! �Խñ� ����������� �̵��մϴ�.");
@@ -135,6 +133,6 @@ public class BoardController {
 			req.setAttribute("msg", "�Խñ� ���� ����!! �Խñ� ������������ �̵��մϴ�.");
 			req.setAttribute("url", "contentBoard?Bnum=" + Bnum);
 		}
-		return "message.jsp";
+		return "message";
 	}
 }

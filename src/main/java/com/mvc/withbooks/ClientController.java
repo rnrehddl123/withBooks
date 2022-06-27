@@ -276,10 +276,10 @@ public class ClientController {
 		int res = memberMapper.insertMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "�쉶�썝媛��엯 �꽦怨�!! 硫붿씤 �럹�씠吏�濡� �씠�룞�빀�땲�떎.";
+			msg = "회원가입성공.";
 			url = "signUp";
 		}else {
-			msg = "�쉶�썝媛��엯 �떎�뙣!! �쉶�썝媛��엯 �럹�씠吏�濡� �씠�룞�빀�땲�떎.";
+			msg = "회원가입실패.";
 			url = "signUp";
 		}
 		req.setAttribute("msg", msg);

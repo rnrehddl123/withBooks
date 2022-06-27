@@ -44,20 +44,20 @@
 				<td align="center">${dto.EPI_DATE}</td>
 				<td align="center">${dto.EPI_READCOUNT}</td>
 				<td align="center">${dto.EPI_RECOMMAND}</td>
-				<td align="center"><a href="writerEpisodeUpdate?epnum=${dto.epnum}&nnum=${getNovel.nnum}">수정</a></td>
+				<td align="center"><a href="writerEpisodeUpdate?epnum=${dto.EPNUM}&nnum=${getNovel.nnum}">수정</a></td>
 			</tr>		
 			</c:forEach>
 		</table>
 		<ul class="pagination justify-content-center">
 		<c:if test="${rowCount>0}">			
 			<c:if test="${startPage>1}">
-				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&pageNum=${startPage-1}">이전</a></li>			
+				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&change=${change}&pageNum=${startPage-1}">이전</a></li>			
 			</c:if>
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&pageNum=${i}"><c:out value="${i}"/></a></li>	
+				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&change=${change}&pageNum=${i}"><c:out value="${i}"/></a></li>	
 			</c:forEach>
 			<c:if test="${endPage<pageCount}">
-				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&pageNum=${endPage+1}">다음</a></li>		
+				<li class="page-item"><a class="page-link" href="writerEpisodeList?nnum=${getNovel.nnum}&change=${change}&pageNum=${endPage+1}">다음</a></li>		
 			</c:if>
 		</c:if>
 		</ul>

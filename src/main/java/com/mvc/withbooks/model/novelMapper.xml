@@ -75,7 +75,7 @@
 	
 	<select id="novelCountList" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from (select rownum rn, A.* from 
-		(select * from (select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{mnum} ))A) 
+		((select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{mnum} ))A) 
 		where rn between #{startRow} and #{endRow}
 	</select>
 	

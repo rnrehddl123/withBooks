@@ -32,12 +32,12 @@
 				<td align="center"><c:out value="${pageNum}"/></td>
 				<c:set var="pageNum" value="${pageNum-1}"/>
 				<td>
-					<a href="writerEpisodeList?nnum=${dto.NNUM}">
+					<a href="writerEpisodeList?nnum=${dto.NNUM}&change=now">
 						${dto.NOVEL_SUBJECT}
 					</a>
 				</td>
 				<td align="center">${dto.NOVEL_MEMBERNAME}</td>
-				<td align="center"><a href="writerNovelUpdate?nnum=${dto.nnum}&mnum=${getMember.mnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.nnum}&mnum=${getMember.mnum}">삭제</a></td>
+				<td align="center"><a href="writerNovelUpdate?nnum=${dto.NNUM}&mnum=${getMember.mnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.NNUM}&mnum=${getMember.mnum}">삭제</a></td>
 			</tr>		
 			</c:forEach>
 		</table>

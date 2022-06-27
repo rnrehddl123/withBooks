@@ -221,7 +221,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
-	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum) {
+	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum, String change) {
 		MemberDTO login=(MemberDTO)session.getAttribute("login");
 		NovelDTO ndto=novelMapper.getNovel(nnum);
 		
@@ -239,8 +239,47 @@ public class ClientController {
 			req.setAttribute("review", reviewMapper.getreview(myReview));
 			
 		}
-		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
+		/*List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
+		session.setAttribute("elist", elist);*/
+		List<Map<String, String>> elist = episodeMapper.listEpisodeCount(nnum);
+		int pageSize = 25;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("nnum", String.valueOf(nnum));
+		params.put("startRow", String.valueOf(startRow));
+		params.put("endRow", String.valueOf(endRow));
+		int rowCount = episodeMapper.getEpisodeCount(nnum);
+		if (endRow > rowCount) endRow = rowCount;
+		elist = null;
+		if (rowCount>0){
+			if(change.equals("past")) {
+				elist=episodeMapper.episodeCountListReverse(params);
+			}else {
+				elist = episodeMapper.episodeCountList(params);
+			}
+		}
+		int episodeNum =  rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 10;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("episodeNum", episodeNum);
 		session.setAttribute("elist", elist);
+		req.setAttribute("change", change);
+		
 		req.setAttribute("noveldto", ndto);
 		List<Map<String, String>> reviewList = reviewMapper.getReviewList(nnum);
 		req.setAttribute("reviewList", reviewList);

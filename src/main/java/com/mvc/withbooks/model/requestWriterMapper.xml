@@ -8,6 +8,10 @@
  		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where Rwnum = #{Rwnum}
  	</select>
  	
+ 	<select id="listRequestWriterCheck" parameterType="int" resultType="RequestWriterDTO">
+ 		select * from RequestWriter where mnum = #{mnum}
+ 	</select>
+ 	
  	<resultMap id="memberDTO" type="com.mvc.withbooks.dto.MemberDTO">
 		<id column="MNUM" property="mnum"/>
         <result column="B.MNUM" property="mnum"/>

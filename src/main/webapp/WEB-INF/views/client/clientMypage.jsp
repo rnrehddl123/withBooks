@@ -65,7 +65,7 @@
 			<a href="chart"><li>
 				<i class="bi bi-graph-up"></i>
 				<p>통계<p>
-			<a href="writeRequestWriter"><li>
+			<a href="listRequestWriter"><li>
 				<i class="bi bi-pen"></i>
 				작가신청
 			</li></a>

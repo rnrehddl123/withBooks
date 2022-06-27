@@ -25,6 +25,20 @@
 				내 서재
 			</li></a>
 		</ul>
+		<ul class="myinfo flex">
+			<a href="clientUpdate"><li>
+				<i class="bi bi-person-lines-fill"></i>
+				<p>개인정보 수정</p>
+			</li></a>
+			<a href="clientOrderList"><li>
+				<i class="bi bi-card-checklist"></i>
+				<p>구매내역<p>
+			</li></a>
+			<a href="clientLibrary?mnum=${login.mnum}"><li>
+				<i class="bi bi-pen"></i>
+				작가신청
+			</li></a>
+		</ul>
 	</div>
 </body>
 </html>

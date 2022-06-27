@@ -122,11 +122,12 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientLibrary")//일반회원 내 서재
-	public String ClientLibrary(HttpSession session, HttpServletRequest req, int mnum) {
+	public String ClientLibrary(HttpSession session, HttpServletRequest req) {
 		if(session.getAttribute("login")==null){
-			return "/main/login";
+			return "redirect:login";
 		}
-		
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		int mnum = login.getMnum();
 		List<Integer> list = purchaseHistoryMapper.purchaseLibrary(mnum);
 		List<NovelDTO> nlist = new ArrayList<NovelDTO>();
 		for(int nnum : list) {

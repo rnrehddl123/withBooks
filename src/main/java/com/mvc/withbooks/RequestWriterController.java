@@ -51,7 +51,7 @@ public class RequestWriterController {
 				}
 			}else {
 				String searchString = req.getParameter("searchString");
-				list = requestWriterMapper.findRequestWriter("RequestWriter_writer", searchString);
+				list = requestWriterMapper.findRequestWriter("RequestWriter_writer", searchString, startRow, endRow);
 			}
 		} 
 		req.setAttribute("rowCount", rowCount);
@@ -70,10 +70,10 @@ public class RequestWriterController {
 	public String writeProRequestWriter(HttpServletRequest req,RequestWriterDTO dto, @RequestParam int mnum) {
 		int res = requestWriterMapper.insertRequestWriter(dto,mnum);
 		if(res>0) {
-			req.setAttribute("msg", "�۰� ��û ����! ����������� �̵��մϴ�.");
+			req.setAttribute("msg", "작가 신청 성공");
 			req.setAttribute("url", "listRequestWriter");
 		}else {
-			req.setAttribute("msg", "�۰� ��û ����! ��û�������� �̵��մϴ�.");
+			req.setAttribute("msg", "작가 신청 실패");
 			req.setAttribute("url", "writeRequestWriter");
 		}
 		return "message";
@@ -99,10 +99,10 @@ public class RequestWriterController {
 	public String updateProRequestWrinter(HttpServletRequest req,RequestWriterDTO dto) {
 		int res = requestWriterMapper.updateRequestWriter(dto);
 		if(res>0) {
-			req.setAttribute("msg", "���� ����! ����������� �̵��մϴ�.");
+			req.setAttribute("msg", "수정 성공");
 			req.setAttribute("url", "listRequestWriter");
 		}else {
-			req.setAttribute("msg", "���� ����! ���� ���� �������� �̵��մϴ�.");
+			req.setAttribute("msg", "수정 실패");
 			req.setAttribute("url", "contentRequestWriter?Rwnum" + dto.getRwnum());
 		}
 		return "message";

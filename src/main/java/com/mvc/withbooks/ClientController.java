@@ -122,11 +122,12 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientLibrary")//일반회원 내 서재
-	public String ClientLibrary(HttpSession session, HttpServletRequest req, int mnum) {
+	public String ClientLibrary(HttpSession session, HttpServletRequest req) {
 		if(session.getAttribute("login")==null){
-			return "/main/login";
+			return "redirect:login";
 		}
-		
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		int mnum = login.getMnum();
 		List<Integer> list = purchaseHistoryMapper.purchaseLibrary(mnum);
 		List<NovelDTO> nlist = new ArrayList<NovelDTO>();
 		for(int nnum : list) {
@@ -187,6 +188,13 @@ public class ClientController {
 		}else if (!checkList.contains(epnum)) {
 			return "/main/main";
 		}
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		NovelDTO novelDTO=(NovelDTO) session.getAttribute("noveldto");
+		HashMap<String, String> params=new HashMap<String, String>();
+		params.put("nnum", Integer.toString(novelDTO.getNnum()));
+		params.put("mnum", Integer.toString(login.getMnum()));
+		NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
+		req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		EpisodeDTO epdto=episodeMapper.getEpisode(epnum,"view");
 		req.setAttribute("epdto", epdto);
 		return "client/clientViewer";
@@ -279,8 +287,7 @@ public class ClientController {
 		req.setAttribute("episodeNum", episodeNum);
 		session.setAttribute("elist", elist);
 		req.setAttribute("change", change);
-		
-		req.setAttribute("noveldto", ndto);
+		session.setAttribute("noveldto", ndto);
 		List<Map<String, String>> reviewList = reviewMapper.getReviewList(nnum);
 		req.setAttribute("reviewList", reviewList);
 		double totalscore=0;
@@ -323,10 +330,10 @@ public class ClientController {
 		int res = memberMapper.insertMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "�쉶�썝媛��엯 �꽦怨�!! 硫붿씤 �럹�씠吏�濡� �씠�룞�빀�땲�떎.";
+			msg = "회원가입성공.";
 			url = "signUp";
 		}else {
-			msg = "�쉶�썝媛��엯 �떎�뙣!! �쉶�썝媛��엯 �럹�씠吏�濡� �씠�룞�빀�땲�떎.";
+			msg = "회원가입실패.";
 			url = "signUp";
 		}
 		req.setAttribute("msg", msg);

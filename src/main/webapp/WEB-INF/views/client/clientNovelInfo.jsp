@@ -48,8 +48,8 @@
 				  		<p>${episode.EPI_DATE}</p>
 				  	</a>
 			 	</c:forEach>
-			 	<ul class="pagination justify-content-center">
-		<c:if test="${rowCount>0}">			
+			 	<ul class="pagination justify-content-center pageinfo">
+			<c:if test="${rowCount>0}">			
 			<c:if test="${startPage>1}">
 				<li class="page-item"><a class="page-link" href="clientNovelInfo?nnum=${noveldto.nnum}&change=${change}&pageNum=${startPage-1}">이전</a></li>			
 			</c:if>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.MemberDTO;
+import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.dto.RequestWriterDTO;
 
 @Service
@@ -20,7 +21,7 @@ public class RequestWriterMapper {
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);
 		map.put("end", end);
-		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriter");
+		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriter", map);
 		return list;
 	}
 	
@@ -32,7 +33,7 @@ public class RequestWriterMapper {
 	public int insertRequestWriter(RequestWriterDTO dto, int mnum) {
 		MemberDTO mdto= sqlSession.selectOne("getMember", mnum);
 		dto.setMemberDTO(mdto);
-		int res = sqlSession.insert("inserRequestWriter",dto);
+		int res = sqlSession.insert("insertRequestWriter",dto);
 		return res;
 	}
 	
@@ -47,12 +48,30 @@ public class RequestWriterMapper {
 		return count;
 	}
 	
-	public List<RequestWriterDTO> findRequestWriter(String search, String searchString){
-		java.util.Map<String, String> map = new java.util.Hashtable<>();
+	public int getRequestWriterSearchCount(String search, String searchString) {
+		java.util.Map<String, Object> map = new java.util.Hashtable<>();
 		map.put("search", search);
 		map.put("searchString", searchString);
+		int count = sqlSession.selectOne("getRequestWriterSearchCount", map);
+		return count;
+	}
+	
+	public List<RequestWriterDTO> findRequestWriter(String search, String searchString, int start, int end){
+		java.util.Map<String, Object> map = new java.util.Hashtable<>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		map.put("start", start);
+		map.put("end", end);
 		List<RequestWriterDTO> find = sqlSession.selectList("findRequestWriter", map);
 		return find;
+	}
+	
+	public int upgradeClientState(int rwnum, String state) {
+		java.util.Map<String, Object> map = new java.util.Hashtable<>();
+		map.put("rwnum", rwnum);
+		map.put("state", state);
+		int res = sqlSession.update("upgradeClientState", map);
+		return res;
 	}
 	
 }

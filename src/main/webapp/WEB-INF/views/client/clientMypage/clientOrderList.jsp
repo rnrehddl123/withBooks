@@ -7,6 +7,7 @@
 <head>
 <title>구매내역</title>
 </head>
+<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 <body>
 <div align="center">
 	<h4>${login.member_name}님의 구매내역</h4> 
@@ -34,7 +35,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-		<ul class="pagination justify-content-center">
+		<ul class="pagination justify-content-center pageinfo orderpageinfo">
 		<c:if test="${rowCount>0}">			
 			<c:if test="${startPage>1}">
 				<li class="page-item"><a class="page-link" href="clientOrderList?mnum=${login.mnum}&pageNum=${startPage-1}">이전</a></li>			

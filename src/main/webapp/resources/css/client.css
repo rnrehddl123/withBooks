@@ -332,3 +332,10 @@ a {
     flex-direction: column;
 }
 
+.clientNovelInfoWrapper .pageinfo{
+	margin-top : 10px;
+}
+
+.orderpageinfo{
+	margin-top : 10px;
+}

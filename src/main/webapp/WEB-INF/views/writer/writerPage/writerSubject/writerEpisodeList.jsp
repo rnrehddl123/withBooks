@@ -16,8 +16,8 @@
 		<table align="center" class="writer">
 			<tr>
 				<td colspan="5" align="right"><a href="writerEpisode?nnum=${getNovel.nnum}">새로운 에피소드 쓰기</a> |
-				 <a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a> | <a href="writerReverseEpisodeList?nnum=${getNovel.nnum}">과거순</a>
-				  | <a href="writerEpisodeList?nnum=${getNovel.nnum}">현재순</a>
+				 <a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a> | <a href="writerEpisodeList?nnum=${getNovel.nnum}&change=past">과거순</a>
+				  | <a href="writerEpisodeList?nnum=${getNovel.nnum}&change=now">현재순</a>
 				  
 				  	<select class="changeList" name="pp" onchange="change()">
 						<option value="past">과거순</option>

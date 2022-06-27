@@ -68,9 +68,6 @@
 			<a href="writeRequestWriter"><li>
 				<i class="bi bi-pen"></i>
 				작가신청
-			<a href="writeRequestWriter"><li>
-				<i class="bi bi-pen"></i>
-				작가신청
 			</li></a>
 		</ul>
 	</div>

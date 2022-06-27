@@ -22,12 +22,32 @@
 	
 	<update id="updateEpisode" parameterType="EpisodeDTO">
 		update episode set Epi_subject=#{Epi_subject}, Epi_content=#{Epi_content}, Epi_recommand=#{Epi_recommand} where Epnum = #{epnum} 
-	</update>
-		
+	</update>		
 	
-	<select id="getEpisode" parameterType="int" resultType="EpisodeDTO">
-		select * from episode where Epnum = #{epnum}
+	<select id="getEpisode" parameterType="int" resultType="EpisodeDTO" resultMap="getepisodeDTO">
+		select * from episode INNER JOIN NOVEL n ON episode.NNUM = n.NNUM  where Epnum = #{epnum}
 	</select>
+	
+	
+	<resultMap id="getnovelDTO" type="com.mvc.withbooks.dto.NovelDTO">
+		<id column="NNUM" property="nnum"/>
+		<result column="NNUM" property="nnum"/>
+        <association property="memberDTO" column="MNUM" javaType="memberDTO">
+        	<id column="MNUM" property="mnum"/>
+			<result column="MNUM" property="mnum"/>
+        </association>
+	</resultMap>
+	
+	<resultMap id="getepisodeDTO" type="com.mvc.withbooks.dto.EpisodeDTO">
+		<id column="EPNUM" property="epnum"/>
+		<result column="EPI_SUBJECT" property="epi_subject"/>
+		<result column="EPNUM" property="epnum"/>
+		<result column="EPI_CONTENT" property="epi_content"/>
+		<result column="EPI_DATE" property="epi_date"/>
+		<result column="EPI_RECOMMAND" property="epi_recommand"/>
+		<result column="EPI_READCOUNT" property="epi_readcount"/>
+        <association property="novelDTO" column="NNUM" resultMap="getnovelDTO"/>
+	</resultMap>
 	
 	<select id="plusReadcountEpi" parameterType="int">
 		update episode set Epi_readcount=Epi_readcount+1 where Epnum=#{epnum}

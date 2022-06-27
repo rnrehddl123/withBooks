@@ -24,6 +24,10 @@
         <association property="memberDTO" column="MNUM" resultMap="memberDTO" />
 	</resultMap>
 	
+	<select id="listRequestWriterClient" parameterType="String" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
+		select * from RequestWriter where Request_writer = #{member_name}
+	</select>
+	
 	<select id="listRequestWriter" parameterType="java.util.Map" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
  		select * from (select rownum rn, A.* from (select * from RequestWriter order by Rwnum desc)A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
  	</select>

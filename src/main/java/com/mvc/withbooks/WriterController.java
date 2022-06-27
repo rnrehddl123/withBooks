@@ -78,10 +78,13 @@ public class WriterController {
 	}
 	
 	@RequestMapping("/writerEpisodeList")
-	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, String change, HttpSession session) {
+	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, @RequestParam(required = false) String change, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
 			return "redirect:login";
+		}
+		if(change==null) {
+			change = "now";
 		}
 		int mnum = login.getMnum();
 		NovelDTO dto = novelMapper.getNovel(nnum);

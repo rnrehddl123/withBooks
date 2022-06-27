@@ -14,10 +14,14 @@
 		var radio=document.querySelectorAll('.radio_cash');
 		var cash;
 		var point;
+		if(document.querySelectorAll('.radio_cash').value==null){
+			alert("상품을 선택해 주세요.");
+		}
 		for (var i=0; i<radio.length; i++) {
             if (radio[i].checked == true) {
                 cash=radio[i].value;
                 point=radio[i].id;
+                break;
             }
         }
 		//가맹점 식별코드
@@ -108,16 +112,7 @@
 			<td colspan="3"><hr width="600"></td>
 		</tr>
 		<tr>
-			<td align="center" colspan="3">
-				<input type="checkbox" name="input_check" id="input_check" value=""/>
-				상품, 가격, 유의 사항 등을 확인하셨으며 구매에 동의합니다.
-			</td>
-		</tr>
-		<tr>
 			<td align="center" colspan="3"><button onclick="iamport()">결제하기</button></td>
-		</tr>
-		<tr>
-			<td align="center" colspan="3">(유의 사항)</td>
 		</tr>
 	</table>
 

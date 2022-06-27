@@ -85,7 +85,7 @@ public class WriterController {
 		NovelDTO dto = novelMapper.getNovel(nnum);
 		req.setAttribute("getNovel", dto);
 		List<Map<String, String>> list = episodeMapper.listEpisodeCount(nnum);
-		int pageSize = 40;
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -121,6 +121,7 @@ public class WriterController {
 		req.setAttribute("rowCount", rowCount);
 		req.setAttribute("episodeNum", episodeNum);
 		req.setAttribute("listEpisodeCount", list);
+		req.setAttribute("change", change);
 		return "writer/writerPage/writerSubject/writerEpisodeList";
 	}
 		

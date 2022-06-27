@@ -33,7 +33,7 @@
 				<div class="title">${noveldto.novel_subject}</div>
 				<div class="detail">
 					<div class="writer"><strong>${noveldto.novel_memberName}</strong> 저자</div>
-					<div>총 ${fn:length(elist)}화</div>
+					<div>총 ${rowCount}화</div>
 					<div class="contant">
 						${noveldto.novel_summary}
 					</div>
@@ -43,11 +43,24 @@
 		<div class="listEpisode">
 			<div class="list-group">
 				<c:forEach items="${elist}" var="episode">
-				  	<a onclick="epclick(${episode.epnum})" class="list-group-item list-group-item-action">
-				  		${episode.epi_subject}
-				  		<p>${episode.epi_date}</p>
+				  	<a onclick="epclick(${episode.EPNUM})" class="list-group-item list-group-item-action">
+				  		${episode.EPI_SUBJECT}
+				  		<p>${episode.EPI_DATE}</p>
 				  	</a>
 			 	</c:forEach>
+			 	<ul class="pagination justify-content-center">
+		<c:if test="${rowCount>0}">			
+			<c:if test="${startPage>1}">
+				<li class="page-item"><a class="page-link" href="clientNovelInfo?nnum=${noveldto.nnum}&change=${change}&pageNum=${startPage-1}">이전</a></li>			
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<li class="page-item"><a class="page-link" href="clientNovelInfo?nnum=${noveldto.nnum}&change=${change}&pageNum=${i}"><c:out value="${i}"/></a></li>	
+			</c:forEach>
+			<c:if test="${endPage<pageCount}">
+				<li class="page-item"><a class="page-link" href="clientNovelInfo?nnum=${noveldto.nnum}&change=${change}&pageNum=${endPage+1}">다음</a></li>		
+			</c:if>
+		</c:if>
+		</ul>
 			</div>
 		</div>
 	</div>

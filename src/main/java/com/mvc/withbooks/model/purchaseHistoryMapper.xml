@@ -26,7 +26,7 @@
 	
 	<select id="purchaseList" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from (select rownum rn, A.* from 
-		(select * from (select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date from EPISODE e , PurchaseHistory where PurchaseHistory.Mnum = #{mnum}) )A) 
+		((select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date from EPISODE e , PurchaseHistory where PurchaseHistory.Mnum = #{mnum}) )A) 
 		where rn between #{startRow} and #{endRow}
 	</select>
 </mapper>

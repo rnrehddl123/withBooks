@@ -47,8 +47,8 @@
 	
 	<select id="episodeCountList" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from (select rownum rn, A.* from 
-		((select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum}) )A) 
-		where rn between #{startRow} and #{endRow} order by Epnum DESC
+		((select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epnum DESC) )A) 
+		where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="listEpisodeCount" resultType="java.util.Map" parameterType="int">
@@ -57,7 +57,7 @@
 	
 	<select id="episodeCountListReverse" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from (select rownum rn, A.* from 
-		((select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum}) )A) 
-		where rn between #{startRow} and #{endRow} order by Epnum ASC
+		((select Epnum, Epi_subject, Epi_content, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epnum ASC) )A) 
+		where rn between #{startRow} and #{endRow}
 	</select>
 </mapper>

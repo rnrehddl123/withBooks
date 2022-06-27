@@ -16,12 +16,13 @@
 <body>
 	<div align="center">
 		<form name="f" action="deleteBoard" method="post">
+		<input type="hidden" name="bnum" value="${param.bnum}"/>
 			<div>
 					<h1>게시글 삭제</h1>
 			</div>
 			<div class="mb-3" align="center">	
 				  <label for="exampleFormControlInput1" class="form-label">비밀번호</label>
-				  <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="****">
+				  <input type="password" name="passwd" class="form-control" id="exampleFormControlInput1" placeholder="****">
 				</div>
 			<tr>
 			<div align="center">

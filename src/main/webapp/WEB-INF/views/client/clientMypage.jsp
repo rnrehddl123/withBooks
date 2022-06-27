@@ -26,10 +26,20 @@
 			</li></a>
 		</ul>
 		<ul class="myinfo flex">
-			<a href="clientUpdate"><li>
-				<i class="bi bi-person-lines-fill"></i>
-				<p>개인정보 수정</p>
-			</li></a>
+		<c:choose>
+			<c:when test="${login.kakaoid eq 0}">
+				<a href="clientUpdate"><li>
+					<i class="bi bi-person-lines-fill"></i>
+					<p>개인정보 수정</p>
+				</li></a>
+			</c:when>
+			<c:when test="${login.kakaoid ne 0}">
+				<li>
+					<i class="bi bi-person-x-fill"></i>
+					<p>카카오회원<br>정보수정 불가</p>
+				</li>
+			</c:when>
+		</c:choose>
 			<a href="clientOrderList"><li>
 				<i class="bi bi-card-checklist"></i>
 				<p>구매내역<p>

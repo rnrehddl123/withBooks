@@ -99,10 +99,12 @@ public class ClientController {
 	
 	@RequestMapping("/clientUpdate")//일반회원 수정 페이지
 	public String ClientUpdate(HttpSession session, HttpServletRequest req, @RequestParam Map<String, String> params, String[] member_preferred) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(session.getAttribute("login")==null){
+			return "redirect:/login";
+		}else if(login.getKakaoid()!=0) {
+			return "redirect:/clientMypage";
+		}
 		String[] tel = login.getMember_Tel().split("-");
 		req.setAttribute("tel1", tel[0]);
 		req.setAttribute("tel2", tel[1]);

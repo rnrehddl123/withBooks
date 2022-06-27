@@ -15,7 +15,7 @@ public class MemberDTO {
 	private String Member_preferred3;
 	private String Member_authority;
 	private int cash;
-	private int kakaoid;
+	private long kakaoid;
 	
 	public int getMnum() {
 		return Mnum;
@@ -101,10 +101,10 @@ public class MemberDTO {
 	public void setCash(int cash) {
 		this.cash = cash;
 	}
-	public int getKakaoid() {
+	public long getKakaoid() {
 		return kakaoid;
 	}
-	public void setKakaoid(int kakaoid) {
+	public void setKakaoid(long kakaoid) {
 		this.kakaoid = kakaoid;
 	}
 	

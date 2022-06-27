@@ -16,8 +16,7 @@
 		<table align="center" class="writer">
 			<tr>
 				<td colspan="5" align="right"><a href="writerEpisode?nnum=${getNovel.nnum}">새로운 에피소드 쓰기</a> |
-				 <a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a> | <a href="writerEpisodeList?nnum=${getNovel.nnum}&change=past">과거순</a>
-				  | <a href="writerEpisodeList?nnum=${getNovel.nnum}&change=now">현재순</a>
+				 <a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a>
 				  
 				  	<select class="changeList" name="pp" onchange="change()">
 						<option value="past">과거순</option>
@@ -40,7 +39,7 @@
 			</c:if>
 			<c:forEach var="dto" items="${listEpisodeCount}">
 			<tr>
-				<td><a href="clientViewer?epnum=${dto.EPNUM}">${dto.EPI_SUBJECT}</a></td>
+				<td align="center">${dto.EPI_SUBJECT}</td>
 				<td align="center">${dto.EPI_DATE}</td>
 				<td align="center">${dto.EPI_READCOUNT}</td>
 				<td align="center">${dto.EPI_RECOMMAND}</td>

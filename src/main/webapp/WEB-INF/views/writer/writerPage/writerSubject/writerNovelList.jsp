@@ -19,7 +19,7 @@
 				<td align="center">번호</td>
 				<td align="center">소설제목</td>
 				<td align="center">작성자</td>
-				<td align="center">수정 | 삭제</td>
+				<td align="center">수정</td>
 			</tr>
 			<c:set var="pageNum" value="${novelNum}"/>
 			<c:if test="${empty listmemberNovel}">
@@ -32,12 +32,12 @@
 				<td align="center"><c:out value="${pageNum}"/></td>
 				<c:set var="pageNum" value="${pageNum-1}"/>
 				<td>
-					<a href="writerEpisodeList?nnum=${dto.NNUM}&change=now">
+					<a href="writerEpisodeList?nnum=${dto.NNUM}">
 						${dto.NOVEL_SUBJECT}
 					</a>
 				</td>
 				<td align="center">${dto.NOVEL_MEMBERNAME}</td>
-				<td align="center"><a href="writerNovelUpdate?nnum=${dto.NNUM}&mnum=${getMember.mnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.NNUM}&mnum=${getMember.mnum}">삭제</a></td>
+				<td align="center"><a href="writerNovelUpdate?nnum=${dto.NNUM}&mnum=${getMember.mnum}">수정</a></td>
 			</tr>		
 			</c:forEach>
 		</table>

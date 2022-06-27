@@ -139,11 +139,12 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientOrderList")//일반회원 구매내역
-	public String ClientOrderList(HttpSession session,HttpServletRequest req, int mnum) {
+	public String ClientOrderList(HttpSession session,HttpServletRequest req) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
 			return "redirect:/main/login";
 		}
+		int mnum = login.getMnum();
 		List<Map<String, String>> list = purchaseHistoryMapper.listPurchaseHistory(mnum);
 		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");

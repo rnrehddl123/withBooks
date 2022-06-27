@@ -20,7 +20,7 @@
 				<i class="bi bi-bookmark-heart-fill"></i>
 				<p>찜 목록<p>
 			</li></a>
-			<a href="clientLibrary?mnum=${login.mnum}"><li>
+			<a href="clientLibrary"><li>
 				<i class="bi bi-book"></i>
 				내 서재
 			</li></a>
@@ -34,6 +34,7 @@
 				<i class="bi bi-card-checklist"></i>
 				<p>구매내역<p>
 			</li></a>
+<<<<<<< HEAD
 			<c:if test="${empty login.member_authority}">
 				<a href="listRequestWriter"><li>
 					<i class="bi bi-pen"></i>
@@ -55,6 +56,11 @@
 			<a href="chart"><li>
 				<i class="bi bi-graph-up"></i>
 				<p>통계<p>
+=======
+			<a href="writeRequestWriter"><li>
+				<i class="bi bi-pen"></i>
+				작가신청
+>>>>>>> origin/이송주
 			</li></a>
 		</ul>
 	</div>

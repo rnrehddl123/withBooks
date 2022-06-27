@@ -54,10 +54,15 @@ public class AdminPageController {
 	
 	@Resource(name="slideUploadPath")
 	private String uploadPath;
-
+	
 	@RequestMapping("/homepage")//어드민 페이지 이동
 	public String homepage() {
 		return "homepage/homepage";
+	}
+	
+	@RequestMapping("/adminLogin")//어드민 로그인 페이지 이동
+	public String adminLogin() {
+		return "homepage/adminLogin";
 	}
 	
 	@RequestMapping("/message")//메세지 페이지 이동

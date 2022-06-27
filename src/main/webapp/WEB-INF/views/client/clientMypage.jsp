@@ -35,15 +35,15 @@
 				<p>구매내역<p>
 			</li></a>
 			<c:if test="${empty login.member_authority}">
-				<a href="clientLibrary?mnum=${login.mnum}"><li>
+				<a href="listRequestWriter"><li>
 					<i class="bi bi-pen"></i>
 					작가신청
 				</li></a>
 			</c:if>
 			<c:if test="${not empty login.member_authority}">
-				<a href="clientLibrary?mnum=${login.mnum}"><li>
+				<a href="writerNovel"><li>
 					<i class="bi bi-pen"></i>
-					작가신청
+					소설 작성
 				</li></a>
 			</c:if>
 		</ul>

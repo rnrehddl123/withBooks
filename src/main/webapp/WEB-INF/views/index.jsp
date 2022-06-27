@@ -54,6 +54,7 @@
 		
 		<div>
 		<h1>관리자</h1>
+			<li><h3><a href="adminLogin">관리자 로그인 페이지</a></h3>
 			<li><h3><a href="homepage">관리자 페이지</a></h3>
 			<li><h3><a href="slide">슬라이드 관리</a></h3>
 			<li><h3><a href="insertSuggest">추천작 추가</a></h3>

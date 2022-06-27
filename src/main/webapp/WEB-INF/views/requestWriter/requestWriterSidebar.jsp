@@ -26,10 +26,6 @@
         <a href="listRequestWriter" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>작가 신청 목록</a>
       </li>
-      <li>
-        <a href="writeRequestWriter" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>작가 신청 하기</a>
-      </li>
     </ul>
     <hr>
     <div class="dropdown">

@@ -22,91 +22,91 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="slide" class="nav-link active" aria-current="page">
+        <a href="slide" class="nav-link text-white slide" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           	슬라이드 관리
         </a>
       </li>
       <li>
-        <a href="insertSuggest" class="nav-link text-white">
+        <a href="insertSuggest" class="nav-link text-white insertSuggest">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
           	추천작 추가
         </a>
       </li>
       <li>
-        <a href="listSuggest" class="nav-link text-white">
+        <a href="listSuggest" class="nav-link text-white listSuggest">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
           	추천작 목록
         </a>
       </li>
       <li>
-        <a href="insertCate" class="nav-link text-white">
+        <a href="insertCate" class="nav-link text-white insertCate">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           	카테고리 추가
         </a>
       </li>
       <li>
-        <a href="listCate" class="nav-link text-white">
+        <a href="listCate" class="nav-link text-white listCate">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	카테고리 목록
         </a>
       </li>
       <li>
-        <a href="insertNotice" class="nav-link text-white">
+        <a href="insertNotice" class="nav-link text-white insertNotice">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	공지사항 추가
         </a>
       </li>
       <li>
-        <a href="listNotice" class="nav-link text-white">
+        <a href="listNotice" class="nav-link text-white listNotice">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	공지사항 목록
         </a>
       </li>
       <li>
-        <a href="listBoardAdmin" class="nav-link text-white">
+        <a href="listBoardAdmin" class="nav-link text-white listBoardAdmin">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	게시판 관리
         </a>
       </li>
       <li>
-        <a href="listClient" class="nav-link text-white">
+        <a href="listClient" class="nav-link text-white listClient">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	회원 관리
         </a>
       </li>
       <li>
-        <a href="listWriter" class="nav-link text-white">
+        <a href="listWriter" class="nav-link text-white listWriter">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	작가 관리
         </a>
       </li>
       <li>
-        <a href="upgradeClient" class="nav-link text-white">
+        <a href="upgradeClient" class="nav-link text-white upgradeClient">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	작가 신청 관리
         </a>
       </li>
       <li>
-        <a href="listPay" class="nav-link text-white">
+        <a href="listPay" class="nav-link text-white listPay">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	결제 내역
         </a>
       </li>
       <li>
-        <a href="saleManageClient" class="nav-link text-white">
+        <a href="saleManageClient" class="nav-link text-white saleManageClient">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	회원 매출 관리
         </a>
       </li>
       <li>
-        <a href="saleManageWriter" class="nav-link text-white">
+        <a href="saleManageWriter" class="nav-link text-white saleManageWriter">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	작가 매출 관리
         </a>
       </li>
       <li>
-        <a href="saleTotal" class="nav-link text-white">
+        <a href="saleTotal" class="nav-link text-white saleTotal">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	총 매출 관리
         </a>
@@ -133,3 +133,7 @@
     </div>
  </div>
 		<div class="adminmain" align="center">
+		
+<script type="text/javascript">
+	document.querySelector('.' +window.location.href.split('/')[4]).classList.add('active');
+</script>

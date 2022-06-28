@@ -160,5 +160,9 @@ public class MemberMapper {
 		int res = sqlSession.update("upgradeClientOk", mnum);
 		return res;
 	}
-
+	
+	public int idCheck(String member_id) {
+		int res = sqlSession.selectOne("idCheck", member_id);
+		return res;
+	}
 }

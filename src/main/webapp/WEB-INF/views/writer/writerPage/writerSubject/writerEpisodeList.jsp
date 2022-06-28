@@ -9,18 +9,19 @@
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
-	<div align="center">
+	<div class="margintop" align="center">
 		<b>${getNovel.novel_subject}의 에피소드 목록</b>
 		<form name="f" action="EpisodeChange" method="post" onsubmit="return check()">
 		<input type="hidden" name="mnum" value="${login.mnum}">
-		<table align="center" class="writer">
+		<table align="center" class="table novel">
+			<thead>
 			<tr>
-				<td colspan="5" align="right"><a href="writerEpisode?nnum=${getNovel.nnum}">새로운 에피소드 쓰기</a> |
-				 <a href="writerNovelList?mnum=${login.mnum}">소설 목록으로 가기</a>
+				<td colspan="5" align="right"><a href="writerEpisode?nnum=${getNovel.nnum}"><button type="button" class="btn btn-light">새로운 에피소드 쓰기</button></a> |
+				 <a href="writerNovelList?mnum=${login.mnum}"><button type="button" class="btn btn-light">소설 목록으로 가기</button></a>
 				  
 				  	<select class="changeList" name="pp" onchange="change()">
 						<option value="past">과거순</option>
-						<option value="now">현재순</option>
+						<option selected value="now">현재순</option>
 					</select>
 				 </td>
 			</tr>
@@ -31,21 +32,24 @@
 				<th>추천수</th>
 				<th>수정</th>
 			</tr>
+			</thead>
 			<c:set var="pageNum" value="${episodeNum}"/>
 			<c:if test="${empty listEpisodeCount}">
 			<tr>
 				<td colspan="5">등록된 에피소드가 없습니다.</td>
 			</tr>
 			</c:if>
+			<tbody>
 			<c:forEach var="dto" items="${listEpisodeCount}">
 			<tr>
 				<td align="center">${dto.EPI_SUBJECT}</td>
 				<td align="center">${dto.EPI_DATE}</td>
 				<td align="center">${dto.EPI_READCOUNT}</td>
 				<td align="center">${dto.EPI_RECOMMAND}</td>
-				<td align="center"><a href="writerEpisodeUpdate?epnum=${dto.EPNUM}&nnum=${getNovel.nnum}">수정</a></td>
+				<td align="center"><a href="writerEpisodeUpdate?epnum=${dto.EPNUM}&nnum=${getNovel.nnum}"><button type="button" class="btn btn-light">수정</button></a></td>
 			</tr>		
 			</c:forEach>
+			</tbody>
 		</table>
 		<ul class="pagination justify-content-center">
 		<c:if test="${rowCount>0}">			

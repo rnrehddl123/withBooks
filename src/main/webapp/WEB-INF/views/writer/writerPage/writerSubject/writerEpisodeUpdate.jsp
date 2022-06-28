@@ -20,10 +20,10 @@
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 	<div align="center">
-		<form class="editorWrapper" name="f" action="insertEpisode" method="post" onsubmit="return check()">
+		<form class="editorWrapper" name="f" action="writerEpisodeUpdate" method="post" onsubmit="return check()">
 			<input type="hidden" value="${login.mnum}" name="mnum">
 			<input type="hidden" name="nnum" value="${nnum}">
-			<input type="hidden" name="Purchase_price" value="0">
+			<input type="hidden" name="epnum" value="${getEpisode.epnum}">
 			<div class="mb-3">
 			  <div class="flex"><label for="exampleFormControlInput1" class="form-label">제목</label></div>
 			  <input type="text" name="Epi_subject" class="form-control" id="exampleFormControlInput1" value="${getEpisode.epi_subject}" required >

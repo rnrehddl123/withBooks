@@ -219,7 +219,6 @@ public class WriterController {
 		if(login==null){
 			return "redirect:login";
 		}
-		int mnum = login.getMnum();
 		int res = episodeMapper.updateEpisode(dto);
 	      String msg = null, url = null;
 	      if(res>0) {

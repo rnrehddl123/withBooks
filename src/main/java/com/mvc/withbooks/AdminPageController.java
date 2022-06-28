@@ -26,6 +26,7 @@ import com.mvc.withbooks.dto.CategoryDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NoticeDTO;
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.PayDTO;
 import com.mvc.withbooks.dto.RequestWriterDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
@@ -34,6 +35,7 @@ import com.mvc.withbooks.service.CategoryMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.PayMapper;
 import com.mvc.withbooks.service.RequestWriterMapper;
 
 @Controller
@@ -55,6 +57,8 @@ public class AdminPageController {
 	private MemberMapper memberMapper;
 	@Autowired
 	private RequestWriterMapper requestWriterMapper;
+	@Autowired
+	private PayMapper payMapper;
 	
 	@Resource(name="slideUploadPath")
 	private String uploadPath;
@@ -609,6 +613,39 @@ public class AdminPageController {
 	@RequestMapping("/saleTotal")
 	public String saleTotal() {
 		return "homepage/admin/saleManage/saleTotal";
+	}
+	
+	@RequestMapping("/listPay")
+	public String listPay(HttpServletRequest req) {
+		int pageSize = 5;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		int rowCount = payMapper.getPayCount();
+		if (endRow > rowCount) endRow = rowCount;
+		List<PayDTO> list = null;
+		if (rowCount>0){
+			list = payMapper.listPay(startRow, endRow);
+		} 
+		int payNum = rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("payNum", payNum);
+		req.setAttribute("listPay", list);
+		return "homepage/admin/saleManage/payList";
 	}
 
 }

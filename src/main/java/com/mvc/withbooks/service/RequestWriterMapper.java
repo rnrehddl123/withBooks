@@ -22,6 +22,11 @@ public class RequestWriterMapper {
 		return list;
 	}
 	
+	public List<RequestWriterDTO> listRequestWriterCheck(int mnum){
+		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriterCheck", mnum);
+		return list;
+	}
+	
 	public List<RequestWriterDTO> listRequestWriter(int start, int end){
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);

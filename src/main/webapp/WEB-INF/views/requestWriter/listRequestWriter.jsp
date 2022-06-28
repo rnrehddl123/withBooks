@@ -41,7 +41,7 @@
 			</tr>	
 	</c:forEach>	
 			<div align="right">
-					<input type="submit" value="작가 신청 하기" onclick="window.location='writeRequestWriter'">
+					<input type="submit" value="작가 신청 하기" onclick="window.location='writeRequestWriter?'">
 				</div>
   </tbody>
 </table>

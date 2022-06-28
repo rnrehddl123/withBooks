@@ -13,24 +13,24 @@
 	<title>글쓰기</title>
 	<script type="text/javascript">
 		function check(){
-			if (f.writer.value==""){
+			if (f.Board_writer.value==""){
 				alert("이름을 입력해 주세요!!")
-				f.writer.focus()
+				f.Board_writer.focus()
 				return false
 			}
-			if (f.subject.value==""){
+			if (f.Board_subject.value==""){
 				alert("제목을 입력해 주세요!!")
-				f.subject.focus()
+				f.Board_subject.focus()
 				return false
 			}
-			if (f.content.value==""){
+			if (f.Board_content.value==""){
 				alert("내용을 입력해 주세요!!")
-				f.content.focus()
+				f.Board_content.focus()
 				return false
 			}
-			if (f.passwd.value==""){
+			if (f.Board_passwd.value==""){
 				alert("비밀번호를 입력해 주세요!!")
-				f.passwd.focus()
+				f.Board_passwd.focus()
 				return false
 			}
 			return true

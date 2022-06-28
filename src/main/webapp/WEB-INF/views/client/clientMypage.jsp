@@ -57,15 +57,17 @@
 				</li></a>
 			</c:if>
 		</ul>
-		<ul class="myinfo flex">
-			<a href="writerNovelList"><li>
-				<i class="bi bi-list"></i>
-				<p>내 소설</p>
-			</li></a>
-			<a href="chart"><li>
-				<i class="bi bi-graph-up"></i>
-				<p>통계<p>
-		</ul>
+		<c:if test="${not empty login.member_authority}">
+			<ul class="myinfo flex">
+				<a href="writerNovelList"><li>
+					<i class="bi bi-list"></i>
+					<p>내 소설</p>
+				</li></a>
+				<a href="chart"><li>
+					<i class="bi bi-graph-up"></i>
+					<p>통계<p>
+			</ul>
+		</c:if>
 	</div>
 </body>
 </html>

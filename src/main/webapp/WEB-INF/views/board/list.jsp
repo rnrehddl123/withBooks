@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../main/header.jsp"/>
-<jsp:include page="boardSidebar.jsp"/>
+<link href="resources/css/board.css" rel="stylesheet" type="text/css" />
+<!--<jsp:include page="boardSidebar.jsp"/>-->
 		<div align="center" style="
     margin-top: auto;
     margin-bottom: auto;
@@ -27,11 +28,12 @@ var count2=0;
 	
 </script>
 
-<table class="table">
+<table class="table" >
   <thead>
   <div align="center">
   	<h1>자유게시판</h1>
   </div>
+  
     <tr>
       <th scope="col" align="center">번호</th>
       <th scope="col" align="center">제목</th>
@@ -63,6 +65,13 @@ var count2=0;
 			
   </tbody>
 </table>
+
+
+  <div align="center" class="buttonList">
+  	<input type="button" value="글쓰기" onclick="window.location='writeBoard'">
+  </div>
+  
+
 <div>
 	<c:if test="${rowCount>0}">
 		<c:if test="${startPage>1}">
@@ -76,9 +85,9 @@ var count2=0;
 		</c:if>
 	</c:if>
 	
-	<form name="f" action="listBoard" method="post">
+	<form name="f" action="listBoard" method="post" class="f">
 		<input type="hidden" name="mode" value="search">
-			검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+			<input type="text" name="searchString" placeholder="검색"> <input type="submit" value="검색"><p>
 	</form>
 </div>
 

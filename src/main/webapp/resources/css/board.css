@@ -1,5 +1,6 @@
 .flex{
 	display: flex !important;
+	margin-top: 5px;
 }
 
 
@@ -11,7 +12,10 @@
 
 .title{
 	text-align: left;
-	margin-left: 20px;
+	margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+	margin-right: 30px;
 }
 
 .contant{
@@ -38,4 +42,20 @@
 .time{
 	margin-left: auto;
 	margin-right: 20px;
+}
+
+.table{
+	margin-top: 20px;
+}
+
+.buttonList{
+	margin: 20px;
+}
+
+.f{
+	margin-top: 5px;
+}
+
+.bi{
+	
 }

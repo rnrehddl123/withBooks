@@ -3,7 +3,8 @@
 <!-- content.jsp -->
 <html>
 <jsp:include page="../main/header.jsp"/>
-<jsp:include page="boardSidebar.jsp"/>
+<link href="resources/css/board.css" rel="stylesheet" type="text/css" />
+<!--<jsp:include page="boardSidebar.jsp"/>-->
 		<div align="center" style="
     margin-top: auto;
     margin-bottom: auto;
@@ -16,15 +17,13 @@
 </head>
 <body>
 	<div align="center">
-		<hr color="green">
-  		<h1>[ 자유 게시판 ]</h1>
-  		<hr color="green">
+  		<h1>자유게시판</h1>
   		
   	</div>
   	<div>
   		<div class="boardWrapper">
   			<div class="title">
-  				<div>${getBoard.board_subject}</div>
+  				<div><h3>${getBoard.board_subject}</h3></div>
   			</div>
   			<div class="boardInfo flex">
   				<div class="iconWrapper">
@@ -48,12 +47,13 @@
   			<div class="contant" style="white-space: pre-line">
   				${getBoard.board_content}
   			</div>
+  		</div>
 	  			<div class="btn-group flex" role="group" aria-label="Basic example">
 				  <button type="button" class="btn btn-primary" onclick="window.location='updateBoard?Bnum=${getBoard.bnum}'">글수정</button>
 				  <button type="button" class="btn btn-primary" onclick="window.location='deleteBoard.do?Bnum=${getBoard.bnum}'">글삭제</button>
 				  <button type="button" class="btn btn-primary" onclick="window.location='listBoard'">글목록</button>
 				</div>
-  			</div>
+  			
   	</div>
 </body>
 </html>

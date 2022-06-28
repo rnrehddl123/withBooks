@@ -336,10 +336,10 @@ public class ClientController {
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "회원가입성공.";
-			url = "signUp";
+			url = "main";
 		}else {
 			msg = "회원가입실패.";
-			url = "signUp";
+			url = "main";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);

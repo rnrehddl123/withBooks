@@ -250,8 +250,8 @@ public class ClientController {
 			req.setAttribute("review", reviewMapper.getreview(myReview));
 			
 		}
-		/*List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
-		session.setAttribute("elist", elist);*/
+		List<EpisodeDTO> eplist=episodeMapper.listNoEpisode(nnum);
+		session.setAttribute("eplist", eplist);
 		List<Map<String, String>> elist = episodeMapper.listEpisodeCount(nnum);
 		int pageSize = 25;
 		String pageNum = req.getParameter("pageNum");
@@ -313,8 +313,9 @@ public class ClientController {
 	//회원가입 기능
 	
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
-	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto ,@RequestParam(required = false) String[] member_preferred){
-		dto.setMember_Tel(req.getAttribute("member_tel1")+"-"+req.getAttribute("member_tel2")+"-"+req.getAttribute("member_tel3"));
+	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto,@RequestParam Map<String,String> params,@RequestParam(required = false) String[] member_preferred){
+		System.out.println(params.get("member_tel1"));
+		dto.setMember_Tel(params.get("member_tel1")+"-"+params.get("member_tel2")+"-"+params.get("member_tel3"));
 		if(member_preferred==null) {
 			
 		}else if(member_preferred.length>2) {

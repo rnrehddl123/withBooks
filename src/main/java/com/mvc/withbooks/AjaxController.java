@@ -125,7 +125,7 @@ public class AjaxController {
 	@ResponseBody
 	public String checkNextEpi(@RequestBody String data,HttpSession session){
 		Gson gson = new Gson();
-		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
+		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("eplist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
 		Map<String, String> mapdata=new HashMap<String, String>();
 		int count=-1;
@@ -157,7 +157,7 @@ public class AjaxController {
 	@ResponseBody
 	public String checkPrevEpi(@RequestBody String data,HttpSession session){
 		Gson gson = new Gson();
-		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
+		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("eplist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
 		Map<String, String> mapdata=new HashMap<String, String>();
 		int count=-1;

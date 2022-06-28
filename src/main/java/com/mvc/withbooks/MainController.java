@@ -127,7 +127,7 @@ public class MainController {
 	@RequestMapping("/searchWriterNovelList")
 	public String searchWriterNovelList(HttpServletRequest req, int mnum, String novel_memberName) {
 		req.setAttribute("novel_memberName", novel_memberName);
-		List<NovelDTO> list = novelMapper.listmemberNovel(mnum);
+		List<NovelDTO> list = novelMapper.searchmemberNovel(novel_memberName);
 		req.setAttribute("listmemberNovel", list);
 		return "/writer/writerPage/writerSubject/searchWriterNovelList";
 	}

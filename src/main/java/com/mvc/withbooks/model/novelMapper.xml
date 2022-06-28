@@ -99,4 +99,8 @@
 	<select id="listNovelCount" resultType="java.util.Map" parameterType="int">
 		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{Mnum}
 	</select>
+	
+	<select id="searchmemberNovel" resultType="NovelDTO">
+		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel where novel.Novel_memberName  = #{Novel_memberName}
+	</select>
 </mapper>

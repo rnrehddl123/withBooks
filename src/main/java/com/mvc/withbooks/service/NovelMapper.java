@@ -110,4 +110,9 @@ public class NovelMapper {
 		List<Map<String, String>> list = sqlSession.selectList("listNovelCount", mnum);
 		return list;
 	}
+	
+	public List<NovelDTO> searchmemberNovel(String novel_memberName) {
+		List<NovelDTO> list = sqlSession.selectList("searchmemberNovel", novel_memberName);
+		return list;
+	}
 }

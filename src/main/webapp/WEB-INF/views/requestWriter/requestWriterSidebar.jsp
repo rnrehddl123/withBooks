@@ -47,3 +47,6 @@
 			</div>
   
 
+<script type="text/javascript">
+	document.querySelector('.' +window.location.href.split('/')[4]).classList.add('active');
+</script>

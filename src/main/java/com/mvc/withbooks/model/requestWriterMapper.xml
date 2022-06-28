@@ -8,8 +8,8 @@
  		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where Rwnum = #{Rwnum}
  	</select>
  	
- 	<select id="listRequestWriterCheck" parameterType="int" resultType="RequestWriterDTO">
- 		select * from RequestWriter where mnum = #{mnum}
+ 	<select id="listRequestWriterCheck" parameterType="int" resultType="RequestWriterDTO"  resultMap="RequestWriterDTO">
+ 		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where B.MNUM = #{mnum}
  	</select>
  	
  	<resultMap id="memberDTO" type="com.mvc.withbooks.dto.MemberDTO">
@@ -28,8 +28,8 @@
         <association property="memberDTO" column="MNUM" resultMap="memberDTO" />
 	</resultMap>
 	
-	<select id="listRequestWriterClient" parameterType="String" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
-		select * from RequestWriter where Request_writer = #{member_name}
+	<select id="listRequestWriterClient" parameterType="int" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
+		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where B.MNUM = #{mnum}
 	</select>
 	
 	<select id="listRequestWriter" parameterType="java.util.Map" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">

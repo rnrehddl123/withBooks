@@ -1,6 +1,7 @@
 package com.mvc.withbooks.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,8 @@ public class RequestWriterMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<RequestWriterDTO> listRequestWriterClient(String member_name){
-		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriterClient", member_name);
-		return list;
-	}
-	
-	public List<RequestWriterDTO> listRequestWriterCheck(int mnum){
-		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriterCheck", mnum);
+	public List<RequestWriterDTO> listRequestWriterClient(int mnum){
+		List<RequestWriterDTO> list = sqlSession.selectList("listRequestWriterClient", mnum);
 		return list;
 	}
 	

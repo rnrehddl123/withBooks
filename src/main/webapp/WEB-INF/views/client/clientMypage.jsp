@@ -65,13 +65,6 @@
 			<a href="chart"><li>
 				<i class="bi bi-graph-up"></i>
 				<p>통계<p>
-<<<<<<< HEAD
-=======
-			<a href="listRequestWriter"><li>
-				<i class="bi bi-pen"></i>
-				작가신청
-			</li></a>
->>>>>>> 최상우
 		</ul>
 	</div>
 </body>

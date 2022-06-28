@@ -26,8 +26,8 @@ public class RequestWriterController {
 	@RequestMapping("/listRequestWriter")
 	public String listRequestWrinte(HttpServletRequest req, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
-		String member_name = login.getMember_name();
-		List<RequestWriterDTO> list = requestWriterMapper.listRequestWriterClient(member_name);
+		int mnum = login.getMnum();
+		List<RequestWriterDTO> list = requestWriterMapper.listRequestWriterClient(mnum);
 		req.setAttribute("listRequestWriter", list);
 		return "requestWriter/listRequestWriter";
 	}
@@ -35,17 +35,7 @@ public class RequestWriterController {
 	//��û �ۼ�
 	@RequestMapping(value = "/writeRequestWriter", method=RequestMethod.GET)
 	public String writeFormRequestWriter(HttpServletRequest req, HttpSession session) {
-		MemberDTO login = (MemberDTO)session.getAttribute("login");
-		int mnum = login.getMnum();
-		System.out.println("mnum : " + mnum);
-		List<RequestWriterDTO> list = requestWriterMapper.listRequestWriterCheck(mnum);
-		if(list==null) {
-			return "requestWriter/writeFormRequestWriter";
-		}else {
-			req.setAttribute("msg", "이미 신청하셨습니다.");
-			req.setAttribute("url", "listRequestWriter");
-			return "message";
-		}
+		return "requestWriter/writeFormRequestWriter";
 	}
 	
 	@RequestMapping(value = "/writeRequestWriter", method=RequestMethod.POST)

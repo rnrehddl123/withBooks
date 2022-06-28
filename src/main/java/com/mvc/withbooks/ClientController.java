@@ -313,8 +313,8 @@ public class ClientController {
 	//회원가입 기능
 	
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
-	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, @RequestParam Map<String, String> params,@RequestParam(required = false) String[] member_preferred){
-		dto.setMember_Tel(req.getAttribute("tel1")+"-"+req.getAttribute("tel2")+"-"+req.getAttribute("tel3"));
+	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto ,@RequestParam(required = false) String[] member_preferred){
+		dto.setMember_Tel(req.getAttribute("member_tel1")+"-"+req.getAttribute("member_tel2")+"-"+req.getAttribute("member_tel3"));
 		if(member_preferred==null) {
 			
 		}else if(member_preferred.length>2) {

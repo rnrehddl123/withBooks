@@ -315,7 +315,9 @@ public class ClientController {
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
 	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, @RequestParam Map<String, String> params,@RequestParam(required = false) String[] member_preferred){
 		dto.setMember_Tel(req.getAttribute("tel1")+"-"+req.getAttribute("tel2")+"-"+req.getAttribute("tel3"));
-		if(member_preferred.length>2) {
+		if(member_preferred==null) {
+			
+		}else if(member_preferred.length>2) {
 			dto.setMember_preferred1(member_preferred[0]);
 			dto.setMember_preferred2(member_preferred[1]);
 			dto.setMember_preferred3(member_preferred[2]);

@@ -71,7 +71,7 @@
 	</select>
 	
 	<select id="findWriterMain" parameterType="java.util.Map" resultType="NovelDTO" resultMap="novelDTO">
-		select * from (select rownum rn, A.* from (select * from novel where Novel_subject like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
+		select * from (select rownum rn, A.* from (select * from novel where Novel_membername like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
 	</select>
 	
 	<select id="getNovelCountMain" parameterType="java.util.Map" resultType="int">

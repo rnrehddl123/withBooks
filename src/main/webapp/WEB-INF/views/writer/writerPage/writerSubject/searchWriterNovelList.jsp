@@ -10,9 +10,6 @@
 		<b>${novel_memberName}님의 소설</b>
 		<table align="center" class="writer">
 			<tr>
-				<td colspan="4" align="right"><a href="writerNovel">새로운 소설 쓰기</a></td>
-			</tr>
-			<tr>
 				<th>번호</th>
 				<th>소설(시리즈)제목(writerEpisodeList로)</th>
 				<th>작성자</th>
@@ -27,7 +24,7 @@
 			<tr>
 				<td align="right">${dto.nnum}</td>
 				<td>
-					<a href="writerEpisodeList?nnum=${dto.nnum}">
+					<a href="clientNovelInfo?nnum=${dto.nnum}&change=past">
 						${dto.novel_subject}
 					</a>
 				</td>

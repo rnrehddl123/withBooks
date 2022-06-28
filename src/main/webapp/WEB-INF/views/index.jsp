@@ -70,6 +70,7 @@
 			<li><h3><a href="saleManageClient">회원 매출 관리</a></h3>
 			<li><h3><a href="saleManageWriter">작가 매출 관리</a></h3>
 			<li><h3><a href="saleTotal">총 매출 관리</a></h3>
+			<li><h3><a href="adminChart">차트</a></h3>
 		<h1>-------------------------------------------------------------------------</h1>		
 		</div>	
 </ul>

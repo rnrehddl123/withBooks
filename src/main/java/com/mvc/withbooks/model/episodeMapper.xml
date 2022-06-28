@@ -21,7 +21,7 @@
 	</delete>
 	
 	<update id="updateEpisode" parameterType="EpisodeDTO">
-		update episode set Epi_subject=#{Epi_subject}, Epi_content=#{Epi_content}, Epi_recommand=#{Epi_recommand} where Epnum = #{epnum} 
+		update episode set Epi_subject=#{Epi_subject}, Epi_content=#{Epi_content} where Epnum = #{epnum} 
 	</update>		
 	
 	<select id="getEpisode" parameterType="int" resultType="EpisodeDTO" resultMap="getepisodeDTO">

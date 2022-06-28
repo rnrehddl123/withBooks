@@ -9,22 +9,25 @@
 </head>
 <link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 <body>
-<div align="center">
-	<h4>${login.member_name}님의 구매내역</h4> 
-	<table border="1" width="60%">
+<div class="mar" align="center">
+	<h4 class="mar">${login.member_name}님의 구매내역</h4> 
+	<table class="table table-striped orderListpage">
 <!-- 작품1 -->
+		<thead>
 		<tr>
-			<td align="center">번호</td>
-			<td align="center">제목</td>
-			<td align="center">가격</td>
-			<td align="center">날짜</td>
+			<th scope="col" align="center">번호</th>
+			<th scope="col" align="center">제목</th>
+			<th scope="col" align="center">가격</th>
+			<th scope="col" align="center">날짜</th>
 		</tr>
+		</thead>
 		<c:set var="pageNum" value="${purchaseNum}"/>
 		<c:if test="${empty purchaseHistoryList}">
 		<tr>
 			<td align="center" colspan="4">구매내역이 없습니다.</td>
 		</tr>
 		</c:if>
+		<tbody>
 		<c:forEach var="dto" items="${purchaseHistoryList}">
 		<tr>
 			<td align="center"><c:out value="${pageNum}"/></td>
@@ -34,6 +37,7 @@
 			<td align="center">${dto.PURCHASE_DATE}</td>
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 		<ul class="pagination justify-content-center pageinfo orderpageinfo">
 		<c:if test="${rowCount>0}">			

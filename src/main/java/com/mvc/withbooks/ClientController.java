@@ -232,7 +232,10 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
-	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum, String change) {
+	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum,@RequestParam(required = false) String change) {
+		if(change==null) {
+			change="now";
+		}
 		MemberDTO login=(MemberDTO)session.getAttribute("login");
 		NovelDTO ndto=novelMapper.getNovel(nnum);
 		

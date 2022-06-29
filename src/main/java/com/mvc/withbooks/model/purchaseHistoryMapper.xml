@@ -38,7 +38,15 @@
 		select COUNT(*) FROM (select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date, PurchaseHistory.MNUM  from EPISODE e INNER join PurchaseHistory ON PurchaseHistory.EPNUM = e.epnum WHERE PurchaseHistory.NNUM  = #{NNUM}AND PurchaseHistory.PURCHASE_PRICE !=0)
 	</select>
 	
-	<select id="chart" parameterType="int" resultType="PurchaseHistoryDTO">
-		SELECT * FROM  (SELECT e.epnum,COUNT(e.epnum)-1,n.mnum FROM PURCHASEHISTORY p INNER JOIN EPISODE e  ON p.EPNUM =e.EPNUM INNER JOIN NOVEL n ON e.NNUM =n.NNUM GROUP BY e.EPNUM,n.mnum) WHERE mnum=#{memberDTO.getMnum} ORDER BY EPNUM
+	<select id="chart" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM  (SELECT e.epnum,COUNT(e.epnum)-1 AS COUNT,n.mnum,e.EPI_SUBJECT,n.NNUM  FROM PURCHASEHISTORY p INNER JOIN EPISODE e  ON p.EPNUM =e.EPNUM INNER JOIN NOVEL n ON e.NNUM =n.NNUM GROUP BY e.EPNUM,n.mnum,e.EPI_SUBJECT,n.NNUM) WHERE mnum=#{mnum} AND nnum=#{nnum} ORDER BY EPNUM
+	</select>
+	
+	<select id="writerChart" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * from (SELECT p.PURCHASE_DATE, COUNT(*) AS count, p.NNUM, n.MNUM  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM GROUP BY p.PURCHASE_DATE, p.NNUM, n.MNUM) WHERE mnum=#{mnum} AND nnum= #{nnum}
+	</select>
+	
+	<select id="memberChart" parameterType="int" resultType="java.util.Map" >
+		SELECT p.PURCHASE_DATE ,COUNT(p.PURCHASE_DATE) AS count,p.PURCHASE_PRICE  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM WHERE n.MNUM = #{mnum} AND p.PURCHASE_PRICE !=0 GROUP BY p.PURCHASE_DATE,PURCHASE_PRICE 
 	</select>
 </mapper>

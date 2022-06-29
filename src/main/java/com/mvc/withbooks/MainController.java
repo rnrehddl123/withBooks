@@ -18,6 +18,7 @@ import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
+import com.mvc.withbooks.service.MailService;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NovelMapper;
 
@@ -32,6 +33,8 @@ public class MainController {
 	private NovelMapper novelMapper;
 	@Autowired
 	private MemberMapper memberMapper;
+	@Autowired
+	private MailService mailService;
 	
 	
 	
@@ -139,12 +142,17 @@ public class MainController {
 	}
 	
 	@RequestMapping("/findId")
-	public String findId() {
+	public String findId() throws Exception {
 		return "/main/findId";
 	}
 	
 	@RequestMapping("/findPassword")
 	public String findPassword() {
+		try {
+			mailService.sendEmail();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "/main/findPassword";
 	}
 }

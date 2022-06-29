@@ -1,49 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- clientPay -->
+<!-- writerChart -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../main/header.jsp"/>
 <html>
+
 <head>
-<title>writerPay</title>
-<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
-</head>
+
+<title> </title>
+
+<!-- stylesheet -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css"/>
+<link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
+</head> 
+
 <body>
-<div align="center">
-	<form name="purchaseCash" action="purchaseCash" method="POST"> 
-	<input type="hidden" name="mnum" value="${login.mnum}">
-	<table width="600">
-		<tr>
-			<th colspan="3" align="left">내 포인트 <font color="blue">${login.cash}원</font></th>
-		</tr>
-		<tr>
-			<td colspan="3"><hr width="600"></td>
-		</tr>
-		<tr>
-			<th colspan="3" align="center">에피소드 구매</th>
-		</tr>
-		<tr>
-			<td colspan="3"><hr width="600"></td>
-		</tr>
-		<tr>
-			<td align="center" width="10%"><input type="radio" name="Purchase_price" value="100"></td>
-			<td align="center">100포인트</td>
-			<td align="center">100원</td>
-		</tr>
-		<tr>
-			<td colspan="3"><hr width="600"></td>
-		</tr>
-		<tr>
-			<td align="center" colspan="3"><input type="checkbox" name="agree" value="" required>상품, 가격, 유의 사항 등을 확인하셨으며 구매에 동의합니다.</td>
-		</tr>
-		<tr>
-			<td align="center" colspan="3"><input type="submit" value="결제"></td>
-		</tr>
-		<tr>
-			<td align="center" colspan="3">(유의 사항)</td>
-		</tr>
-	</table>
-	</form>
-</div>
+
+<!-- javascript -->
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+
 </body>
+
+​
+<div class="chart">
+<div id="combochart" class="posi"></div>
+</div>
+​
+
+<script>
+
+var chart = c3.generate({
+	  bindto: "#combochart",
+	  size : {
+		  width : 700,
+		  height : 500
+	  },
+	  data: {
+		x : "날짜",
+	    columns: [
+	    	["날짜"<c:forEach var="dto" items="${writerChart}">,"${dto.PURCHASE_DATE}"</c:forEach>],
+	    	["구매수"<c:forEach var="dto" items="${writerChart}">,${dto.COUNT}</c:forEach>
+	    ],
+	    ],
+	    types: {
+	      pension1: "area",
+	    },
+	    colors: {
+	      pension1: "#337ab7",
+	    },
+	  },
+	  bar: {
+	    width: {
+	      ratio: 0.2,            
+	    },
+	  },
+	  axis: {
+	    x: {
+	      show : false,
+	      type : "category",
+	    },
+	  },
+	});
+
+</script>
+
+​
+
 </html>
+
 <jsp:include page="../../main/footer.jsp"/>

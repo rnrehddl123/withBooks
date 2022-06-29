@@ -28,7 +28,7 @@
 
 ​
 <div class="chart">
-<div id="combochart" class="posi"></div>
+	<div id="combochart" class="posi"></div>
 </div>
 ​
 
@@ -41,10 +41,11 @@ var chart = c3.generate({
 		  height : 500
 	  },
 	  data: {
-		x : "에피소드",
+		x : "날짜",
 	    columns: [
-	    	["에피소드"<c:forEach var="dto" items="${chart}">,"${dto.EPI_SUBJECT}"</c:forEach>],
-	    	["구매수"<c:forEach var="dto" items="${chart}">,${dto.COUNT}</c:forEach>
+	    	["날짜"<c:forEach var="dto" items="${memberChart}">,"${dto.PURCHASE_DATE}"</c:forEach>],
+	    	["구매수"<c:forEach var="dto" items="${memberChart}">,${dto.COUNT}</c:forEach>
+	    ],
 	    ],
 	    types: {
 	      pension1: "area",
@@ -61,11 +62,7 @@ var chart = c3.generate({
 	  axis: {
 	    x: {
 	      show : false,
-<<<<<<< HEAD
 	      type : "category",
-=======
-	      type: "category",
->>>>>>> 이동국
 	    },
 	  },
 	});

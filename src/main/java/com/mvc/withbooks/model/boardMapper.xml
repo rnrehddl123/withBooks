@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="findBoard" parameterType="java.util.Map" resultType="BoardDTO">
-		select * from Board where ${search} = #{searchString}
+		select * from Board where ${search} like '%'||#{searchString}||'%'
 	</select>
 
 	<select id="getBoard" parameterType="int" resultType="BoardDTO">

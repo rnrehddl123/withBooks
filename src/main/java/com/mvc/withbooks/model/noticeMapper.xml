@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="findNotice" parameterType="java.util.Map" resultType="NoticeDTO">
-		select * from notice where ${search} = #{searchString}
+		select * from notice where ${search} like '%'||#{searchString}||'%'
 	</select>
 	
 	<select id="getNoticeCount" resultType="int">

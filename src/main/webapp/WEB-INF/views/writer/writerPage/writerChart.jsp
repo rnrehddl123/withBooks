@@ -46,7 +46,6 @@ var chart = c3.generate({
 	    	["에피소드"<c:forEach var="dto" items="${chart}">,"${dto.EPI_SUBJECT}"</c:forEach>],
 	    	["구매수"<c:forEach var="dto" items="${chart}">,${dto.COUNT}</c:forEach>
 	    ],
-	    ],
 	    types: {
 	      pension1: "area",
 	    },

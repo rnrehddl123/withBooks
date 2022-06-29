@@ -52,15 +52,15 @@
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput2" class="form-label">제목</label>
-				  <input name="Board_subject" type="text" class="form-control" id="exampleFormControlInput2" value="${getBoard.board_subject}" placeholder=${getBoard.board_subject}>
+				  <input name="Board_subject" type="text" class="form-control" id="exampleFormControlInput2" value="${getBoard.board_subject}" placeholder=${getBoard.board_subject} readOnly>
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput3" class="form-label">Email</label>
 				  <input name="Board_email" type="text" class="form-control" id="exampleFormControlInput3" value="${getBoard.board_email}" placeholder="name@example.com" readOnly>
 				</div>
-				<div class="mb-3" align="left" style="white-space:pre;">
+				<div class="mb-3" align="left">
 				  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-				  <textarea name="Board_content" class="form-control" id="exampleFormControlTextarea1" value="${getBoard.board_content}" rows="10"></textarea>
+				  <textarea name="Board_content" class="form-control" id="exampleFormControlTextarea1" value="${getBoard.board_content}" rows="10" placeholder=${getBoard.board_content}></textarea>
 				</div>
 				<div class="mb-3" align="left">
 					 <label for="exampleFormControlInput4" class="form-label">비밀번호</label>

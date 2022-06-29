@@ -43,11 +43,13 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex justify-content-end" action="searchMain" method="post">
-              <span class="input-group-text" id="addon-wrapping"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <form class="d-flex justify-content-end" name="searchform" action="searchMain" method="post">
+              <input class="form-control me-2" type="search" aria-label="Search" name="searchString" placeholder="검색" required>
+              <span class="input-group-text search_icon" id="addon-wrapping">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg></span>
-              <input class="form-control me-2" type="search" aria-label="Search" name="searchString" required>
+              </svg>
+              </span>
             </form>
           </div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -132,8 +134,10 @@
 			animation.classList.remove('animation');
 		}
 	}
-	
-	
+	var search_icon=document.querySelector('.search_icon');
+	search_icon.addEventListener('click', function() {
+		searchform.submit();
+	});
 	
 	
 	

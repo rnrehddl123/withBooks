@@ -32,7 +32,7 @@
 			    <input name="member_passwd" required type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
 			  </div>
 			  <div class="inputWrapper">
-			    <input name="member_passwd" type="passwordCheck" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 확인">
+			    <input name="member_passwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 확인">
 			  </div>
 			  <div class="flex inputWrapper">
 			    <input name="member_tel1" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">

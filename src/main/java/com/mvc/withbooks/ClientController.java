@@ -352,10 +352,20 @@ public class ClientController {
 	
 	//로그인 기능
 	@RequestMapping(value="login", method=RequestMethod.GET)
-	public String LoginForm(HttpServletRequest req) {
+	public String LoginForm(HttpServletRequest req, HttpSession session) {
+		
+		//로그인이 된 상태로 재로그인 불가
+		MemberDTO login=(MemberDTO)session.getAttribute("login");
+		if(login != null) {
+			return "redirect:main";
+		}
+		
+		
 		String referrer = req.getHeader("Referer");
 		req.getSession().setAttribute("prevPage",referrer);
 		return "/main/login";
+		
+		
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
@@ -367,6 +377,8 @@ public class ClientController {
 		if (dto == null){	
 			msg = "해당하는 아이디가 없습니다.";
 			url = "login";
+			req.setAttribute("msg", msg);
+			req.setAttribute("url", url);
 			return "message";
 		}else {
 			if (params.get("Member_passwd").equals(dto.getMember_passwd())){
@@ -392,10 +404,11 @@ public class ClientController {
 			}else {	
 				msg = "비밀번호가 틀렸습니다.";
 				url = "login";
+				req.setAttribute("msg", msg);
+				req.setAttribute("url", url);
 				return "message";
 			}
 		}
-		
 	//알림설정
 		List<HashMap<String, String>> noticeList=noticeEpisodeMapper.getNoticeEpisodeMsg(dto.getMnum());
 		for(HashMap<String, String> map : noticeList) {

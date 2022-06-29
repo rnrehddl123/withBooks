@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<link href="resources/css/main.css" rel="stylesheet" type="text/css" />
@@ -44,8 +44,8 @@
 					 <label class="form-check-label">아이디 저장</label>
 					
 					<div class="find">
-					<a href="findId">아이디 찾기</a>
-					<a href="findPassword">비밀번호 찾기</a>
+					<a href="findId" class="findfind">아이디 찾기</a> 
+					<a href="findPassword" class="findfind">비밀번호 찾기</a>
 					</div>
 				
 				</div>

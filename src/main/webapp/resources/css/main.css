@@ -127,6 +127,10 @@ header .navbar-collapse form{
 	margin-left: auto;
 }
 
+.findfind{
+	text-decoration: none;
+}
+
 
 .flex{
 	display: flex;

@@ -21,21 +21,34 @@
 		
 		<div class="form">
 			<form name="f" action="login" method="post" onsubmit="return check()">
+						<!-- cookie가 있으면 checked속성을 주겠다 -->
+			<c:if test="${not empty cookie.saveid}">
+				<c:set value="checked" var="checked"/>
+			</c:if>
+
 			  <div class="inputWrapper">
-			    <input type="text" name="Member_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+				 		<!-- id기억하기 쿠키: saveid가 없는 경우 -->
+				<input type="text" name="Member_id" class="form-control" placeholder="아이디" value="${cookie.saveid.value}">				
 			  </div>
+			  			<!-- password -->
 			  <div class="inputWrapper">
-			    <input type="password" name="Member_passwd" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
+			    <input type="password" name="Member_passwd" class="form-control" placeholder="비밀번호">
 			  </div>
+			  
 			  <div class="inputWrapper">
 			  	<div class="mb-3 form-check">
-				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-				    <label class="form-check-label" for="exampleCheck1">아이디 저장</label>
-				    <div class="find">
-				    	<a href="findId">아이디 찾기</a>
-				    	<a href="findPassword">비밀번호 찾기</a>
-				    </div>
-			  	</div>
+			  	
+						 <!-- 체크박스 쿠키 : saveid가 없는 경우 -->			
+					<input type="checkbox" name="rememeberId" class="form-check-input" checked><!--  id="exampleCheck1" -->
+					
+					 <label class="form-check-label">아이디 저장</label>
+					
+					<div class="find">
+					<a href="findId">아이디 찾기</a>
+					<a href="findPassword">비밀번호 찾기</a>
+					</div>
+				
+				</div>
 			  </div>
 				 <button type="submit" class="btn btn-primary">로그인</button>
 				 <a href="signUp"><button class="btn btn-light" type="button">회원가입</button></a>

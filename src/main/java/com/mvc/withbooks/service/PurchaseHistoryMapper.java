@@ -62,8 +62,18 @@ public class PurchaseHistoryMapper {
 		return res;
 	}
 	
-	public PurchaseHistoryDTO chart(int mnum) {
-		PurchaseHistoryDTO dto = sqlSession.selectOne("chart", mnum);
-		return dto;
+	public List<Map<String, String>> chart(Map<String, String> params) {
+		List<Map<String, String>> list = sqlSession.selectList("chart", params);
+		return list;
+	}
+	
+	public List<Map<String, String>> writerChart(Map<String, String> params) {
+		List<Map<String, String>> list = sqlSession.selectList("writerChart", params);
+		return list;
+	}
+	
+	public List<Map<String, String>> memberChart(int mnum) {
+		List<Map<String, String>> list = sqlSession.selectList("memberChart", mnum);
+		return list;
 	}
 }

@@ -44,7 +44,6 @@ public class WriterController {
 	
 	@Autowired
 	private CategoryMapper categoryMapper;
-	
 
 	@Autowired
 	private MemberMapper memberMapper;
@@ -387,13 +386,34 @@ public class WriterController {
 	}
 	
 	@RequestMapping("/chart")
-	public String WriterChart(HttpServletRequest req, HttpSession session) {
-		
+	public String WriterChart(HttpServletRequest req, HttpSession session, int nnum) {
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
+		}
+		int mnum = login.getMnum();
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("mnum", String.valueOf(login.getMnum()));
+		params.put("nnum", String.valueOf(nnum));
+		List<Map<String, String>> list = purchaseHistoryMapper.chart(params);
+		req.setAttribute("chart", list);
+		req.setAttribute("mnum", mnum);
 		return "writer/writerPage/writerChart";
 	}
 	
 	@RequestMapping("/writerPay")
-	public String WriterPay() {
+	public String WriterPay(HttpServletRequest req, HttpSession session, int nnum) {
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
+		}
+		int mnum = login.getMnum();
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("mnum", String.valueOf(login.getMnum()));
+		params.put("nnum", String.valueOf(nnum));
+		List<Map<String, String>> list = purchaseHistoryMapper.writerChart(params);
+		req.setAttribute("writerChart", list);
+		req.setAttribute("mnum", mnum);
 		return "writer/writerPage/writerPay";
 	}
 	
@@ -453,5 +473,18 @@ public class WriterController {
 		}
 		
 		return "writer/writerPage/writerUpdate";
+	}
+	
+	@RequestMapping("/memeberChart")
+	public String MemberChart(HttpServletRequest req, HttpSession session) {
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
+		}
+		int mnum = login.getMnum();
+		List<Map<String, String>> list = purchaseHistoryMapper.memberChart(mnum);
+		req.setAttribute("memberChart", list);
+		req.setAttribute("mnum", mnum);
+		return "writer/writerPage/memberChart";
 	}
 }

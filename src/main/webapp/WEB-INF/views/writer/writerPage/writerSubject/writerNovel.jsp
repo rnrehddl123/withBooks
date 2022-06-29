@@ -20,7 +20,8 @@
 					<th width="20%">작 가 필 명</th>
 					<td><div class="flex widthmar">
 					<input type="text" class='novel_name' name="Novel_memberName" size="50" class="my-auto form-control" required>
-					<button class="my-auto check_btn" type="button" style="font: small-caption">중복 체크</button>
+					<button class="my-auto check_btn" type="button" style="font: small-caption;
+">중복 체크</button>
 					</div></div></td>
 				</tr>
 				<tr>
@@ -62,7 +63,7 @@
 
 <script type="text/javascript">
 	
-	var check_name=false
+	var check_btn=false
 	document.querySelector('.check_btn').addEventListener('click', function(e){
 		fetch("checkNovelMemberName",{
 	        method: 'POST',

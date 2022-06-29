@@ -386,8 +386,9 @@ public class WriterController {
 		return "message";
 	}
 	
-	@RequestMapping("/writerChart")
-	public String WriterChart() {
+	@RequestMapping("/chart")
+	public String WriterChart(HttpServletRequest req, HttpSession session) {
+		
 		return "writer/writerPage/writerChart";
 	}
 	

@@ -14,6 +14,54 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
+<script type="text/javascript">
+	var check=false;
+	function idCheck(){
+		fetch('idCheck', {
+			method: 'POST',
+            body: signUp.member_id.value,
+            headers: {
+                'Content-Type': 'text/plain'
+			}
+		})
+        .then(response => response.text())
+        .then(response => {
+           if(response=="false"){
+        	   alert("중복된 아이디입니다.")
+        	   check = false;
+           }else{
+        	   alert("사용가능한 아이디입니다.")
+        	   check = true;
+           }
+        });
+	}
+	function checkForm(){
+		console.log(check)
+		if(check){
+			fetch('idCheck', {
+				method: 'POST',
+	            body: signUp.member_id.value,
+	            headers: {
+	                'Content-Type': 'text/plain'
+				}
+			})
+	        .then(response => response.text())
+	        .then(response => {
+	        	 console.log(response)
+	           if(response=="false"){
+	        	   alert("중복확인을 다시 해주세요.")
+	        	   check = false;
+	           }else if(response=="true"){
+	        	   check = true;
+	           }
+	        });
+			return check;
+		}else{
+			return false;
+		}
+	}
+	
+</script>
 <body>
 	<div class="login sighup">
 		<div class="head">
@@ -21,18 +69,16 @@
 		</div>
 		
 		<div class="form">
-			<form name="signUp" method="POST" action="insertMember">
+			<form name="signUp" method="POST" action="insertMember" onsubmit="checkForm()">
 			  <div class="inputWrapper">
 			    <input name="member_name" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="이름">
 			  </div>
 			  <div class="inputWrapper">
 			    <input name="member_id" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="아이디">
+			    <button type="button" onclick="idCheck()">중복 확인</button>
 			  </div>
 			  <div class="inputWrapper">
 			    <input name="member_passwd" required type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
-			  </div>
-			  <div class="inputWrapper">
-			    <input name="member_passwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 확인">
 			  </div>
 			  <div class="flex inputWrapper">
 			    <input name="member_tel1" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">
@@ -106,21 +152,6 @@ function CountChecked(field){
 		alert("카테고리는 3개까지만 입력이 가능합니다.");	
 	field.checked = false;					
 	count -= 1;							
-	}
-}
-
-function checkPassword() {
-	var password = document.getElementById('password').value;
-	
-	if(document.getElementById('password').value != "&&document.getElementById('passwordCheck').value!="){
-		if(document.getElementById('password').value == document.getElementById('passwordCheck').value){
-			 document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
-			 document.getElementById('check').style.color='blue';
-		}
-		else{
-			 document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.'
-			 document.getElementById('check').style.color='red';
-		}
 	}
 }
 

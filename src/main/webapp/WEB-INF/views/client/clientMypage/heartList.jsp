@@ -23,6 +23,7 @@
 	<tr height="30" align="center">
 		<th>이미지</th>
 		<th>소설(시리즈) 제목</th>
+		<th>삭제하기</th>
 	</tr>
 	<c:if test="${empty listHeart}">
 		<tr>
@@ -33,6 +34,7 @@
 		<tr align="center">
 			<td><img height="100" width="100" src="resources/img/${hdto.novelDTO.novel_image}"></td>
 			<td><a href="clientNovelInfo?nnum=${hdto.novelDTO.nnum}">${hdto.novelDTO.novel_subject}</a></td>
+			<td><button type="button" class="heart_del btn btn-primary" onclick="heart_del2(${hdto.hnum})">삭제</button></td>
 		</tr>
 	</c:forEach>
 	</table>
@@ -60,3 +62,28 @@
 
 </body>
 <jsp:include page="../../main/footer.jsp"/>
+
+
+<script type="text/javascript">
+	var heart_del = document.querySelector('.heart_del');
+	var mnum;
+	<c:if test="${not empty login.mnum}">mnum=${login.mnum}</c:if>
+	
+		function heart_del2(hnum){
+				fetch('deleteHeart', {
+					method: 'POST',
+		            body: JSON.stringify({ hnum }),
+		            headers: {
+		                'Content-Type': 'application/json'
+		            }
+		        })
+		        .then(response => response.text())
+		        .then(response => {
+		            console.log(response)
+		            history.go(0);
+		        });
+				heart_del.classList.remove('active');
+		}
+			
+
+</script>

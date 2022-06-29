@@ -17,7 +17,7 @@
 				<p>${login.cash}P</p>
 			</li></a>
 			<a href="heartList"><li>
-				<i class="bi bi-bookmark-heart-fill"></i>
+				<i class="bi bi-bookmark-heart"></i>
 				<p>찜 목록<p>
 			</li></a>
 			<a href="clientLibrary"><li>

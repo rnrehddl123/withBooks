@@ -15,7 +15,7 @@
 		var cash;
 		var point;
 		if(document.querySelectorAll('.radio_cash').value==null){
-			alert("상품을 선택해 주세요.");
+			alert("결제 하시겠습니까?");
 		}
 		for (var i=0; i<radio.length; i++) {
             if (radio[i].checked == true) {

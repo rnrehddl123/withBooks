@@ -10,9 +10,9 @@
 <br><br>
 <div class="frame all">
 	<div class="container-fluid">
-		<div class="row fanarts">
+		<div class="row fanarts" >
   			<c:if test="${empty listNovel}">
-				검색된 소설이 없습니다.
+				<td align="center">검색된 소설이 없습니다.</td>
 			</c:if>
     		<c:forEach var="ndto" items="${listNovel}">
     			<div class="grid-item col-xxlg-1 col-xlg-2 col-lg-2 col-md-3 col-sm-3 col-xs-6" align="left">

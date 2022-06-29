@@ -162,7 +162,7 @@ public class MemberMapper {
 	}
 	
 	public int idCheck(String member_id) {
-		int res = sqlSession.selectOne("idCheck", member_id);
-		return res;
+		int result = sqlSession.selectOne("idChk", member_id);
+		return result;
 	}
 }

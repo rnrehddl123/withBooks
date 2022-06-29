@@ -67,8 +67,8 @@
 		update member set cash=cash-#{Purchase_price} where Mnum=#{mnum}
 	</update>
 	
-	<select id="idCheck" parameterType="String" resultType="int">
-		select count(*) from member where member_id = #{member_id}
+	<select id="idCheck" resultType="int">
+	select count(*) from member where member_id = #{member_id}
 	</select>
 	
 	<!-- 페이징 -->

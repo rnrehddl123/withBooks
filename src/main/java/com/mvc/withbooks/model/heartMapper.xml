@@ -9,7 +9,7 @@
 	</insert>
 	
 	<delete id="deleteHeart" parameterType="java.util.Map">
-		delete from HEART where mnum = #{mnum} and nnum = #{nnum}
+		delete from HEART where hnum = #{hnum}
 	</delete>
 	
 	<select id="getHeart" parameterType="java.util.Map" resultType="HeartDTO">

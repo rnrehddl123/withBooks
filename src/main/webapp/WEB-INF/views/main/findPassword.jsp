@@ -21,14 +21,8 @@
 		<div class="form">
 			<div class="text">비밀번호 찾기</div>
 			<form>
-			  <div class="inputWrapper">
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이름">
-			  </div>
-			  <div class="inputWrapper">
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
-			  </div>
-			  <button type="submit" class="btn btn-primary">찾기</button>
-			 </form>
+			  <button type="submit" class="btn btn-primary">메일 보내기</button>
+			</form>
 		</div>
 	</div>
 </body>

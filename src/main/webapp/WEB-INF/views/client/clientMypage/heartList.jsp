@@ -42,17 +42,17 @@
 <div align="center">
 	<c:if test="${rowCount>0}">
 		<c:if test="${startPage>1}">
-			[<a href="listHeart?pageNum=${startPage-1}">이전</a>]			
+			[<a href="heartList?pageNum=${startPage-1}">이전</a>]			
 		</c:if>
 		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			[<a href="listHeart?pageNum=${i}"><c:out value="${i}"/></a>]	
+			[<a href="heartList?pageNum=${i}"><c:out value="${i}"/></a>]	
 		</c:forEach>
 		<c:if test="${endPage<pageCount}">
-			[<a href="listHeart?pageNum=${endPage+1}">다음</a>]			
+			[<a href="heartList?pageNum=${endPage+1}">다음</a>]			
 		</c:if>
 	</c:if>
 	
-	<form name="f" action="listHeart" method="post">
+	<form name="f" action="heartList" method="post">
 		<input type="hidden" name="mode" value="search">
 			검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
 	</form>

@@ -52,7 +52,7 @@
   				<tr>
   					<td width="150">주소</td>
 					<td>
-						<input type="text" name="Member_address" class="box" value="${login.member_address}">
+						<input type="text" name="Member_address" class="box" value="${login.member_address}" readonly="readonly">
 					</td>
   				</tr>
   				<tr>
@@ -62,9 +62,9 @@
 					</td>
   				</tr>
   				<tr>
-  					<td colspan="2">
-						<label><input type="radio" name="Member_sex" value="man" ${login.member_sex eq 'man' ? "checked" : '' }/>남</label>
-						<label><input type="radio" name="Member_sex" value="woman" ${login.member_sex eq 'woman' ? "checked" : '' }/>여</label>
+  					<td colspan="2" readonly>
+						<label><input type="radio" name="Member_sex" value="man" ${login.member_sex eq 'man' ? "checked" : '' } />남</label>
+						<label><input type="radio" name="Member_sex" value="woman" ${login.member_sex eq 'woman' ? "checked" : '' } />여</label>
   					</td>
   				</tr>
   				<tr>

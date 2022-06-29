@@ -55,14 +55,7 @@
 	</resultMap>
 	
 	<resultMap id="novelDTO" type="com.mvc.withbooks.dto.NovelDTO">
-		<id column="NNUM" property="nnum"/>
-		<result column="NOVEL_SUBJECT" property="novel_subject"/>
-		<result column="NNUM" property="nnum"/>
 		<result column="NOVEL_MEMBERNAME" property="novel_memberName"/>
-		<result column="NOVEL_IMAGE" property="novel_image"/>
-		<result column="NOVEL_CATE" property="novel_cate"/>
-		<result column="NOVEL_SUMMARY" property="novel_summary"/>
-		<result column="NOVEL_RECOMMAND" property="novel_recommand"/>
         <association property="memberDTO" column="MNUM" resultMap="memberDTO" />
 	</resultMap>
 	
@@ -71,7 +64,7 @@
 	</select>
 	
 	<select id="findWriterMain" parameterType="java.util.Map" resultType="NovelDTO" resultMap="novelDTO">
-		select * from (select rownum rn, A.* from (select * from novel where Novel_membername like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
+		select * from (select rownum rn, A.* from (select DISTINCT Novel_membername,mnum from novel where Novel_membername like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
 	</select>
 	
 	<select id="getNovelCountMain" parameterType="java.util.Map" resultType="int">
@@ -103,4 +96,8 @@
 	<select id="searchmemberNovel" resultType="NovelDTO">
 		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel where novel.Novel_memberName  = #{Novel_memberName}
 	</select>
+	
+	<select id="checkNovelMemberName" parameterType="java.util.Map" resultType="NovelDTO">
+		select Novel_memberName from novel where novel.Novel_memberName  = #{Novel_memberName} and MNUM!=#{Mnum}
+	</select> 
 </mapper>

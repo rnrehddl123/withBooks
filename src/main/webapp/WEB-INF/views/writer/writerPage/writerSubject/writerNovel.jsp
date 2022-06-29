@@ -18,7 +18,10 @@
 				</tr>
 				<tr>
 					<th width="20%">작 가 필 명</th>
-					<td><input type="text" name="Novel_memberName" size="50" class="widthmar form-control" required></td>
+					<td><div class="flex widthmar">
+					<input type="text" class='novel_name' name="Novel_memberName" size="50" class="my-auto form-control" required>
+					<button class="my-auto check_btn" type="button">중복 체크</button>
+					</div></div></td>
 				</tr>
 				<tr>
 					<th width="20%">카 테 고 리</th>
@@ -56,4 +59,33 @@
 			</table>
 		</form>
 	</div>
+
+<script type="text/javascript">
+	
+	var check_name=false
+	document.querySelector('.check_btn').addEventListener('click', function(e){
+		fetch("checkNovelMemberName",{
+	        method: 'POST',
+	        body: document.querySelector('.novel_name').value,
+	        headers: {
+	            'Content-Type': 'text/plain'
+	    	}})
+	    .then(response => response.text())
+	    .then(response => {
+	    	console.log(response)
+	        check_name=response;
+	        if(check_name=="false"){
+	        	alert('다른 작가님 사용하시는 이름입니다.')
+	        }
+	    });
+	})
+	
+	function check(){
+		if(check_name=='false'){
+			alert('중복체크를 실행해주세요')
+			return false;
+		}
+		return true;
+	}
+</script>
 <jsp:include page="../../../main/footer.jsp"/>

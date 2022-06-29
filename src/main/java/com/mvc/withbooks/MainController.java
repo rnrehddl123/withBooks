@@ -106,6 +106,7 @@ public class MainController {
 		int writerNum = 0;
 		if (writerRowCount>0){
 			mlist = novelMapper.findWriterMain(searchString, writerStartRow, writerEndRow);
+			System.out.println(mlist.size());
 			writerNum = writerRowCount - (writerStartRow - 1);
 			if (writerRowCount>0) {
 				int writerPageCount = writerRowCount/writerPageSize + (writerRowCount%writerPageSize==0 ? 0 : 1);

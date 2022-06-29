@@ -51,4 +51,19 @@ public class PurchaseHistoryMapper {
 		List<Map<String, String>> list = sqlSession.selectList("purchaseList", params);
 		return list;
 	}
+	
+	public int getEpisaleCount(int epnum) {
+		int res = sqlSession.selectOne("getEpisaleCount", epnum);
+		return res;
+	}
+	
+	public int getNovelsaleCount(int nnum) {
+		int res = sqlSession.selectOne("getNovelsaleCount", nnum);
+		return res;
+	}
+	
+	public PurchaseHistoryDTO chart(int mnum) {
+		PurchaseHistoryDTO dto = sqlSession.selectOne("chart", mnum);
+		return dto;
+	}
 }

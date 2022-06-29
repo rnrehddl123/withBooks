@@ -68,7 +68,7 @@ var count2=0;
 
 
   <div align="center" class="buttonList">
-  	<input type="button" value="글쓰기" onclick="window.location='writeBoard'">
+  	<input type="button" class="review_btn btn btn-primary" value="글쓰기" onclick="window.location='writeBoard'">
   </div>
   
 

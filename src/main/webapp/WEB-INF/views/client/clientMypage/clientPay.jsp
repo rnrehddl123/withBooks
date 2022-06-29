@@ -14,9 +14,7 @@
 		var radio=document.querySelectorAll('.radio_cash');
 		var cash;
 		var point;
-		if(document.querySelectorAll('.radio_cash').value==null){
-			alert("결제 하시겠습니까?");
-		}
+
 		for (var i=0; i<radio.length; i++) {
             if (radio[i].checked == true) {
                 cash=radio[i].value;

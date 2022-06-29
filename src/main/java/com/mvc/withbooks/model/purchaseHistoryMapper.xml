@@ -29,4 +29,16 @@
 		((select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date, PurchaseHistory.MNUM  from EPISODE e INNER join PurchaseHistory ON PurchaseHistory.EPNUM = e.epnum WHERE PurchaseHistory.MNUM = #{mnum} AND PurchaseHistory.PURCHASE_PRICE !=0) )A)
 		where rn between #{startRow} and #{endRow}
 	</select>
+	
+	<select id="getEpisaleCount" resultType="int">
+		select COUNT(*) FROM (select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date, PurchaseHistory.MNUM  from EPISODE e INNER join PurchaseHistory ON PurchaseHistory.EPNUM = e.epnum WHERE PurchaseHistory.EPNUM  = #{EPNUM} AND PurchaseHistory.PURCHASE_PRICE !=0)
+	</select>
+	
+	<select id="getNovelsaleCount" resultType="int">
+		select COUNT(*) FROM (select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date, PurchaseHistory.MNUM  from EPISODE e INNER join PurchaseHistory ON PurchaseHistory.EPNUM = e.epnum WHERE PurchaseHistory.NNUM  = #{NNUM}AND PurchaseHistory.PURCHASE_PRICE !=0)
+	</select>
+	
+	<select id="chart" parameterType="int" resultType="PurchaseHistoryDTO">
+		SELECT * FROM  (SELECT e.epnum,COUNT(e.epnum)-1,n.mnum FROM PURCHASEHISTORY p INNER JOIN EPISODE e  ON p.EPNUM =e.EPNUM INNER JOIN NOVEL n ON e.NNUM =n.NNUM GROUP BY e.EPNUM,n.mnum) WHERE mnum=#{memberDTO.getMnum} ORDER BY EPNUM
+	</select>
 </mapper>

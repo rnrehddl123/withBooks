@@ -18,16 +18,16 @@
     			<div class="grid-item col-xxlg-1 col-xlg-2 col-lg-2 col-md-3 col-sm-3 col-xs-6" align="left">
 					<meta content="https://trakt.tv/movies/morbius-2022" itemprop="url">
 					<div class="fanart poster stock-titles">
-						<a href="clientNovelInfo?nnum=${ndto.nnum}">
+						<a href="clientNovelInfo?nnum=${ndto.nnum}&change=now">
 							<img class="real" width="175" height="260" src="resources/img/${ndto.novel_image}" style="display: block;">
 						</a>
-						<a href="clientNovelInfo?nnum=${ndto.nnum}">
+						<a href="clientNovelInfo?nnum=${ndto.nnum}&change=now">
 							<div class="shadow-base"></div>
 						</a>
 						<div class="titles has-worded-image">
 							<h4>${ndto.novel_cate}</h4>
 							<h4 class="generic novel_memberName">${ndto.novel_memberName}</h4>
-							<a class="titles-link" href="clientNovelInfo?nnum=${ndto.nnum}">
+							<a class="titles-link" href="clientNovelInfo?nnum=${ndto.nnum}&change=now">
 								<h3>${ndto.novel_subject} <span class="novel_subject">${ndto.novel_subject}</span></h3>
 							</a>
 						</div>

@@ -24,9 +24,26 @@
 		update novel set Novel_subject=#{Novel_subject}, Novel_memberName=#{Novel_memberName}, Novel_image=#{Novel_image}, Novel_summary=#{Novel_summary} where nnum = #{nnum} 
 	</update>
 	
-	<select id="getNovel" parameterType="int" resultType="NovelDTO">
+	<select id="getNovel" parameterType="int" resultType="NovelDTO" resultMap="getnovelDTO">
 		select * from novel where Nnum = #{nnum}
 	</select>
+	
+	<resultMap id="getmemberDTO" type="com.mvc.withbooks.dto.MemberDTO">
+		<id column="MNUM" property="mnum"/>
+        <result column="MNUM" property="mnum"/>
+	</resultMap>
+	
+	<resultMap id="getnovelDTO" type="com.mvc.withbooks.dto.NovelDTO">
+		<id column="NNUM" property="nnum"/>
+		<result column="NOVEL_SUBJECT" property="novel_subject"/>
+		<result column="NNUM" property="nnum"/>
+		<result column="NOVEL_MEMBERNAME" property="novel_memberName"/>
+		<result column="NOVEL_IMAGE" property="novel_image"/>
+		<result column="NOVEL_CATE" property="novel_cate"/>
+		<result column="NOVEL_SUMMARY" property="novel_summary"/>
+		<result column="NOVEL_RECOMMAND" property="novel_recommand"/>
+        <association property="memberDTO" column="MNUM" resultMap="getmemberDTO" />
+	</resultMap>
 	
 	<select id="findNovel" parameterType="java.util.Map" resultType="NovelDTO">
 		select * from novel where ${search} = #{searchString}
@@ -54,7 +71,7 @@
 	</select>
 	
 	<select id="findWriterMain" parameterType="java.util.Map" resultType="NovelDTO" resultMap="novelDTO">
-		select * from (select rownum rn, A.* from (select * from novel where Novel_subject like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
+		select * from (select rownum rn, A.* from (select * from novel where Novel_membername like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
 	</select>
 	
 	<select id="getNovelCountMain" parameterType="java.util.Map" resultType="int">
@@ -75,11 +92,15 @@
 	
 	<select id="novelCountList" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from (select rownum rn, A.* from 
-		(select * from (select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{mnum} ))A) 
+		((select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{mnum} ))A) 
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="listNovelCount" resultType="java.util.Map" parameterType="int">
 		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel, member where novel.Mnum = member.Mnum and member.Mnum = #{Mnum}
+	</select>
+	
+	<select id="searchmemberNovel" resultType="NovelDTO">
+		select Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary from novel where novel.Novel_memberName  = #{Novel_memberName}
 	</select>
 </mapper>

@@ -8,17 +8,17 @@
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
-	<div align="center">
+	<div class="mb-3" align="center">
 		<form name="f" action="writerNovelUpdate" method="post" onsubmit="return check()" enctype="multipart/form-data">
 		<input type="hidden" value="${login.mnum}" name="mnum">
 		<input type="hidden" name="nnum" value="${getNovel.nnum}"/>
 			<table align="center" class="writer">
 				<tr>
-					<td colspan="3" align="center">소설 쓰기(처음 시작할 때)</td>
+					<td colspan="3" align="center">소설 수정</td>
 				</tr>
 				<tr>
 					<th width="20%">작 가 필 명</th>
-					<td colspan="2"><input type="text" name="Novel_memberName" size="50" class="width80" value="${getNovel.novel_memberName}" required></td>
+					<td colspan="2"><input type="text" name="Novel_memberName" size="50" class="widthmar form-control" value="${getNovel.novel_memberName}" required></td>
 				</tr>
 				<tr>
 					<th width="20%">카 테 고 리</th>
@@ -26,15 +26,15 @@
 				</tr>			
 				<tr>
 					<th width="20%">대 제 목(소설의 제목)</th>
-					<td colspan="2"><input type="text" name="Novel_subject" size="50" class="width80" value="${getNovel.novel_subject}" required></td>
+					<td colspan="2"><input type="text" name="Novel_subject" size="50" class="widthmar form-control" value="${getNovel.novel_subject}" required></td>
 				</tr>
 				<tr>
 					<th width="20%">소 설 이 미 지</th>
-					<td><input type="file" name="file" size="50" class="width80" value="${getNovel.novel_image}"></td>
+					<td><input type="file" name="file" size="50" class="widthmar form-control" value="${getNovel.novel_image}"></td>
 				</tr>
 				<tr>
 					<th width="20%">줄 거 리</th>
-					<td colspan="2"><textarea name="Novel_summary" rows="10" cols="70" class="width80" required>${getNovel.novel_summary}</textarea></td>
+					<td colspan="2"><textarea name="Novel_summary" rows="10" cols="70" class="widthmar form-control" required>${getNovel.novel_summary}</textarea></td>
 				</tr>				
 				<tr>
 					<td align="center" colspan="3">

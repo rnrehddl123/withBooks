@@ -4,13 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <jsp:include page="header.jsp"/>
     <div class="mainpage content">
-      <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary"><a href="novelList.do">글쓰기</a></button>
-        <button type="button" class="btn btn-outline-primary"><a href="clientNovelListForCate">카테고리</a></button>
-        <button type="button" class="btn btn-outline-primary"><a href="listBoard">게시판</a></button>
-      </div>
-
-
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -240,7 +233,7 @@
                 				<div class="card-body">
                   				<h5 class="card-title">${sudto.suggestNovel}</h5>
                   				<p class="card-text">${ndto.novel_summary}</p>
-                  				<a href="clientNovelInfo?nnum=${ndto.nnum}" class="btn btn-primary">소설 읽기</a>
+                  				<a href="clientNovelInfo?nnum=${ndto.nnum}&change=now" class="btn btn-primary">소설 읽기</a>
                 				</div>
                 			</div>
              			</c:if>

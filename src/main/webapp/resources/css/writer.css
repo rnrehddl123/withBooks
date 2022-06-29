@@ -58,3 +58,22 @@
     flex-wrap: wrap;
     margin-right: 10px;
 }
+
+.novel{
+	width:50%;
+	text-align: center;
+}
+
+.margintop{
+	margin-top : 30px;
+	margin-bottom : 30px;
+}
+
+.a {
+	text-decoration-line: none;
+}
+
+.widthmar{
+	width:80%;
+	margin:auto;
+}

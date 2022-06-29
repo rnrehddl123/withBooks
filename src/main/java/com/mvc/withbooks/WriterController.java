@@ -3,6 +3,7 @@ package com.mvc.withbooks;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -77,14 +78,22 @@ public class WriterController {
 	}
 	
 	@RequestMapping("/writerEpisodeList")
-	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, @RequestParam(required = false) String change, HttpSession session) {
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
 		}
+		if(change==null) {
+			change = "now";
+		}
+		int mnum = login.getMnum();
 		NovelDTO dto = novelMapper.getNovel(nnum);
+		if(dto.getMemberDTO().getMnum()!=mnum) {
+			return "redirect:main";
+		}
 		req.setAttribute("getNovel", dto);
 		List<Map<String, String>> list = episodeMapper.listEpisodeCount(nnum);
-		int pageSize = 40;
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -100,7 +109,11 @@ public class WriterController {
 		if (endRow > rowCount) endRow = rowCount;
 		list = null;
 		if (rowCount>0){
-			list = episodeMapper.episodeCountList(params);
+			if(change.equals("past")) {
+				list=episodeMapper.episodeCountListReverse(params);
+			}else {
+				list = episodeMapper.episodeCountList(params);
+			}
 		}
 		int episodeNum =  rowCount - (startRow - 1);
 		if (rowCount>0) {
@@ -116,6 +129,7 @@ public class WriterController {
 		req.setAttribute("rowCount", rowCount);
 		req.setAttribute("episodeNum", episodeNum);
 		req.setAttribute("listEpisodeCount", list);
+		req.setAttribute("change", change);
 		return "writer/writerPage/writerSubject/writerEpisodeList";
 	}
 		
@@ -185,10 +199,15 @@ public class WriterController {
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
 	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int epnum, @RequestParam int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
 		}
+		int mnum = login.getMnum();
 		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "update");
+		if(dto.getNovelDTO().getMemberDTO().getMnum()!=mnum) {
+			return "redirect:main";
+		}
 		req.setAttribute("getEpisode", dto);
 		req.setAttribute("nnum", nnum);
 		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
@@ -196,8 +215,9 @@ public class WriterController {
 	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
 	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, @RequestParam int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
 		}
 		int res = episodeMapper.updateEpisode(dto);
 	      String msg = null, url = null;
@@ -224,10 +244,12 @@ public class WriterController {
 	}
 	
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
-	public String WriterNovel(HttpServletRequest req, HttpSession session, @ModelAttribute NovelDTO dto, @RequestParam int mnum,BindingResult result){
-		if(session.getAttribute("login")==null){
+	public String WriterNovel(HttpServletRequest req, HttpSession session, @ModelAttribute NovelDTO dto,BindingResult result){
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
 			return "/main/login";
 		}  
+		int mnum = login.getMnum();
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 	      MultipartFile mf = mr.getFile("file");
 	      String filename = mf.getOriginalFilename();
@@ -256,12 +278,12 @@ public class WriterController {
 	   }
 	
 	@RequestMapping("/writerNovelList")
-	public String WriterNovelList(HttpServletRequest req, HttpSession session, int mnum) {
+	public String WriterNovelList(HttpServletRequest req, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
-			return "/main/login";
+			return "redirect:login";
 		}
-		if(login.getMnum()==mnum) {
+		int mnum = login.getMnum();
 			MemberDTO dto = memberMapper.getMember(login.getMnum());
 			req.setAttribute("getMember", dto);
 			List<Map<String, String>> list = novelMapper.listEpisodeCount(login.getMnum());
@@ -298,10 +320,8 @@ public class WriterController {
 			req.setAttribute("novelNum", novelNum);
 			req.setAttribute("listmemberNovel", list);
 			return "writer/writerPage/writerSubject/writerNovelList";
-		}else {
-			return "/main/main";
 		}
-	}
+	
 	
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.GET)
 	public String WriterNovelUpdateForm(HttpServletRequest req, @RequestParam int nnum, HttpSession session) {
@@ -381,4 +401,56 @@ public class WriterController {
 		return "writer/writerPage/writerUpdate";
 	}
 	
+	
+	@RequestMapping("/writerReverseEpisodeList")
+	public String WriterReverseEpisodeList(HttpServletRequest req, int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
+		NovelDTO dto = novelMapper.getNovel(nnum);
+		req.setAttribute("getNovel", dto);
+		List<Map<String, String>> list = episodeMapper.listEpisodeCount(nnum);
+		int pageSize = 40;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("nnum", String.valueOf(nnum));
+		params.put("startRow", String.valueOf(startRow));
+		params.put("endRow", String.valueOf(endRow));
+		int rowCount = episodeMapper.getEpisodeCount(nnum);
+		if (endRow > rowCount) endRow = rowCount;
+		list = null;
+		if (rowCount>0){
+			list = episodeMapper.episodeCountListReverse(params);
+		}
+		int episodeNum =  rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 10;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("episodeNum", episodeNum);
+		req.setAttribute("listEpisodeCount", list);
+		return "writer/writerPage/writerSubject/writerEpisodeList";
+	}
+	
+	@RequestMapping("/EpisodeChange")
+	public String EpisodeChange(HttpServletRequest req, int nnum, HttpSession session) {
+		if(session.getAttribute("login")==null){
+			return "/main/login";
+		}
+		
+		return "writer/writerPage/writerUpdate";
+	}
 }

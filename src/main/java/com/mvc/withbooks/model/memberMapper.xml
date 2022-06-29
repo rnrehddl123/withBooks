@@ -37,6 +37,10 @@
 										 Member_preferred3=#{Member_preferred3,jdbcType=VARCHAR}, Member_authority=#{Member_authority,jdbcType=VARCHAR} where Mnum = #{mnum} 
 	</update>
 	
+	<update id="upgradeClientOk" parameterType="int">
+		update member set Member_authority = 'writer' where Mnum = #{mnum}
+	</update>
+	
 	<select id="getMember" parameterType="int" resultType="memberDTO">
 		select * from member where mnum = #{mnum}
 	</select>
@@ -62,6 +66,11 @@
 	<update id="purchaseCash" parameterType="java.util.Map">
 		update member set cash=cash-#{Purchase_price} where Mnum=#{mnum}
 	</update>
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(*) from member where member_id = #{member_id}
+	</select>
+	
 	<!-- 페이징 -->
 	<select id="getMemberCount" resultType="int">
 		select count(*) from member

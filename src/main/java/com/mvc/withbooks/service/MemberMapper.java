@@ -155,5 +155,14 @@ public class MemberMapper {
 		MemberDTO dto = sqlSession.selectOne("loginKakao", kakaoid);
 		return dto;
 	}
-
+	
+	public int upgradeClientOk(int mnum) {
+		int res = sqlSession.update("upgradeClientOk", mnum);
+		return res;
+	}
+	
+	public int idCheck(String member_id) {
+		int res = sqlSession.selectOne("idCheck", member_id);
+		return res;
+	}
 }

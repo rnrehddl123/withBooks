@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="requestWriterSidebar.jsp"/>
 <html><head>
 <div align="center" style="
@@ -12,19 +13,20 @@
 	<title>글쓰기</title>
 	<script type="text/javascript">
 		function check(){
-			if (f.writer.value==""){
-				alert("이름을 입력해 주세요!!")
-				f.writer.focus()
+			var member_name = '${login.member_name}';
+			if (f.Request_writer.value=="" || f.Request_writer.value!=member_name){
+				alert("이름을 다시 입력해 주세요!!")
+				f.Request_writer.focus()
 				return false
 			}
-			if (f.subject.value==""){
+			if (f.Request_subject.value==""){
 				alert("제목을 입력해 주세요!!")
-				f.subject.focus()
+				f.Request_subject.focus()
 				return false
 			}
-			if (f.content.value==""){
+			if (f.Request_content.value==""){
 				alert("내용을 입력해 주세요!!")
-				f.content.focus()
+				f.Request_content.focus()
 				return false
 			}
 			return true
@@ -35,6 +37,7 @@
 
 	<div align="center">
 		<form name="f" action="writeRequestWriter" method="post" onsubmit="return check()">
+			<input type="hidden" name="mnum" value="${login.mnum}"/>
 			<div>
 						<h1>작가 신청</h1>
 						<h3>※ 일반회원이 작가로 등업하기 위한 신청서 작성 페이지 입니다.※</h3>
@@ -42,15 +45,15 @@
 			</div>
 				<div class="mb-3" align="left">	
 				  <label for="exampleFormControlInput1" class="form-label">이름</label>
-				  <input name="RequestWriter_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder="${login.member_name}">
+				  <input name="Request_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder="${login.member_name}">
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput2" class="form-label">제목</label>
-				  <input name="RequestWriter_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder="제목">
+				  <input name="Request_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder="제목">
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-				  <textarea name="RequestWriter_content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+				  <textarea name="Request_content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
 				</div>
 				
 				<div align="center">

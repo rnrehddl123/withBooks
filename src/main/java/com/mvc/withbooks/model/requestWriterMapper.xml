@@ -4,28 +4,60 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  	
 <mapper namespace="com.mvc.withBooks.model.requestWriterMapper">
-	<select id="listRequestWriter" resultType="RequestWriterDTO">
- 		select * from (select rownum rn, A.* from (select * from RequestWriter order by Rwnum desc)A) where rn between #{start} and #{end}
+	<select id="getRequestWriter" parameterType="int" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
+ 		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where Rwnum = #{Rwnum}
  	</select>
-
-	<select id="getRequestWriter" parameterType="int" resultType="RequestWriterDTO">
- 		select * from RequestWriter where Rwnum = #{Rwnum}
+ 	
+ 	<select id="listRequestWriterCheck" parameterType="int" resultType="RequestWriterDTO"  resultMap="RequestWriterDTO">
+ 		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where B.MNUM = #{mnum}
+ 	</select>
+ 	
+ 	<resultMap id="memberDTO" type="com.mvc.withbooks.dto.MemberDTO">
+		<id column="MNUM" property="mnum"/>
+        <result column="B.MNUM" property="mnum"/>
+	</resultMap>
+	
+	<resultMap id="RequestWriterDTO" type="com.mvc.withbooks.dto.RequestWriterDTO">
+		<id column="RWNUM" property="rwnum"/>
+		<result column="RWNUM" property="rwnum"/>
+		<result column="REQUEST_WRITER" property="request_writer"/>
+		<result column="REQUEST_SUBJECT" property="request_subject"/>
+		<result column="REQUEST_REG_DATE" property="request_reg_date"/>
+		<result column="REQUEST_CONTENT" property="request_content"/>
+		<result column="REQUEST_STATE" property="request_state"/>
+        <association property="memberDTO" column="MNUM" resultMap="memberDTO" />
+	</resultMap>
+	
+	<select id="listRequestWriterClient" parameterType="int" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
+		select * from (RequestWriter)B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where B.MNUM = #{mnum}
+	</select>
+	
+	<select id="listRequestWriter" parameterType="java.util.Map" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
+ 		select * from (select rownum rn, A.* from (select * from RequestWriter order by Rwnum desc)A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
  	</select>
  	
  	<insert id="insertRequestWriter" parameterType="RequestWriterDTO">
- 		insert into RequestWriter(Rwnum,RequestWriter_writer,RequestWriter_subject,RequestWriter_reg_date,RequestWriter_content,Mnum) values(seq_requestWriter.nextval, #{RequestWriter_writer}, #{RequestWriter_subject}, sysdate, #{RequestWriter_content},#{memberDTO.mnum})
+ 		insert into RequestWriter(Rwnum, Request_writer, Request_subject, Request_reg_date, Request_content, Mnum) values(seq_requestWriter.nextval, #{Request_writer}, #{Request_subject}, sysdate, #{Request_content}, #{memberDTO.mnum})
  	</insert>
  	
  	<select id="updateRequestWriter" parameterType="int">
- 		update RequestWriter set RequestWriter_writer=#{RequestWriter_writer}, RequestWriter_subject=#{RequestWriter_subject}, RequestWriter_content=#{RequestWriter_content} where Rwnum=#{Rwnum}
+ 		update RequestWriter set Request_subject=#{Request_subject}, Request_content=#{Request_content} where Rwnum=#{Rwnum}
  	</select>
 
 	<select id="getRequestWriterCount" resultType="int">
 		select count(*) from RequestWriter
 	</select>
 	
-	<select id="findRequestWriter" parameterType="java.util.Map" resultType="BoardDTO">
-		select * from RequestWriter where ${search} = #{searchString}
+	<select id="getRequestWriterSearchCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from RequestWriter where ${search} like '%'||#{searchString}||'%'
 	</select>
+	
+	<select id="findRequestWriter" parameterType="java.util.Map" resultType="RequestWriterDTO" resultMap="RequestWriterDTO">
+		select * from (select rownum rn, A.* from (select * from RequestWriter where ${search} like '%'||#{searchString}||'%')A) B INNER JOIN "MEMBER" m ON m.MNUM = B.MNUM where rn between #{start} and #{end}
+	</select>
+	
+	<update id="upgradeClientState" parameterType="java.util.Map">
+		update RequestWriter set Request_state=#{state} where rwnum=#{rwnum}
+	</update>
 
 </mapper>

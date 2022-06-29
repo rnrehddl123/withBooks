@@ -92,6 +92,11 @@ public class AjaxController {
 		}else {
 			params.put("Purchase_price", "100");
 		}
+		if(login.getCash()<100) {
+			req.setAttribute("msg", "보유 포인트가 부족합니다. 포인트 충전 사이트로 이동합니다.");
+			req.setAttribute("url", "clientPay");
+			return "message";
+		}
 		Map<String, String> epmap = episodeMapper.contentNoEpisode(Integer.parseInt(params.get("epnum")));
 		int res = memberMapper.purchaseCash(params);
 		params.put("nnum", String.valueOf(epmap.get("NNUM")));
@@ -125,7 +130,7 @@ public class AjaxController {
 	@ResponseBody
 	public String checkNextEpi(@RequestBody String data,HttpSession session){
 		Gson gson = new Gson();
-		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
+		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("eplist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
 		Map<String, String> mapdata=new HashMap<String, String>();
 		int count=-1;
@@ -157,7 +162,7 @@ public class AjaxController {
 	@ResponseBody
 	public String checkPrevEpi(@RequestBody String data,HttpSession session){
 		Gson gson = new Gson();
-		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("elist");
+		List<EpisodeDTO> elist=(List<EpisodeDTO>) session.getAttribute("eplist");
 		List<Integer> checkList=(List<Integer>) session.getAttribute("checkList");
 		Map<String, String> mapdata=new HashMap<String, String>();
 		int count=-1;

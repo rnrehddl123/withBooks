@@ -9,37 +9,41 @@
 </head>
 <link href="resources/css/writer.css" rel="stylesheet" type="text/css" />
 <body>
-	<div align="center">
+	<div class="margintop" align="center">
 		<b>${getMember.member_name}님의 소설</b>
-		<table align="center" class="writer">
+		<table align="center" class="table novel">
+			<thead>
 			<tr>
-				<td colspan="5" align="right"><a href="writerNovel">새로운 소설 쓰기</a></td>
+				<td colspan="5" align="right"><a href="writerNovel"><button type="button" class="btn btn-light">새로운 소설 쓰기</button></a></td>
 			</tr>
 			<tr>
-				<td align="center">번호</td>
-				<td align="center">소설제목</td>
-				<td align="center">작성자</td>
-				<td align="center">수정 | 삭제</td>
+				<th>번호</th>
+				<th>소설제목</th>
+				<th>작성자</th>
+				<th>수정</th>
 			</tr>
+			</thead>
 			<c:set var="pageNum" value="${novelNum}"/>
 			<c:if test="${empty listmemberNovel}">
 			<tr>
 				<td colspan="5">등록된 소설이 없습니다.</td>
 			</tr>
 			</c:if>
+			<tbody>
 			<c:forEach var="dto" items="${listmemberNovel}">
 			<tr>
 				<td align="center"><c:out value="${pageNum}"/></td>
 				<c:set var="pageNum" value="${pageNum-1}"/>
-				<td>
-					<a href="writerEpisodeList?nnum=${dto.NNUM}">
+				<td align="center">
+					<a class="a" href="writerEpisodeList?nnum=${dto.NNUM}">
 						${dto.NOVEL_SUBJECT}
 					</a>
 				</td>
 				<td align="center">${dto.NOVEL_MEMBERNAME}</td>
-				<td align="center"><a href="writerNovelUpdate?nnum=${dto.nnum}&mnum=${getMember.mnum}">수정</a> | <a href="writerNoveldelete?nnum=${dto.nnum}&mnum=${getMember.mnum}">삭제</a></td>
+				<td align="center"><a href="writerNovelUpdate?nnum=${dto.NNUM}&mnum=${getMember.mnum}"><button type="button" class="btn btn-light">수정</button></a></td>
 			</tr>		
 			</c:forEach>
+			</tbody>
 		</table>
 	</div>
 <jsp:include page="../../../main/footer.jsp"/>

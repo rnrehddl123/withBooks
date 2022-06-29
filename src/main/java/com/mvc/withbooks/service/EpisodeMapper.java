@@ -1,5 +1,6 @@
 package com.mvc.withbooks.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,6 +75,11 @@ public class EpisodeMapper {
 	
 	public List<Map<String, String>> listEpisodeCount(int nnum) {
 		List<Map<String, String>> list = sqlSession.selectList("listEpisodeCount", nnum);
+		return list;
+	}
+	
+	public List<Map<String, String>> episodeCountListReverse(Map<String, String> params) {
+		List<Map<String, String>> list = sqlSession.selectList("episodeCountListReverse", params);
 		return list;
 	}
 }

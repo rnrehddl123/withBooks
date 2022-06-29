@@ -330,5 +330,30 @@ a {
 .myinfo li{
 	display: flex;
     flex-direction: column;
+    width: 106px;
+    text-align: center;
 }
 
+
+.clientNovelInfoWrapper .pageinfo{
+	margin-top : 10px;
+}
+
+.orderpageinfo{
+	margin-top : 10px;
+}
+
+.notice.icon .bi{
+	font-size: 24px;
+	color: #0d6efd;
+}
+
+.orderListpage{
+	width : 60%;
+	text-align: center;
+}
+
+.mar{
+	margin-top : 30px;
+	margin-bottom : 30px;
+}

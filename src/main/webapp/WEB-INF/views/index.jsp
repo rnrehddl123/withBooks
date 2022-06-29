@@ -54,6 +54,7 @@
 		
 		<div>
 		<h1>관리자</h1>
+			<li><h3><a href="adminLogin">관리자 로그인 페이지</a></h3>
 			<li><h3><a href="homepage">관리자 페이지</a></h3>
 			<li><h3><a href="slide">슬라이드 관리</a></h3>
 			<li><h3><a href="insertSuggest">추천작 추가</a></h3>
@@ -65,10 +66,11 @@
 			<li><h3><a href="listBoardAdmin">게시판 관리</a></h3>
 			<li><h3><a href="listClient">회원 관리</a></h3>
 			<li><h3><a href="listWriter">작가 관리</a></h3>
-			<li><h3><a href="upgradeClient">작가 신청 관리</a></h3>
+			<li><h3><a href="listUpgradeClient">작가 신청 관리</a></h3>
 			<li><h3><a href="saleManageClient">회원 매출 관리</a></h3>
 			<li><h3><a href="saleManageWriter">작가 매출 관리</a></h3>
 			<li><h3><a href="saleTotal">총 매출 관리</a></h3>
+			<li><h3><a href="adminChart">차트</a></h3>
 		<h1>-------------------------------------------------------------------------</h1>		
 		</div>	
 </ul>

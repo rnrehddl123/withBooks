@@ -23,40 +23,40 @@
 		<div class="form">
 			<form name="signUp" method="POST" action="insertMember">
 			  <div class="inputWrapper">
-			    <input name="member_name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="이름">
+			    <input name="member_name" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="이름">
 			  </div>
 			  <div class="inputWrapper">
-			    <input name="member_id" type="text" class="form-control" aria-describedby="emailHelp" placeholder="아이디">
+			    <input name="member_id" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="아이디">
 			  </div>
 			  <div class="inputWrapper">
-			    <input name="member_passwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
+			    <input name="member_passwd" required type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
 			  </div>
 			  <div class="inputWrapper">
 			    <input name="member_passwd" type="passwordCheck" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 확인">
 			  </div>
 			  <div class="flex inputWrapper">
-			    <input name="member_tel1" type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">
+			    <input name="member_tel1" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">
 			    <div class="marginauto">-</div>
-			    <input name="member_tel2" type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
+			    <input name="member_tel2" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
 			    <div class="marginauto">-</div>
-			    <input name="member_tel3" type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
+			    <input name="member_tel3" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
 			  </div>
 			  <div class="inputWrapper">
-			    <input name="member_address" type="text" id="address_kakao" class="form-control" aria-describedby="emailHelp" placeholder="주소" readonly>
+			    <input name="member_address" required type="text" id="address_kakao" class="form-control" aria-describedby="emailHelp" placeholder="주소" readonly>
 			  </div>
 			  <div class="inputWrapper">
-			    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="상세주소">
+			    <input type="text" requird class="form-control" aria-describedby="emailHelp" placeholder="상세주소">
 			  </div>
 			  <div class="inputWrapper">
-			    <input name="member_email" type="text" class="form-control" aria-describedby="emailHelp" placeholder="이메일">
+			    <input name="member_email" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="이메일">
 			  </div>
 			  <div class="flex inputWrapper">
 			  	<input name="member_birth" type="text" class="form-control birth" aria-describedby="emailHelp" placeholder="생일">
 			    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-				  <input name="member_sex" value="man" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+				  <input name="member_sex" required value="man" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 				  <label class="btn btn-outline-primary" for="btnradio1">남자</label>
 				
-				  <input name="member_sex" value="woman" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+				  <input name="member_sex" required value="woman" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
 				  <label class="btn btn-outline-primary" for="btnradio2">여자</label>
 				</div>
 			  </div>

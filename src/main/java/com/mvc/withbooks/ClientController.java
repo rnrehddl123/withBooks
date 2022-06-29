@@ -99,10 +99,12 @@ public class ClientController {
 	
 	@RequestMapping("/clientUpdate")//일반회원 수정 페이지
 	public String ClientUpdate(HttpSession session, HttpServletRequest req, @RequestParam Map<String, String> params, String[] member_preferred) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(session.getAttribute("login")==null){
+			return "redirect:/login";
+		}else if(login.getKakaoid()!=0) {
+			return "redirect:/clientMypage";
+		}
 		String[] tel = login.getMember_Tel().split("-");
 		req.setAttribute("tel1", tel[0]);
 		req.setAttribute("tel2", tel[1]);
@@ -122,11 +124,12 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientLibrary")//일반회원 내 서재
-	public String ClientLibrary(HttpSession session, HttpServletRequest req, int mnum) {
+	public String ClientLibrary(HttpSession session, HttpServletRequest req) {
 		if(session.getAttribute("login")==null){
-			return "/main/login";
+			return "redirect:login";
 		}
-		
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		int mnum = login.getMnum();
 		List<Integer> list = purchaseHistoryMapper.purchaseLibrary(mnum);
 		List<NovelDTO> nlist = new ArrayList<NovelDTO>();
 		for(int nnum : list) {
@@ -138,13 +141,14 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientOrderList")//일반회원 구매내역
-	public String ClientOrderList(HttpSession session,HttpServletRequest req, int mnum) {
+	public String ClientOrderList(HttpSession session,HttpServletRequest req) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
-			return "/main/login";
+			return "redirect:/main/login";
 		}
+		int mnum = login.getMnum();
 		List<Map<String, String>> list = purchaseHistoryMapper.listPurchaseHistory(mnum);
-		int pageSize = 10;
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -187,6 +191,13 @@ public class ClientController {
 		}else if (!checkList.contains(epnum)) {
 			return "/main/main";
 		}
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		NovelDTO novelDTO=(NovelDTO) session.getAttribute("noveldto");
+		HashMap<String, String> params=new HashMap<String, String>();
+		params.put("nnum", Integer.toString(novelDTO.getNnum()));
+		params.put("mnum", Integer.toString(login.getMnum()));
+		NoticeNovelDTO noticeNovelDTO=noticeNovelMapper.getNoticeNovel(params);
+		req.setAttribute("noticeNovelDTO", noticeNovelDTO);
 		EpisodeDTO epdto=episodeMapper.getEpisode(epnum,"view");
 		req.setAttribute("epdto", epdto);
 		return "client/clientViewer";
@@ -221,7 +232,10 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/clientNovelInfo")//�뜝���눦�삕 �뜝�룞�삕�뜝占�
-	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum) {
+	public String ClientNovelInfo(HttpServletRequest req,HttpSession session,@RequestParam int nnum,@RequestParam(required = false) String change) {
+		if(change==null) {
+			change="now";
+		}
 		MemberDTO login=(MemberDTO)session.getAttribute("login");
 		NovelDTO ndto=novelMapper.getNovel(nnum);
 		
@@ -239,9 +253,47 @@ public class ClientController {
 			req.setAttribute("review", reviewMapper.getreview(myReview));
 			
 		}
-		List<EpisodeDTO> elist=episodeMapper.listNoEpisode(nnum);
+		List<EpisodeDTO> eplist=episodeMapper.listNoEpisode(nnum);
+		session.setAttribute("eplist", eplist);
+		List<Map<String, String>> elist = episodeMapper.listEpisodeCount(nnum);
+		int pageSize = 25;
+		String pageNum = req.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize -1;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("nnum", String.valueOf(nnum));
+		params.put("startRow", String.valueOf(startRow));
+		params.put("endRow", String.valueOf(endRow));
+		int rowCount = episodeMapper.getEpisodeCount(nnum);
+		if (endRow > rowCount) endRow = rowCount;
+		elist = null;
+		if (rowCount>0){
+			if(change.equals("past")) {
+				elist=episodeMapper.episodeCountListReverse(params);
+			}else {
+				elist = episodeMapper.episodeCountList(params);
+			}
+		}
+		int episodeNum =  rowCount - (startRow - 1);
+		if (rowCount>0) {
+			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
+			int pageBlock = 10;
+			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount) endPage = pageCount;
+			req.setAttribute("pageCount", pageCount);
+			req.setAttribute("startPage", startPage);
+			req.setAttribute("endPage", endPage);
+		}
+		req.setAttribute("rowCount", rowCount);
+		req.setAttribute("episodeNum", episodeNum);
 		session.setAttribute("elist", elist);
-		req.setAttribute("noveldto", ndto);
+		req.setAttribute("change", change);
+		session.setAttribute("noveldto", ndto);
 		List<Map<String, String>> reviewList = reviewMapper.getReviewList(nnum);
 		req.setAttribute("reviewList", reviewList);
 		double totalscore=0;
@@ -264,9 +316,12 @@ public class ClientController {
 	//회원가입 기능
 	
 	@RequestMapping(value="/insertMember", method=RequestMethod.POST)
-	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto, @RequestParam Map<String, String> params,@RequestParam(required = false) String[] member_preferred){
-		dto.setMember_Tel(req.getAttribute("tel1")+"-"+req.getAttribute("tel2")+"-"+req.getAttribute("tel3"));
-		if(member_preferred.length>2) {
+	public String insertMember(HttpServletRequest req, @ModelAttribute MemberDTO dto,@RequestParam Map<String,String> params,@RequestParam(required = false) String[] member_preferred){
+		System.out.println(params.get("member_tel1"));
+		dto.setMember_Tel(params.get("member_tel1")+"-"+params.get("member_tel2")+"-"+params.get("member_tel3"));
+		if(member_preferred==null) {
+			
+		}else if(member_preferred.length>2) {
 			dto.setMember_preferred1(member_preferred[0]);
 			dto.setMember_preferred2(member_preferred[1]);
 			dto.setMember_preferred3(member_preferred[2]);
@@ -284,11 +339,11 @@ public class ClientController {
 		int res = memberMapper.insertMember(dto);
 		String msg = null, url = null;
 		if (res>0) {
-			msg = "�쉶�썝媛��엯 �꽦怨�!! 硫붿씤 �럹�씠吏�濡� �씠�룞�빀�땲�떎.";
-			url = "signUp";
+			msg = "회원가입성공.";
+			url = "main";
 		}else {
-			msg = "�쉶�썝媛��엯 �떎�뙣!! �쉶�썝媛��엯 �럹�씠吏�濡� �씠�룞�빀�땲�떎.";
-			url = "signUp";
+			msg = "회원가입실패.";
+			url = "main";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);

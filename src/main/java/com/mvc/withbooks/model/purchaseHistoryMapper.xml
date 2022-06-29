@@ -43,7 +43,7 @@
 	</select>
 	
 	<select id="writerChart" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * from (SELECT p.PURCHASE_DATE, COUNT(*) AS count, p.NNUM, n.MNUM  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM GROUP BY p.PURCHASE_DATE, p.NNUM, n.MNUM) WHERE mnum=#{mnum} AND nnum= #{nnum}
+		SELECT * from (SELECT p.PURCHASE_DATE, COUNT(*) AS count, p.NNUM, n.MNUM  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM GROUP BY p.PURCHASE_DATE, p.NNUM, n.MNUM) WHERE mnum=#{mnum} AND nnum= #{nnum} ORDER BY PURCHASE_DATE
 	</select>
 	
 	<select id="memberChart" parameterType="int" resultType="java.util.Map" >

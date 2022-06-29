@@ -14,19 +14,21 @@
 		<table align="center" class="table novel">
 			<thead>
 			<tr>
-				<td colspan="5" align="right"><a href="writerNovel"><button type="button" class="btn btn-light">새로운 소설 쓰기</button></a></td>
+				<td colspan="7" align="right"><a href="writerNovel"><button type="button" class="btn btn-light">새로운 소설 쓰기</button></a></td>
 			</tr>
 			<tr>
 				<th>번호</th>
 				<th>소설제목</th>
 				<th>작성자</th>
 				<th>수정</th>
+				<th>에피소드 차트</th>
+				<th>날짜별 구매</th>
 			</tr>
 			</thead>
 			<c:set var="pageNum" value="${novelNum}"/>
 			<c:if test="${empty listmemberNovel}">
 			<tr>
-				<td colspan="5">등록된 소설이 없습니다.</td>
+				<td colspan="7">등록된 소설이 없습니다.</td>
 			</tr>
 			</c:if>
 			<tbody>
@@ -41,6 +43,8 @@
 				</td>
 				<td align="center">${dto.NOVEL_MEMBERNAME}</td>
 				<td align="center"><a href="writerNovelUpdate?nnum=${dto.NNUM}&mnum=${getMember.mnum}"><button type="button" class="btn btn-light">수정</button></a></td>
+				 <td><a href="chart?nnum=${dto.NNUM}&mnum=${getMember.mnum}"><button type="button" class="btn btn-light">에피소드 차트</button></a></td>
+				 <td><a href="writerPay?nnum=${dto.NNUM}&mnum=${getMember.mnum}"><button type="button" class="btn btn-light">날짜별 구매</button></td>
 			</tr>		
 			</c:forEach>
 			</tbody>

@@ -22,6 +22,7 @@ import com.mvc.withbooks.dto.PurchaseHistoryDTO;
 import com.mvc.withbooks.service.EpisodeMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeNovelMapper;
+import com.mvc.withbooks.service.NovelMapper;
 import com.mvc.withbooks.service.PurchaseHistoryMapper;
 import com.mvc.withbooks.service.ReviewMapper;
 
@@ -41,6 +42,8 @@ public class AjaxController {
 	private PurchaseHistoryMapper purchaseHistoryMapper;
 	@Autowired
 	private ReviewMapper reviewMapper;
+	@Autowired
+	private NovelMapper novelMapper;
 	
 	@RequestMapping("/setNoticeNovel")
 	@ResponseBody
@@ -236,6 +239,21 @@ public class AjaxController {
 			return "test";
 		}
 		return "overap";
+	}
+	
+	
+	@RequestMapping("/checkNovelMemberName")
+	@ResponseBody
+	public String checkNovelMemberName(@RequestBody String data,HttpSession session){
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		Map<String, String> params=new HashMap<String, String>();
+		System.out.println(data);
+		params.put("Novel_memberName", data);
+		params.put("Mnum",String.valueOf(login.getMnum()));
+		if(novelMapper.checkNovelMemberName(params)==null) {
+			return "true";
+		}
+		return "false";
 	}
 }
 

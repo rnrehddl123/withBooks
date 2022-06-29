@@ -87,7 +87,11 @@ public class NovelMapper {
 		map.put("searchString", searchString);
 		map.put("start", start);
 		map.put("end", end);
+		System.out.println(searchString);
+		System.out.println(start);
+		System.out.println(end);
 		List<NovelDTO> find = sqlSession.selectList("findWriterMain", map);
+		System.out.println(find.size());
 		return find;
 	}
 	
@@ -115,4 +119,11 @@ public class NovelMapper {
 		List<NovelDTO> list = sqlSession.selectList("searchmemberNovel", novel_memberName);
 		return list;
 	}
+	
+	public NovelDTO checkNovelMemberName(Map<String, String> params) {
+		NovelDTO novelDTO = sqlSession.selectOne("checkNovelMemberName", params);
+		return novelDTO;
+	}
+	
+	
 }

@@ -46,7 +46,7 @@
 			</div>
 				<div class="mb-3" align="left">	
 				  <label for="exampleFormControlInput1" class="form-label">이름</label>
-				  <input name="Board_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder=${login.member_name}>
+				  <input name="Board_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder=${login.member_name} readonly="readonly">
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput2" class="form-label">제목</label>

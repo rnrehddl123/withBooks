@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="listNoEpisode" resultType="EpisodeDTO">
-		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epnum DESC
+		select Epnum, Epi_subject, Epi_date, Epi_recommand, Epi_readcount from episode, novel where episode.Nnum = novel.Nnum and novel.Nnum = #{nnum} order by Epnum ASC
 	</select>
 	
 	<insert id="insertEpisode" parameterType="EpisodeDTO" useGeneratedKeys="true" keyColumn="Epnum" keyProperty="Epnum">

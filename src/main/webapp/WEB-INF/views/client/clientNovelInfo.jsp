@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- clientBookInfo -->
 <jsp:include page="../main/header.jsp"/>
 <html>
@@ -72,7 +73,7 @@
 			<div class="review_content">
 				<div class="review_chart">
 					<c:if test="${ascore ne 'NaN'}">
-						${ascore}
+						<fmt:formatNumber value="${ascore}" pattern=".00"/>
 						<div class="review_score">
 							<div class="review_chart_star">
 								<i class="bi bi-star-fill"></i>

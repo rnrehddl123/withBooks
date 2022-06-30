@@ -44,7 +44,7 @@
 					 <label class="form-check-label">아이디 저장</label>
 					
 					<div class="find">
-					<a href="findId" class="findfind">아이디 찾기</a> 
+					<a href="findIdForm" class="findfind">아이디 찾기</a> 
 					<a href="pw_find" class="findfind">비밀번호 찾기</a>
 					</div>
 				

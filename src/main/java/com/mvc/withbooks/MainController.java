@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -150,8 +151,18 @@ public class MainController {
 		return "/main/login";
 	}
 	
-	@RequestMapping("/findId")
-	public String findId() throws Exception {
+	@RequestMapping(value="/findIdForm")
+	public String findIdForm() throws Exception{
+		return "/main/findIdForm";
+	}
+	
+	@RequestMapping(value="/findId", method = RequestMethod.POST)
+	public String findId(HttpServletRequest request, String name,String email) throws Exception{
+		Map<String,String> params = new HashMap<String, String>();
+		params.put("name", name);
+		params.put("email", email);
+		MemberDTO dto = memberMapper.findId(params);
+		request.setAttribute("dto", dto);
 		return "/main/findId";
 	}
 	
@@ -227,11 +238,8 @@ public class MainController {
 	public String pw_new(HttpSession session,HttpServletRequest req,String pw) throws IOException{
 		Map<String,String> params=new HashMap<String, String>();
 		params.put("pw", pw);
-		System.out.println(pw+"as");
 		String email = (String) session.getAttribute("email");
 		params.put("email", email);
-		System.out.println(params.get("email")+"em");
-		System.out.println(params.get("pw")+"as");
 		int result = memberMapper.pwUpdate_M(params);
 		
 		if(result == 1) {

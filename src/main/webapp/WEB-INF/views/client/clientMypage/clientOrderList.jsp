@@ -16,7 +16,8 @@
 		<thead>
 		<tr>
 			<th scope="col" align="center">번호</th>
-			<th scope="col" align="center">제목</th>
+			<th scope="col" align="center">소설 제목</th>
+			<th scope="col" align="center">에피소드 제목</th>
 			<th scope="col" align="center">가격</th>
 			<th scope="col" align="center">날짜</th>
 		</tr>
@@ -24,7 +25,7 @@
 		<c:set var="pageNum" value="${purchaseNum}"/>
 		<c:if test="${empty purchaseHistoryList}">
 		<tr>
-			<td align="center" colspan="4">구매내역이 없습니다.</td>
+			<td align="center" colspan="5">구매내역이 없습니다.</td>
 		</tr>
 		</c:if>
 		<tbody>
@@ -32,6 +33,7 @@
 		<tr>
 			<td align="center"><c:out value="${pageNum}"/></td>
 				<c:set var="pageNum" value="${pageNum-1}"/>
+			<td align="center">${dto.NOVEL_SUBJECT}</td>
 			<td align="center">${dto.EPI_SUBJECT}</td>
 			<td align="center">${dto.PURCHASE_PRICE}</td>
 			<td align="center">${dto.PURCHASE_DATE}</td>

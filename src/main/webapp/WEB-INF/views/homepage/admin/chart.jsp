@@ -13,11 +13,11 @@
     </head>
 
   <body>
-  	<div class="chart_wrapper">
-	  	<div id="plot1"></div>
-	    <div id="plot2"></div>
-	    <div id="plot3"></div>
-	    <div id="plot4"></div>
+  	<div class="chart_wrapper flex">
+	  	<div class="plot" id="plot1"></div>
+	    <div class="plot" id="plot2"></div>
+	    <div class="plot" id="plot3"></div>
+	    <div class="plot" id="plot4"></div>
   	</div>
     <py-script>
 import matplotlib.pyplot as plt
@@ -79,4 +79,8 @@ sns.heatmap(df_hit)
 pyscript.write('plot4', fig4)
     </py-script>
   </body>
+  
+<script>
+	document.body.style.overflow = "hidden";
+</script>
 <%@ include file="../adminFooter.jsp"%>

@@ -18,3 +18,12 @@ table td{
 table th{
 	border: 1px solid;
 }
+
+.chart_wrapper {
+	flex-flow: wrap;
+}
+
+
+.plot{
+	width: 521px;
+}

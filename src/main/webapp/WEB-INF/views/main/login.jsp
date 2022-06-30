@@ -45,7 +45,7 @@
 					
 					<div class="find">
 					<a href="findId" class="findfind">아이디 찾기</a> 
-					<a href="findPassword" class="findfind">비밀번호 찾기</a>
+					<a href="pw_find" class="findfind">비밀번호 찾기</a>
 					</div>
 				
 				</div>

@@ -1,15 +1,27 @@
 package com.mvc.withbooks;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mvc.withbooks.dto.AdminSlideDTO;
 import com.mvc.withbooks.dto.AdminSuggestDTO;
@@ -18,7 +30,6 @@ import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NovelDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
-import com.mvc.withbooks.service.MailService;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NovelMapper;
 
@@ -34,10 +45,8 @@ public class MainController {
 	@Autowired
 	private MemberMapper memberMapper;
 	@Autowired
-	private MailService mailService;
-	
-	
-	
+	private JavaMailSender javaMailSender;
+
 	@RequestMapping("/main")
 	public String main(HttpServletRequest req) {
 		List<AdminSlideDTO> list = adminSlideMapper.listSlide();
@@ -146,13 +155,90 @@ public class MainController {
 		return "/main/findId";
 	}
 	
-	@RequestMapping("/findPassword")
-	public String findPassword() {
-		try {
-			mailService.sendEmail();
-		} catch (Exception e) {
-			e.printStackTrace();
+	@RequestMapping("/pw_find")
+	public String pw_find() throws Exception{
+		return "/main/pw_find";
+	}
+	
+	// 인증번호 발송
+	@RequestMapping(value ="/pw_auth")
+	public ModelAndView pw_auth(HttpSession session,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		String email = (String)request.getParameter("Member_email");
+		String name = (String)request.getParameter("Member_name");
+		
+		MemberDTO dto = memberMapper.selectMember(email);
+		
+		if(dto != null) {
+			Random r = new Random();
+			int num = r.nextInt(999999); // 랜덤 인증번호 생성
+			
+			if(dto.getMember_name().equals(name)) {
+				session.setAttribute("email", dto.getMember_email());
+				
+				String setfrom = "withbooks01@gmail.com"; // 보내는사람
+				String tomail = email; // 받는사람
+				String title = "[withBooks] 비밀번호 변경 인증 이메일 입니다."; // 메일 제목
+				String content = System.getProperty("line.separator") + "안녕하세요 회원님" + System.getProperty("line.separator")
+				+ "비밀번호찾기(변경) 인증번호는 " + num + " 입니다." + System.getProperty("line.separator"); // 메일 내용
+			
+				try {
+					MimeMessage message = javaMailSender.createMimeMessage();
+					MimeMessageHelper messageHelper = new MimeMessageHelper(message,true,"utf-8");
+					
+					messageHelper.setFrom(setfrom);
+					messageHelper.setTo(tomail); 
+					messageHelper.setSubject(title);
+					messageHelper.setText(content); 
+					
+					javaMailSender.send(message);
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				ModelAndView mv = new ModelAndView();
+				mv.setViewName("main/pw_auth");
+				mv.addObject("num", num);
+				return mv;
+			}else {
+				ModelAndView mv = new ModelAndView();
+				mv.setViewName("main/pw_find");
+				return mv;
+				}
+			}else {
+				ModelAndView mv = new ModelAndView();
+				mv.setViewName("main/pw_find");
+				return mv;
 		}
-		return "/main/findPassword";
+	}
+	
+	//인증번호 동일한지 확인
+	@RequestMapping(value = "/pw_set", method = RequestMethod.POST)
+	public String pw_set(@RequestParam(value="email_ok") String email_ok,@RequestParam(value = "num") String num) throws IOException{
+		if(email_ok.equals(num)) {
+			return "main/pw_new";
+		}
+		else {
+			return "main/pw_find";
+		}
+	}
+	
+	//DB 비밀번호 업데이트
+	@RequestMapping(value = "/pw_new", method = RequestMethod.POST)
+	public String pw_new(HttpSession session,HttpServletRequest req,String pw) throws IOException{
+		Map<String,String> params=new HashMap<String, String>();
+		params.put("pw", pw);
+		System.out.println(pw+"as");
+		String email = (String) session.getAttribute("email");
+		params.put("email", email);
+		System.out.println(params.get("email")+"em");
+		System.out.println(params.get("pw")+"as");
+		int result = memberMapper.pwUpdate_M(params);
+		
+		if(result == 1) {
+			return "main/login";
+		}else {
+			System.out.println("pw_update"+ result);
+			return "main/pw_new";
+		}
 	}
 }

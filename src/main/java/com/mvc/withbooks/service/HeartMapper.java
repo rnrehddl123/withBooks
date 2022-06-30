@@ -31,6 +31,11 @@ public class HeartMapper {
 		return res;
 	}
 	
+	public int deleteHeartHeart(Map<String, Integer> params) {
+		int res = sqlSession.delete("deleteHeartHeart",params);
+		return res;
+	}
+	
 	public List<HeartDTO> listHeart(int start, int end){
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);

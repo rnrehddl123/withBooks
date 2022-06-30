@@ -28,7 +28,7 @@
 							<h4>${ndto.novel_cate}</h4>
 							<h4 class="generic novel_memberName">${ndto.novel_memberName}</h4>
 							<a class="titles-link" href="clientNovelInfo?nnum=${ndto.nnum}&change=now">
-								<h3>${ndto.novel_subject} <span class="novel_subject">${ndto.novel_subject}</span></h3>
+								<h3><span class="novel_subject">${ndto.novel_subject}</span></h3>
 							</a>
 						</div>
 					</div>

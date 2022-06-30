@@ -45,6 +45,17 @@ public class HeartController {
 		return res;
 	}
 	
+	@RequestMapping("/deleteHeartHeart")
+	@ResponseBody
+	public int deleteHeartHeart(@RequestBody String data){
+		System.out.println(data);
+		Gson gson = new Gson();
+		Map<String, Integer> params = gson.fromJson(data, Map.class);
+		int res = heartMapper.deleteHeartHeart(params);
+		return res;
+	}
+	
+	
 	@RequestMapping("/heartList")
 	public String heartList(HttpServletRequest req,@RequestParam(required = false) String mode) {
 		int pageSize = 15;

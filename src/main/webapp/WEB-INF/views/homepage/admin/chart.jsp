@@ -14,8 +14,10 @@
 
   <body>
   	<div class="chart_wrapper">
-	  	<div id="plot"></div>
+	  	<div id="plot1"></div>
 	    <div id="plot2"></div>
+	    <div id="plot3"></div>
+	    <div id="plot4"></div>
   	</div>
     <py-script>
 import matplotlib.pyplot as plt
@@ -34,22 +36,47 @@ member = await pyfetch(
   body=json.dumps({"email": "aa", "password": "bb"})
 )
 
-
-
 member_info = json.dumps(await member.json())
 
 
+history = await pyfetch(
+  url="http://localhost:8080/withbooks/purchaseHistoryChartList",
+  method="GET",
+)
+history_info = json.dumps(await history.json())
 
-df=pd.read_json(member_info)
-df.loc[df['Member_authority'] != df['Member_authority'], 'Member_authority'] = 'normal'
 
-fig, ax = plt.subplots()
+history = await pyfetch(
+  url="http://localhost:8080/withbooks/purchaseHistoryWChartList",
+  method="GET",
+)
+heat_info = json.dumps(await history.json())
 
 
-sns.countplot(x="Member_sex", hue="Member_authority", data=df,ax=ax)
-pyscript.write('plot', fig)
-sns.countplot(x="Member_authority", hue="Member_sex", data=df,ax=ax)
-pyscript.write('plot2', fig)
+df_member_info=pd.read_json(member_info)
+df_member_info.loc[df_member_info['Member_authority'] != df_member_info['Member_authority'], 'Member_authority'] = 'buyer'
+
+fig1, ax1 = plt.subplots()
+sns.countplot(x="Member_sex", hue="Member_authority", data=df_member_info,ax=ax1)
+pyscript.write('plot1', fig1)
+
+fig2, ax2 = plt.subplots()
+sns.countplot(x="Member_authority", hue="Member_sex", data=df_member_info,ax=ax2)
+pyscript.write('plot2', fig2)
+
+
+df_history_info=pd.read_json(history_info)
+mean=df_history_info.groupby(by=['PURCHASE_DATE'],as_index=False)['PURCHASE_PRICE'].sum()
+fig3, ax3 = plt.subplots()
+sns.lineplot(x="PURCHASE_DATE",y="PURCHASE_PRICE",data=mean,ax=ax3)
+pyscript.write('plot3', fig3)
+
+
+df_hit=pd.read_json(heat_info)
+df_hit = df_hit.pivot_table(index='MONTHLYDATA',columns='MEMBER_ID',values='COUNT')
+fig4, ax4 = plt.subplots()
+sns.heatmap(df_hit)
+pyscript.write('plot4', fig4)
     </py-script>
   </body>
 <%@ include file="../adminFooter.jsp"%>

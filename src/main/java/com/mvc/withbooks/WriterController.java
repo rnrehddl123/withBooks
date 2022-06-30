@@ -396,6 +396,8 @@ public class WriterController {
 		params.put("mnum", String.valueOf(login.getMnum()));
 		params.put("nnum", String.valueOf(nnum));
 		List<Map<String, String>> list = purchaseHistoryMapper.chart(params);
+		NovelDTO dto = novelMapper.getNovel(nnum);
+		req.setAttribute("getNovel", dto);
 		req.setAttribute("chart", list);
 		req.setAttribute("mnum", mnum);
 		return "writer/writerPage/writerChart";
@@ -412,6 +414,8 @@ public class WriterController {
 		params.put("mnum", String.valueOf(login.getMnum()));
 		params.put("nnum", String.valueOf(nnum));
 		List<Map<String, String>> list = purchaseHistoryMapper.writerChart(params);
+		NovelDTO dto = novelMapper.getNovel(nnum);
+		req.setAttribute("getNovel", dto);
 		req.setAttribute("writerChart", list);
 		req.setAttribute("mnum", mnum);
 		return "writer/writerPage/writerPay";
@@ -483,8 +487,12 @@ public class WriterController {
 		}
 		int mnum = login.getMnum();
 		List<Map<String, String>> list = purchaseHistoryMapper.memberChart(mnum);
+		List<Map<String, String>> list2 = purchaseHistoryMapper.sumChart(mnum);
+		MemberDTO dto = memberMapper.getMember(login.getMnum());
 		req.setAttribute("memberChart", list);
+		req.setAttribute("sumChart", list2);
 		req.setAttribute("mnum", mnum);
+		req.setAttribute("getMember", dto);
 		return "writer/writerPage/memberChart";
 	}
 }

@@ -39,14 +39,18 @@
 	</select>
 	
 	<select id="chart" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM  (SELECT e.epnum,COUNT(e.epnum)-1 AS COUNT,n.mnum,e.EPI_SUBJECT,n.NNUM  FROM PURCHASEHISTORY p INNER JOIN EPISODE e  ON p.EPNUM =e.EPNUM INNER JOIN NOVEL n ON e.NNUM =n.NNUM GROUP BY e.EPNUM,n.mnum,e.EPI_SUBJECT,n.NNUM) WHERE mnum=#{mnum} AND nnum=#{nnum} ORDER BY EPNUM
+		SELECT * FROM  (SELECT e.epnum,COUNT(e.epnum) AS COUNT,n.mnum,e.EPI_SUBJECT,n.NNUM  FROM PURCHASEHISTORY p INNER JOIN EPISODE e  ON p.EPNUM =e.EPNUM INNER JOIN NOVEL n ON e.NNUM =n.NNUM WHERE p.PURCHASE_PRICE !=0 GROUP BY e.EPNUM,n.mnum,e.EPI_SUBJECT,n.NNUM) WHERE mnum=#{mnum} AND nnum=#{nnum} ORDER BY EPNUM
 	</select>
 	
 	<select id="writerChart" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * from (SELECT p.PURCHASE_DATE, COUNT(*) AS count, p.NNUM, n.MNUM  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM GROUP BY p.PURCHASE_DATE, p.NNUM, n.MNUM) WHERE mnum=#{mnum} AND nnum= #{nnum} ORDER BY PURCHASE_DATE
+		SELECT * from (SELECT p.PURCHASE_DATE, COUNT(*) AS count, p.NNUM, n.MNUM  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM WHERE p.PURCHASE_PRICE !=0 GROUP BY p.PURCHASE_DATE, p.NNUM, n.MNUM) WHERE mnum=#{mnum} AND nnum= #{nnum} ORDER BY PURCHASE_DATE
 	</select>
 	
 	<select id="memberChart" parameterType="int" resultType="java.util.Map" >
-		SELECT p.PURCHASE_DATE ,COUNT(p.PURCHASE_DATE) AS count,p.PURCHASE_PRICE  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM WHERE n.MNUM = #{mnum} AND p.PURCHASE_PRICE !=0 GROUP BY p.PURCHASE_DATE,PURCHASE_PRICE 
+		SELECT p.PURCHASE_DATE ,COUNT(p.PURCHASE_DATE) AS count,p.PURCHASE_PRICE  FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM = n.NNUM WHERE n.MNUM = #{mnum} AND p.PURCHASE_PRICE !=0 GROUP BY p.PURCHASE_DATE,PURCHASE_PRICE ORDER BY PURCHASE_DATE
+	</select>
+	
+	<select id="sumChart" parameterType="int" resultType="java.util.Map">
+		SELECT month,COUNT(month) AS COUNT  FROM  (SELECT TO_CHAR(to_date(PURCHASE_DATE,'YY-MM-DD'), 'MONTH') AS month from (SELECT * FROM PURCHASEHISTORY p INNER JOIN NOVEL n ON p.NNUM =n.NNUM INNER JOIN "MEMBER" m ON n.MNUM =m.MNUM WHERE m.MNUM =#{mnum} AND p.PURCHASE_PRICE >0)) GROUP BY month
 	</select>
 </mapper>

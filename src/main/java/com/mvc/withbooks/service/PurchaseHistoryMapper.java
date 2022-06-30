@@ -76,4 +76,9 @@ public class PurchaseHistoryMapper {
 		List<Map<String, String>> list = sqlSession.selectList("memberChart", mnum);
 		return list;
 	}
+	
+	public List<Map<String, String>> sumChart(int mnum) {
+		List<Map<String, String>> list = sqlSession.selectList("sumChart", mnum);
+		return list;
+	}
 }

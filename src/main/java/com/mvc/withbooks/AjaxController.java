@@ -255,5 +255,16 @@ public class AjaxController {
 		}
 		return "false";
 	}
+	
+	@RequestMapping("/idCheck")
+	@ResponseBody
+	public String idCheck(@RequestBody String member_id){
+		System.out.print(member_id);
+		int result = memberMapper.idCheck(member_id);
+		if(result==1) {
+			return "false";
+		}
+		return "true";
+	}
 }
 

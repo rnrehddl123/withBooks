@@ -26,6 +26,16 @@
 		 values(seq_member.nextval, #{Member_name}, #{Member_id}, #{Member_passwd}, #{Member_Tel}, #{Member_address},
 				#{Member_email}, #{Member_birth}, #{Member_sex}, #{Member_preferred1,jdbcType=VARCHAR}, #{Member_preferred2,jdbcType=VARCHAR}, #{Member_preferred3,jdbcType=VARCHAR}, #{Member_authority,jdbcType=VARCHAR}, 0)
 	</insert>
+	
+	<!-- 회원 정보 조회(이메일) -->
+	<select id="selectMember" parameterType="String" resultType="memberDTO">
+		select * from member where Member_email = #{Member_email}
+	</select>
+	
+	<!-- 패스워드 변경 -->
+	<update id="pwUpdate_M" parameterType="java.util.Map">
+		update member set Member_passwd=#{pw} where Member_email= #{email}
+	</update>
 
 	<delete id="deleteMember" parameterType="int">
 		delete from member where Mnum = #{mnum}

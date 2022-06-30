@@ -17,6 +17,17 @@ public class MemberMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 비밀번호 찾기
+	public MemberDTO selectMember(String Member_email) {
+		MemberDTO dto = sqlSession.selectOne("selectMember", Member_email);
+		return dto;
+	}
+	
+	public int pwUpdate_M(Map<String,String> params) {
+		int res = sqlSession.update("pwUpdate_M",params);
+		return res;
+	}
+	
 	public boolean checkMember(Map<String, String> params) {
 		MemberDTO dto = sqlSession.selectOne("checkMember", params);
 		if (dto == null) return false;
@@ -165,4 +176,7 @@ public class MemberMapper {
 		int result = sqlSession.selectOne("idCheck", member_id);
 		return result;
 	}
+	
+	
+	
 }

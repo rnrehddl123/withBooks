@@ -74,27 +74,27 @@ var chart = c3.generate({
 	    columns: [
 	    	["날짜"<c:forEach var="dto" items="${memberChart}">,"${dto.PURCHASE_DATE}"</c:forEach>],
 	    	["구매수"<c:forEach var="dto" items="${memberChart}">,${dto.COUNT}</c:forEach>
-	    ],
-	    ],
-	    types: {
-	      pension1: "area",
-	    },
-	    colors: {
-	      pension1: "#337ab7",
-	    },
-	  },
-	  bar: {
-	    width: {
-	      ratio: 0.2,            
-	    },
-	  },
-	  axis: {
-	    x: {
-	      show : false,
-	      type : "category",
-	    },
-	  },
-	});
+	    	],
+		    ],
+		    types: {
+		      pension1: "area",
+		    },
+		    colors: {
+		      pension1: "#337ab7",
+		    },
+		  },
+		  bar: {
+		    width: {
+		      ratio: 0.2,            
+		    },
+		  },
+		  axis: {
+		    x: {
+		      show : false,
+		      type : "category",
+		    },
+		  },
+		});
 </script>
 
 <jsp:include page="../../main/footer.jsp"/>

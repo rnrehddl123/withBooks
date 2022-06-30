@@ -9,38 +9,23 @@
 	<link href="resources/css/client.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div align="center">
-	<table class="outline">
-	<tr height="30" align="center">
-		<td colspan="3"><hr class="hrLine"></td>
-	</tr>
-	<tr height="30" align="center">
-		<th colspan="3">내 찜 목록</th>
-	</tr>
-	<tr height="30" align="center">
-		<td colspan="3"><hr class="hrLine"></td>
-	</tr>
-	<tr height="30" align="center">
-		<th>이미지</th>
-		<th>소설(시리즈) 제목</th>
-		<th>삭제하기</th>
-	</tr>
-	<c:if test="${empty listHeart}">
-		<tr>
-			<td colspan="2" align="center">찜 한 소설이 없습니다.</td>
-		</tr>
-	</c:if>
-	<c:forEach var="hdto" items="${listHeart}">
-		<tr align="center">
-			<td><img height="100" width="100" src="resources/img/${hdto.novelDTO.novel_image}"></td>
-			<td><a href="clientNovelInfo?nnum=${hdto.novelDTO.nnum}">${hdto.novelDTO.novel_subject}</a></td>
-			<td><button type="button" class="heart_del btn btn-primary" onclick="heart_del2(${hdto.hnum})">삭제</button></td>
-		</tr>
-	</c:forEach>
-	</table>
-	<hr class="hrLine">
+<div class="lib_wrraper">
+	<h3>내 찜목록</h3>
+	<section class="flex">
+		<c:forEach var="hdto" items="${listHeart}">
+			<div class="content_wrraper">
+				<a href="clientNovelInfo?nnum=${hdto.novelDTO.nnum}">
+					<div class="lib_content">
+						<img src="resources/img/${hdto.novelDTO.novel_image}">
+						<p>${hdto.novelDTO.novel_subject}<p>
+						<button type="button" class="heart_del btn btn-primary" onclick="heart_del2(${hdto.hnum})">삭제</button>
+					</div>
+				</a>
+			</div>
+			
+		</c:forEach>
+	</section>
 </div>
-
 <div align="center">
 	<c:if test="${rowCount>0}">
 		<c:if test="${startPage>1}">

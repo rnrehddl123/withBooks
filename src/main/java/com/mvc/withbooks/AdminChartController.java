@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.PurchaseHistoryDTO;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.PurchaseHistoryMapper;
 
 @Controller
 public class AdminChartController {
@@ -22,7 +24,8 @@ public class AdminChartController {
 	private NovelMapper novelMapper;
 	@Autowired
 	private MemberMapper memberMapper;
-	
+	@Autowired
+	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
 	@RequestMapping("/adminChartajax")
 	@ResponseBody
@@ -47,9 +50,35 @@ public class AdminChartController {
 	@ResponseBody
 	public String adminNoChart(){
 		Gson gson = new Gson();
-		List<MemberDTO> list=memberMapper.listMember(1, 40);
+		List<MemberDTO> list=memberMapper.listChartMember();
 		String javadata=gson.toJson(list);
-		System.out.println(javadata);
+		return javadata;
+	}
+	
+	@RequestMapping("/purchaseHistoryChartList")
+	@ResponseBody
+	public String purchaseHistoryChartList(){
+		Gson gson = new Gson();
+		List<PurchaseHistoryDTO> list=purchaseHistoryMapper.purchaseHistoryChartList();
+		String javadata=gson.toJson(list);
+		return javadata;
+	}
+	
+	@RequestMapping("/purchaseHistoryWChartList")
+	@ResponseBody
+	public String purchaseHistoryWChartList(){
+		Gson gson = new Gson();
+		List<Map<String, String>> list=purchaseHistoryMapper.adminChart();
+		String javadata=gson.toJson(list);
+		return javadata;
+	}
+	
+	@RequestMapping("/cateChart")
+	@ResponseBody
+	public String cateChart(){
+		Gson gson = new Gson();
+		List<Map<String, String>> list=purchaseHistoryMapper.cateChart();
+		String javadata=gson.toJson(list);
 		return javadata;
 	}
 }

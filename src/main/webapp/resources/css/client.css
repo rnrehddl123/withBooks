@@ -357,3 +357,38 @@ a {
 	margin-top : 30px;
 	margin-bottom : 30px;
 }
+
+
+.lib_wrraper{
+	width: 79.2%;
+    max-width: 1170px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.lib_wrraper .flex{
+	margin-top:100px;
+	flex-wrap: wrap;
+    justify-items: flex-start;
+    justify-content: space-start;
+}
+
+
+.lib_wrraper h3{
+	text-align: center;
+}
+
+.content_wrraper{
+	height: 400px;
+	width: 25%;
+}
+
+.lib_content{
+	margin: auto;
+	text-align: center;
+}
+
+.lib_content img{
+	height: 300px;
+	width: 200px;
+}

@@ -76,4 +76,22 @@ public class PurchaseHistoryMapper {
 		List<Map<String, String>> list = sqlSession.selectList("memberChart", mnum);
 		return list;
 	}
+	
+	public List<PurchaseHistoryDTO> purchaseHistoryChartList() {
+		List<PurchaseHistoryDTO> list = sqlSession.selectList("purchaseHistoryChartList");
+		return list;
+	}
+	
+	public List<Map<String, String>> adminChart() {
+		List<Map<String, String>> list = sqlSession.selectList("adminChart");
+		return list;
+	}
+	
+	public List<Map<String, String>> cateChart() {
+		List<Map<String, String>> list = sqlSession.selectList("cateChart");
+		return list;
+	}
+	
+	
+	
 }

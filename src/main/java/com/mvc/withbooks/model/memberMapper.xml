@@ -9,6 +9,10 @@
 		select * from (select rownum rn, A.* from (select * from member order by Mnum desc)A) where rn between #{start} and #{end}
 	</select>
 	
+	<select id="listChartMember" resultType="memberDTO">
+		select * from member
+	</select>
+	
 	<select id="listWriter" parameterType="java.util.Map" resultType="memberDTO">
 		select * from (select rownum rn, A.* from (select * from member where Member_authority = 'writer'  order by Mnum desc)A) where rn between #{start} and #{end}
 	</select>

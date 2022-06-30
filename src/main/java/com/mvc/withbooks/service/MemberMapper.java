@@ -36,6 +36,12 @@ public class MemberMapper {
 			return list;
 	}
 	
+	public List<MemberDTO> listChartMember() {
+		List<MemberDTO> list= sqlSession.selectList("listChartMember");
+		return list;
+	}
+	
+	
 	public List<MemberDTO> listWriter(int start, int end){
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);

@@ -47,7 +47,7 @@ public class HeartController {
 	
 	@RequestMapping("/heartList")
 	public String heartList(HttpServletRequest req,@RequestParam(required = false) String mode) {
-		int pageSize = 5;
+		int pageSize = 15;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";

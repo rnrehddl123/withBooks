@@ -61,11 +61,7 @@ var chart = c3.generate({
 	  axis: {
 	    x: {
 	      show : false,
-<<<<<<< HEAD
 	      type : "category",
-=======
-	      type: "category",
->>>>>>> 이동국
 	    },
 	  },
 	});

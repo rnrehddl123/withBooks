@@ -27,8 +27,8 @@
 			    <input name="member_name" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="이름">
 			  </div>
 			  <div class="flex inputWrapper">
-			    <input name="member_id" required type="text" class="form-control id id_input" aria-describedby="emailHelp" placeholder="아이디">
-			    <button type="button" class="btn btn-primary idCheck" onclick="idCheck()">중복확인</button>
+			    <input name="member_id" required type="text" class="form-control chk id_input" aria-describedby="emailHelp" placeholder="아이디">
+			    <button type="button" class="btn btn-primary chkbt" onclick="idCheck()">중복확인</button>
 			  </div>
 			  <div class="inputWrapper">
 			    <input name="member_passwd" required type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
@@ -46,8 +46,9 @@
 			  <div class="inputWrapper">
 			    <input type="text" requird class="form-control" aria-describedby="emailHelp" placeholder="상세주소">
 			  </div>
-			  <div class="inputWrapper">
-			    <input name="member_email" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="이메일">
+			  <div class="flex inputWrapper">
+			    <input name="member_email" required type="text" class="form-control chk email_input" aria-describedby="emailHelp" placeholder="이메일">
+			    <button type="button" class="btn btn-primary chkbt" onclick="emailCheck()">중복확인</button>
 			  </div>
 			  <div class="flex inputWrapper">
 			  	<input name="member_birth" type="text" class="form-control birth" aria-describedby="emailHelp" placeholder="생일">
@@ -77,8 +78,34 @@
 
 
 <script type="text/javascript">
-	var check=false;
-	var id_input=document.querySelector('.id_input')
+	var iCheck = false;
+	var eCheck = false;
+	
+	var id_input = document.querySelector('.id_input');
+	var email_input = document.querySelector('.email_input');
+	
+	function emailCheck(){
+		fetch('emailCheck', {
+			method: 'POST',
+            body: signUp.member_email.value,
+            headers: {
+                'Content-Type': 'text/plain'
+			}
+		})
+        .then(response => response.text())
+        .then(response => {
+        	console.log(response)
+           if(response=="false"){
+        	   alert("중복된 이메일입니다.")
+        	   eCheck = false;
+        	   console.log(eCheck)
+           }else{
+        	   alert("사용가능한 이메일입니다.")
+        	   eCheck = true;
+        	   console.log(eCheck)
+           }
+        });
+	}
 	
 	function idCheck(){
 		fetch('idCheck', {
@@ -92,23 +119,30 @@
         .then(response => {
            if(response=="false"){
         	   alert("중복된 아이디입니다.")
-        	   check = false;
+        	   iCheck = false;
            }else{
         	   alert("사용가능한 아이디입니다.")
-        	   check = true;
+        	   iCheck = true;
            }
         });
 	}
 	function checkForm(){
-		if(check==false){
+		if(iCheck==false){
 			alert("아이디 중복체크를 해주세요.");
+			return iCheck;
+		}else if(eCheck==false){
+			alert("이메일 중복체크를 해주세요.");
+			return eCheck;
 		}
-	    return check;
 	}
+	
 	id_input.addEventListener("input",function(e){
-		check=false;
+		iCheck=false;
 	})
 	
+	email_input.addEventListener("input",function(e){
+		eCheck=false;
+	})
 </script>
 
 

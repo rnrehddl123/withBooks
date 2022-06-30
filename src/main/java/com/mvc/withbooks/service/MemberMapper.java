@@ -183,6 +183,9 @@ public class MemberMapper {
 		return result;
 	}
 	
-	
+	public int emailCheck(String member_email) {
+		int result = sqlSession.selectOne("emailCheck", member_email);
+		return result;
+	}
 	
 }

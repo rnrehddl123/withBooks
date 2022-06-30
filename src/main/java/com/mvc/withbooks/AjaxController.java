@@ -265,5 +265,15 @@ public class AjaxController {
 		}
 		return "true";
 	}
+	
+	@RequestMapping("/emailCheck")
+	@ResponseBody
+	public String emailCheck(@RequestBody String member_email){
+		int result = memberMapper.emailCheck(member_email);
+		if(result==1) {
+			return "false";
+		}
+		return "true";
+	}
 }
 

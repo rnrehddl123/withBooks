@@ -38,7 +38,7 @@
   				<tr>
 					<td width="150">이메일</td>
 					<td>
-						<input type="text" name="Member_email" class="box" value="${login.member_email}">
+						<input type="text" name="Member_email" class="box" value="${login.member_email}" readOnly>
 					</td>
   				</tr>
   				<tr>
@@ -52,7 +52,7 @@
   				<tr>
   					<td width="150">주소</td>
 					<td>
-						<input type="text" name="Member_address" class="box" value="${login.member_address}" readonly="readonly">
+						<input type="text" name="Member_address" class="box" value="${login.member_address}" readOnly>
 					</td>
   				</tr>
   				<tr>
@@ -62,9 +62,9 @@
 					</td>
   				</tr>
   				<tr>
-  					<td colspan="2" readonly>
-						<label><input type="radio" name="Member_sex" value="man" ${login.member_sex eq 'man' ? "checked" : '' } />남</label>
-						<label><input type="radio" name="Member_sex" value="woman" ${login.member_sex eq 'woman' ? "checked" : '' } />여</label>
+  					<td colspan="2">
+						<label><input type="radio" name="Member_sex" value="man" ${login.member_sex eq 'man' ? "checked" : '' }  onclick="return(false);"/>남</label>
+						<label><input type="radio" name="Member_sex" value="woman" ${login.member_sex eq 'woman' ? "checked" : '' }  onclick="return(false);"/>여</label>
   					</td>
   				</tr>
   				<tr>
@@ -75,7 +75,7 @@
 					  <input name="member_preferred" class="form-check-input" type="checkbox" value="${dto.cate_name}"
 					  		 ${login.member_preferred1 eq dto.cate_name ? "checked" : ''} 
 					  		 ${login.member_preferred2 eq dto.cate_name ? "checked" : ''} 
-					  		 ${login.member_preferred3 eq dto.cate_name ? "checked" : ''} onclick="CountChecked(this)">
+					  		 ${login.member_preferred3 eq dto.cate_name ? "checked" : ''} onclick="countCheck(this)">
 					  <label class="form-check-label" for="flexCheckDefault">${dto.cate_name}</label>
 					</div>
 				</c:forEach>
@@ -88,4 +88,23 @@
   			</table>
   			</form>
 	</div>
+	<script type="text/javascript">
+		function countCheck(obj){
+			var chkbox = document.getElementsByName("member_preferred");
+			var chkCnt = 0;
+			
+			for(var i=0;i<chkbox.length; i++){
+				if(chkbox[i].checked){
+					chkCnt++;
+				}
+			}
+			if(chkCnt>3){
+				alert("장르는 3개만 체크해주세요.");
+				obj.checked = false;
+				return false;
+			}
+		}
+	
+	
+	</script>
 <jsp:include page="../../main/footer.jsp"/>

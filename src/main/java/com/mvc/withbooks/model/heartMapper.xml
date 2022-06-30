@@ -12,6 +12,10 @@
 		delete from HEART where hnum = #{hnum}
 	</delete>
 	
+	<delete id="deleteHeartHeart" parameterType="java.util.Map">
+		delete from HEART where mnum = #{mnum} and nnum = #{nnum}
+	</delete>
+	
 	<select id="getHeart" parameterType="java.util.Map" resultType="HeartDTO">
 		SELECT HNUM FROM HEART where mnum = #{mnum} and nnum = #{nnum}
 	</select>

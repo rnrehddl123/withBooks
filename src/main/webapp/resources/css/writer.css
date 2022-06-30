@@ -84,12 +84,25 @@
 }
 
 .chart {
+	margin-top : 50px;
 	position: relative;
-    height: 600px;
+    height: 520px;
 }
 
 .posi {
     position: absolute!important;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.marginmargin {
+	margin-bottom : 30px;
+}
+
+.fonset {
+	font-size : 25px;
+}
+
+.mar80 {
+	margin-top : 80px;
 }

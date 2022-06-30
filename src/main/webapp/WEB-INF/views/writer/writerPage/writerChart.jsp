@@ -3,8 +3,6 @@
 <!-- writerChart -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../main/header.jsp"/>
-<html>
-
 <head>
 
 <title> </title>
@@ -25,13 +23,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 
 </body>
-
+<div class="mar80">
+<h3 class="fonset" align="center">${getNovel.novel_subject}의 에피소드별 매출</h3>
 ​
 <div class="chart">
 <div id="combochart" class="posi"></div>
 </div>
-​
-
+​<div class="marginmargin" align="center">
+		<table align="center" class="table novel">
+			<thead>
+			<tr>
+				<td colspan="3" align="right"><a href="writerNovelList"><button type="button" class="btn btn-light">소설목록으로 가기</button></a></td>
+			</tr>
+			<tr>
+				<th>에피소드</th>
+				<th>구매수</th>
+				<th>정산가격</th>
+			</tr>
+			</thead>
+			<c:if test="${empty chart}">
+			<tr>
+				<td colspan="3">판매가 되지 않았습니다</td>
+			</tr>
+			</c:if>
+			<tbody>
+			<c:forEach var="dto" items="${chart}">
+			<tr>
+				<td align="center">${dto.EPI_SUBJECT}</td>
+				<td align="center">${dto.COUNT}</td>
+				<td align="center">${dto.COUNT*100}</td>
+			</tr>		
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+</div>
 <script>
 
 var chart = c3.generate({
@@ -46,6 +72,7 @@ var chart = c3.generate({
 	    	["에피소드"<c:forEach var="dto" items="${chart}">,"${dto.EPI_SUBJECT}"</c:forEach>],
 	    	["구매수"<c:forEach var="dto" items="${chart}">,${dto.COUNT}</c:forEach>
 	    ],
+	    ],
 	    types: {
 	      pension1: "area",
 	    },
@@ -59,20 +86,12 @@ var chart = c3.generate({
 	    },
 	  },
 	  axis: {
-	    x: {
-	      show : false,
-<<<<<<< HEAD
-	      type : "category",
-=======
-	      type: "category",
->>>>>>> 이동국
-	    },
-	  },
-	});
+		    x: {
+		      show : false,
+		      type : "category",
+		    },
+		  },
+		});
 </script>
-
-​
-
-</html>
 
 <jsp:include page="../../main/footer.jsp"/>

@@ -31,7 +31,7 @@
 	
 	<select id="purchaseList" resultType="java.util.Map" parameterType="java.util.Map">
 		select * from (select rownum rn, A.* from 
-		((select e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date, PurchaseHistory.MNUM  from EPISODE e INNER join PurchaseHistory ON PurchaseHistory.EPNUM = e.epnum WHERE PurchaseHistory.MNUM = #{mnum} AND PurchaseHistory.PURCHASE_PRICE !=0) )A)
+		((select n.NOVEL_SUBJECT, e.EPI_SUBJECT, PurchaseHistory.PURCHASE_PRICE, PurchaseHistory.Purchase_date, PurchaseHistory.MNUM  from EPISODE e INNER JOIN NOVEL n ON e.NNUM = n.NNUM INNER join PurchaseHistory ON PurchaseHistory.EPNUM = e.epnum WHERE PurchaseHistory.MNUM = #{mnum} AND PurchaseHistory.PURCHASE_PRICE !=0) )A)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	

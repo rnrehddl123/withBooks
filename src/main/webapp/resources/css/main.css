@@ -144,6 +144,18 @@ header .navbar-collapse form{
 	width: 60%
 }
 
+.login .id{
+	width: 70%;
+}
+
+.login .idCheck{
+	width: 30%;
+	height: 38px;
+	margin: 0px;
+	margin-left: 5px;
+	
+}
+
 .login .btn-group{
 	margin-left: auto;
 }

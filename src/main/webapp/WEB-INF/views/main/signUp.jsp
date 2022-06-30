@@ -26,9 +26,9 @@
 			  <div class="inputWrapper">
 			    <input name="member_name" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="이름">
 			  </div>
-			  <div class="inputWrapper">
-			    <input name="member_id" required type="text" class="form-control id_input" aria-describedby="emailHelp" placeholder="아이디">
-			    <button type="button" onclick="idCheck()">중복 확인</button>
+			  <div class="flex inputWrapper">
+			    <input name="member_id" required type="text" class="form-control id id_input" aria-describedby="emailHelp" placeholder="아이디">
+			    <button type="button" class="btn btn-primary idCheck" onclick="idCheck()">중복확인</button>
 			  </div>
 			  <div class="inputWrapper">
 			    <input name="member_passwd" required type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">

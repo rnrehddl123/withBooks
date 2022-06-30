@@ -17,6 +17,12 @@ public class MemberMapper {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//아이디 찾기
+	public MemberDTO findId(Map<String,String> params) {
+		MemberDTO dto = sqlSession.selectOne("findId",params);
+		return dto;
+	}
+	
 	// 비밀번호 찾기
 	public MemberDTO selectMember(String Member_email) {
 		MemberDTO dto = sqlSession.selectOne("selectMember", Member_email);

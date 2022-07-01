@@ -107,6 +107,7 @@
 	margin-top : 80px;
 }
 
+<<<<<<< HEAD
 .requestFont{
 	font-weight: bold;
 }
@@ -114,4 +115,13 @@
 .contant{
 	min-height: 500px;
 	white-space: pre-line
+
+.container {
+	width: 500px;
+}
+
+#list {
+	height: 300px;
+	padding: 15px;
+	overflow: auto;
 }

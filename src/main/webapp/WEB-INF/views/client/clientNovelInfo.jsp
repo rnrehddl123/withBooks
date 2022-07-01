@@ -15,7 +15,7 @@
 	<div class="clientNovelInfoWrapper">
 	   <div class="clientNovelInfo flex">
 			<div class="thumbnailWrapper">
-				<img class="thumbnail" alt="" src="resources/img/${noveldto.novel_image}">
+				<img class="thumbnail" alt="" src="/with/${noveldto.novel_image}">
 				<div class="flex">
 					<div class="notice <c:if test="${not empty noticeNovelDTO}">active</c:if>" >
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">

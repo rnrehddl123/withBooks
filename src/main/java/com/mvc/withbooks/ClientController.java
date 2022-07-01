@@ -465,7 +465,8 @@ public class ClientController {
 			msg = "회원 정보 수정 실패하였습니다.";
 			url = "clientMypage";
 		}
-		dto.setCash(login.getCash());
+		dto = memberMapper.getMember(login.getMnum());
+
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		session.setAttribute("login", dto);

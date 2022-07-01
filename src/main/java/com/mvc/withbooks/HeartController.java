@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.annotations.JsonAdapter;
 import com.mvc.withbooks.dto.HeartDTO;
+import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.service.HeartMapper;
 import com.mvc.withbooks.service.MemberMapper;
 
@@ -38,7 +40,6 @@ public class HeartController {
 	@RequestMapping("/deleteHeart")
 	@ResponseBody
 	public int deleteHeart(@RequestBody String data){
-		System.out.println(data);
 		Gson gson = new Gson();
 		Map<String, Integer> params = gson.fromJson(data, Map.class);
 		int res = heartMapper.deleteHeart(params);
@@ -48,7 +49,6 @@ public class HeartController {
 	@RequestMapping("/deleteHeartHeart")
 	@ResponseBody
 	public int deleteHeartHeart(@RequestBody String data){
-		System.out.println(data);
 		Gson gson = new Gson();
 		Map<String, Integer> params = gson.fromJson(data, Map.class);
 		int res = heartMapper.deleteHeartHeart(params);
@@ -57,7 +57,12 @@ public class HeartController {
 	
 	
 	@RequestMapping("/heartList")
-	public String heartList(HttpServletRequest req,@RequestParam(required = false) String mode) {
+	public String heartList(HttpServletRequest req,@RequestParam(required = false) String mode, HttpSession session) {
+		MemberDTO login = (MemberDTO)session.getAttribute("login");
+		if(login==null){
+			return "redirect:login";
+		}
+		
 		int pageSize = 15;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
@@ -86,7 +91,7 @@ public class HeartController {
 				}
 			}else {
 				String searchString = req.getParameter("searchString");
-				list = heartMapper.findHeart("Board_subject", searchString);
+				list = heartMapper.findHeart(searchString);
 			}
 		} 
 		req.setAttribute("rowCount", rowCount);

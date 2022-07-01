@@ -249,4 +249,9 @@ public class MainController {
 			return "main/pw_new";
 		}
 	}
+	
+	@RequestMapping("/chat")
+	public String Echo() {
+		return "/main/chat";
+	}
 }

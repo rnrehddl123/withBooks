@@ -15,7 +15,7 @@
 			<div class="content_wrraper">
 				<a href="clientNovelInfo?nnum=${dto.nnum}&change=now">
 					<div class="lib_content">
-						<img src="resources/img/${dto.novel_image}">
+						<img src="/with/${dto.novel_image}">
 						<p>${dto.novel_subject}<p>
 						<p>${dto.novel_memberName}</p>
 					</div>

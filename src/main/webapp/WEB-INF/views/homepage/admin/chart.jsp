@@ -18,6 +18,8 @@
 	    <div class="plot" id="plot2"></div>
 	    <div class="plot" id="plot3"></div>
 	    <div class="plot" id="plot4"></div>
+	    <div class="plot" id="plot5"></div>
+	    <div class="plot" id="plot6"></div>
   	</div>
     <py-script>
 import matplotlib.pyplot as plt
@@ -56,6 +58,8 @@ heat_info = json.dumps(await history.json())
 df_member_info=pd.read_json(member_info)
 df_member_info.loc[df_member_info['Member_authority'] != df_member_info['Member_authority'], 'Member_authority'] = 'buyer'
 
+
+
 fig1, ax1 = plt.subplots()
 sns.countplot(x="Member_sex", hue="Member_authority", data=df_member_info,ax=ax1)
 pyscript.write('plot1', fig1)
@@ -77,6 +81,25 @@ df_hit = df_hit.pivot_table(index='MONTHLYDATA',columns='MEMBER_ID',values='COUN
 fig4, ax4 = plt.subplots()
 sns.heatmap(df_hit)
 pyscript.write('plot4', fig4)
+
+df_member_info['Member_birth'] = pd.to_datetime(df_member_info['Member_birth'])
+df_member_info['Year'] = df_member_info['Member_birth'].dt.year
+fig5, ax5 = plt.subplots()
+ax5.set(ylim=(1970, 2020))
+sns.boxplot(x="Member_sex", y="Year", data=df_member_info,ax=ax5)
+pyscript.write('plot5', fig5)
+
+man = (df_history_info.MEMBER_SEX == 'man')
+woman = (df_history_info.MEMBER_SEX == 'woman')
+male=df_history_info[man].groupby(by=['PURCHASE_DATE'],as_index=False)['PURCHASE_PRICE'].sum()
+female=df_history_info[woman].groupby(by=['PURCHASE_DATE'],as_index=False)['PURCHASE_PRICE'].sum()
+fig6, ax6 = plt.subplots()
+
+sns.lineplot(x="PURCHASE_DATE",y="PURCHASE_PRICE",
+             data=female,label='female',ax=ax6)
+sns.lineplot(x="PURCHASE_DATE",y="PURCHASE_PRICE",
+             data=male,label='male',ax=ax6)
+pyscript.write('plot6', fig6)
     </py-script>
   </body>
   

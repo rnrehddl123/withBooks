@@ -9,7 +9,7 @@
 	
 	
 	<select id="purchaseHistoryChartList" resultType="java.util.Map" parameterType="int">
-		select * from PurchaseHistory
+		select * from PURCHASEHISTORY p  INNER JOIN "MEMBER" m ON p.MNUM =m.MNUM 
 	</select>
 	
 	<insert id="insertPurchase" parameterType="java.util.Map">

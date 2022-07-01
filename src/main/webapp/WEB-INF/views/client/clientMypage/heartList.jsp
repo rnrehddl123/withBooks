@@ -27,21 +27,22 @@
 	</section>
 </div>
 <div align="center">
+	<ul class="pagination justify-content-center">
 	<c:if test="${rowCount>0}">
 		<c:if test="${startPage>1}">
-			[<a href="heartList?pageNum=${startPage-1}">이전</a>]			
+			<li class="page-item"><a class="page-link" href="heartList?pageNum=${startPage-1}">이전</a></li>			
 		</c:if>
 		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			[<a href="heartList?pageNum=${i}"><c:out value="${i}"/></a>]	
+			<li class="page-item"><a class="page-link" href="heartList?pageNum=${i}"><c:out value="${i}"/></a></li>	
 		</c:forEach>
 		<c:if test="${endPage<pageCount}">
-			[<a href="heartList?pageNum=${endPage+1}">다음</a>]			
+			<li class="page-item"><a class="page-link" href="heartList?pageNum=${endPage+1}">다음</a></li>		
 		</c:if>
 	</c:if>
-	
+	</ul>
 	<form name="f" action="heartList" method="post">
 		<input type="hidden" name="mode" value="search">
-			검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
+			<input type="text" name="searchString" placeholder="검색"><input type="submit" value="검색"><p>
 	</form>
 </div>
 

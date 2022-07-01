@@ -28,8 +28,8 @@
 		select count(*) from HEART
 	</select>
 	
-	<select id="findHeart" parameterType="java.util.Map" resultType="HeartDTO">
-		select * from HEART where ${search} = #{searchString}
+	<select id="findHeart" parameterType="String" resultType="HeartDTO" resultMap="heartDTO">
+		SELECT * FROM HEART h INNER JOIN NOVEL n ON h.NNUM = n.NNUM  WHERE n.NOVEL_SUBJECT LIKE '%'||#{searchString}||'%'
 	</select>
 	
 	<resultMap id="heartDTO" type="com.mvc.withbooks.dto.HeartDTO">

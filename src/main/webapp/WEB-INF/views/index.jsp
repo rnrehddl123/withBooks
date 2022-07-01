@@ -43,6 +43,7 @@
 			<li><h3><a href="writerLibrary">작가 소설 구매 내역</a></h3><!-- 추후 삭제 -->
 			<li><h3><a href="writerOrderList">주문 리스트</a></h3>
 			<li><h3><a href="writerPay?mnum=${login.mnum}">작가 Pay</a></h3>
+			<li><h3><a href="chat">채팅</a></h3>
 		<h1>-------------------------------------------------------------------------</h1>	
 		</div>
 		

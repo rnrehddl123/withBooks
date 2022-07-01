@@ -54,11 +54,8 @@ public class HeartMapper {
 		return count;
 	}
 	
-	public List<HeartDTO> findHeart(String search, String searchString){
-		java.util.Map<String, String> map = new java.util.Hashtable<>();
-		map.put("search", search);
-		map.put("searchString", searchString);
-		List<HeartDTO> find = sqlSession.selectList("findHeart", map);
+	public List<HeartDTO> findHeart(String searchString){
+		List<HeartDTO> find = sqlSession.selectList("findHeart", searchString);
 		return find;
 	}
 }

@@ -39,17 +39,19 @@
 </div>	
     
 <div align="center">
+		<ul class="pagination justify-content-center">
 		<c:if test="${novelRowCount>0}">			
 			<c:if test="${novelStartPage>1}">
-				[<a href="searchMain?novelPageNum=${novelStartPage-1}&searchString=${searchString}">이전</a>]			
+				<li class="page-item"><a class="page-link" href="searchMain?novelPageNum=${novelStartPage-1}&searchString=${searchString}">이전</a></li>		
 			</c:if>
 			<c:forEach var="i" begin="${novelStartPage}" end="${novelEndPage}">
-				[<a href="searchMain?novelPageNum=${i}&searchString=${searchString}"><c:out value="${i}"/></a>]	
+				<li class="page-item"><a class="page-link" href="searchMain?novelPageNum=${i}&searchString=${searchString}"><c:out value="${i}"/></a></li>	
 			</c:forEach>
 			<c:if test="${novelEndPage<novelPageCount}">
-				[<a href="searchMain?novelPageNum=${novelEndPage+1}&searchString=${searchString}">다음</a>]			
+				<li class="page-item"><a class="page-link" href="searchMain?novelPageNum=${novelEndPage+1}&searchString=${searchString}">다음</a></li>		
 			</c:if>
 		</c:if>
+		</ul>
 </div>
 <br><br>
 
@@ -83,17 +85,19 @@
   </table>
 </div>
 	<div align="center">
+		<ul class="pagination justify-content-center">
 		<c:if test="${writerRowCount>0}">			
 			<c:if test="${writerStartPage>1}">
-				[<a href="searchMain?writerPageNum=${writerStartPage-1}&searchString=${searchString}">이전</a>]			
+				<li class="page-item"><a class="page-link" href="searchMain?writerPageNum=${writerStartPage-1}&searchString=${searchString}">이전</a></li>			
 			</c:if>
 			<c:forEach var="i" begin="${writerStartPage}" end="${writerEndPage}">
-				[<a href="searchMain?writerPageNum=${i}&searchString=${searchString}"><c:out value="${i}"/></a>]	
+				<li class="page-item"><a class="page-link" href="searchMain?writerPageNum=${i}&searchString=${searchString}"><c:out value="${i}"/></a></li>
 			</c:forEach>
 			<c:if test="${writerEndPage<writerPageCount}">
-				[<a href="searchMain?writerPageNum=${writerEndPage+1}&searchString=${searchString}">다음</a>]			
+				<li class="page-item"><a class="page-link" href="searchMain?writerPageNum=${writerEndPage+1}&searchString=${searchString}">다음</a></li>
 			</c:if>
 		</c:if>
+		</ul>
 	</div>
 <div>
 	

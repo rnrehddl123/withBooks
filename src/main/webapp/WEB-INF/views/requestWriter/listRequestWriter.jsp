@@ -17,12 +17,12 @@
   <div align="center">
   	<h1>작가 신청 페이지</h1>
   </div>
-    <tr>
+    <tr align="center">
       <!-- <th scope="col" align="center">번호</th> --> <!-- 굳이 사용자에게 번호가 보일 필요가 없어보입니다. -->
-      <th scope="col" align="center">작성일</th>
-      <th scope="col" align="center">제목</th>
-      <th scope="col" align="center">작성자</th>
-      <th scope="col" align="center">상태</th>
+      <th scope="col" align="left">작성일</th>
+      <th scope="col" align="left">제목</th>
+      <th scope="col" align="left">작성자</th>
+      <th scope="col" align="left">상태</th>
       
     </tr>
   </thead>
@@ -35,18 +35,18 @@
     <c:forEach var="rdto" items="${listRequestWriter}">
 			<tr>
 				<!-- <td align="left">${rdto.rwnum}</td> -->
-				<td align="left">
+				<td align="center">
 					<fmt:parseDate var="request_reg_date" value="${rdto.request_reg_date}" pattern="yyyy-MM-dd" /> <!-- string형 날짜=>date형으로 형변환 -->
 					<fmt:formatDate  value="${request_reg_date}" pattern="yyyy-MM-dd"/><!-- date날짜 불러오기 -->
 						<!-- ${rdto.request_reg_date} -->
 				</td>
-				<td align="left">
+				<td align="center">
 					<a href="contentRequestWriter?Rwnum=${rdto.rwnum}">
 						${rdto.request_subject}
 					</a>
 				</td>
-				<td align="left">${rdto.request_writer}</td>
-				<td align="left">
+				<td align="center">${rdto.request_writer}</td>
+				<td align="center">
 					<div class="requestFont">
 						<c:if test="${rdto.request_state eq 'accept'}">
 						수락

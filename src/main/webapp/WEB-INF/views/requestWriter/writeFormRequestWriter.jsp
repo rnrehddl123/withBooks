@@ -45,15 +45,15 @@
 			</div>
 				<div class="mb-3" align="left">	
 				  <label for="exampleFormControlInput1" class="form-label">이름</label>
-				  <input name="Request_writer" type="text" class="form-control" id="exampleFormControlInput1" placeholder="${login.member_name}">
+				  <input name="Request_writer" type="text" class="form-control" placeholder="${login.member_name}">
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlInput2" class="form-label">제목</label>
-				  <input name="Request_subject" type="text" class="form-control" id="exampleFormControlInput2" placeholder="제목">
+				  <input name="Request_subject" type="text" class="form-control" placeholder="제목">
 				</div>
 				<div class="mb-3" align="left">
 				  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-				  <textarea name="Request_content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+				  <textarea name="Request_content" class="form-control" rows="10"></textarea>
 				</div>
 				
 				<div align="center">

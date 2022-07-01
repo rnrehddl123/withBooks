@@ -33,11 +33,12 @@
   			<div class="contant">
   				${getRequestWriter.request_content}
   			</div>
-	  			<div class="btn-group flex" role="group" aria-label="Basic example">
+	  			
+  		</div>
+  		<div class="btn-group flex" role="group" aria-label="Basic example">
 				  <button type="button" class="btn btn-primary" onclick="window.location='updateRequestWriter?Rwnum=${getRequestWriter.rwnum}'">글수정</button>
 				  <button type="button" class="btn btn-primary" onclick="window.location='listRequestWriter'">글목록</button>
-				</div>
-  		</div>
+		</div>
   	</div>
 </body>
 </html>

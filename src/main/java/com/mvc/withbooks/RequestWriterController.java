@@ -42,7 +42,7 @@ public class RequestWriterController {
 	public String writeProRequestWriter(HttpServletRequest req,RequestWriterDTO dto, @RequestParam int mnum) {
 		int res = requestWriterMapper.insertRequestWriter(dto,mnum);
 		if(res>0) {
-			req.setAttribute("msg", "작가 신청 성공");
+			req.setAttribute("msg", "작가 신청 성공. 재로그인을 하셔야 승인 이후 작가계정으로 전환됩니다.");
 			req.setAttribute("url", "listRequestWriter");
 		}else {
 			req.setAttribute("msg", "작가 신청 실패");

@@ -16,7 +16,7 @@
 			<div class="content_wrraper">
 				<a href="clientNovelInfo?nnum=${hdto.novelDTO.nnum}">
 					<div class="lib_content">
-						<img src="resources/img/${hdto.novelDTO.novel_image}">
+						<img src="/with/${hdto.novelDTO.novel_image}">
 						<p>${hdto.novelDTO.novel_subject}<p>
 						<button type="button" class="heart_del btn btn-primary" onclick="heart_del2(${hdto.hnum})">삭제</button>
 					</div>

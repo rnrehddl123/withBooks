@@ -106,3 +106,12 @@
 .mar80 {
 	margin-top : 80px;
 }
+
+.requestFont{
+	font-weight: bold;
+}
+
+.contant{
+	min-height: 500px;
+	white-space: pre-line
+}

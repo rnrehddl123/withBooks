@@ -190,7 +190,6 @@
 		    <version>1.5.6</version>
 		</dependency>
 		
-		<!-- websocket -->
 		<!-- JSON -->
 <dependency>
 	<groupId>com.googlecode.json-simple</groupId>

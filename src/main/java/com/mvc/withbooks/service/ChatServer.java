@@ -3,85 +3,56 @@ package com.mvc.withbooks.service;
 import java.io.*;
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/chatserver")
+import org.springframework.web.socket.WebSocketSession;
+
+import com.mvc.withbooks.dto.MemberDTO;
+
+@ServerEndpoint(value = "/chatserver",configurator = HttpSessionConfigurator.class)
 public class ChatServer {
-	
-	// 현재 채팅 서버에 접속한 클라이언트(WebSocket Session) 목록
-	// static 붙여야함!!
+	private Map<Object, Object> configs = Collections.synchronizedMap(new HashMap<>());
 	private static List<Session> list = new ArrayList<Session>();
-	
-	private void print(String msg) {
-		System.out.printf("[%tT] %s\n", Calendar.getInstance(), msg);
-	}
+	private String userId;
 	
 	@OnOpen
-	public void handleOpen(Session session) {
-		print("클라이언트 연결");
-		list.add(session); // 접속자 관리(****)
+	public void handleOpen(Session userSession, EndpointConfig config) throws IOException {
+		configs.containsKey(userSession);
+		HttpSession session = (HttpSession) config.getUserProperties().get(HttpSessionConfigurator.Session);
+		MemberDTO login=(MemberDTO) session.getAttribute("login");
+		System.out.println("테스트");
+		System.out.println(list.size());
+		System.out.println(session.getAttribute("admin"));
+		if(session.getAttribute("admin")!=null) {
+			list.clear();
+			list.add(userSession);
+			System.out.println("어드민 로그인");
+		}else {
+			if(list.size()==1) {
+				list.add(userSession);
+				userId=login.getMember_id();
+				userSession.getBasicRemote().sendText(userId+"님 상담이 시작되었습니다.");
+			}else {
+				userSession.getBasicRemote().sendText("현재 상담이 불가능합니다. 잠시후에 이용해주세요.");
+			}
+		}
 	}
 	
 	@OnMessage
-	public void handleMessage(String msg, Session session) {
-		
-		// 로그인할 때: 1#유저명
-		// 대화  할 때: 2유저명#메세지		
-		int index = msg.indexOf("#", 2);
-		String no = msg.substring(0, 1); 
-		String user = msg.substring(2, index);
-		String txt = msg.substring(index + 1);
-		
-		if (no.equals("1")) {
-			// 누군가 접속 > 1#아무개
-			for (Session s : list) {
-				if (s != session) { // 현재 접속자가 아닌 나머지 사람들
-					
-					try {
-						s.getBasicRemote().sendText("1#" + user + "#");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					
-				}
-			}
-			
-		} else if (no.equals("2")) {
-			// 누군가 메세지를 전송
-			for (Session s : list) {
-				
-				if (s != session) { // 현재 접속자가 아닌 나머지 사람들
-					try {
-						s.getBasicRemote().sendText("2#" + user + ":" + txt);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					
-				}
-				
-			} 
-		} else if (no.equals("3")) {
-			// 누군가 접속 > 3#아무개
-			for (Session s : list) {
-				
-				if (s != session) { // 현재 접속자가 아닌 나머지 사람들
-					try {
-						s.getBasicRemote().sendText("3#" + user + "#");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-				
-			}
-			list.remove(session);
+	public void handleMessage(String msg, Session userSession) throws IOException {
+		userSession.getBasicRemote().sendText(msg);
+		if(list.get(0)==userSession) {
+			list.get(1).getBasicRemote().sendText("관리자 : "+msg);
+		}else {
+			list.get(0).getBasicRemote().sendText(userId+" : "+msg);
 		}
-		
 	}
 	
 	@OnClose
 	public void handleClose() {
-		
+		System.out.println("테스트 닫힘");
 	}
 	
 	@OnError

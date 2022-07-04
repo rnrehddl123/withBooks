@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,8 +69,17 @@ public class AdminPageController {
 		return "homepage/homepage";
 	}
 	
-	@RequestMapping("/adminLogin")//어드민 로그인 페이지 이동
+	@RequestMapping(value="/adminLogin", method=RequestMethod.GET)//어드민 로그인 페이지 이동
 	public String adminLogin() {
+		return "homepage/adminLogin";
+	}
+	
+	@RequestMapping(value="/adminLogin", method=RequestMethod.POST)//어드민 로그인 페이지 이동
+	public String adminPostLogin(String Admin_id,String Admin_passwd,HttpSession session) {
+		if(Admin_id.equals("qwe")&&Admin_passwd.equals("qwe")) {
+			System.out.println("어드민 로그인");
+			session.setAttribute("admin", "admin");
+		}
 		return "homepage/adminLogin";
 	}
 	

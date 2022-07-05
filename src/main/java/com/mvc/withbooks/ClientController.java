@@ -106,9 +106,9 @@ public class ClientController {
 			return "redirect:/clientMypage";
 		}
 		String[] tel = login.getMember_Tel().split("-");
-		req.setAttribute("tel1", tel[0]);
-		req.setAttribute("tel2", tel[1]);
-		req.setAttribute("tel3", tel[2]);
+		req.setAttribute("Member_tel1", tel[0]);
+		req.setAttribute("Member_tel2", tel[1]);
+		req.setAttribute("Member_tel3", tel[2]);
 		List<CategoryDTO> list = categoryMapper.listCategory();
 		req.setAttribute("categoryList", list);
 		req.setAttribute("member_preferred", member_preferred);

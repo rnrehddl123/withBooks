@@ -178,7 +178,6 @@ public class MainController {
 		String name = (String)request.getParameter("Member_name");
 		
 		MemberDTO dto = memberMapper.selectMember(email);
-		
 		if(dto != null) {
 			Random r = new Random();
 			int num = r.nextInt(999999); // 랜덤 인증번호 생성

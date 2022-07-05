@@ -22,27 +22,26 @@ public class ChatServer {
 		configs.containsKey(userSession);
 		HttpSession session = (HttpSession) config.getUserProperties().get(HttpSessionConfigurator.Session);
 		MemberDTO login=(MemberDTO) session.getAttribute("login");
-		System.out.println("테스트");
+		System.out.println(login.getMnum());
 		System.out.println(list.size());
-		System.out.println(session.getAttribute("admin"));
 		if(session.getAttribute("admin")!=null) {
 			list.clear();
 			list.add(userSession);
 			System.out.println("어드민 로그인");
+			userSession.getOpenSessions();
 		}else {
+			userId=login.getMember_id();
 			if(list.size()==1) {
 				list.add(userSession);
-				userId=login.getMember_id();
 				userSession.getBasicRemote().sendText(userId+"님 상담이 시작되었습니다.");
 			}else {
-				userSession.getBasicRemote().sendText("현재 상담이 불가능합니다. 잠시후에 이용해주세요.");
+				userSession.getBasicRemote().sendText(userId+"님현재 상담이 불가능합니다. 잠시후에 이용해주세요.");
 			}
 		}
 	}
 	
 	@OnMessage
 	public void handleMessage(String msg, Session userSession) throws IOException {
-		userSession.getBasicRemote().sendText(msg);
 		if(list.get(0)==userSession) {
 			list.get(1).getBasicRemote().sendText("관리자 : "+msg);
 		}else {

@@ -12,7 +12,6 @@
       </py-env>
     </head>
 
-  <body>
   	<div class="chart_wrapper flex">
 	  	<div class="plot" id="plot1"></div>
 	    <div class="plot" id="plot2"></div>
@@ -101,7 +100,6 @@ sns.lineplot(x="PURCHASE_DATE",y="PURCHASE_PRICE",
              data=male,label='male',ax=ax6)
 pyscript.write('plot6', fig6)
     </py-script>
-  </body>
   
 <script>
 	document.body.style.overflow = "hidden";

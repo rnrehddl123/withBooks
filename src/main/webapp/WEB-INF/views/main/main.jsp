@@ -41,7 +41,7 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title"><a href="readBook">${redto.novel_subject}</a></h4>
+                          <h4 class="card-title"><a href="clientNovelInfo?nnum=${redto.nnum}&change=now">${redto.novel_subject}</a></h4>
                           <p class="card-text">${redto.novel_summary}</p>
                       </div>
                   </div>
@@ -61,7 +61,7 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title"><a href="readBook">${uredto.novel_subject}</a></h4>
+                          <h4 class="card-title"><a href="clientNovelInfo?nnum=${uredto.nnum}&change=now">${uredto.novel_subject}</a></h4>
                           <p class="card-text">${uredto.novel_summary}</p>
                       </div>
                   </div>
@@ -81,7 +81,7 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title"><a href="readBook">${aredto.novel_subject}</a></h4>
+                          <h4 class="card-title"><a href="clientNovelInfo?nnum=${aredto.nnum}&change=now">${aredto.novel_subject}</a></h4>
                           <p class="card-text">${aredto.novel_summary}</p>
                       </div>
                   </div>

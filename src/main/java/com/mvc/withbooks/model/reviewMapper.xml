@@ -40,7 +40,7 @@
  	</select>
  	
  	<select id="listRecommend" parameterType="int" resultType="reviewDTO" resultMap="getreviewDTO">
- 		select * from review r INNER JOIN novel n on r.nnum=n.nnum where r.MNUM=#{mnum}
+ 		select * from review r INNER JOIN novel n on r.nnum=n.nnum where r.MNUM=#{mnum}  order by score desc
  	</select>
  	
  	<select id="listReview" resultType="ReviewDTO" resultMap="getreviewDTO">

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -89,11 +90,9 @@ public class MainController {
 			List<NovelDTO> relist = null;
 			Map<Long, HashMap<Long, Float>> map = recommendService.getRecommend();
 			List<ReviewDTO> rlist = reviewMapper.listRecommend(login.getMnum());
-			System.out.println(rlist.size());
 			if (rlist.size() != 0) {
 				Map<Float, Long> recommend = new HashMap<Float, Long>();
 				for (int i = 0; i < rlist.size(); i++) {
-					System.out.println(map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())));
 					Set<Long> keys = map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())).keySet();
 					Iterator<Long> it = keys.iterator();
 					while (it.hasNext()) {
@@ -105,8 +104,14 @@ public class MainController {
 				List<Float> keySet = new ArrayList<>(recommend.keySet());
 				Collections.reverse(keySet);
 				Map<Integer, Long> semap = new HashMap<Integer, Long>();
-				for (int i = 0; i < semap.size(); i++) {
-					semap.put(i, recommend.get(keySet.get(i)));
+				if(recommend.size()<=4) {
+					for (int i = 0; i < recommend.size(); i++) {
+						semap.put(i, recommend.get(keySet.get(i)));
+					}
+				}else {
+					for (int i = 0; i < 4; i++) {
+						semap.put(i, recommend.get(keySet.get(i)));
+					}
 				}
 				relist = novelMapper.getNovelMain(semap);
 				int a = 4-relist.size();
@@ -210,7 +215,6 @@ public class MainController {
 		int writerNum = 0;
 		if (writerRowCount>0){
 			mlist = novelMapper.findWriterMain(searchString, writerStartRow, writerEndRow);
-			System.out.println(mlist.size());
 			writerNum = writerRowCount - (writerStartRow - 1);
 			if (writerRowCount>0) {
 				int writerPageCount = writerRowCount/writerPageSize + (writerRowCount%writerPageSize==0 ? 0 : 1);

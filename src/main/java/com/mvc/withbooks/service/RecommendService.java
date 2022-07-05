@@ -39,6 +39,7 @@ public class RecommendService {
 	static Map<Long, HashMap<Long, Float>> map;
 	static List<Long> ulist;
 	
+	@PostConstruct
 	public void recommend1() {
 		
 		DataModel dm;

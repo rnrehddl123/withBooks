@@ -103,7 +103,7 @@ public class MainController {
 				List<Float> keySet = new ArrayList<>(recommend.keySet());
 				Collections.reverse(keySet);
 				Map<Integer, Long> semap = new HashMap<Integer, Long>();
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < semap.size(); i++) {
 					semap.put(i, recommend.get(keySet.get(i)));
 				}
 				relist = novelMapper.getNovelMain(semap);

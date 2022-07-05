@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.common.FastIDSet;
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
@@ -94,21 +96,42 @@ public class RecommendService {
 		}
 		return ulist;
 	}
-    
-    public void writeToCsv(){
-		String csv = "REVIEW1.csv";
-		try {
-			CSVWriter writer = new CSVWriter(new FileWriter(csv));
-			List<ReviewDTO> list = reviewMapper.listReview();
-			for(int i=0; i<list.size(); i++) {
-				String[] record = {String.valueOf(list.get(i).getMemberDTO().getMnum()), 
-						String.valueOf(list.get(i).getNovelDTO().getNnum()), 
-								String.valueOf(list.get(i).getScore())};
-				writer.writeNext(record);
-			}		
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	
+	@PostConstruct
+	public void writeCSV() {
+        File csv = new File("C:\\withbooksimage\\REVIEW.csv");
+        List<ReviewDTO> dataList = reviewMapper.listReview();
+        BufferedWriter bw = null; // 출력 스트림 생성
+        try {
+            bw = new BufferedWriter(new FileWriter(csv));
+            // csv파일의 기존 값에 덮어쓰기
+
+            for (int i = 0; i < dataList.size(); i++) {
+                String[] data = null;
+                data = new String[] {String.valueOf(dataList.get(i).getMemberDTO().getMnum()), 
+                		String.valueOf(dataList.get(i).getNovelDTO().getNnum()),
+                		String.valueOf(dataList.get(i).getScore())};
+                // 추천에 필요한 mnum, nnum, score 값을 넣는다
+                String aData = "";
+                aData = data[0] + "," + data[1] + "," + data[2];
+                // 한 줄에 넣을 각 데이터 사이에 ,를 넣는다
+                bw.write(aData);
+                // 작성한 데이터를 파일에 넣는다
+                bw.newLine(); // 개행
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) {
+                    bw.flush(); // 남아있는 데이터까지 보내 준다
+                    bw.close(); // 사용한 BufferedWriter를 닫아 준다
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -6,6 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -29,10 +35,13 @@ import com.mvc.withbooks.dto.AdminSuggestDTO;
 import com.mvc.withbooks.dto.BoardDTO;
 import com.mvc.withbooks.dto.MemberDTO;
 import com.mvc.withbooks.dto.NovelDTO;
+import com.mvc.withbooks.dto.ReviewDTO;
 import com.mvc.withbooks.service.AdminSlideMapper;
 import com.mvc.withbooks.service.AdminSuggestMapper;
 import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NovelMapper;
+import com.mvc.withbooks.service.RecommendService;
+import com.mvc.withbooks.service.ReviewMapper;
 
 @Controller
 public class MainController {
@@ -47,9 +56,14 @@ public class MainController {
 	private MemberMapper memberMapper;
 	@Autowired
 	private JavaMailSender javaMailSender;
-
+	@Autowired
+	private RecommendService recommendService;
+	@Autowired
+	private ReviewMapper reviewMapper;
+	
+	
 	@RequestMapping("/main")
-	public String main(HttpServletRequest req) {
+	public String main(HttpServletRequest req, HttpSession session) {
 		List<AdminSlideDTO> list = adminSlideMapper.listSlide();
 		req.setAttribute("listSlide", list);
 		List<AdminSuggestDTO> slist = adminSuggestMapper.listAdminSuggestMain();
@@ -69,6 +83,83 @@ public class MainController {
 			}
 		}
 		req.setAttribute("sslist", sslist);
+		
+		MemberDTO login = (MemberDTO) session.getAttribute("login");
+		if(login!=null) {
+			List<NovelDTO> relist = null;
+			Map<Long, HashMap<Long, Float>> map = recommendService.getRecommend();
+			List<ReviewDTO> rlist = reviewMapper.listRecommend(login.getMnum());
+			System.out.println(rlist.size());
+			if (rlist.size() != 0) {
+				Map<Float, Long> recommend = new HashMap<Float, Long>();
+				for (int i = 0; i < rlist.size(); i++) {
+					System.out.println(map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())));
+					Set<Long> keys = map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())).keySet();
+					Iterator<Long> it = keys.iterator();
+					while (it.hasNext()) {
+						Long key = it.next();
+						float rating = map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())).get(key);
+						recommend.put(rating, Long.valueOf(rlist.get(i).getNovelDTO().getNnum()));
+					}
+				}
+				List<Float> keySet = new ArrayList<>(recommend.keySet());
+				Collections.reverse(keySet);
+				Map<Integer, Long> semap = new HashMap<Integer, Long>();
+				for (int i = 0; i < semap.size(); i++) {
+					semap.put(i, recommend.get(keySet.get(i)));
+				}
+				relist = novelMapper.getNovelMain(semap);
+				int a = 4-relist.size();
+				if(a!=0) {
+					List<NovelDTO> re1 = novelMapper.getNovelAre(a);
+					for(int i=0; i<a; i++) {
+						relist.add(re1.get(i));
+					}
+				}
+				session.setAttribute("relist", relist);
+			}else {
+				int a = 4;
+				List<NovelDTO> re1 = novelMapper.getNovelAre(a);
+				relist = new ArrayList<NovelDTO>();
+				relist.addAll(re1);
+				session.setAttribute("relist", relist);
+			}
+			
+			
+			List<NovelDTO> urelist;
+			List<Long> ulist = recommendService.recommend2(login.getMnum());
+			if (ulist != null) {
+				Map<Integer, Long> usemap = new HashMap<Integer, Long>();
+				for (int i = 0; i < ulist.size(); i++) {
+					usemap.put(i, ulist.get(i));
+				}
+				urelist = novelMapper.getNovelMain(usemap);
+				int b = 4-urelist.size();
+				if(b!=0) {
+					List<NovelDTO> ure1 = novelMapper.getNovelAre(b);
+					urelist.addAll(ure1);
+				}
+				session.setAttribute("urelist", urelist);
+			}else {
+				int b = 4;
+				List<NovelDTO> re1 = novelMapper.getNovelAre(b);
+				urelist = new ArrayList<NovelDTO>();
+				urelist.addAll(re1);
+				session.setAttribute("urelist", urelist);
+			}
+			int c=4;
+			List<NovelDTO> arelist = novelMapper.getNovelAre(c);
+			session.setAttribute("arelist", arelist);
+		}else {
+			int a=4;
+			List<NovelDTO> relist = novelMapper.getNovelAre(a);
+			session.setAttribute("relist", relist);
+			List<NovelDTO> urelist = novelMapper.getNovelAre(a);
+			session.setAttribute("urelist", urelist);
+			List<NovelDTO> arelist = novelMapper.getNovelAre(a);
+			session.setAttribute("arelist", arelist);
+		}
+		
 		return "/main/main";
 	}
 	
@@ -178,7 +269,6 @@ public class MainController {
 		String name = (String)request.getParameter("Member_name");
 		
 		MemberDTO dto = memberMapper.selectMember(email);
-		
 		if(dto != null) {
 			Random r = new Random();
 			int num = r.nextInt(999999); // 랜덤 인증번호 생성

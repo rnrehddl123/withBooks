@@ -8,11 +8,23 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mvc.withbooks.dto.ReviewDTO;
+
 @Service
 public class ReviewMapper {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	public List<ReviewDTO> listRecommend(int mnum){
+		List<ReviewDTO> list = sqlSession.selectList("listRecommend", mnum);
+		return list;
+	}
+	
+	public List<ReviewDTO> listReview(){
+		List<ReviewDTO> list = sqlSession.selectList("listReview");
+		return list;
+	}
 	
 	public int insertReview(Map<String, Object> params) {
 		int res=sqlSession.insert("insertReview",params);

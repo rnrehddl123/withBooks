@@ -28,6 +28,10 @@
 		select * from novel where Nnum = #{nnum}
 	</select>
 	
+	<select id="getNovelAre" parameterType="int" resultType="novelDTO" resultMap="getnovelDTO">
+		select * from (select * from novel order by dbms_random.value) where rownum <![CDATA[<=]]> #{a}
+	</select>
+	
 	<resultMap id="getmemberDTO" type="com.mvc.withbooks.dto.MemberDTO">
 		<id column="MNUM" property="mnum"/>
         <result column="MNUM" property="mnum"/>

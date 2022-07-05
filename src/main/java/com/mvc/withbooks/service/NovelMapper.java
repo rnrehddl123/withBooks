@@ -65,6 +65,20 @@ public class NovelMapper {
 		return dto;
 	}
 	
+	public List<NovelDTO> getNovelAre(int a){
+		List<NovelDTO> list = sqlSession.selectList("getNovelAre", a);
+		return list;
+	}
+	
+	public List<NovelDTO> getNovelMain(Map<Integer, Long> map){
+		List<NovelDTO> list = new ArrayList<NovelDTO>();
+		for(int i=0; i<map.size(); i++) {
+			NovelDTO dto = sqlSession.selectOne("getNovel", map.get(i).intValue());
+			list.add(dto);
+		}
+		return list;
+	}
+	
 	public List<NovelDTO> findNovel(String search, String searchString){
 		java.util.Map<String, String> map = new java.util.Hashtable<>();
 		map.put("search", search);

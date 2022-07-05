@@ -3,8 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-	<script type="text/javascript">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+		<script type="text/javascript">
 	$(function() {
 		$('#adminLogin').submit(function() {
 				var captcha = 1;
@@ -44,13 +47,20 @@
 		}
 	}
 	</script>
-</head>
-<body>
 	<form name="adminLogin" method="post" onsubmit="return FormSubmit();">
-		<input type="text" name="Admin_id">
-		<input type="password" name="Admin_passwd">
-		<input type="submit" name="submit" value="로그인">
-		<div class="g-recaptcha" data-sitekey="6LdWvKEgAAAAAKsSdaskcLooRyUyvtrkvOal89oT"></div>
+		<div style="
+		    position: relative;
+		    display: flex;
+		    flex-direction: column;
+		    width: 300px;
+		    margin: auto;
+		    margin-top: 300px;
+		">
+			<input type="text" name="Admin_id">
+			<input type="password" name="Admin_passwd">
+			<input type="submit" name="submit" value="로그인">
+			<div class="g-recaptcha" data-sitekey="6LdWvKEgAAAAAKsSdaskcLooRyUyvtrkvOal89oT">
+		</div>
 	</form>
 </body>
 </html>

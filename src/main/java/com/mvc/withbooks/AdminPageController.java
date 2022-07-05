@@ -4,10 +4,12 @@ package com.mvc.withbooks;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +38,7 @@ import com.mvc.withbooks.service.MemberMapper;
 import com.mvc.withbooks.service.NoticeMapper;
 import com.mvc.withbooks.service.NovelMapper;
 import com.mvc.withbooks.service.PayMapper;
+import com.mvc.withbooks.service.PurchaseHistoryMapper;
 import com.mvc.withbooks.service.RequestWriterMapper;
 
 @Controller
@@ -59,6 +62,8 @@ public class AdminPageController {
 	private RequestWriterMapper requestWriterMapper;
 	@Autowired
 	private PayMapper payMapper;
+	@Autowired
+	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
 	@Resource(name="slideUploadPath")
 	private String uploadPath;
@@ -68,9 +73,19 @@ public class AdminPageController {
 		return "homepage/homepage";
 	}
 	
-	@RequestMapping("/adminLogin")//어드민 로그인 페이지 이동
+	@RequestMapping(value="/adminLogin", method=RequestMethod.GET)//어드민 로그인 페이지 이동
 	public String adminLogin() {
 		return "homepage/adminLogin";
+	}
+	
+	@RequestMapping(value="/adminLogin", method=RequestMethod.POST)//어드민 로그인 페이지 이동
+	public String adminPostLogin(String Admin_id,String Admin_passwd,HttpSession session) {
+		if(Admin_id.equals("qwe")&&Admin_passwd.equals("qwe")) {
+			session.setAttribute("admin", "admin");
+		}else {
+			return "redirect:/adminLogin";
+		}
+		return "redirect:/homepage";
 	}
 	
 	@RequestMapping("/message")//메세지 페이지 이동
@@ -601,17 +616,23 @@ public class AdminPageController {
 	}
 	
 	@RequestMapping("/saleManageClient")
-	public String saleManageClient() {
+	public String saleManageClient(HttpServletRequest req) {
+		List<Map<String, String>> list=purchaseHistoryMapper.saleManageClient();
+		req.setAttribute("list",list);
 		return "homepage/admin/saleManage/saleManageClient";
 	}
 	
 	@RequestMapping("/saleManageWriter")
-	public String saleManageWriter() {
+	public String saleManageWriter(HttpServletRequest req) {
+		List<Map<String, String>> list=purchaseHistoryMapper.saleManageWriter();
+		req.setAttribute("list",list);
 		return "homepage/admin/saleManage/saleManageWriter";
 	}
 	
 	@RequestMapping("/saleTotal")
-	public String saleTotal() {
+	public String saleTotal(HttpServletRequest req) {
+		List<Map<String, String>> list=purchaseHistoryMapper.saleTotal();
+		req.setAttribute("list",list);
 		return "homepage/admin/saleManage/saleTotal";
 	}
 	

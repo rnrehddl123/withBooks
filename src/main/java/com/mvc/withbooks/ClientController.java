@@ -394,13 +394,15 @@ public class ClientController {
 				msg= dto.getMember_name()+"님 반갑습니다.";
 				url="main";
 				//쿠키
-				Cookie ck = new Cookie("saveid", dto.getMember_id());
+				System.out.println(params.get("saveid")+"asdsa");
+				Cookie saveid = new Cookie("saveid", dto.getMember_id());
 				if (params.containsKey("saveid")){
-					ck.setMaxAge(0);
+					saveid.setMaxAge(24*60*60);
 				}else {
-					ck.setMaxAge(24*60*60);
+					saveid.setMaxAge(0);
 				}
-				resp.addCookie(ck);
+				resp.addCookie(saveid);
+				
 			}else {	
 				msg = "비밀번호가 틀렸습니다.";
 				url = "login";

@@ -178,6 +178,7 @@
 			<version>1.1</version>
 		</dependency>
 		
+<<<<<<< HEAD
 		<!-- mail -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -196,6 +197,42 @@
   	<artifactId>json-simple</artifactId>
   	<version>1.1.1</version>
 </dependency>
+=======
+		<!-- mahout -->
+		<dependency>
+    		<groupId>org.apache.mahout</groupId>
+    		<artifactId>mahout-core</artifactId>
+    		<version>0.9</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.mahout</groupId>
+    		<artifactId>mahout-math</artifactId>
+    		<version>0.13.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.mahout</groupId>
+    		<artifactId>mahout-hdfs</artifactId>
+    		<version>14.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-math3</artifactId>
+    		<version>3.5</version>
+		</dependency>
+		
+		<!-- guava -->
+		<dependency>
+  			<groupId>com.google.guava</groupId>
+  			<artifactId>guava</artifactId>
+  			<version>31.1-jre</version>
+		</dependency>
+		
+		<dependency>
+     		<groupId>com.opencsv</groupId>
+      		<artifactId>opencsv</artifactId>
+      		<version>5.4</version>
+ 		</dependency>
+>>>>>>> 최상우
 
 <!-- WebSocket -->
 <dependency>

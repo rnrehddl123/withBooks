@@ -32,6 +32,7 @@
 
       <div class="container left_card">
         <div class="row">
+         <c:forEach items="${relist}" var="redto">	
           <div class="col">
             <div class="card">
               <div class="row no-gutters">
@@ -40,60 +41,18 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title"><a href="readBook">Title</a></h4>
-                          <p class="card-text">Description</p>
+                          <h4 class="card-title"><a href="readBook">${redto.novel_subject}</a></h4>
+                          <p class="card-text">${redto.novel_summary}</p>
                       </div>
                   </div>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title"><a href="readBook">Title</a></h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
+         </c:forEach> 
         </div>
+        
         <div class="row">
+         <c:forEach items="${urelist}" var="uredto">	
           <div class="col">
             <div class="card">
               <div class="row no-gutters">
@@ -102,60 +61,18 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
+                          <h4 class="card-title"><a href="readBook">${uredto.novel_subject}</a></h4>
+                          <p class="card-text">${uredto.novel_summary}</p>
                       </div>
                   </div>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
+         </c:forEach> 
         </div>
+        
         <div class="row">
+         <c:forEach items="${arelist}" var="aredto">	
           <div class="col">
             <div class="card">
               <div class="row no-gutters">
@@ -164,59 +81,16 @@
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
+                          <h4 class="card-title"><a href="readBook">${aredto.novel_subject}</a></h4>
+                          <p class="card-text">${aredto.novel_summary}</p>
                       </div>
                   </div>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="row no-gutters">
-                  <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                      <div class="card-block px-2">
-                          <h4 class="card-title">Title</h4>
-                          <p class="card-text">Description</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
+         </c:forEach> 
         </div>
+        
       </div>
       <div id="carouselExampleControls" class="carousel slide cardslide" data-bs-ride="carousel">
         <div class="carousel-inner">

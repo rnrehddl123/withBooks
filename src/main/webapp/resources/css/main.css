@@ -25,7 +25,10 @@ header .container-fluid{
     margin: auto;
 }
 
-
+.reco .card{
+	height: 140px;
+    overflow: hidden;
+}
 
 header .nav{
     width: 79.2%;

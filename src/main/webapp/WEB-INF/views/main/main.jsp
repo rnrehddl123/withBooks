@@ -30,7 +30,7 @@
       </div>
 
 
-      <div class="container left_card">
+      <div class="container left_card reco">
         <div class="row">
          <c:forEach items="${relist}" var="redto">	
           <div class="col">

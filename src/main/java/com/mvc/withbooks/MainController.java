@@ -89,9 +89,11 @@ public class MainController {
 			List<NovelDTO> relist = null;
 			Map<Long, HashMap<Long, Float>> map = recommendService.getRecommend();
 			List<ReviewDTO> rlist = reviewMapper.listRecommend(login.getMnum());
+			System.out.println(rlist.size());
 			if (rlist.size() != 0) {
 				Map<Float, Long> recommend = new HashMap<Float, Long>();
 				for (int i = 0; i < rlist.size(); i++) {
+					System.out.println(map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())));
 					Set<Long> keys = map.get(Long.valueOf(rlist.get(i).getNovelDTO().getNnum())).keySet();
 					Iterator<Long> it = keys.iterator();
 					while (it.hasNext()) {

@@ -22,7 +22,7 @@
 		<c:if test="${wdto.member_authority eq 'writer'}">
 		<tr>
 			<td>${wdto.mnum}</td>
-			<td><a href="writerNovelSubject">${wdto.member_name}</a></td>
+			<td><a href="writerNovelList">${wdto.member_name}</a></td>
 			<td>${wdto.member_id}</td>
 			<td>${wdto.member_Tel}</td>
 			<td><input type="button" value="삭제" onclick="window.location='deleteMember?mnum=${wdto.mnum}'"></td>

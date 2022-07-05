@@ -27,7 +27,7 @@
 	 </select>
 	 
 	 <select id="findAdminSuggest" parameterType="String" resultType="AdminSuggestDTO">
-	 	select * from adminSuggest where ${search} = #{searchString}
+	 	select * from adminSuggest where ${search} like '%'||#{searchString}||'%'
 	 </select>
 	 
 	 <select id="findNovelAdmin" parameterType="String" resultType="NovelDTO">

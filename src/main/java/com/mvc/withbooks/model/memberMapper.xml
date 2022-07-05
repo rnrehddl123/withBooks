@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="findMember" parameterType="java.util.Map" resultType="memberDTO">
-		select * from member where ${search} = #{searchString}
+		select * from member where ${search}  like '%'||#{searchString}||'%'
 	</select>
 	
 	<select id="findWriter" parameterType="java.util.Map" resultType="memberDTO">
@@ -46,9 +46,10 @@
 		update member set Member_passwd=#{pw} where Member_email= #{email}
 	</update>
 
-	<delete id="deleteMember" parameterType="int">
+	<!-- 회원 삭제 기능 없애기로 함 -->
+	<!-- <delete id="deleteMember" parameterType="int">
 		delete from member where Mnum = #{mnum}
-	</delete>
+	</delete> -->
 	
 	<update id="updateMember" parameterType="memberDTO">
 		update member set Member_passwd=#{Member_passwd}, Member_Tel=#{Member_Tel}, Member_address=#{Member_address},

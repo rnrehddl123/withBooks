@@ -28,7 +28,7 @@
 	<table border="1" width="1000" height="500">
 		<tr>
 			<td>
-			<input type="file" name="slidet_image" onchange="readURL(this);">
+			<input type="file" name="slidet_image" onchange="readURL(this);" required>
 			<img id="preview" />
 			</td>
 			<td><input type="submit" value="등록하기"></td>

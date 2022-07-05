@@ -17,12 +17,12 @@
 				<tr>
 					<th>제 목</th>
 					<td>
-						<input type="text" name="notice_title" size="40">
+						<input type="text" name="notice_title" size="40" required>
 					</td>
 				</tr>
 				<tr>
 					<th>내 용</th>
-					<td><textarea name="notice_content" rows="11" cols="50"></textarea></td>
+					<td><textarea name="notice_content" rows="11" cols="50" required></textarea></td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2">

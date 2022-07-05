@@ -67,10 +67,10 @@ public class MemberMapper {
 		return list;
 	}
 	
-	public int deleteMember(int mnum) {
+	/*public int deleteMember(int mnum) {
 			int res = sqlSession.delete("deleteMember", mnum);
 			return res;
-	}
+	}*/
 	
 	public MemberDTO getMember(int mnum){
 			MemberDTO dto = sqlSession.selectOne("getMember", mnum);

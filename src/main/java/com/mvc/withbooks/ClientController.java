@@ -484,7 +484,8 @@ public class ClientController {
 		return "/main/main";
 	}
 	
-	@RequestMapping(value="leaveMember", method=RequestMethod.POST)
+	/*회원탈퇴 기능 삭제*/
+	/*@RequestMapping(value="leaveMember", method=RequestMethod.POST)
 	public String leaveMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
@@ -502,7 +503,7 @@ public class ClientController {
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "message";
-	}
+	}*/
 	
 	
 	@RequestMapping(value="/purchaseCash", method=RequestMethod.GET)

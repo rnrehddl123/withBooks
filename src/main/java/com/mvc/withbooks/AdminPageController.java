@@ -513,7 +513,8 @@ public class AdminPageController {
 		return "homepage/admin/memberManage/writerList";
 	}
 	
-	@RequestMapping("/deleteMember")
+	/*회원삭제기능 없애기로 함*/
+	/*@RequestMapping("/deleteMember")
 	public String deleteMember(HttpServletRequest req, int mnum) {
 		int res = memberMapper.deleteMember(mnum);
 		String msg = null, url = null;
@@ -527,7 +528,7 @@ public class AdminPageController {
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "forward:message";
-	}
+	}*/
 
 	@RequestMapping("/listUpgradeClient")
 	public String clientUpgrade(HttpServletRequest req, @RequestParam(required = false) String mode) {

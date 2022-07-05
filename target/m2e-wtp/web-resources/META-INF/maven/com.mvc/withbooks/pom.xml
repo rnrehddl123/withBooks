@@ -178,7 +178,6 @@
 			<version>1.1</version>
 		</dependency>
 		
-<<<<<<< HEAD
 		<!-- mail -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -190,7 +189,14 @@
 		    <artifactId>javax.mail</artifactId>
 		    <version>1.5.6</version>
 		</dependency>
-=======
+		
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
 		<!-- mahout -->
 		<dependency>
     		<groupId>org.apache.mahout</groupId>
@@ -225,8 +231,19 @@
       		<artifactId>opencsv</artifactId>
       		<version>5.4</version>
  		</dependency>
->>>>>>> 최상우
 
+		<!-- WebSocket -->
+		<dependency>
+   			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+    		<version>1.1</version>
+		</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

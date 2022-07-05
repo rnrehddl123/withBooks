@@ -29,13 +29,9 @@ import com.opencsv.CSVWriter;
 @Service
 public class RecommendService {
 	@Autowired
-	private NovelDataConvertMapper novelDataConvertMapper;
-	@Autowired
 	private ReviewMapper reviewMapper;
 	@Autowired
 	private MemberMapper memberMapper;
-	@Autowired
-	private RecommendMapper recommendMapper;
 	
 	static Map<Long, HashMap<Long, Float>> map;
 	static List<Long> ulist;

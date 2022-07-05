@@ -178,7 +178,7 @@
 			<version>1.1</version>
 		</dependency>
 		
-<<<<<<< HEAD
+
 		<!-- mail -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -197,7 +197,7 @@
   	<artifactId>json-simple</artifactId>
   	<version>1.1.1</version>
 </dependency>
-=======
+
 		<!-- mahout -->
 		<dependency>
     		<groupId>org.apache.mahout</groupId>
@@ -232,8 +232,7 @@
       		<artifactId>opencsv</artifactId>
       		<version>5.4</version>
  		</dependency>
->>>>>>> 최상우
-
+ 		
 <!-- WebSocket -->
 <dependency>
    	<groupId>org.springframework</groupId>

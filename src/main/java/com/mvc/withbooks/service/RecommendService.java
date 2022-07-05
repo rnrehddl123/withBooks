@@ -1,6 +1,7 @@
 package com.mvc.withbooks.service;
 
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 import org.apache.mahout.cf.taste.common.TasteException;
@@ -40,7 +41,7 @@ public class RecommendService {
 		
 		DataModel dm;
 		try {
-			dm = new FileDataModel(new File("C:\\javaclass\\withbooks\\src\\main\\webapp\\resources\\data\\REVIEW.csv"));
+			dm = new FileDataModel(new File("C:\\withbooksimage\\REVIEW.csv"));
 			PearsonCorrelationSimilarity sim = new PearsonCorrelationSimilarity(dm);
 			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim);
 			Map<Long, HashMap<Long, Float>> map = new HashMap<Long, HashMap<Long, Float>>();
@@ -71,7 +72,7 @@ public class RecommendService {
 	public List<Long> recommend2(int mnum) {
 		DataModel dm;
 		try {
-			dm = new FileDataModel(new File("C:\\javaclass\\withbooks\\src\\main\\webapp\\resources\\data\\REVIEW.csv"));
+			dm = new FileDataModel(new File("C:\\withbooksimage\\REVIEW.csv"));
 			UserSimilarity sim = new PearsonCorrelationSimilarity(dm);
 			UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.1, sim, dm);
 			UserBasedRecommender recommender = new GenericUserBasedRecommender(dm, neighborhood, sim);

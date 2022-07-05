@@ -13,7 +13,7 @@
         <div class="carousel-inner">
           <c:forEach items="${listSlide}" var="sdto">
           <div class="carousel-item">
-            <img src="resources/slideImages/${sdto.slidet_image}" class="d-block w-100" alt="..." height = "500" width="800">
+            <img src="/with/${sdto.slidet_image}" class="d-block w-100" alt="..." height = "500" width="800">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
@@ -37,7 +37,7 @@
             <div class="card">
               <div class="row no-gutters">
                   <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
+                      <img src="/with/${redto.novel_image}" class="img-fluid" alt="">
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
@@ -57,7 +57,7 @@
             <div class="card">
               <div class="row no-gutters">
                   <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
+                      <img src="/with/${uredto.novel_image}" class="img-fluid" alt="">
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
@@ -77,7 +77,7 @@
             <div class="card">
               <div class="row no-gutters">
                   <div class="col-auto">
-                      <img src="resources/img/nav_logo.png" class="img-fluid" alt="">
+                      <img src="/with/${aredto.novel_image}" class="img-fluid" alt="">
                   </div>
                   <div class="col">
                       <div class="card-block px-2">
@@ -102,7 +102,7 @@
              			<c:if test="${ndto.nnum eq sudto.nnum}">
               				<div class="card col" style="width: 18rem;" align="center">
               					<div class="card-image">
-                					<img src="resources/img/${ndto.novel_image}" class="card-img-top" alt="..." width="19%" height="200">
+                					<img src="/with/${ndto.novel_image}" class="card-img-top" alt="..." width="19%" height="200">
                 				</div>
                 				<div class="card-body">
                   				<h5 class="card-title">${sudto.suggestNovel}</h5>

@@ -35,5 +35,10 @@
   	<beans:bean id="slideUploadPath" class="java.lang.String">
     	<beans:constructor-arg value="C:\withbooksimage" />
   	</beans:bean>
+  	
+  	<beans:bean id="recommendItem" class="com.mvc.withbooks.service.RecommendService">
+  	</beans:bean>
+  	
+  	<context:component-scan base-package="com.mvc.withbooks.service"/>
 	
 </beans:beans>

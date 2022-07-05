@@ -2,19 +2,16 @@ package com.mvc.withbooks;
 
 import java.io.IOException;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-=======
+import java.util.Set;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
->>>>>>> 최상우
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -58,16 +55,13 @@ public class MainController {
 	@Autowired
 	private MemberMapper memberMapper;
 	@Autowired
-<<<<<<< HEAD
 	private JavaMailSender javaMailSender;
-
-=======
+	@Autowired
 	private RecommendService recommendService;
 	@Autowired
 	private ReviewMapper reviewMapper;
 	
 	
->>>>>>> 최상우
 	@RequestMapping("/main")
 	public String main(HttpServletRequest req, HttpSession session) {
 		List<AdminSlideDTO> list = adminSlideMapper.listSlide();

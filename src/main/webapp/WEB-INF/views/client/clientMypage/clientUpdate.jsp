@@ -32,14 +32,14 @@
 							 id="exampleInputPassword1" placeholder="비밀번호" value="${login.member_passwd}">
 				</div>
   				<div class="flex inputWrapper">
-					<input name="member_tel1" required type="text" class="form-control"
-							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3" value="${tel1}">
+					<input name="Member_tel1" required type="text" class="form-control"
+							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3" value="${Member_tel1}">
 					<div class="marginauto">-</div>
-					<input name="member_tel2" required type="text" class="form-control"
-							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3" value="${tel2}">
+					<input name="Member_tel2" required type="text" class="form-control"
+							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4" value="${Member_tel2}">
 					<div class="marginauto">-</div>
-					<input name="member_tel3" required type="text" class="form-control"
-							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3" value="${tel3}">
+					<input name="Member_tel3" required type="text" class="form-control"
+							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4" value="${Member_tel3}">
 				</div>
 				<div class="inputWrapper">
 					<input name="member_address" required type="text" id="address_kakao" class="form-control"

@@ -4,6 +4,25 @@
  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  	
 <mapper namespace="com.mvc.withBooks.model.requestWriterMapper">
+	<resultMap id="getnovelDTO" type="com.mvc.withbooks.dto.NovelDTO">
+		<id column="NNUM" property="nnum"/>
+        <result column="NNUM" property="nnum"/>
+	</resultMap>
+	
+	<resultMap id="getmemberDTO" type="com.mvc.withbooks.dto.MemberDTO">
+		<id column="MNUM" property="mnum"/>
+        <result column="MNUM" property="mnum"/>
+	</resultMap>
+	
+	<resultMap id="getreviewDTO" type="com.mvc.withbooks.dto.ReviewDTO">
+		<id column="RNUM" property="rnum"/>
+		<result column="CONTENT" property="content"/>
+		<result column="SCORE" property="score"/>
+		<result column="REVIEW_DATE" property="review_Date"/>
+        <association property="novelDTO" column="NNUM" resultMap="getnovelDTO" />
+        <association property="memberDTO" column="MNUM" resultMap="getmemberDTO" />
+	</resultMap>
+	
  	<insert id="insertReview" parameterType="java.util.Map">
  		INSERT INTO REVIEW (RNUM, MNUM, NNUM, CONTENT, SCORE,REVIEW_DATE) VALUES (seq_review.nextval,#{mnum},#{nnum},#{content},#{score},SYSDATE)
  	</insert>
@@ -18,5 +37,13 @@
  	
  	<select id="getReviewList" parameterType="int" resultType="java.util.Map">
  		SELECT RNUM, m.MNUM,m.MEMBER_ID,NNUM, CONTENT, SCORE,REVIEW_DATE FROM REVIEW r INNER JOIN "MEMBER" m ON r.MNUM =m.MNUM WHERE r.NNUM=#{nnum}
+ 	</select>
+ 	
+ 	<select id="listRecommend" parameterType="int" resultType="reviewDTO" resultMap="getreviewDTO">
+ 		select * from review r INNER JOIN novel n on r.nnum=n.nnum where r.MNUM=#{mnum}
+ 	</select>
+ 	
+ 	<select id="listReview" resultType="ReviewDTO" resultMap="getreviewDTO">
+ 		select * from review r inner join member m on r.mnum=m.mnum inner join novel n on r.nnum=n.nnum
  	</select>
 </mapper>

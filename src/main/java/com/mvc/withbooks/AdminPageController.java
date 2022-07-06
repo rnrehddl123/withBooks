@@ -129,7 +129,8 @@ public class AdminPageController {
 	
 	@RequestMapping("/listSuggest")//추천작 리스트 페이지 이동
 	public String listSuggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
-		int pageSize = 5;
+		String searchString = req.getParameter("searchString");
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -137,7 +138,9 @@ public class AdminPageController {
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1) * pageSize + 1;
 		int endRow = startRow + pageSize -1;
-		int rowCount = adminSuggestMapper.getSuggestCount();
+		int rowCount = 0;
+		if(mode==null) rowCount = adminSuggestMapper.getSuggestCount();
+		else rowCount = adminSuggestMapper.getSuggestSearchCount("suggestNovel",searchString);
 		if (endRow > rowCount) endRow = rowCount;
 		List<AdminSuggestDTO> list = null;
 		int suggestNum = 0;
@@ -156,7 +159,6 @@ public class AdminPageController {
 					req.setAttribute("endPage", endPage);
 				}
 			}else {
-				String searchString = req.getParameter("searchString");
 				list = adminSuggestMapper.findAdminSuggest("suggestNovel", searchString);
 			}
 		} 
@@ -168,7 +170,9 @@ public class AdminPageController {
 	
 	@RequestMapping("/insertSuggest")//추천작 추가 페이지 이동
 	public String insertSuggest(HttpServletRequest req, @RequestParam(required = false) String mode) {
-		int pageSize = 5;
+		String search = req.getParameter("search");
+		String searchString = req.getParameter("searchString");
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -176,7 +180,9 @@ public class AdminPageController {
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1) * pageSize + 1;
 		int endRow = startRow + pageSize -1;
-		int rowCount = adminSuggestMapper.getNovelCount();
+		int rowCount = 0;
+		if(mode==null) rowCount = adminSuggestMapper.getNovelCount();
+		else rowCount = adminSuggestMapper.getNovelSearchCount(search, searchString);
 		if (endRow > rowCount) endRow = rowCount;
 		List<NovelDTO> list = null;
 		int novelNum = 0;
@@ -195,8 +201,6 @@ public class AdminPageController {
 					req.setAttribute("endPage", endPage);
 				}
 			}else {
-				String search = req.getParameter("search");
-				String searchString = req.getParameter("searchString");
 				list = adminSuggestMapper.findNovelAdmin(search, searchString);
 			}
 		} 
@@ -245,13 +249,19 @@ public class AdminPageController {
 	
 	@RequestMapping(value="/insertCate", method=RequestMethod.POST)//카테고리 등록
 	public String cateInsert(HttpServletRequest req, @ModelAttribute CategoryDTO dto) {
-		int res = categoryMapper.insertCategory(dto);
+		CategoryDTO dto1 = categoryMapper.getCategory(dto.getCate_name());
 		String msg = null, url = null;
-		if (res>0) {
-			msg = "카테고리 입력 성공";
-			url = "listCate";
+		if(dto1==null) {
+			int res = categoryMapper.insertCategory(dto);
+			if (res > 0) {
+				msg = "카테고리 입력 성공";
+				url = "listCate";
+			} else {
+				msg = "카테고리 입력 실패";
+				url = "insertCate";
+			}
 		}else {
-			msg = "카테고리 입력 실패";
+			msg = "이미 있는 카테고리입니다";
 			url = "insertCate";
 		}
 		req.setAttribute("msg", msg);
@@ -304,6 +314,7 @@ public class AdminPageController {
 			}else {
 				String search = req.getParameter("search");
 				String searchString = req.getParameter("searchString");
+				rowCount = boardMapper.getBoardSearchCount(search, searchString);
 				list = boardMapper.findBoard(search, searchString);
 			}
 		} 
@@ -529,6 +540,25 @@ public class AdminPageController {
 		req.setAttribute("url", url);
 		return "forward:message";
 	}*/
+	
+	//작가강등
+	@RequestMapping("/downgradeWriter") 
+	public String downgradeWriter(HttpServletRequest req, int mnum) {
+		
+		int res= memberMapper.downgradeWriter(mnum);
+		
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "해당 작가회원이 일반회원으로 강등되었습니다.";
+			url = "listWriter";
+		}else {
+			msg = "작가 강등을 실패했습니다.";
+			url = "listWriter";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
 
 	@RequestMapping("/listUpgradeClient")
 	public String clientUpgrade(HttpServletRequest req, @RequestParam(required = false) String mode) {

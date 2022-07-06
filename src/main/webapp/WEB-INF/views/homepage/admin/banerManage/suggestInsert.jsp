@@ -11,11 +11,11 @@
 	<b><h1>추천작 관리</h1></b><p>
 	<table border="1" width="1000" height="500">
 		<tr height="50" align="center">
-			<th colspan="2" >작품 리스트</th>	
+			<th colspan="3" >작품 리스트</th>	
 		</tr>
 		<c:if test="${empty listNovel}">
 		<tr>
-			<td colspan="2">등록된 작품이 없습니다.</td>	
+			<td colspan="3">등록된 작품이 없습니다.</td>	
 		</tr>
 		</c:if>
 		<c:forEach items="${listNovel}" var="dto">
@@ -23,7 +23,8 @@
 			<form name="s" action="insertSuggestOk" method="post">
 			<input type="hidden" name="nnum" value="${dto.nnum}"/>
 			<input type="hidden" name="suggestNovel" value="${dto.novel_subject}"/>
-			<td width="85%" align="center">${dto.novel_subject}</td>
+			<td width="20%" align="center">${dto.novel_memberName}</td>
+			<td width="65%" align="center">${dto.novel_subject}</td>
 			<td width="15%" align="center"><input type="submit" value="등록"></td>
 			</form>	
 		</tr>
@@ -44,8 +45,8 @@
 	<form name="f" action="insertSuggest" method="post">
 	<input type="hidden" name="mode" value="find">
 	<select name="search">
-			<option value="Novel_memberName">작가명</option>
-			<option value="Novel_subject">제목</option>
+			<option value="novel_memberName">작가명</option>
+			<option value="novel_subject">제목</option>
 	</select>
 	검색 : <input type="text" name="searchString"><input type="submit" value="검색"><p>
 	</form>

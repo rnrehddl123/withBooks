@@ -189,6 +189,11 @@ public class MemberMapper {
 		return res;
 	}
 	
+	public int downgradeWriter(int mnum) {
+		int res = sqlSession.update("downgradeWriter", mnum);
+		return res;
+	}
+	
 	public int idCheck(String member_id) {
 		int result = sqlSession.selectOne("idCheck", member_id);
 		return result;

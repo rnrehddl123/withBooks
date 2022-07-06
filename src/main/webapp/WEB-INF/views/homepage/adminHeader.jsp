@@ -131,7 +131,6 @@
         <li><a class="dropdown-item" href="main">Main</a></li>
         <li><a class="dropdown-item" href="listBoard">자유게시판</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login">로그인</a></li>
       </ul>
     </div>
  </div>

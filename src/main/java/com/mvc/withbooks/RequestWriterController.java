@@ -24,7 +24,7 @@ public class RequestWriterController {
 	
 	//��û ���
 	@RequestMapping("/listRequestWriter")
-	public String listRequestWrinte(HttpServletRequest req, HttpSession session) {
+	public String listRequestWriter(HttpServletRequest req, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		int mnum = login.getMnum();
 		List<RequestWriterDTO> list = requestWriterMapper.listRequestWriterClient(mnum);

@@ -448,7 +448,9 @@ public class AdminPageController {
 	
 	@RequestMapping("/listClient")
 	public String listClient(HttpServletRequest req,@RequestParam(required = false) String mode) {
-		int pageSize = 5;
+		String search = req.getParameter("search");
+		String searchString = req.getParameter("searchString");
+		int pageSize = 20;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -463,8 +465,7 @@ public class AdminPageController {
 			if(mode == null) {
 				list = memberMapper.listMember(startRow, endRow);
 			}else {
-				String search = req.getParameter("search");
-				String searchString = req.getParameter("searchString");
+				rowCount = memberMapper.getMemberSearchCount(search, searchString);
 				list = memberMapper.findMember(search, searchString);
 			}
 		} 
@@ -487,7 +488,9 @@ public class AdminPageController {
 	
 	@RequestMapping("/listWriter")
 	public String listWriter(HttpServletRequest req,@RequestParam(required = false) String mode) {
-		int pageSize = 5;
+		String search = req.getParameter("search");
+		String searchString = req.getParameter("searchString");
+		int pageSize = 15;
 		String pageNum = req.getParameter("pageNum");
 		if (pageNum==null){
 			pageNum = "1";
@@ -502,8 +505,7 @@ public class AdminPageController {
 			if(mode == null) {
 				list = memberMapper.listWriter(startRow, endRow);
 			}else {
-				String search = req.getParameter("search");
-				String searchString = req.getParameter("searchString");
+				rowCount = memberMapper.getWriterSearchCount(search, searchString);
 				list = memberMapper.findMember(search, searchString);
 			}
 		} 

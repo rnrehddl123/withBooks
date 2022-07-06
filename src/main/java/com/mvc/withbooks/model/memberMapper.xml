@@ -9,6 +9,14 @@
 		select * from member
 	</select>
 	
+	<select id="getMemberSearchCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from member where ${search} like '%'||#{searchString}||'%'
+	</select>
+	 
+	<select id="getWriterSearchCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from member where ${search} like '%'||#{searchString}||'%' and Member_authority = 'writer'
+	</select>
+	
 	<select id="listMember" parameterType="java.util.Map" resultType="memberDTO">
 		select * from (select rownum rn, A.* from (select * from member order by Mnum desc)A) where rn between #{start} and #{end}
 	</select>

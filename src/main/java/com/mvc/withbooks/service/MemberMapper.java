@@ -1,5 +1,6 @@
 package com.mvc.withbooks.service;
 
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -150,8 +151,24 @@ public class MemberMapper {
 		return count;
 	}
 	
+	public int getMemberSearchCount(String search, String searchString) {		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		int count = sqlSession.selectOne("getMemberSearchCount", map);
+		return count;
+	}
+	
 	public int getWriterCount() {		
 		int count = sqlSession.selectOne("getWriterCount");
+		return count;
+	}
+	
+	public int getWriterSearchCount(String search, String searchString) {		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		int count = sqlSession.selectOne("getWriterSearchCount", map);
 		return count;
 	}
 	

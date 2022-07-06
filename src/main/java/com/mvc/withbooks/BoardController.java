@@ -71,10 +71,10 @@ public class BoardController {
 	public String writeProBoard(HttpServletRequest req, BoardDTO dto) {
 		int res = boardMapper.insertBoard(dto);
 		if (res>0) {
-			req.setAttribute("msg", "�Խñ� ��� ����! �Խñ� ����������� �̵��մϴ�.");
+			req.setAttribute("msg", "게시글 등록 성공, 게시판 목록으로 이동합니다.");
 			req.setAttribute("url", "listBoard");
 		}else {
-			req.setAttribute("msg", "�Խñ� ��� ����! �Խñ� ����������� �̵��մϴ�.");
+			req.setAttribute("msg", "게시글 등록 실패! 다시 작성해 주세요.");
 			req.setAttribute("url", "writeBoard");
 		}
 		return "message";
@@ -100,13 +100,13 @@ public class BoardController {
 	public String updateProBoard(HttpServletRequest req, BoardDTO dto) {
 		int res = boardMapper.updateBoard(dto);
 		if (res > 0) {
-			req.setAttribute("msg", "�Խñ� ���� ����!! �Խñ� ����������� �̵��մϴ�.");
+			req.setAttribute("msg", "게시글 수정 성공, 게시판 목록으로 이동합니다.");
 			req.setAttribute("url", "listBoard");
 		}else if (res < 0) {
-			req.setAttribute("msg", "��й�ȣ�� Ʋ�Ƚ��ϴ�. �ٽ� �Է��� �ּ���.");
+			req.setAttribute("msg", "게시글 수정 실패! 다시 작성해 주세요.");
 			req.setAttribute("url", "updateBoard?Bnum=" + dto.getBnum());
 		}else {
-			req.setAttribute("msg", "�Խñ� ���� ����!! �Խñ� ������������ �̵��մϴ�.");
+			req.setAttribute("msg", "게시글 수정 중 오류 발생!");
 			req.setAttribute("url", "contentBoard?Bnum=" + dto.getBnum());
 		}
 		return "message";
@@ -124,13 +124,13 @@ public class BoardController {
 		String passwd = params.get("passwd");
 		int res = boardMapper.deleteBoard(Integer.parseInt(Bnum), passwd);
 		if (res > 0) {
-			req.setAttribute("msg", "�Խñ� ���� ����!! �Խñ� ����������� �̵��մϴ�.");
+			req.setAttribute("msg", "게시글 삭제 성공, 게시판 목록으로 이동합니다.");
 			req.setAttribute("url", "listBoard");
 		}else if (res < 0) {
-			req.setAttribute("msg", "��й�ȣ�� Ʋ�Ƚ��ϴ�. �ٽ� �Է��� �ּ���.");
+			req.setAttribute("msg", "게시글 삭제 실패! 다시 시도해 주세요.");
 			req.setAttribute("url", "deleteBoard?Bnum=" + Bnum);
 		}else {
-			req.setAttribute("msg", "�Խñ� ���� ����!! �Խñ� ������������ �̵��մϴ�.");
+			req.setAttribute("msg", "게시글 삭제 중 오류 발생!");
 			req.setAttribute("url", "contentBoard?Bnum=" + Bnum);
 		}
 		return "message";

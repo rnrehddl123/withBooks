@@ -5,7 +5,6 @@
 .adminmain{
 	height:100vh;
 	margin: auto;
-	overflow-y : scroll;
 }
 
 .col-md-3.adminSideBar{

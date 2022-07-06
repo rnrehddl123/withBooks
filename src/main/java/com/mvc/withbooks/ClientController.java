@@ -483,26 +483,6 @@ public class ClientController {
 		return "/main/main";
 	}
 	
-	@RequestMapping(value="leaveMember", method=RequestMethod.POST)
-	public String leaveMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		int res = memberMapper.deleteMember(mnum);
-		String msg = null, url = null;
-		if (res>0) {
-			session.invalidate();
-			msg = "회원탈퇴 성공, 이용해주셔서 감사합니다.";
-			url = "redirect:main";
-		}else {
-			msg = "회원탈퇴 실패, 마이 페이지로 이동합니다.";
-			url = "clientMypage";
-		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
-	}
-	
 	
 	@RequestMapping(value="/purchaseCash", method=RequestMethod.GET)
 	public String PurchaseCashForm(HttpSession session) {

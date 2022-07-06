@@ -112,12 +112,6 @@
         </a>
       </li>
       <li>
-        <a href="main" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          	메인페이지로 이동하기
-        </a>
-      </li>
-      <li>
         <a href="adminChart" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	매출관리 차트
@@ -136,8 +130,6 @@
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="main">Main</a></li>
         <li><a class="dropdown-item" href="listBoard">자유게시판</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login">로그인</a></li>
       </ul>
     </div>
  </div>

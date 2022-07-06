@@ -31,7 +31,7 @@
 					</div>
 					<span id=same></span>
 					<br><br>
-					<button type="submit" id="check" class="btn btn-primary">비밀번호변경 찾기</button>
+					<button type="submit" id="check" class="btn btn-primary">새 비밀번호 변경</button>
 				</div>
 			</form>
 		</div>

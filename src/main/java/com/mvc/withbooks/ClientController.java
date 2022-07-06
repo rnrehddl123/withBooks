@@ -394,7 +394,6 @@ public class ClientController {
 				msg= dto.getMember_name()+"님 반갑습니다.";
 				url="main";
 				//쿠키
-				System.out.println(params.get("saveid")+"asdsa");
 				Cookie saveid = new Cookie("saveid", dto.getMember_id());
 				if (params.containsKey("saveid")){
 					saveid.setMaxAge(24*60*60);
@@ -484,8 +483,7 @@ public class ClientController {
 		return "/main/main";
 	}
 	
-	/*회원탈퇴 기능 삭제*/
-	/*@RequestMapping(value="leaveMember", method=RequestMethod.POST)
+	@RequestMapping(value="leaveMember", method=RequestMethod.POST)
 	public String leaveMember(HttpServletRequest req, @RequestParam int mnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
@@ -503,7 +501,7 @@ public class ClientController {
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);
 		return "message";
-	}*/
+	}
 	
 	
 	@RequestMapping(value="/purchaseCash", method=RequestMethod.GET)

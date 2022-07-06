@@ -65,6 +65,10 @@
 		update member set Member_authority = 'writer' where Mnum = #{mnum}
 	</update>
 	
+	<update id="downgradeWriter" parameterType="int">
+		update member set Member_authority = null where Mnum= #{mnum}
+	</update>
+	
 	<select id="getMember" parameterType="int" resultType="memberDTO">
 		select * from member where mnum = #{mnum}
 	</select>

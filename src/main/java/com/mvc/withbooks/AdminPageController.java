@@ -540,6 +540,25 @@ public class AdminPageController {
 		req.setAttribute("url", url);
 		return "forward:message";
 	}*/
+	
+	//작가강등
+	@RequestMapping("/downgradeWriter") 
+	public String downgradeWriter(HttpServletRequest req, int mnum) {
+		
+		int res= memberMapper.downgradeWriter(mnum);
+		
+		String msg = null, url = null;
+		if (res>0) {
+			msg = "해당 작가회원이 일반회원으로 강등되었습니다.";
+			url = "listWriter";
+		}else {
+			msg = "작가 강등을 실패했습니다.";
+			url = "listWriter";
+		}
+		req.setAttribute("msg", msg);
+		req.setAttribute("url", url);
+		return "forward:message";
+	}
 
 	@RequestMapping("/listUpgradeClient")
 	public String clientUpgrade(HttpServletRequest req, @RequestParam(required = false) String mode) {

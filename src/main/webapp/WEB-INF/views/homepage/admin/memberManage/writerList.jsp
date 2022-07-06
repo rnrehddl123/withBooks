@@ -16,7 +16,7 @@
 			<th>작가 이름</th>
 			<th>작가 아이디</th>
 			<th>전화번호</th>
-			<th>계정삭제</th>
+			<th>권한변경</th> <!-- 강등 -->
 		</tr>
 	<c:forEach var="wdto" items="${listWriter}">
 		<c:if test="${wdto.member_authority eq 'writer'}">
@@ -25,7 +25,7 @@
 			<td><a href="writerNovelList">${wdto.member_name}</a></td>
 			<td>${wdto.member_id}</td>
 			<td>${wdto.member_Tel}</td>
-			<td><input type="button" value="삭제" onclick="window.location='deleteMember?mnum=${wdto.mnum}'"></td>
+			<td><input type="button" value="일반회원" onclick="window.location='downgradeWriter?mnum=${wdto.mnum}'"></td>
 		</tr>	
 		</c:if>	
 	</c:forEach>

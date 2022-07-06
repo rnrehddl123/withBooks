@@ -39,7 +39,7 @@
 			  	<div class="mb-3 form-check">
 			  	
 						 <!-- 체크박스 쿠키 : saveid가 없는 경우 -->			
-					<input type="checkbox" name="rememeberId" class="form-check-input" checked><!--  id="exampleCheck1" -->
+					<input type="checkbox" name="saveid" class="form-check-input" checked><!--  id="exampleCheck1" -->
 					
 					 <label class="form-check-label">아이디 저장</label>
 					

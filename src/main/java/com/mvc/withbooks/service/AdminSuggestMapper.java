@@ -1,6 +1,8 @@
 package com.mvc.withbooks.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +72,24 @@ public class AdminSuggestMapper {
 		return count;
 	}
 	
+	public int getSuggestSearchCount(String search, String searchString) {		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		int count = sqlSession.selectOne("getSuggestSearchCount", map);
+		return count;
+	}
+	
 	public int getNovelCount() {		
 		int count = sqlSession.selectOne("getNovelCount");
+		return count;
+	}
+	
+	public int getNovelSearchCount(String search, String searchString) {		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("searchString", searchString);
+		int count = sqlSession.selectOne("getNovelSearchCount", map);
 		return count;
 	}
 }

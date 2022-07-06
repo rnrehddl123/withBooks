@@ -28,4 +28,9 @@ public class CategoryMapper {
 		String selectCate = sqlSession.selectOne("selectCate", cnum);
 		return selectCate;
 	}
+	
+	public CategoryDTO getCategory(String cate_name){
+		CategoryDTO dto = sqlSession.selectOne("getCategory", cate_name);
+		return dto;
+	}
 }

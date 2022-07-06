@@ -48,10 +48,6 @@ public class NovelMapper {
 		return list;
 	}
 	
-	public int deleteNovel(int nnum) {
-		int res = sqlSession.delete("deleteNovel", nnum);
-		return res;
-	}
 	
 	public int updateNovel(NovelDTO dto,int mnum) {
 		MemberDTO mdto = sqlSession.selectOne("getMember", mnum);
@@ -124,7 +120,7 @@ public class NovelMapper {
 		return list;
 	}
 	
-	public List<Map<String, String>> listEpisodeCount(int mnum) {
+	public List<Map<String, String>> listNovelCount(int mnum) {
 		List<Map<String, String>> list = sqlSession.selectList("listNovelCount", mnum);
 		return list;
 	}

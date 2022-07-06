@@ -54,30 +54,10 @@ public class WriterController {
 	@Autowired
 	private PurchaseHistoryMapper purchaseHistoryMapper;
 	
-	@RequestMapping("/writerOrderList")
-	public String WriterOrderList() {
-		return "writer/writerPage/writerOrderList";
-	}
-	
-	
-	@RequestMapping("/writerNovelEpisode")
-	public String WriterNovelEpisode(HttpServletRequest req, @RequestParam int epnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		EpisodeDTO dto = episodeMapper.getEpisode(epnum, "view");
-		req.setAttribute("getEpisode", dto);
-		req.setAttribute("epnum", epnum);
-		return "writer/writerPage/writerOrderList/writerNovelEpisode";
-	}
-	
-	@RequestMapping("/writerNovelSubject")
-	public String WriterNovelSubject() {
-		return "writer/writerPage/writerOrderList/writerNovelSubject";
-	}
-	
+	//에피소드 리스트 이동
 	@RequestMapping("/writerEpisodeList")
-	public String WriterEpisodeLIst(HttpServletRequest req, int nnum, @RequestParam(required = false) String change, HttpSession session) {
+	public String WriterEpisodeLIst(HttpServletRequest req, int nnum,
+			@RequestParam(required = false) String change, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
 		if(login==null){
 			return "redirect:login";
@@ -132,7 +112,7 @@ public class WriterController {
 		return "writer/writerPage/writerSubject/writerEpisodeList";
 	}
 		
-	//에피소드 작성 페이지
+	//에피소드 작성 페이지 이동
 	@RequestMapping("/writerEpisode")
 	public String WriterEpisode(HttpServletRequest req, int nnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
@@ -142,10 +122,10 @@ public class WriterController {
 		return "writer/writerPage/writerSubject/writerEpisode";
 	}
 	
-	//에피소드 추가
-	
+	//에피소드 작성 기능
 	@RequestMapping("/insertEpisode")
-	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, int nnum, HttpSession session, @RequestParam Map<String, String> params) {
+	public String insertEpisode(HttpServletRequest req, @ModelAttribute EpisodeDTO dto,
+			int nnum, HttpSession session, @RequestParam Map<String, String> params) {
 		if(session.getAttribute("login")==null){
 			return "/main/login";
 		}
@@ -174,28 +154,8 @@ public class WriterController {
 		return "message";
 	}
 	
-	//에피소드 삭제
-	@RequestMapping("/writerEpisodeDelete")
-	public String WriterEpisodeDelete(HttpServletRequest req, @RequestParam int epnum, @RequestParam int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		int res = episodeMapper.deleteEpisode(epnum);
-		String msg = null, url = null;
-		if (res>0) {
-			msg = "에피소드 삭제 성공, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList?nnum=" + nnum;
-		}else {
-			msg = "에피소드 삭제 실패!!, 에피소드 목록 페이지로 이동합니다.";
-			url = "writerEpisodeList?nnum" + nnum;
-		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
-	}
 	
-	//에피소드 수정
-	
+	//에피소드 수정 페이지 이동	
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.GET)
 	public String WriterEpisodeUpdateForm(HttpServletRequest req, @RequestParam int epnum, @RequestParam int nnum, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -212,6 +172,8 @@ public class WriterController {
 		return "writer/writerPage/writerSubject/writerEpisodeUpdate";
 	}
 	
+	
+	//에피소드 수정 기능
 	@RequestMapping(value="writerEpisodeUpdate", method=RequestMethod.POST)
 	public String WriterEpisodeUpdate(HttpServletRequest req, @ModelAttribute EpisodeDTO dto, @RequestParam int nnum, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -232,6 +194,7 @@ public class WriterController {
 	      return "message";
 	}
 	
+	//소설 작성 페이지 이동
 	@RequestMapping(value="writerNovel", method=RequestMethod.GET)
 	public String WriterNovelForm(HttpServletRequest req, HttpSession session) {
 		if(session.getAttribute("login")==null){
@@ -242,6 +205,8 @@ public class WriterController {
 		return "writer/writerPage/writerSubject/writerNovel";
 	}
 	
+	
+	//소설 작성 기능
 	@RequestMapping(value="writerNovel", method=RequestMethod.POST)
 	public String WriterNovel(HttpServletRequest req, HttpSession session, @ModelAttribute NovelDTO dto,BindingResult result){
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -276,6 +241,8 @@ public class WriterController {
 	      return "message";
 	   }
 	
+	
+	//소설 리스트
 	@RequestMapping("/writerNovelList")
 	public String WriterNovelList(HttpServletRequest req, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -285,7 +252,7 @@ public class WriterController {
 		int mnum = login.getMnum();
 			MemberDTO dto = memberMapper.getMember(login.getMnum());
 			req.setAttribute("getMember", dto);
-			List<Map<String, String>> list = novelMapper.listEpisodeCount(login.getMnum());
+			List<Map<String, String>> list = novelMapper.listNovelCount(login.getMnum());
 			int pageSize = 40;
 			String pageNum = req.getParameter("pageNum");
 			if (pageNum==null){
@@ -321,7 +288,7 @@ public class WriterController {
 			return "writer/writerPage/writerSubject/writerNovelList";
 		}
 	
-	
+	//소설 수정 페이지 이동
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.GET)
 	public String WriterNovelUpdateForm(HttpServletRequest req, @RequestParam int nnum, HttpSession session) {
 		if(session.getAttribute("login")==null){
@@ -332,6 +299,7 @@ public class WriterController {
 		return "writer/writerPage/writerSubject/writerNovelUpdate";
 	}
 	
+	//소설 수정 기능
 	@RequestMapping(value="writerNovelUpdate", method=RequestMethod.POST)
 	public String WriterNovelUpdate(HttpServletRequest req, @ModelAttribute NovelDTO dto,		
 	         @RequestParam int mnum,BindingResult result, HttpSession session) {
@@ -366,25 +334,7 @@ public class WriterController {
 	      return "message";
 	   }
 	
-	@RequestMapping("/writerNoveldelete")
-	public String writerNoveldelete(HttpServletRequest req, @RequestParam int nnum, HttpSession session, @RequestParam int mnum) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		int res = novelMapper.deleteNovel(nnum);
-		String msg = null, url = null;
-		if(res>0) {
-			msg = "소설이 삭제 되었습니다.";
-			url = "writerNovelList?mnum=" + mnum;
-		}else {
-			msg = "소설 삭제에 실패하였습니다.";
-			url = "writerNovelList?mnum=" + mnum;
-		}
-		req.setAttribute("msg", msg);
-		req.setAttribute("url", url);
-		return "message";
-	}
-	
+	//에피소드별 매출 차트
 	@RequestMapping("/chart")
 	public String WriterChart(HttpServletRequest req, HttpSession session, int nnum) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -406,6 +356,7 @@ public class WriterController {
 		return "writer/writerPage/writerChart";
 	}
 	
+	//날짜별 매출 차트
 	@RequestMapping("/writerPay")
 	public String WriterPay(HttpServletRequest req, HttpSession session, int nnum) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");
@@ -428,64 +379,7 @@ public class WriterController {
 		return "writer/writerPage/writerPay";
 	}
 	
-	@RequestMapping("/writerUpdate")
-	public String WriterUpdate() {
-		return "writer/writerPage/writerUpdate";
-	}
-	
-	
-	@RequestMapping("/writerReverseEpisodeList")
-	public String WriterReverseEpisodeList(HttpServletRequest req, int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		NovelDTO dto = novelMapper.getNovel(nnum);
-		req.setAttribute("getNovel", dto);
-		List<Map<String, String>> list = episodeMapper.listEpisodeCount(nnum);
-		int pageSize = 40;
-		String pageNum = req.getParameter("pageNum");
-		if (pageNum==null){
-			pageNum = "1";
-		}
-		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage-1) * pageSize + 1;
-		int endRow = startRow + pageSize -1;
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("nnum", String.valueOf(nnum));
-		params.put("startRow", String.valueOf(startRow));
-		params.put("endRow", String.valueOf(endRow));
-		int rowCount = episodeMapper.getEpisodeCount(nnum);
-		if (endRow > rowCount) endRow = rowCount;
-		list = null;
-		if (rowCount>0){
-			list = episodeMapper.episodeCountListReverse(params);
-		}
-		int episodeNum =  rowCount - (startRow - 1);
-		if (rowCount>0) {
-			int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);
-			int pageBlock = 10;
-			int startPage = (currentPage - 1)/pageBlock  * pageBlock + 1;
-			int endPage = startPage + pageBlock - 1;
-			if (endPage > pageCount) endPage = pageCount;
-			req.setAttribute("pageCount", pageCount);
-			req.setAttribute("startPage", startPage);
-			req.setAttribute("endPage", endPage);
-		}
-		req.setAttribute("rowCount", rowCount);
-		req.setAttribute("episodeNum", episodeNum);
-		req.setAttribute("listEpisodeCount", list);
-		return "writer/writerPage/writerSubject/writerEpisodeList";
-	}
-	
-	@RequestMapping("/EpisodeChange")
-	public String EpisodeChange(HttpServletRequest req, int nnum, HttpSession session) {
-		if(session.getAttribute("login")==null){
-			return "/main/login";
-		}
-		
-		return "writer/writerPage/writerUpdate";
-	}
-	
+	//회원의 정산내역
 	@RequestMapping("/memeberChart")
 	public String MemberChart(HttpServletRequest req, HttpSession session) {
 		MemberDTO login = (MemberDTO)session.getAttribute("login");

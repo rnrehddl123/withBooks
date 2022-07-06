@@ -16,10 +16,6 @@
 		insert into novel(Nnum, Novel_subject, Novel_memberName, Novel_image, Novel_cate, Novel_summary, Mnum) values(seq_novel.nextval, #{Novel_subject}, #{Novel_memberName}, #{Novel_image}, #{Novel_cate}, #{Novel_summary}, #{memberDTO.mnum})
 	</insert>
 
-	<delete id="deleteNovel" parameterType="int">
-		delete from novel where Nnum = #{nnum}
-	</delete>
-	
 	<update id="updateNovel" parameterType="NovelDTO">
 		update novel set Novel_subject=#{Novel_subject}, Novel_memberName=#{Novel_memberName}, Novel_image=#{Novel_image}, Novel_summary=#{Novel_summary} where nnum = #{nnum} 
 	</update>

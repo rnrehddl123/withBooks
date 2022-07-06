@@ -17,4 +17,8 @@
  		select cate_name from category where cnum = #{cnum}
  	</select>
  	
+ 	<select id="getCategory" parameterType="String" resultType="CategoryDTO">
+ 		select * from category where Cate_name = #{cate_name}
+ 	</select>
+ 	
  </mapper>

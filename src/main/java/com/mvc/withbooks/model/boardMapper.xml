@@ -16,6 +16,10 @@
 		select count(*) from Board
 	</select>
 	
+	<select id="getBoardSearchCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from Board where ${search} like '%'||#{searchString}||'%'
+	 </select>
+	
 	<select id="findBoard" parameterType="java.util.Map" resultType="BoardDTO">
 		select * from Board where ${search} like '%'||#{searchString}||'%'
 	</select>

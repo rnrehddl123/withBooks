@@ -22,7 +22,8 @@
 		<c:if test="${wdto.member_authority eq 'writer'}">
 		<tr>
 			<td>${wdto.mnum}</td>
-			<td><a href="writerNovelList">${wdto.member_name}</a></td>
+			<!-- 작가소설리스트로 이동하는데, 로그인이 선행되어야 해서 링크는 없애기로 함 -->
+			<td><!-- <a href="writerNovelList"> -->${wdto.member_name}<!-- </a> --></td>
 			<td>${wdto.member_id}</td>
 			<td>${wdto.member_Tel}</td>
 			<td><input type="button" value="일반회원" onclick="window.location='downgradeWriter?mnum=${wdto.mnum}'"></td>

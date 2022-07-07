@@ -27,6 +27,9 @@
           	슬라이드 관리
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="insertSuggest" class="nav-link text-white insertSuggest">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
@@ -39,6 +42,9 @@
           	추천작 목록
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="insertCate" class="nav-link text-white insertCate">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
@@ -51,6 +57,9 @@
           	카테고리 목록
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="insertNotice" class="nav-link text-white insertNotice">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
@@ -63,12 +72,18 @@
           	공지사항 목록
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="listBoardAdmin" class="nav-link text-white listBoardAdmin">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           	게시판 관리
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="listClient" class="nav-link text-white listClient">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
@@ -87,6 +102,9 @@
           	작가 신청 관리
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="listPay" class="nav-link text-white listPay">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
@@ -105,6 +123,9 @@
           	작가 매출 관리
         </a>
       </li>
+      
+      <li><hr class="dropdown-divider"></li>
+      
       <li>
         <a href="saleTotal" class="nav-link text-white saleTotal">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
@@ -131,7 +152,7 @@
         <li><a class="dropdown-item" href="main">Main</a></li>
         <li><a class="dropdown-item" href="listBoard">자유게시판</a></li>
 
-        <li><hr class="dropdown-divider"></li>
+        
       </ul>
     </div>
  </div>

@@ -28,7 +28,7 @@
 	</c:forEach>
 	</table>
 	
-	<p>
+	<br>
 	
 		<input type="button" value="카테고리 추가" onclick="window.location='insertCate'">
 </div>

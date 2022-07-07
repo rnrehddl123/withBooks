@@ -59,11 +59,11 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/purchase_modal.jsp"></jsp:include>
 </body>
-<!-- <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false"> -->
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false">
 
 <script type="text/javascript">
 
-<!--	document.oncontextmenu = function(){return false;}-->
+	document.oncontextmenu = function(){return false;}
 
 
 	var chevron=document.querySelector('.bi-chevron-left');

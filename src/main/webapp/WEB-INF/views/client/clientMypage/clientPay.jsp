@@ -30,10 +30,10 @@
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : point , //결제창에서 보여질 이름
 		    amount : cash, //실제 결제되는 가격
-		    buyer_email : 'iamport@siot.do',
-		    buyer_name : '구매자이름',
+		    buyer_email : 'withbooks@google.com',
+		    buyer_name : '위드북스',
 		    buyer_tel : '010-1234-5678',
-		    buyer_addr : '서울 강남구 도곡동',
+		    buyer_addr : '서울 노원구',
 		    buyer_postcode : '123-456'
 		}, function(rsp) {
 			console.log(rsp);

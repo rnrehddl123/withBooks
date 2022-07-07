@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.mvc.withbooks.dto.CategoryDTO;
@@ -376,7 +377,7 @@ public class ClientController {
 		String msg = null, url = null;
 		if (dto == null){	
 			msg = "해당하는 아이디가 없습니다.";
-			url = "login";
+			url = "main";
 			req.setAttribute("msg", msg);
 			req.setAttribute("url", url);
 			return "message";
@@ -404,7 +405,7 @@ public class ClientController {
 				
 			}else {	
 				msg = "비밀번호가 틀렸습니다.";
-				url = "login";
+				url = "main";
 				req.setAttribute("msg", msg);
 				req.setAttribute("url", url);
 				return "message";
@@ -492,6 +493,7 @@ public class ClientController {
 		return "main/main";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="purchaseCash", method=RequestMethod.POST)
 	public String PurchaseCash(@RequestBody String data,HttpServletRequest req,HttpSession session) {
 		if(session.getAttribute("login")==null){

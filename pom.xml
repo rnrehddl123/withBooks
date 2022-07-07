@@ -233,18 +233,6 @@
       		<version>5.4</version>
  		</dependency>
  		
-<!-- WebSocket -->
-<dependency>
-   	<groupId>org.springframework</groupId>
-	<artifactId>spring-websocket</artifactId>
-	<version>${org.springframework-version}</version>
-</dependency>
-
-<dependency>
-	<groupId>javax.websocket</groupId>
-	<artifactId>javax.websocket-api</artifactId>
-    <version>1.1</version>
-</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

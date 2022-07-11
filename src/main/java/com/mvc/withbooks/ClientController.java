@@ -483,8 +483,7 @@ public class ClientController {
 		}
 		return "/main/main";
 	}
-	
-	
+
 	@RequestMapping(value="/purchaseCash", method=RequestMethod.GET)
 	public String PurchaseCashForm(HttpSession session) {
 		if(session.getAttribute("login")==null){

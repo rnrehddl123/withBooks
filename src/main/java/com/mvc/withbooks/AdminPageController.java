@@ -256,10 +256,10 @@ public class AdminPageController {
 		String msg = null, url = null;
 		if (res>0) {
 			msg = "추천작 삭제 성공";
-			url = "suggest";
+			url = "listSuggest";
 		}else {
 			msg = "추천작 삭제 실패";
-			url = "suggest";
+			url = "listSuggest";
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url);

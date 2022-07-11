@@ -421,7 +421,7 @@ public class ClientController {
 		}
 		session.setAttribute("noticeList", noticeList);
 		if(session.getAttribute("prevPage")==null) {
-			return "/main/main";
+			return "redirect:/main";
 		}
 		return "redirect:" + session.getAttribute("prevPage");
 	}

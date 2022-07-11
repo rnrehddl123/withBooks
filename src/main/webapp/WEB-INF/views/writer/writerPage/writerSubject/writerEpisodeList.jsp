@@ -29,14 +29,13 @@
 				<th>에피소드 제목</th>
 				<th>작성일</th>
 				<th>조회수</th>
-				<th>추천수</th>
 				<th>수정</th>
 			</tr>
 			</thead>
 			<c:set var="pageNum" value="${episodeNum}"/>
 			<c:if test="${empty listEpisodeCount}">
 			<tr>
-				<td colspan="5">등록된 에피소드가 없습니다.</td>
+				<td colspan="4">등록된 에피소드가 없습니다.</td>
 			</tr>
 			</c:if>
 			<tbody>
@@ -45,7 +44,6 @@
 				<td align="center">${dto.EPI_SUBJECT}</td>
 				<td align="center">${dto.EPI_DATE}</td>
 				<td align="center">${dto.EPI_READCOUNT}</td>
-				<td align="center">${dto.EPI_RECOMMAND}</td>
 				<td align="center"><a href="writerEpisodeUpdate?epnum=${dto.EPNUM}&nnum=${getNovel.nnum}"><button type="button" class="btn btn-light">수정</button></a></td>
 			</tr>		
 			</c:forEach>

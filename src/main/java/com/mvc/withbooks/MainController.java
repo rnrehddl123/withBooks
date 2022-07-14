@@ -170,6 +170,13 @@ public class MainController {
 	
 	@RequestMapping("/searchMain")
 	public String searchMain(HttpServletRequest req, String searchString) {
+		if(searchString.equals("")) {
+			String msg = "검색어를 입력하세요";
+			String url = "main";
+			req.setAttribute("msg", msg);
+			req.setAttribute("url", url);
+			return "message";
+		}
 		int novelPageSize = 5;
 		String novelPageNum = req.getParameter("novelPageNum");
 		if (novelPageNum==null){

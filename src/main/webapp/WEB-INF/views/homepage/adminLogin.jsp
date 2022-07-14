@@ -5,6 +5,7 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 <body>
 		<script type="text/javascript">
@@ -47,7 +48,10 @@
 		}
 	}
 	</script>
+	
 	<form name="adminLogin" method="post" onsubmit="return FormSubmit();">
+	
+	
 		<div style="
 		    position: relative;
 		    display: flex;
@@ -56,8 +60,13 @@
 		    margin: auto;
 		    margin-top: 300px;
 		">
-			<input type="text" name="Admin_id">
-			<input type="password" name="Admin_passwd">
+	<div class="head" align="center">
+			<img src="resources/img/nav_logo.png" alt="" width="110" height="50">
+	</div>
+	<h2 align="center">관리자 로그인</h2>
+		
+			<input type="text" name="Admin_id" placeholder="ID">
+			<input type="password" name="Admin_passwd" placeholder="PW">
 			<input type="submit" name="submit" value="로그인">
 			<div class="g-recaptcha" data-sitekey="6LdWvKEgAAAAAKsSdaskcLooRyUyvtrkvOal89oT">
 		</div>

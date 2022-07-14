@@ -170,7 +170,7 @@ public class MainController {
 	
 	@RequestMapping("/searchMain")
 	public String searchMain(HttpServletRequest req, String searchString) {
-		if(searchString.equals("")) {
+		if(searchString.trim().equals("")) {
 			String msg = "검색어를 입력하세요";
 			String url = "main";
 			req.setAttribute("msg", msg);

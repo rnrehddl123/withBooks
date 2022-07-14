@@ -31,14 +31,14 @@
 			    <button type="button" class="btn btn-primary chkbt" onclick="idCheck()">중복확인</button>
 			  </div>
 			  <div class="inputWrapper">
-			    <input name="member_passwd" required type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호">
+			    <input name="member_passwd" required type="password" class="form-control" id="member_passwd" placeholder="비밀번호">
 			  </div>
 			  <div class="flex inputWrapper">
-			    <input name="member_tel1" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">
+			    <input name="member_tel1" id="member_tel1" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3">
 			    <div class="marginauto">-</div>
-			    <input name="member_tel2" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
+			    <input name="member_tel2" id="member_tel2" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
 			    <div class="marginauto">-</div>
-			    <input name="member_tel3" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
+			    <input name="member_tel3" id="member_tel3" required type="text" class="form-control" aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4">
 			  </div>
 			  <div class="inputWrapper">
 			    <input name="member_address" required type="text" id="address_kakao" class="form-control" aria-describedby="emailHelp" placeholder="주소" readonly>
@@ -47,11 +47,11 @@
 			    <input type="text" requird class="form-control" aria-describedby="emailHelp" placeholder="상세주소">
 			  </div>
 			  <div class="flex inputWrapper">
-			    <input name="member_email" required type="text" class="form-control chk email_input" aria-describedby="emailHelp" placeholder="이메일">
+			    <input name="member_email" id="member_email" required type="text" class="form-control chk email_input" aria-describedby="emailHelp" placeholder="이메일">
 			    <button type="button" class="btn btn-primary chkbt" onclick="emailCheck()">중복확인</button>
 			  </div>
 			  <div class="flex inputWrapper">
-			  	<input name="member_birth" type="text" class="form-control birth" aria-describedby="emailHelp" placeholder="생일">
+			  	<input name="member_birth" id="member_birth" type="text" class="form-control birth" aria-describedby="emailHelp" placeholder="YYYYMMDD" maxlength="8" minlength="8">
 			    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 				  <input name="member_sex" required value="man" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 				  <label class="btn btn-outline-primary" for="btnradio1">남자</label>
@@ -78,9 +78,20 @@
 
 
 <script type="text/javascript">
+	var pw = document.getElementById("member_passwd");
+	var mobile1 = document.getElementById("member_tel1");
+	var mobile2 = document.getElementById("member_tel2");
+	var mobile3 = document.getElementById("member_tel3");
+	var email = document.getElementById("member_email");
+	var birth = document.getElementById("member_birth");
+	
 	var iCheck = false;
 	var eCheck = false;
-	
+	var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+	var reg = /^[0-9]*$/;
+	var emailChk = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+	var birthChk = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+		
 	var id_input = document.querySelector('.id_input');
 	var email_input = document.querySelector('.email_input');
 	
@@ -98,11 +109,12 @@
            if(response=="false"){
         	   alert("중복된 이메일입니다.")
         	   eCheck = false;
-        	   console.log(eCheck)
+           }else if(!emailChk.test(email.value)){
+        	   alert("이메일이 형식에 맞지 않습니다.");
+			   eCheck = false;
            }else{
         	   alert("사용가능한 이메일입니다.")
         	   eCheck = true;
-        	   console.log(eCheck)
            }
         });
 	}
@@ -133,7 +145,23 @@
 		}else if(eCheck==false){
 			alert("이메일 중복체크를 해주세요.");
 			return eCheck;
+		}else if(!pwCheck.test(pw.value)){
+			alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+		    return false;
+		}else if(!reg.test(mobile1.value)){
+			alert("전화번호는 숫자만 입력할 수 있습니다.");
+		    return false;
+		}else if(!reg.test(mobile2.value)){
+			alert("전화번호는 숫자만 입력할 수 있습니다.");
+		    return false;
+		}else if(!reg.test(mobile3.value)){
+			alert("전화번호는 숫자만 입력할 수 있습니다.");
+		    return false;
+		}else if(!birthChk.test(birth.value)){
+			alert("생년월일이 형식에 맞지 않습니다.");
+		    return false;
 		}
+		document.signUp.submit(); 
 	}
 	
 	id_input.addEventListener("input",function(e){

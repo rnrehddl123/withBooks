@@ -29,16 +29,16 @@
 					</div>	
   				<div class="inputWrapper">
 					<input name="member_passwd" required type="password" class="form-control"
-							 id="exampleInputPassword1" placeholder="비밀번호" value="${login.member_passwd}">
+							 id="member_passwd" placeholder="비밀번호" value="${login.member_passwd}">
 				</div>
   				<div class="flex inputWrapper">
-					<input name="Member_tel1" required type="text" class="form-control"
+					<input name="Member_tel1" id="member_tel1" required type="text" class="form-control"
 							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="3" minlength="3" value="${Member_tel1}">
 					<div class="marginauto">-</div>
-					<input name="Member_tel2" required type="text" class="form-control"
+					<input name="Member_tel2" id="member_tel2" required type="text" class="form-control"
 							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4" value="${Member_tel2}">
 					<div class="marginauto">-</div>
-					<input name="Member_tel3" required type="text" class="form-control"
+					<input name="Member_tel3" id="member_tel3" required type="text" class="form-control"
 							 aria-describedby="emailHelp" placeholder="전화번호" maxlength="4" minlength="4" value="${Member_tel3}">
 				</div>
 				<div class="inputWrapper">
@@ -81,6 +81,13 @@
   		</div>
 	</div>
 <script type="text/javascript">
+var mobile1 = document.getElementById("member_tel1");
+var mobile2 = document.getElementById("member_tel2");
+var mobile3 = document.getElementById("member_tel3");
+var pw = document.getElementById("member_passwd");
+
+var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+var reg = /^[0-9]*$/;
 
 window.onload = function(){
     document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
@@ -109,7 +116,22 @@ window.onload = function(){
 			return false;
 		}
 	}
-	
-	
+	function check(){
+
+		if(!pwCheck.test(pw.value)){
+			alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+		    return false;
+		}else if(!reg.test(mobile1.value)){
+			alert("전화번호는 숫자만 입력할 수 있습니다.");
+		    return false;
+		}else if(!reg.test(mobile2.value)){
+			alert("전화번호는 숫자만 입력할 수 있습니다.");
+		    return false;
+		}else if(!reg.test(mobile3.value)){
+			alert("전화번호는 숫자만 입력할 수 있습니다.");
+		    return false;
+		}
+		document.edit.submit(); 
+	}
 </script>
 <jsp:include page="../../main/footer.jsp"/>

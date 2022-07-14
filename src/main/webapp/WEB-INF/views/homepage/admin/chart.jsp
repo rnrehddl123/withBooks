@@ -31,7 +31,7 @@ import pandas as pd
 
 
 member = await pyfetch(
-  url="http://192.168.0.26:8080/withbooks/adminNoChart",
+  url="http://192.168.219.135:8080/withbooks/adminNoChart",
   method="POST",
   headers={"Content-Type": "application/json"},
   body=json.dumps({"email": "aa", "password": "bb"})
@@ -41,14 +41,14 @@ member_info = json.dumps(await member.json())
 
 
 history = await pyfetch(
-  url="http://192.168.0.26:8080/withbooks/purchaseHistoryChartList",
+  url="http://192.168.219.135:8080/withbooks/purchaseHistoryChartList",
   method="GET",
 )
 history_info = json.dumps(await history.json())
 
 
 history = await pyfetch(
-  url="http://192.168.0.26:8080/withbooks/purchaseHistoryWChartList",
+  url="http://192.168.219.135:8080/withbooks/purchaseHistoryWChartList",
   method="GET",
 )
 heat_info = json.dumps(await history.json())

@@ -19,7 +19,7 @@
 					<meta content="https://trakt.tv/movies/morbius-2022" itemprop="url">
 					<div class="fanart poster stock-titles">
 						<a href="clientNovelInfo?nnum=${ndto.nnum}&change=now">
-							<img class="real" width="175" height="260" src="/with/${ndto.novel_image}" style="display: block;">
+							<img class="real" width="175" height="260" src="/with/${ndto.novel_image}" onError="this.src='resources/img/nav_logo.png'" style="display: block;">
 						</a>
 						<a href="clientNovelInfo?nnum=${ndto.nnum}&change=now">
 							<div class="shadow-base"></div>

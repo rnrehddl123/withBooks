@@ -36,10 +36,11 @@ public class HeartMapper {
 		return res;
 	}
 	
-	public List<HeartDTO> listHeart(int start, int end){
+	public List<HeartDTO> listHeart(int start, int end, int mnum){
 		java.util.Map<String, Integer> map = new java.util.Hashtable<>();
 		map.put("start", start);
 		map.put("end", end);
+		map.put("mnum", mnum);
 		List<HeartDTO> list = sqlSession.selectList("listHeart", map);
 		return list;
 	}

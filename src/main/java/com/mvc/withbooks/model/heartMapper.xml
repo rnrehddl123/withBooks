@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="listHeart" parameterType="java.util.Map" resultType="HeartDTO" resultMap="heartDTO">
-		select * from (select rownum rn, A.* from (SELECT h.*,n.NOVEL_IMAGE,n.NOVEL_SUBJECT  FROM HEART h INNER JOIN NOVEL n ON h.NNUM =N.NNUM h.mnum = #{mnum})A) where rn between #{start} and #{end}
+		select * from (select rownum rn, A.* from (SELECT h.*,n.NOVEL_IMAGE,n.NOVEL_SUBJECT  FROM HEART h INNER JOIN NOVEL n ON h.NNUM =N.NNUM and h.mnum = #{mnum})A) where rn between #{start} and #{end}
 	</select>
 	
 	<select id="getHeartCount" resultType="int">

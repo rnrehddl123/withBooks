@@ -77,7 +77,7 @@ public class HeartController {
 		int boardNum = 0;
 		if (rowCount>0){
 			if(mode == null) {
-				list = heartMapper.listHeart(startRow, endRow);
+				list = heartMapper.listHeart(startRow, endRow, login.getMnum());
 				boardNum = rowCount - (startRow - 1);
 				if (rowCount>0) {
 					int pageCount = rowCount/pageSize + (rowCount%pageSize==0 ? 0 : 1);

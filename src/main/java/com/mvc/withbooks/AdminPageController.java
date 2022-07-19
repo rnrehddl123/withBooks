@@ -86,10 +86,11 @@ public class AdminPageController {
 	public String adminPostLogin(String Admin_id,String Admin_passwd,HttpSession session) {
 		if(Admin_id.equals("admin")&&Admin_passwd.equals("qwe")) {
 			session.setAttribute("admin", "admin");
+			System.out.println("asas");
+			return "redirect:/homepage";
 		}else {
 			return "redirect:/adminLogin";
 		}
-		return "redirect:/homepage";
 	}
 	
 	@RequestMapping("/message")//메세지 페이지 이동

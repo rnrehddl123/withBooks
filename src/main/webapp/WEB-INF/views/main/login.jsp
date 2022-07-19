@@ -53,7 +53,7 @@
 				 <button type="submit" class="btn btn-primary">로그인</button>
 				 <a href="signUp"><button class="btn btn-light" type="button">회원가입</button></a>
 				 
-				<a href="https://kauth.kakao.com/oauth/authorize?client_id=16bdacdabe4f6f5bbe134b1aca55b22f&redirect_uri=http://localhost:8080/withbooks/kakaoLogin&response_type=code">
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=16bdacdabe4f6f5bbe134b1aca55b22f&redirect_uri=http://192.168.219.163:8080/withbooks/kakaoLogin&response_type=code">
 					<button type="button" class="btn btn-light kakao"></button>
 				</a>
 			 </form>

@@ -31,7 +31,7 @@ public class MemberService {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=16bdacdabe4f6f5bbe134b1aca55b22f"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:8080/withbooks/kakaoLogin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://192.168.219.163:8080/withbooks/kakaoLogin"); // 본인이 설정한 주소
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();
